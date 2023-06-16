@@ -124,4 +124,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+
+shoes/target/classes
+shoes/target/m2e-wtp/
+
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java
