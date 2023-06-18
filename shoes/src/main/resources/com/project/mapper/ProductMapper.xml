@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.ProductMapper">
+
+	<resultMap type="com.project.domain.ProductDTO" id="ProductResultMap">
+		<id column="PRODUCT_ID" property="productId"/>
+		<result column="CATEGORY" property="category"/>
+		<result column="BRAND" property="brand"/>
+		<result column="GENDER" property="gender"/>
+		<result column="DETAIL" property="detail"/>
+		<result column="PRICE" property="price"/>
+		<result column="DISCOUNT_PRICE" property="discountPrice"/>
+		<result column="PRODUCT_IMAGE1" property="productImage1"/>
+		<result column="PRODUCT_IMAGE2" property="productImage2"/>
+		<result column="PRODUCT_IMAGE3" property="productImage3"/>
+		<result column="PRODUCT_IMAGE4" property="productImage4"/>
+		<result column="PRODUCT_COUNTRY" property="productCountry"/>
+		<result column="PRODUCT_YEAR" property="productYear"/>
+		<result column="PRODUCT_NAME" property="productName"/>
+		<result column="ON_SALE" property="onSale"/>
+	</resultMap>
+	
+	<select id="getOnSaleList" resultMap="ProductResultMap">
+		<![CDATA[
+		  	select *
+			from(select a.*, rownum rnum
+			from(select * from products where on_sale=1 order by product_id desc) a
+			where rownum <= (#{page}*#{listAmount}))
+			where rnum> (#{page}-1)*#{listAmount}
+		]]>
+	</select>
+	
+	<select id="getOnSaleCount">
+		select count(*) from products where on_sale = 1
+	</select>
+
+</mapper>
