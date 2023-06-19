@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shoes.mapper.HeaderMapper">
+<mapper namespace="com.shoes.mapper.DatailMapper">
 
 
+	
 	<!-- 상품 상세 조회 -->
-	<resultMap type="com.project.domain.header.ProductDTO" id="productDTO">
+	<resultMap type="com.project.domain.detail.ProductDTO" id="productDTO">
 			<id property="productId" column="productId"/>
 			<result property="brand" column="brand"/>
 			<result property="gender" column="gender"/>
@@ -15,26 +16,26 @@
 			<collection property="amount" column="pc"/>
 			<collection property="productSize" column="pi"/>
 	</resultMap>
-	<resultMap type="com.project.domain.header.CartDTO" id="pc">
+	<resultMap type="com.project.domain.detail.CartDTO" id="pc">
 			<result property="productId" column="productID"/>
 			<result property="cartAmount" column="cartAmount"/>
 			
 	</resultMap>
-	<resultMap type="com.project.domain.header.InventoryDTO" id="pi">
+	<resultMap type="com.project.domain.detail.InventoryDTO" id="pi">
 			<result property="productId" column="productID"/>
 			<result property="productSize" column="productSize"/>	
 	</resultMap>
-	<resultMap type="com.project.domain.header.MemberDTO" id="memberDTO">
+	<resultMap type="com.project.domain.detail.MemberDTO" id="memberDTO">
 			<id property="memberId" column="memberID"/>
 			<result property="footSize" column="footSize"/>	
 			<result property="name" column="name"/>	
 			<collection property="memberCart" column="mc"/>	
 	</resultMap>
-	<resultMap type="com.project.domain.header.CartDTO" id="mc">
+	<resultMap type="com.project.domain.detail.CartDTO" id="mc">
 			<result property="memberId" column="memberID"/>
 	</resultMap>
 
-	<select id="detailGet" resultMap="productDTO,memberDTO">
+	<select id="detailRead" resultMap="productDTO,memberDTO">
 		select p.brand,p.gender,p.price,p.detail,p.category,m.name,
 		m.foot_size,p.product_country,i.product_size,c.cart_amount
 		from carts c, products p, inventories i, members m
@@ -43,5 +44,5 @@
    		   and m.member_id=c.member_id
    		   and p.product_id=#{product_id} and m.member_id=#{member_id}
 	</select>
-
+	
 </mapper>

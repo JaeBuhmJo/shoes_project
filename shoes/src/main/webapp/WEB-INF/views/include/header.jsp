@@ -12,6 +12,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+
+    <!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
+
 
 <!--
     
@@ -69,13 +84,16 @@ https://templatemo.com/tm-559-zay-shop
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     신발 종류
   </button>
+  
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="/shoes/list?page=1&amount=10&type=&keyword=">ex)운동화</a></li>
-    <li><a class="dropdown-item" href="/shoes/list?page=1&amount=10&type=&keyword=">ex)구두</a></li>
-    <li><a class="dropdown-item" href="/shoes/list?page=1&amount=10&type=&keyword=">ex)샌들</a></li>
-    <li><a class="dropdown-item" href="/shoes/list?page=1&amount=10&type=&keyword=">ex)슬리퍼</a></li>
-    <li><a class="dropdown-item" href="/shoes/list?page=1&amount=10&type=&keyword=">ex)스포츠</a></li>
-    <li><a class="dropdown-item" href="/shoes/list?page=1&amount=10&type=&keyword=">ex)신상품</a></li>
+
+  
+    <li><a class="dropdown-item" href="/shoes/list?page=1&category=">ex)운동화</a></li>
+    <li><a class="dropdown-item" href="/shoes/list?page=1&category=">ex)구두</a></li>
+    <li><a class="dropdown-item" href="/shoes/list?page=1&category=">ex)샌들</a></li>
+    <li><a class="dropdown-item" href="/shoes/list?page=1&category=">ex)슬리퍼</a></li>
+    <li><a class="dropdown-item" href="/shoes/list?page=1&category=">ex)스포츠</a></li>
+    <li><a class="dropdown-item" href="/shoes/list?page=1&category=">ex)신상품</a></li>
   </ul>
 </div>
 

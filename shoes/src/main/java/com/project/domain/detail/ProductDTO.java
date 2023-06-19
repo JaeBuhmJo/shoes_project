@@ -1,4 +1,4 @@
-package com.project.domain.header;
+package com.project.domain.detail;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +26,5 @@ public class ProductDTO {
 	
 	//inventory 에서 productSize 가져오기
 	private InventoryDTO productSize;
+
 }

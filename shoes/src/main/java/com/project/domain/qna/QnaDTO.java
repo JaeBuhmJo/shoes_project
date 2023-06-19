@@ -1,4 +1,4 @@
-package com.project.domain;
+package com.project.domain.qna;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class QnasId {
+public class QnaDTO {
 
 	public int QnaId;
 	public String memberId;
