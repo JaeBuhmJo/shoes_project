@@ -9,15 +9,11 @@
 			from(select * from products where on_sale=1 order by
 		]]>
 		    <choose>
-		      <when test="sortColumn == 'REGISTERED_DATE'">registered_date</when>
-		      <when test="sortColumn == 'SOLD_COUNT'">sold_count</when>
-		      <when test="sortColumn == 'PRICE'">price</when>
-		      <otherwise>id</otherwise>
-		    </choose>
-		    <choose>
-		      <when test="sortDirection == 'ASC'">ASC</when>
-		      <when test="sortDirection == 'DESC'">DESC</when>
-		      <otherwise>id</otherwise>
+		      <when test="order== 'REGISTERED_DATE DESC'">registered_date desc</when>
+		      <when test="order== 'SOLD_COUNT DESC'">sold_count desc</when>
+		      <when test="order== 'PRICE DESC'">price desc</when>
+		      <when test="order== 'PRICE ASC'">price asc</when>
+		      <otherwise></otherwise>
 		    </choose>
 		<![CDATA[
 			) a
@@ -38,6 +34,21 @@
 		      <otherwise></otherwise>
 		    </choose>
 		order by registered_date desc
+	</select>
+	
+	<insert id="insertProduct">
+		insert into products values(products_seq.nextval,#{category},#{brand},#{gender},#{detail},#{price},
+									#{discountPrice},#{productImageOne},#{productImageTwo},#{productImageThree},
+									#{productImageFour},#{productCountry},#{productYear},#{productName},#{onSale},
+									sysdate,sysdate,0)
+	</insert>
+	
+	<insert id="insertInventory">
+		insert into inventories values(inventories_seq.nextval,#{productId},#{productSize},#{quantity},sysdate)
+	</insert>
+	
+	<select id="getCurrentProductSequence">
+		select products_seq.currval from dual
 	</select>
 
 </mapper>

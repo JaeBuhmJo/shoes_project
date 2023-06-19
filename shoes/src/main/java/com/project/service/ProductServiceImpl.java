@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.Criteria;
+import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
 import com.project.mapper.ProductMapper;
 
@@ -30,4 +31,18 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.getTotalList(cri);
 	}
 
+	@Override
+	public boolean registerProduct(ProductDTO productDTO) {
+		return productMapper.insertProduct(productDTO)==1?true:false;
+	}
+
+	@Override
+	public boolean stockInventory(InventoryDTO inventoryDTO) {
+		return productMapper.insertInventory(inventoryDTO)>0?true:false;
+	}
+
+	@Override
+	public int getCurrentProductId() {
+		return productMapper.getCurrentProductSequence();
+	}
 }

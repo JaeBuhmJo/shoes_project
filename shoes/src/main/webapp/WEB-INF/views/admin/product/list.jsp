@@ -15,7 +15,7 @@
 								<label for="type" > <b>상품 검색 :</b></label>
 							<div class="form-group col-2">
 								<select name="searchType" id="type" class="form-control" value="${productListCri.searchType}">
-									<option value=""  ${productListCri.searchType == ""? 'selected':'' }>전체</option>
+									<option value="" ${productListCri.searchType == ""? 'selected':'' }>전체</option>
 									<option value="productId" ${productListCri.searchType == 'productId'? 'selected':'' }>상품코드</option>
 									<option value="productName" ${productListCri.searchType == 'productName'? 'selected':'' }>상품명</option>
 								</select>
@@ -32,7 +32,7 @@
 				</div>
 			</div>
 
-			<!-- list start -->
+		<!-- list start -->
 		<c:forEach items="${list}" var="item"> 
            <div class="list-group">
 			  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
