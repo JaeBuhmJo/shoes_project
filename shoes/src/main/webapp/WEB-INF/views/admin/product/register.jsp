@@ -92,10 +92,9 @@
 		  </label>
 		</div>
         <div class="form-check form-switch">
-		  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-		  <label class="form-check-label" for="flexSwitchCheckChecked">판매하기</label>
+		  <input class="form-check-input" type="checkbox" name="onSale"  role="switch" id="flexSwitchCheckChecked" value="1" checked>
+		  <label class="form-check-label" for="flexSwitchCheckChecked" >판매하기</label>
 		</div>
-		
 		<div class="input-group mb-3">
 		  <label class="input-group-text" for="inputGroupFile01">메인 이미지</label>
 		  <input type="text" class="form-control" id="inputGroupFile01" name="productImageOne" value="image">
