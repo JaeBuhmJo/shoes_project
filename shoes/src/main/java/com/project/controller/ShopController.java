@@ -31,6 +31,6 @@ public class ShopController {
 		int total = productService.getSaleCount();
 		
 		model.addAttribute("list", list);
-		model.addAttribute("listPageDTO",new ListPageDTO(cri, total));
+		model.addAttribute("productListPage",new ListPageDTO(cri, total));
 	}
 }

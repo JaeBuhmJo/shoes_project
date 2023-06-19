@@ -25,4 +25,9 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.getOnSaleCount();
 	}
 
+	@Override
+	public List<ProductDTO> getAllProducts(Criteria cri) {
+		return productMapper.getTotalList(cri);
+	}
+
 }

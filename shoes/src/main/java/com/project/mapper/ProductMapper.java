@@ -11,4 +11,5 @@ import com.project.domain.ProductDTO;
 public interface ProductMapper {
 	public List<ProductDTO> getOnSaleList(Criteria cri);
 	public int getOnSaleCount();
+	public List<ProductDTO> getTotalList(Criteria cri);
 }

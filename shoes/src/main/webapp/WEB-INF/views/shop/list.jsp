@@ -48,22 +48,20 @@
 				<div class="col-md-4 pb-4">
 					<div class="d-flex align-items-center">
 						<select	class="form-control" id="order" name="order">
-							<option>상품 정렬</option>
-							<option>신상품</option>
-							<option>많이 팔린 순</option>
-							<option>후기 많은 순</option>
-							<option>높은 가격 순</option> 
-							<option>낮은 가격 순</option>
+							<option value="REGISTERED_DATE DESC" ${productListPage.cri.order=='REGISTERED_DATE DESC'? 'selected':'' }>최근 등록 순</option>
+							<option value="SOLD_COUNT DESC" ${productListPage.cri.order=='SOLD_COUNT DESC'? 'selected':'' }>많이 팔린 순</option>
+							<option value="PRICE DESC" ${productListPage.cri.order=='PRICE DESC'? 'selected':'' }>높은 가격 순</option>
+							<option value="PRICE ASC" ${productListPage.cri.order=='PRICE ASC'? 'selected':'' }>낮은 가격 순</option>
 						</select>
 					</div>
 				</div>
 				<div class="col-md-2 pb-4 ">
 					<div class="d-flex ">
 						<select class="form-control" id="listAmount" name="listAmount">
-							<option value="15" ${listPageDTO.cri.listAmount==15? 'selected':'' }>15개씩 보기</option>
-							<option value="30" ${listPageDTO.cri.listAmount==30? 'selected':'' }>30개씩 보기</option>
-						</select>
-					</div>
+							<option value="15" ${productListPage.cri.listAmount==15? 'selected':'' }>15개씩 보기</option>
+							<option value="30" ${productListPage.cri.listAmount==30? 'selected':'' }>30개씩 보기</option>
+						</select>  
+					</div>  
 				</div>
 			</div>
 			<div class="row"> 
@@ -119,20 +117,20 @@
 			<!-- pagination -->
 			<div div="row">
 				<ul class="pagination pagination-lg justify-content-end" id="shopPagination">
-					<c:if test="${listPageDTO.prev }">
+					<c:if test="${productListPage.prev }">
 					<li class="page-item"><a
 						class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-						href="${listPageDTO.startPage - 1 }">prev</a></li>
+						href="${productListPage.startPage - 1 }">prev</a></li>
 					</c:if>
-					<c:forEach begin="${listPageDTO.startPage }" end="${listPageDTO.endPage }"  var="page">
-					<li class="page-item ${listPageDTO.cri.page==page? 'disabled':'' }"><a
-						class="page-link ${listPageDTO.cri.page==page? 'active':'' } rounded-0 shadow-sm border-top-0 border-left-0 ${listPageDTO.cri.page==page? '':'text-dark' }"
+					<c:forEach begin="${productListPage.startPage }" end="${productListPage.endPage }"  var="page">
+					<li class="page-item ${productListPage.cri.page==page? 'disabled':'' }"><a
+						class="page-link ${productListPage.cri.page==page? 'active':'' } rounded-0 shadow-sm border-top-0 border-left-0 ${productListPage.cri.page==page? '':'text-dark' }"
 						href="${page }">${page }</a></li>
 					</c:forEach>
-					<c:if test="${listPageDTO.next }"> 
+					<c:if test="${productListPage.next }"> 
 					<li class="page-item"><a
 						class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-						href="${listPageDTO.endPage + 1 }">next</a></li>
+						href="${productListPage.endPage + 1 }">next</a></li>
 					</c:if>
 				</ul> 
 			</div>
@@ -257,10 +255,11 @@
 <!--End Brands-->
 
 <form action="/shop/list" id="operForm">
-	<input type="hidden" name="page" value="${listPageDTO.cri.page}"/>
-	<input type="hidden" name="listAmount" value="${listPageDTO.cri.listAmount}"/>
-	<input type="hidden" name="searchType" value="${listPageDTO.cri.searchType}"/>
-	<input type="hidden" name="keyword" value="${listPageDTO.cri.keyword}"/>
+	<input type="hidden" name="page" value="${productListPage.cri.page}"/>
+	<input type="hidden" name="listAmount" value="${productListPage.cri.listAmount}"/>
+	<input type="hidden" name="searchType" value="${productListPage.cri.searchType}"/>
+	<input type="hidden" name="keyword" value="${productListPage.cri.keyword}"/>
+	<input type="hidden" name="order" value="${productListPage.cri.order}"/>
 </form>
 
 <!-- Start Script -->

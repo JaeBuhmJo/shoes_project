@@ -23,7 +23,7 @@ public class ListPageDTO {
 		int totalEnd = (int) Math.ceil((total / 1.0) / cri.getListAmount());
 
 		this.prev = startPage == 1 ? false : true;
-		this.next = endPage > totalEnd ? false : true;
+		this.next = endPage >= totalEnd ? false : true;
 		this.endPage = next ? endPage : totalEnd;
 	}
 }
