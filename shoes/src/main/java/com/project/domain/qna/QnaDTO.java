@@ -18,4 +18,5 @@ public class QnaDTO {
 	public String answer;
 	public Date questionDate;
 	public Date answerDate;
+	public String title;
 }

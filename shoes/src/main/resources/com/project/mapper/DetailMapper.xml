@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.DetailMapper">
+
+	<!-- 상품 상세 조회 -->
+	<resultMap type="com.project.domain.detail.ProductDTO" id="productDTO">
+			<id property="productId" column="product_id"/>
+			<result property="brand" column="brand"/>
+			<result property="price" column="price"/>
+			<result property="detail" column="detail"/>
+			<result property="category" column="category"/>
+			<result property="productCountry" column="product_country"/>
+			<collection property="productSize" resultMap="pi"/>
+	</resultMap>
+
+	<resultMap type="com.project.domain.detail.InventoryDTO" id="pi">
+			<result property="productId" column="product_id"/>
+			<result property="productSize" column="product_size"/>	
+	</resultMap>
+
+
+	<select id="detail" resultMap="productDTO">
+
+
+	select p.brand, p.price, p.detail, p.category, p.product_id, p.product_country, i.product_size
+	from products p
+	left OUTER JOIN inventories i ON i.product_id = p.product_id
+	where p.product_id = #{productId}
+	</select>
+<!-- 	select p.brand,p.price,p.detail,p.category,p.product_id, p.product_country,i.product_size
+	from products p
+	left outer join inventories i on i.product_id=p.product_id
+	where p.product_id=#{productId} -->	
+	<insert id="cartInsert">
+		insert into carts(member_id, product_id,cart_amount)
+		values(#{memberId},#{productId},#{cartAmount})
+	</insert>
+	
+	
+	
+	
+	
+	
+</mapper>

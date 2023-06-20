@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.QnaMapper">
+
+
+	
+	
+	<select id="qnaList" resultType="com.project.domain.qna.QnaDTO">
+	<![CDATA[
+		select question,answer,question_date,answer_date,title
+		from (select /*+INDEX_DESC(qnas qna_id)*/ rownum rn,question,answer,question_date,answer_date,title
+		from qnas 
+		where rownum <= (#{page}*#{amount})
+		and rn > (#{page}-1)*#{amount}
+	]]>
+	</select>
+	
+	<insert id="">
+			insert into qnas(qna_id,member_id,product_id,
+			question,answer,question_date,answer_date,title)
+        values(#{qnaId},#{memberId},
+        #{productId},#{question},#{answer},
+        #{questionDate},#{answerDate},#{title})
+	</insert> 
+	
+<select id="qnaTotal" resultType="java.lang.Integer">
+		select count(*) from qnas where qnaId > 0
+</select>
+	
+</mapper>

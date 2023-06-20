@@ -5,6 +5,11 @@
 <li class="nav-item">
       <a class="nav-link" href="/shoes/detail">상세 정보</a>
     </li>
+<li class="nav-item">
+      <a class="nav-link" href="/member/qna">qna</a>
+    </li>
+    
+
 <%@include file="include/footer.jsp"%>
 
 

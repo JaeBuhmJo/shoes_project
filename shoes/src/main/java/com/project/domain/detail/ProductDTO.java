@@ -1,5 +1,7 @@
 package com.project.domain.detail;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,13 +19,15 @@ public class ProductDTO {
 	private String productCountry;
 	private int price;
 	private int discountPrice;
-	private String productImage1;
-	private String productImage2;
-	private String productImage3;
+	private String productImageOne;
+	private String productImageTwo;
+	private String productImageThree;
+	private String productImageFour;
+	private int soldCount;
+	private Date registeredDate;
+	private Date modifiedDate;
 	
-	//cart amount 가져오기
-	private CartDTO amount;
-	
+
 	//inventory 에서 productSize 가져오기
 	private InventoryDTO productSize;
 

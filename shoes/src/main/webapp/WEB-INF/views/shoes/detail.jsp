@@ -96,17 +96,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas4.img" alt="Product Image 7">
+                                                <img class="card-img img-fluid" src="/powe/adidas2.img" alt="Product Image 7">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas5.img" alt="Product Image 8">
+                                                <img class="card-img img-fluid" src="/powe/adidas6.img" alt="Product Image 8">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas6.img" alt="Product Image 9">
+                                                <img class="card-img img-fluid" src="/powe/adidas4.img" alt="Product Image 9">
                                             </a>
                                         </div>
                                     </div>
@@ -132,11 +132,14 @@
 			
 			
 			<!-- col end -->
-			<div class="col-lg-7 mt-5">
+			<div class="col-lg-7 mt-5" >
 				<div class="card">
 					<div class="card-body">
-						<h1 class="h2">ex)운동화${product.category}</h1>
-						<p class="h3 py-2">$25.00</p>
+					<div id="productdetail">
+					<form action="" method="post" id="detailForm">
+					
+						<h1 class="h2" id="brandcart">${product.brand}</h1>
+						<p class="h3 py-2" id="pricecart">${product.price}</p>
 						<p class="py-2">
 							<i class="fa fa-star text-warning">1</i>
 							<i class="fa fa-star text-warning">2</i>
@@ -147,85 +150,55 @@
 						</p>
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<h6>ex)${product.brand}?</h6>
+								<h6 id="categorycart">${product.category}</h6>
+								
 							</li>
-							<li class="list-inline-item">
-								<p class="text-muted">
-									<strong>ex)${product.detail}</strong>
-								</p>
-							</li>
+							
 						</ul>
-
+					</form>
+					</div>
 								<!-- 상품 간략 정보 -->
-						
+						${product.detail}
 							<h4>변함없는 디자인으로 돌아온 1991 가젤 30년이 넘는 시간 동안 사랑받아 온 심플함의 아이콘.</h4>
 							
 							<p>
 							 이번 버전의 가젤은 큰 인기를 얻었던 1991 가젤의 클래식한 소재, 칼라, 텍스쳐, 구조를 그대로 이어갑니다. 가죽 갑피에 대비색상 3-스트라이프와 힐 탭을 더해 90년대 초반의 오리지널 스타일을 선보입니다.</p>
 						
 
-						<form action="" method="">
-							<input type="hidden" name="product-title" value="Activewear">
+						<form action="" method="post" id="radiodetail">
+							<input type="hidden" name="product-title" value="Activewear" id="footSize">
 							<div class="row">
 								<div class="col-auto">
-									<ul class="list-inline pb-3">
-										<li class="list-inline-item">Size : <input type="hidden" name="product-size" id="product-size" value="S">
-										</li>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-											<label class="form-check-label" for="inlineRadio1">210</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-											<label class="form-check-label" for="inlineRadio2">220</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
-											<label class="form-check-label" for="inlineRadio3">230</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2">
-											<label class="form-check-label" for="inlineRadio4">240</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option2">
-											<label class="form-check-label" for="inlineRadio5">250</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="option2">
-											<label class="form-check-label" for="inlineRadio6">260</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="option2">
-											<label class="form-check-label" for="inlineRadio7">270</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="option2">
-											<label class="form-check-label" for="inlineRadio8">280</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="option2">
-											<label class="form-check-label" for="inlineRadio9">290</label>
-										</div>
+									<ul class="list-inline pb-3" id="detailsize">
+										<li class="list-inline-item">Size : </li>
+										<select class="form-select" aria-label="" name="size" id="size">
+										  <option selected>사이즈 선택</option>
+										  <option value="200">200</option>
+										  <option value="210">210</option>
+										  <option value="220">220</option>
+										  <option value="230">230</option>
+										  <option value="240">240</option>
+										  <option value="250">250</option>
+										  <option value="260">260</option>
+										  <option value="270">270</option>
+										  <option value="280">280</option>
+										</select>										
+							</ul>
 										
-									</ul>
+										
+										
+										
+										
+										
 								</div>
-								<div class="col-auto">
-									<ul class="list-inline pb-3">
-										<li class="list-inline-item text-right">Quantity <input type="hidden" name="product-quanity" id="product-quanity" value="1">
-										</li>
-										<li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
-										<li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-										<li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
-									</ul>
-								</div>
+								
 							</div>
 							<div class="row pb-3">
 								<div class="col d-grid">
-									<button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
+									<button type="submit" class="btn btn-success btn-lg" name="" value="buy">찜 목록 추가</button>
 								</div>
 								<div class="col d-grid">
-									<button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
+									<button type="submit" class="btn btn-success btn-lg" id="goCart" name="submit" value="addtocard">Add To Cart</button>
 								</div>
 							</div>
 						</form>
@@ -260,6 +233,10 @@
 
 
 				<p class="fw-bold">상품 정보</p>
+				<div class="row">
+				<div class="col-auto" id="read-detail">
+				</div>
+				</div>
 
 				<h2 id="scrollspyHeading3">상품 제조 연월</h2>
 							<h4>2023-06-17</h4>
@@ -317,6 +294,7 @@
 										<div class="accordion-body">
 											
 											<p>상품평</p>
+											<span class="list-inline-item text-dark">별점 4.8 | 36 ${qna.reviewCnt}</span>
 											
 										</div>
 									</div>
@@ -512,26 +490,31 @@
 
 
 <!-- Start Script -->
-<script src="/assets/js/jquery-1.11.0.min.js"></script>
-<script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="/assets/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/js/templatemo.js"></script>
-<script src="/assets/js/custom.js"></script>
+<script src="/js/jquery-1.11.0.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/templatemo.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/powedetailjs/detail.js"></script>
 <link href="/powe/adidas1.img">
 <link href="/powe/adidas2.img">
 <link href="/powe/adidas3.img">
 <link href="/powe/adidas4.img">
 
-
 <!-- End Script -->
+ <script>
+	// 스크립트 실행순서: 첫번째 실행
+	//게글 글번호 가져오기
+	const product = ${product.productId};
+</script>
 
 
-</body>
-
-</html>
 
 
 <%@include file="../include/footer.jsp"%>
+
+
+
 
 
 

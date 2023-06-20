@@ -22,9 +22,6 @@ public class MemberDTO {
 	private Date registerDate;
 	
 
-	//cart 랑 연결?
-	private CartDTO memberCart;
-	
 	
 	
 	
