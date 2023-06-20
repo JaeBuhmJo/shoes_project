@@ -4,3 +4,19 @@ Custom Css
 .size-width {
   width: 200px;
 }
+
+.product-list-table {
+  height: 600px;
+  overflow-x: auto;
+  max-width: 100%;
+}
+thead th {
+  height: 15px;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+.form-readonly {
+  background-color: lightgray;
+}

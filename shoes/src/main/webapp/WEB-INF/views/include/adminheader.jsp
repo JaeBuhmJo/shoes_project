@@ -13,7 +13,7 @@
         <link href="/css/styles.css" rel="stylesheet" />
         <link href="/assets/css/custom.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-		        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -61,29 +61,23 @@
                     
                     <!-- interface start -->
                     <div class="sb-sidenav-menu-heading">Interface</div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
+                    <a class="nav-link" href="/admin/product/list?searchType=&keyword=">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         상품 관리
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-right"></i></div>
                     </a>
-                    <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="/admin/product/list?page=1&listAmount=10&searchType=&keyword=">상품 등록/수정</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">재고 관리</a>
-                        </nav>
-                    </div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
+                    <a class="nav-link" href="/admin/inventory/list?searchType=&keyword=">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        회원/주문 관리
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        재고 관리
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-right"></i></div>
                     </a>
-                    <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">회원 목록</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">주문 목록</a>
-                        </nav>
+                    <a class="nav-link" href="/admin/inventory/list?searchType=&keyword=">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        회원 관리
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-right"></i></div>
+                    </a>
                     </div>
-                    
+                    <!-- 
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Pages
@@ -115,9 +109,8 @@
                             </div>
                         </nav>
                     </div>
-                    
-                    <!-- interface end -->
-                    
+                   
+                  
                     <div class="sb-sidenav-menu-heading">Addons</div>
                     <a class="nav-link" href="charts.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -128,7 +121,9 @@
                         Tables
                     </a>
                 </div>
-            </div>
+            
+              -->
+              </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
                 Start Bootstrap

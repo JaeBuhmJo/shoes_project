@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.InventoryMapper">
+	
+	<insert id="insertInventory">
+		insert into inventories values(inventories_seq.nextval,#{productId},#{productSize},#{quantity},sysdate)
+	</insert>
+	
+	<resultMap type="com.project.domain.ProductDTO" id="productMap">
+		<id property="productId" column="product_id"/>
+		<result property="productName" column="product_name"/>
+		<result property="onSale" column="on_sale"/>
+		<result property="soldCount" column="sold_count"/>
+		<result property="price" column="price"/>
+		<collection property="inventories" resultMap="inventoryMap"/>
+	</resultMap>
+	<resultMap type="com.project.domain.InventoryDTO" id="inventoryMap">
+		<id property="inventoryId" column="inventory_id"/>		
+		<result property="productSize" column="product_size"/>
+		<result property="quantity" column="quantity"/>
+		<result property="stockedDate" column="stocked_date"/>
+	</resultMap>
+	
+	<select id="getTotalInventories" resultMap="productMap">
+		select p.product_id, i.inventory_id, p.product_name, i.product_size, i.quantity, 
+		p.on_sale, p.sold_count, i.stocked_date, p.price
+		from inventories i join products p on i.product_id = p.product_id
+			<choose>
+		      <when test="searchType == 'productId'"> where p.product_id = #{keyword} </when>
+		      <when test="searchType == 'productName'"> where p.product_name like CONCAT('%',CONCAT(#{keyword},'%')) </when>
+		      <otherwise></otherwise>
+		    </choose>
+		order by i.stocked_date desc
+	</select>
+	
+	<select id="getInventories" resultType="com.project.domain.InventoryDTO">
+		select * from inventories where product_id = #{productId} order by product_id asc
+	</select>
+	
+	<select id="checkInventory" resultType="Integer">
+		select count(*) from inventories where product_size = #{productSize} and product_id = #{productId}
+	</select>
+	
+	<update id="updateInventory">
+		update inventories set quantity = #{quantity} where product_size = #{productSize} and product_id = #{productId} 
+	</update>
+	
+	<delete id="deleteInventory">
+		delete from inventories where product_size = #{productSize} and product_id = #{productId} 
+	</delete>
+</mapper>

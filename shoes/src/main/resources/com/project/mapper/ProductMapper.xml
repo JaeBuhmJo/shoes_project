@@ -40,15 +40,25 @@
 		insert into products values(products_seq.nextval,#{category},#{brand},#{gender},#{detail},#{price},
 									#{discountPrice},#{productImageOne},#{productImageTwo},#{productImageThree},
 									#{productImageFour},#{productCountry},#{productYear},#{productName},#{onSale},
-									sysdate,sysdate,0)
+									0,sysdate,sysdate)
 	</insert>
-	
-	<insert id="insertInventory">
-		insert into inventories values(inventories_seq.nextval,#{productId},#{productSize},#{quantity},sysdate)
-	</insert>
-	
+
 	<select id="getCurrentProductSequence">
 		select products_seq.currval from dual
 	</select>
+	
+	<select id="getProduct" resultType="com.project.domain.ProductDTO">
+		select * from products where product_id = #{productId}
+	</select>
+	
+	<update id="updateProduct">
+		 update products set category=#{category}, brand=#{brand}, gender=#{gender}, detail=#{detail}, price=#{price},
+		 					 discount_price=#{discountPrice}, product_image_one=#{productImageOne},
+		 					 product_image_two=#{productImageTwo}, product_image_three=#{productImageThree},
+		 					 product_image_four=#{productImageFour}, product_country=#{productCountry},
+		 					 product_year=#{productYear}, product_name=#{productName}, on_sale=#{onSale},
+		 					 modified_date=sysdate
+		 where product_id = #{productId}
+	</update>
 
 </mapper>

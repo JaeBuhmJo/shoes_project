@@ -14,5 +14,4 @@ public class InventoryDTO {
 	private int productSize;
 	private int quantity;
 	private Date stockedDate;
-	
 }

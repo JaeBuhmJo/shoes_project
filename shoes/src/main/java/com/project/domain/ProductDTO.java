@@ -1,6 +1,7 @@
 package com.project.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,4 +28,6 @@ public class ProductDTO {
 	private int soldCount;
 	private Date registeredDate;
 	private Date modifiedDate;
+	
+	private List<InventoryDTO> inventories;
 }

@@ -46,35 +46,35 @@
 		<div class="">
 			<div class="input-group size-width m-1">
 				<span class="input-group-text" id="basic-addon1">220</span>
-				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 			<div class="input-group size-width m-1">
 				<span class="input-group-text" id="basic-addon1">230</span>
-				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 			<div class="input-group size-width m-1">
 				<span class="input-group-text" id="basic-addon1">240</span>
-				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 			<div class="input-group size-width m-1">
 				<span class="input-group-text" id="basic-addon1">250</span> 
-				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 			<div class="input-group size-width m-1">
 				<span class="input-group-text" id="basic-addon1">260</span>
-				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 			<div class="input-group size-width m-1">
 				<span class="input-group-text" id="basic-addon1">270</span> 
-				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 			<div class="input-group size-width m-1"> 
 				<span class="input-group-text" id="basic-addon1">280</span>
-				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 			<div class="input-group size-width m-1">
 				<span class="input-group-text" id="basic-addon1">290</span>
-				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
 		</div>
 		<hr>
@@ -112,10 +112,9 @@
 		  <input type="file" class="form-control" id="inputGroupFile01">
 		</div>
 		<button type="submit" class="btn btn-success">상품 등록</button>
-	</form>	
-        </main> 
+		<button type="button" class="btn btn-secondary">목록으로</button>
+	</form>
+        </main>   
         
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="/js/scripts.js"></script>
-
+<script src="/js/admin-product-register.js"></script>
 <%@ include file="../../include/adminfooter.jsp" %>
