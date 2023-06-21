@@ -5,7 +5,7 @@
 
 	
 	
-	<select id="qnaList" resultType="com.project.domain.qna.QnaDTO">
+	<select id="qnaList" resultType="com.project.domain.QnaDTO">
 	<![CDATA[
 		select question,answer,question_date,answer_date,title
 		from (select /*+INDEX_DESC(qnas qna_id)*/ rownum rn,question,answer,question_date,answer_date,title
@@ -15,16 +15,16 @@
 	]]>
 	</select>
 	
-	<insert id="">
+	<insert id="qnaInsert">
 			insert into qnas(qna_id,member_id,product_id,
 			question,answer,question_date,answer_date,title)
-        values(#{qnaId},#{memberId},
-        #{productId},#{question},#{answer},
-        #{questionDate},#{answerDate},#{title})
+			values(#{qnaId},#{memberId},
+			#{productId},#{question},#{answer},
+			#{questionDate},#{answerDate},#{title})
 	</insert> 
 	
 <select id="qnaTotal" resultType="java.lang.Integer">
-		select count(*) from qnas where qnaId > 0
+		select count(*) from qnas where qna_id > 0
 </select>
 	
 </mapper>

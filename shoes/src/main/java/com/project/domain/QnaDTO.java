@@ -1,4 +1,4 @@
-package com.project.domain.qna;
+package com.project.domain;
 
 import java.util.Date;
 

@@ -4,8 +4,8 @@ package com.project.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.project.domain.detail.CartDTO;
-import com.project.domain.detail.ProductDTO;
+import com.project.domain.CartDTO;
+import com.project.domain.ProductDTO;
 
 @Mapper
 public interface DetailMapper {

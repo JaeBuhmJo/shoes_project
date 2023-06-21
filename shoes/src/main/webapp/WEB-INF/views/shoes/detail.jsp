@@ -184,12 +184,8 @@
 										  <option value="280">280</option>
 										</select>										
 							</ul>
-										
-										
-										
-										
-										
-										
+													
+																								
 								</div>
 								
 							</div>
@@ -490,11 +486,11 @@
 
 
 <!-- Start Script -->
-<script src="/js/jquery-1.11.0.min.js"></script>
-<script src="/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="/js/bootstrap.bundle.min.js"></script>
-<script src="/js/templatemo.js"></script>
-<script src="/js/custom.js"></script>
+<script src="/assets/js/jquery-1.11.0.min.js"></script>
+<script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/templatemo.js"></script>
+<script src="/assets/js/custom.js"></script>
 <script src="/powedetailjs/detail.js"></script>
 <link href="/powe/adidas1.img">
 <link href="/powe/adidas2.img">

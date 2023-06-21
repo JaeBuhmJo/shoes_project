@@ -1,4 +1,4 @@
-package com.project.domain.qna;
+package com.project.domain;
 
 import lombok.Getter;
 import lombok.Setter;

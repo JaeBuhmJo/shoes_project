@@ -1,4 +1,4 @@
-package com.project.domain.qna;
+package com.project.domain;
 
 public class QnaPageDTO {
 	private int startPage;
@@ -11,7 +11,7 @@ public class QnaPageDTO {
 	
 	private Criteria cri;
 
-	public QnaPageDTO(int total, Criteria cri) {
+	public QnaPageDTO(Criteria cri, int total) {
 		
 		this.total = total;
 		this.cri = cri;

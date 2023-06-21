@@ -1,8 +1,8 @@
 package com.project.service;
 
 
-import com.project.domain.detail.CartDTO;
-import com.project.domain.detail.ProductDTO;
+import com.project.domain.CartDTO;
+import com.project.domain.ProductDTO;
 
 public interface DetailService {
 

@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.domain.detail.ProductDTO;
+import com.project.domain.ProductDTO;
 import com.project.service.DetailService;
 
 import lombok.extern.slf4j.Slf4j;

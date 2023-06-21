@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 
 
@@ -149,7 +151,7 @@
 		
 			<tr>
 				<th scope="row">${qna.qnaId}</th>
-				<td><a href="" class="move">${qna.title}</a></td>
+				<td><a href="${qna.qnaId}" class="move">${qna.title}</a></td>
 				<td>${qna.memberId}</td>
 				<td>${qna.questionDate} </td>
 				<td>${qna.answerDate} </td>
@@ -161,16 +163,16 @@
  <nav aria-label="...">
 	<ul class="pagination justify-content-center">
 
-		<c:if test="${pageDTO.prev}">
-			<li class="page-item"><a class="page-link" href="${pageDTO.startPage-1} ">Previous</a></li>
+		<c:if test="${qnaPageDTO.prev}">
+			<li class="page-item"><a class="page-link" href="${qnaPageDTO.startPage-1} ">Previous</a></li>
 		</c:if>
 
-		<c:forEach begin="${pageDTO.startPage}" end="${pageDTO.endPage}" var="idx">
-			<li class="page-item ${pageDTO.cri.page==idx?'active':'' }"><a class="page-link" href="${idx}">${idx}</a></li>
+		<c:forEach begin="${qnaPageDTO.startPage}" end="${qnaPageDTO.endPage}" var="idx">
+			<li class="page-item ${qnaPageDTO.cri.page==idx?'active':'' }"><a class="page-link" href="${idx}">${idx}</a></li>
 		</c:forEach>
 
-		<c:if test="${pageDTO.next}">
-			<li class="page-item"><a class="page-link" href="${pageDTO.endPage+1} ">Next</a></li>
+		<c:if test="${qnaPageDTO.next}">
+			<li class="page-item"><a class="page-link" href="${qnaPageDTO.endPage+1} ">Next</a></li>
 		</c:if>
 	</ul>
 </nav> 
@@ -203,16 +205,16 @@
 								<div class="carousel-item active">
 									<div class="row">
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_01.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_01.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_02.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_02.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_03.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_03.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_04.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_04.png" alt="Brand Logo"></a>
 										</div>
 									</div>
 								</div>
@@ -222,16 +224,16 @@
 								<div class="carousel-item">
 									<div class="row">
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_01.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_01.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_02.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_02.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_03.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_03.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_04.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_04.png" alt="Brand Logo"></a>
 										</div>
 									</div>
 								</div>
@@ -241,16 +243,16 @@
 								<div class="carousel-item">
 									<div class="row">
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_01.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_01.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_02.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_02.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="/img/brand_03.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_03.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_04.png" alt="Brand Logo"></a>
 										</div>
 									</div>
 								</div>
@@ -275,7 +277,15 @@
 </section>
 <!--End Brands-->
 
+<%--페이지 나누기 링크 처리를 위한 폼 --%>
+<form action="/member/qna" id="operForm">
+	<%-- QnaPageDTO.cri.page 가능 --%>
+	<input type="hidden" name="page" value="${cri.page}" />
+	<input type="hidden" name="amount" value="${cri.amount}" />
+<%-- 	<input type="hidden" name="keyword" value="${cri.keyword}" /> --%>
+</form>
 
-
-
+<script>
+	const result = '${result}';
+</script>
 <%@include file="../include/footer.jsp"%>

@@ -14,7 +14,6 @@ document.querySelector("#goCart").addEventListener("click", (e) => {
     method: "post",
     body: JSON.stringify(cartItem),
     headers: {
-      "X-CSRF-TOKEN": csrfToken,
       "Content-Type": "application/json",
     },
   })

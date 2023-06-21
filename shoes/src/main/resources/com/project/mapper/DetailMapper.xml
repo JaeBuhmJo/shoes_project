@@ -3,7 +3,7 @@
 <mapper namespace="com.project.mapper.DetailMapper">
 
 	<!-- 상품 상세 조회 -->
-	<resultMap type="com.project.domain.detail.ProductDTO" id="productDTO">
+	<resultMap type="com.project.domain.ProductDTO" id="productDTO">
 			<id property="productId" column="product_id"/>
 			<result property="brand" column="brand"/>
 			<result property="price" column="price"/>
@@ -13,7 +13,7 @@
 			<collection property="productSize" resultMap="pi"/>
 	</resultMap>
 
-	<resultMap type="com.project.domain.detail.InventoryDTO" id="pi">
+	<resultMap type="com.project.domain.InventoryDTO" id="pi">
 			<result property="productId" column="product_id"/>
 			<result property="productSize" column="product_size"/>	
 	</resultMap>
