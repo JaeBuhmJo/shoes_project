@@ -17,10 +17,6 @@ public class ProductDTO {
 	private String detail;
 	private int price;
 	private int discountPrice;
-	private String productImageOne;
-	private String productImageTwo;
-	private String productImageThree;
-	private String productImageFour;
 	private String productCountry;
 	private int productYear;
 	private String productName;
@@ -30,4 +26,5 @@ public class ProductDTO {
 	private Date modifiedDate;
 	
 	private List<InventoryDTO> inventories;
+	private List<AttachmentDTO> attachmentList;
 }

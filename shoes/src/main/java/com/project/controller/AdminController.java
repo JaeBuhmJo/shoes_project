@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-	
+
 	final int productSize = 220;
 	final int productSizeIncrement = 10;
 
@@ -67,7 +67,7 @@ public class AdminController {
 		model.addAttribute("inventoryList", inventoryService.getProductInventories(productId));
 		return "/admin/inventory/read";
 	}
-	
+
 	@GetMapping("/product/read/{productId}")
 	public String productReadGet(Model model, @PathVariable String productId) {
 		log.info("상품 상세 정보 요청 : " + productId);
@@ -79,61 +79,20 @@ public class AdminController {
 	@Transactional
 	@PostMapping("/product/modify")
 	public String productModifyGet(ProductDTO productDTO, InventoryDTO inventoryDTO, @RequestParam List<Integer> quantity) {
-		log.info("상품 수정 요청 : " + productDTO.toString());
+		log.info("상품 페이지 상품 수정 요청 : " + productDTO.toString());
 		productService.modifyProduct(productDTO);
-		int size = productSize;
-		for (Integer amount : quantity) {
-			inventoryDTO.setProductSize(size);
-			boolean isStocked = inventoryService.isStocked(inventoryDTO);
-			if (amount > 0) {
-				inventoryDTO.setQuantity(amount);
-				if (isStocked) {
-					log.info("재고 수정 요청 : " + inventoryDTO.toString());
-					inventoryService.modifyInventory(inventoryDTO);
-				} else {
-					log.info("재고 등록 요청 : " + inventoryDTO.toString());
-					inventoryService.stockInventory(inventoryDTO);
-				}
-			} else {
-				if(isStocked) {
-					log.info("재고 삭제 요청 : " + inventoryDTO.toString());
-					inventoryService.removeInventory(inventoryDTO);
-				}
-			}
-			size += productSizeIncrement;
-		}
+		modifyInventory(inventoryDTO, quantity);
 		return "redirect:/admin/product/list";
 	}
-	
+
 	@Transactional
 	@PostMapping("/inventory/modify")
 	public String inventoryModifyGet(ProductDTO productDTO, InventoryDTO inventoryDTO, @RequestParam List<Integer> quantity) {
-		log.info("상품 수정 요청 : " + productDTO.toString());
+		log.info("재고 페이지 상품 수정 요청 : " + productDTO.toString());
 		productService.modifyProduct(productDTO);
-		int size = productSize;
-		for (Integer amount : quantity) {
-			inventoryDTO.setProductSize(size);
-			boolean isStocked = inventoryService.isStocked(inventoryDTO);
-			if (amount > 0) {
-				inventoryDTO.setQuantity(amount);
-				if (isStocked) {
-					log.info("재고 수정 요청 : " + inventoryDTO.toString());
-					inventoryService.modifyInventory(inventoryDTO);
-				} else {
-					log.info("재고 등록 요청 : " + inventoryDTO.toString());
-					inventoryService.stockInventory(inventoryDTO);
-				}
-			} else {
-				if(isStocked) {
-					log.info("재고 삭제 요청 : " + inventoryDTO.toString());
-					inventoryService.removeInventory(inventoryDTO);
-				}
-			}
-			size += productSizeIncrement;
-		}
+		modifyInventory(inventoryDTO, quantity);
 		return "redirect:/admin/inventory/list";
 	}
-	
 
 	@GetMapping("/product/register")
 	public void productRegisterGet() {
@@ -143,19 +102,33 @@ public class AdminController {
 	@Transactional
 	@PostMapping("/product/register")
 	public String productRegisterPost(ProductDTO productDTO, InventoryDTO inventoryDTO, @RequestParam List<Integer> quantity) {
+		//상품 등록할 때 이미지도 같이 등록해야됨
 		log.info("상품 등록 요청 : " + productDTO.toString());
 		productService.registerProduct(productDTO);
 		inventoryDTO.setProductId(String.valueOf(productService.getCurrentProductId()));
-		log.info("재고 등록 요청 : " + inventoryDTO.toString());
-		int productSize = 220;
-		for (Integer amount : quantity) {
-			if (amount > 0) {
-				inventoryDTO.setProductSize(productSize);
-				inventoryDTO.setQuantity(amount);
-				inventoryService.stockInventory(inventoryDTO);
-			}
-			productSize += 10;
-		}
+		stockInventory(inventoryDTO, quantity);
 		return "redirect:/admin/product/list";
+	}
+	
+	public void modifyInventory(InventoryDTO inventoryDTO, List<Integer> quantity) {
+		int size = productSize;
+		log.info("재고 수정 요청 : " + inventoryDTO.toString() + quantity);
+		for (Integer amount : quantity) {
+			inventoryDTO.setProductSize(size);
+			inventoryDTO.setQuantity(amount);
+			inventoryService.modifyInventory(inventoryDTO);
+			size += productSizeIncrement;
+		}
+	}
+	
+	public void stockInventory(InventoryDTO inventoryDTO, List<Integer> quantity) {
+		int size = productSize;
+		log.info("재고 입고 요청 : " + inventoryDTO.toString() + quantity);
+		for (Integer amount : quantity) {
+			inventoryDTO.setProductSize(size);
+			inventoryDTO.setQuantity(amount);
+			inventoryService.stockInventory(inventoryDTO);
+			size += productSizeIncrement;
+		}
 	}
 }

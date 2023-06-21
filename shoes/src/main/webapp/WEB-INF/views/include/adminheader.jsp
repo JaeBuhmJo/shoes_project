@@ -66,7 +66,7 @@
                         상품 관리
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-right"></i></div>
                     </a>
-                    <a class="nav-link" href="/admin/inventory/list?searchType=&keyword=">
+                    <a class="nav-link" href="/admin/inventory/list?searchType=quantity&keyword=">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         재고 관리
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-right"></i></div>

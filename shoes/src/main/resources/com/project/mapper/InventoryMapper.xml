@@ -26,11 +26,12 @@
 		p.on_sale, p.sold_count, i.stocked_date, p.price
 		from inventories i join products p on i.product_id = p.product_id
 			<choose>
+		      <when test="searchType == 'quantity'"> where i.quantity > 0 </when>
 		      <when test="searchType == 'productId'"> where p.product_id = #{keyword} </when>
 		      <when test="searchType == 'productName'"> where p.product_name like CONCAT('%',CONCAT(#{keyword},'%')) </when>
 		      <otherwise></otherwise>
 		    </choose>
-		order by i.stocked_date desc
+		order by i.stocked_date desc, product_size asc
 	</select>
 	
 	<select id="getInventories" resultType="com.project.domain.InventoryDTO">

@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.ProductMapper">
 
+	<!-- 이 온세일 리스트가, 대표이미지 하나의 정보를 끌어와야함 -->
 	<select id="getOnSaleList" resultType="com.project.domain.ProductDTO">
 		<![CDATA[
 		  	select *
@@ -38,8 +39,7 @@
 	
 	<insert id="insertProduct">
 		insert into products values(products_seq.nextval,#{category},#{brand},#{gender},#{detail},#{price},
-									#{discountPrice},#{productImageOne},#{productImageTwo},#{productImageThree},
-									#{productImageFour},#{productCountry},#{productYear},#{productName},#{onSale},
+									#{discountPrice},#{productCountry},#{productYear},#{productName},#{onSale},
 									0,sysdate,sysdate)
 	</insert>
 
@@ -53,9 +53,7 @@
 	
 	<update id="updateProduct">
 		 update products set category=#{category}, brand=#{brand}, gender=#{gender}, detail=#{detail}, price=#{price},
-		 					 discount_price=#{discountPrice}, product_image_one=#{productImageOne},
-		 					 product_image_two=#{productImageTwo}, product_image_three=#{productImageThree},
-		 					 product_image_four=#{productImageFour}, product_country=#{productCountry},
+		 					 discount_price=#{discountPrice}, product_country=#{productCountry},
 		 					 product_year=#{productYear}, product_name=#{productName}, on_sale=#{onSale},
 		 					 modified_date=sysdate
 		 where product_id = #{productId}

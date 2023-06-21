@@ -64,7 +64,9 @@
 					</div>  
 				</div>
 			</div>
-			<div class="row"> 
+			
+			<div class="row productList">  
+			
 				<c:forEach items="${list}" var="item">
 					<div class="col-md-4">
 						<div class="card mb-4 product-wap rounded-0">
@@ -112,6 +114,7 @@
 						</div>
 					</div>
 				</c:forEach>
+				
 			</div>
 
 			<!-- pagination -->

@@ -13,7 +13,8 @@
 								<label for="type" > <b>재고 검색 :</b></label>
 							<div class="form-group col-2">
 								<select name="searchType" id="type" class="form-control">
-									<option value="" ${inventoryCri.searchType == ""? 'selected':'' }>전체</option>
+									<option value="quantity" ${inventoryCri.searchType == 'quantity'? 'selected':'' }>잔여 재고</option>
+									<option value="" ${inventoryCri.searchType == ""? 'selected':'' }>전체 사이즈</option>
 									<option value="productId" ${inventoryCri.searchType == 'productId'? 'selected':'' }>상품코드</option>
 									<option value="productName" ${inventoryCri.searchType == 'productName'? 'selected':'' }>상품명</option>
 								</select>

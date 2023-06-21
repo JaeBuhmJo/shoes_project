@@ -81,6 +81,7 @@
 		  <input class="form-check-input" type="checkbox" name="onSale"  role="switch" id="flexSwitchCheckChecked" value="1" checked>
 		  <label class="form-check-label" for="flexSwitchCheckChecked" >판매하기</label>
 		</div>
+		<%-- 
 		<div class="input-group mb-3">
 		  <label class="input-group-text" for="inputGroupFile01">메인 이미지</label>
 		  <input type="text" class="form-control" id="inputGroupFile01" name="productImageOne" value="${productDTO.productImageOne }">
@@ -97,6 +98,7 @@
 		  <label class="input-group-text" for="inputGroupFile01">추가 이미지3</label>
 		  <input type="file" class="form-control" id="inputGroupFile01">
 		</div>
+		 --%>
 		<button type="submit" class="btn btn-primary">상품 수정</button>
 		<button type="button" class="btn btn-secondary">목록으로</button>
 	</form>

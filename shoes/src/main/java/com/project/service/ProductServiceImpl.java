@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.project.domain.AttachmentDTO;
 import com.project.domain.Criteria;
 import com.project.domain.ProductDTO;
+import com.project.mapper.AttachmentMapper;
 import com.project.mapper.ProductMapper;
 
 @Service
@@ -14,6 +17,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductMapper productMapper;
+	
+	@Autowired
+	private AttachmentMapper attachmentMapper;
 	
 	@Override
 	public List<ProductDTO> getSaleProducts(Criteria cri) {
@@ -30,9 +36,18 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.getTotalList(cri);
 	}
 
+	@Transactional
 	@Override
 	public boolean registerProduct(ProductDTO productDTO) {
-		return productMapper.insertProduct(productDTO)==1?true:false;
+		boolean insertFlag = productMapper.insertProduct(productDTO)==1?true:false;
+		if(productDTO.getAttachmentList()==null || productDTO.getAttachmentList().size()==0) {
+			return insertFlag;
+		}
+		for (AttachmentDTO attachmentDTO: productDTO.getAttachmentList()) {
+			attachmentDTO.setProductId(productDTO.getProductId());
+			attachmentMapper.insertAttachments(attachmentDTO);
+		}
+		return insertFlag;
 	}
 
 	@Override
