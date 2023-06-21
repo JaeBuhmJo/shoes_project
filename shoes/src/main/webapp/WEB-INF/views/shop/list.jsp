@@ -48,10 +48,10 @@
 				<div class="col-md-4 pb-4">
 					<div class="d-flex align-items-center">
 						<select	class="form-control" id="order" name="order">
-							<option value="REGISTERED_DATE DESC" ${productListPage.cri.order=='REGISTERED_DATE DESC'? 'selected':'' }>최근 등록 순</option>
-							<option value="SOLD_COUNT DESC" ${productListPage.cri.order=='SOLD_COUNT DESC'? 'selected':'' }>많이 팔린 순</option>
-							<option value="PRICE DESC" ${productListPage.cri.order=='PRICE DESC'? 'selected':'' }>높은 가격 순</option>
-							<option value="PRICE ASC" ${productListPage.cri.order=='PRICE ASC'? 'selected':'' }>낮은 가격 순</option>
+							<option value="registered-date-desc" ${productListPage.cri.order=='registered-date-desc'? 'selected':'' }>최근 등록 순</option>
+							<option value="sold-count-desc" ${productListPage.cri.order=='sold-count-desc'? 'selected':'' }>많이 팔린 순</option>
+							<option value="price-desc" ${productListPage.cri.order=='price-desc'? 'selected':'' }>높은 가격 순</option>
+							<option value="price-asc" ${productListPage.cri.order=='price-asc'? 'selected':'' }>낮은 가격 순</option>
 						</select>
 					</div>
 				</div>
@@ -65,16 +65,13 @@
 				</div>
 			</div>
 			
-			<div class="row productList">  
-			
+			<div class="row productList">
 				<c:forEach items="${list}" var="item">
 					<div class="col-md-4">
 						<div class="card mb-4 product-wap rounded-0">
 							<div class="card rounded-0">
-								<img class="card-img rounded-0 img-fluid"
-									src="/assets/img/shop_11.jpg">
-								<div
-									class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+								<img class="card-img rounded-0 img-fluid" src="/attachment?fileName=${item.filePath}">
+								<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
 									<ul class="list-unstyled">
 										<li><a class="btn btn-success text-white"
 											href="shop-single.html"><i class="far fa-heart"></i></a></li>
@@ -89,7 +86,7 @@
 								<a href="shop-single.html" class="h3 text-decoration-none">${item.productName}</a>
 								<ul
 									class="w-100 list-unstyled d-flex justify-content-between mb-0">
-									<li>M/L/X/XL</li>
+									<li>${item.brand }</li>
 									<li class="pt-2"><span
 										class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
 										<span
@@ -114,7 +111,6 @@
 						</div>
 					</div>
 				</c:forEach>
-				
 			</div>
 
 			<!-- pagination -->
@@ -247,15 +243,15 @@
 						<a class="h1" href="#multi-item-example" role="button"
 							data-bs-slide="next"> <i
 							class="text-light fas fa-chevron-right"></i>
-						</a>
+						</a> 
 					</div>
 					<!--End Controls-->
 				</div>
-			</div>
+			</div> 
 		</div>
 	</div>
 </section>
-<!--End Brands-->
+<!--End Brands-->  
 
 <form action="/shop/list" id="operForm">
 	<input type="hidden" name="page" value="${productListPage.cri.page}"/>
@@ -264,13 +260,22 @@
 	<input type="hidden" name="keyword" value="${productListPage.cri.keyword}"/>
 	<input type="hidden" name="order" value="${productListPage.cri.order}"/>
 </form>
-
+  
 <!-- Start Script -->
+<!-- 
+<script> 
+	let page = ${productListPage.cri.page} 
+	let listAmount = ${productListPage.cri.listAmount}
+	let searchType = "${productListPage.cri.searchType}"
+	let keyword = "${productListPage.cri.keyword}"
+	let order = "${productListPage.cri.order}"
+</script>
+ -->
 <script src="/assets/js/jquery-1.11.0.min.js"></script>
 <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="/assets/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/js/templatemo.js"></script>
 <script src="/assets/js/custom.js"></script>
-<script src="/js/list.js"></script>
+<script src="/js/list.js"></script>  
 <!-- End Script -->
 <%@ include file="../include/footer.jsp"%>

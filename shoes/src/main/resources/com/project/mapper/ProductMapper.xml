@@ -2,24 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.ProductMapper">
 
-	<!-- 이 온세일 리스트가, 대표이미지 하나의 정보를 끌어와야함 -->
-	<select id="getOnSaleList" resultType="com.project.domain.ProductDTO">
-		<![CDATA[
-		  	select *
-			from(select a.*, rownum rnum
-			from(select * from products where on_sale=1 order by
+	<resultMap type="com.project.domain.ProductDTO" id="productMap">
+		<id column="product_id" property="productId"/>
+		<result column="product_name" property="productName"/>
+		<result column="brand" property="brand"/>
+		<result column="price" property="price"/>
+		<collection property="attachmentList" resultMap="attachmentMap"/>
+	</resultMap>
+	<resultMap type="com.project.domain.AttachmentDTO" id="attachmentMap">
+		<id column="uuid" property="uuid"/>
+		<result column="product_id" property="productId"/>
+		<result column="upload_path" property="uploadPath"/>
+		<result column="file_name" property="fileName"/>
+	</resultMap>
+
+ 	<select id="getOnSaleList" resultMap="productMap">
+ 	<![CDATA[
+ 		SELECT pr.product_id, pr.product_name, pr.brand, pr.price, at.uuid, at.upload_path, at.file_name
+		FROM (
+			SELECT product_id, product_name, brand, price, ROW_NUMBER() OVER (ORDER BY
 		]]>
 		    <choose>
-		      <when test="order== 'REGISTERED_DATE DESC'">registered_date desc</when>
-		      <when test="order== 'SOLD_COUNT DESC'">sold_count desc</when>
-		      <when test="order== 'PRICE DESC'">price desc</when>
-		      <when test="order== 'PRICE ASC'">price asc</when>
+		      <when test="order== 'registered-date-desc'">registered_date desc</when>
+		      <when test="order== 'sold-count-desc'">sold_count desc</when>
+		      <when test="order== 'price-desc'">price desc</when>
+		      <when test="order== 'price-asc'">price asc</when>
 		      <otherwise></otherwise>
 		    </choose>
 		<![CDATA[
-			) a
-			where rownum <= (#{page}*#{listAmount}))
-			where rnum> (#{page}-1)*#{listAmount}
+		     ) AS rnum
+		    FROM products 
+		    WHERE on_sale = 1 
+		) pr
+		left outer JOIN attachments at ON pr.product_id = at.product_id
+		WHERE pr.rnum BETWEEN ((#{page}-1)*#{listAmount})+1 AND (#{page}*#{listAmount})
 		]]>
 	</select>
 	

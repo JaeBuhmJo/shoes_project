@@ -5,7 +5,7 @@
         <main>
             <div class="container py-1">
                 <h3 class="mt-4">상품 신규 등록</h3>
-     <form action="/admin/product/register" method="post">
+     <form action="" method="post" id="registerForm">
      
         <div class="mb-3">
 		  <label for="exampleFormControlInput1" class="form-label"><b>상품명</b></label>
@@ -54,7 +54,6 @@
 		  </label>
 		</div>
 		
-		
 		<hr>
 		<b>사이즈별 재고 수량 입력</b>
 		<div class="">
@@ -90,20 +89,20 @@
 				<span class="input-group-text" id="basic-addon1">290</span>
 				<input type="text" class="form-control text-end" name="quantity" placeholder="수량 입력" maxlength="4" aria-label="Username" aria-describedby="basic-addon1" required>
 			</div>
-		</div>
-		<hr>
-        <div class="mb-3">
+		</div>   
+	 	<hr>    
+        <div class="mb-3">            
 		  <label for="exampleFormControlTextarea1" class="form-label"><b>상품 상세정보</b></label>
 		  <textarea class="form-control" id="exampleFormControlTextarea1" name="detail" rows="3"></textarea>
 		</div>
-		<hr>
+		<hr> 
 		<div class="input-group mb-3">
 		  <label class="input-group-text" for="inputGroupFile01">상품 이미지</label>
 		  <input type="file" class="form-control" id="attachment" name="attachment" multiple>
 		</div>
 		
 		<div class="row row-cols-1 row-cols-md-6 g-6 mb-3 attachmentResult">
-			
+			 
 		</div>     
 		    
 		<button type="submit" class="btn btn-success">상품 등록</button>

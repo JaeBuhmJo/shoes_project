@@ -35,7 +35,7 @@ public class AttachmentController {
 	@Value("${shoes.uploadPath}")
 	private String uploadPath;
 
-	@GetMapping("/show")
+	@GetMapping()
 	public ResponseEntity<byte[]> getAttachment(String fileName) {
 		log.info("상품 이미지 요청 : " + fileName);
 		File file = new File(uploadPath+fileName);
@@ -50,8 +50,8 @@ public class AttachmentController {
 		return result;
 	}
 
-	@PutMapping("/register")
-	public ResponseEntity<List<AttachmentDTO>> registerAttachments(MultipartFile[] attachment) {
+	@PutMapping()
+	public ResponseEntity<List<AttachmentDTO>> putAttachment(MultipartFile[] attachment) {
 		log.info("업로드 요청 : " + attachment);
 		List<AttachmentDTO> attachmentList = new ArrayList<AttachmentDTO>();
 
@@ -83,7 +83,6 @@ public class AttachmentController {
 				int height = origin.getHeight() / ratio;
 				File thumbnail = new File(uploadFullPath, "thumb_" + fileName);
 				Thumbnails.of(origin).size(width, height).toFile(thumbnail);
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

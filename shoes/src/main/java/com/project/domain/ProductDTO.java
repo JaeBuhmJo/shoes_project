@@ -24,7 +24,8 @@ public class ProductDTO {
 	private int soldCount;
 	private Date registeredDate;
 	private Date modifiedDate;
-	
+	private String filePath;
+	 
 	private List<InventoryDTO> inventories;
 	private List<AttachmentDTO> attachmentList;
 }

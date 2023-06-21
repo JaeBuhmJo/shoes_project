@@ -43,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
 		if(productDTO.getAttachmentList()==null || productDTO.getAttachmentList().size()==0) {
 			return insertFlag;
 		}
+		productDTO.setProductId(String.valueOf(getCurrentProductId()));
 		for (AttachmentDTO attachmentDTO: productDTO.getAttachmentList()) {
 			attachmentDTO.setProductId(productDTO.getProductId());
 			attachmentMapper.insertAttachments(attachmentDTO);

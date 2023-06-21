@@ -16,7 +16,7 @@
 	<input type="hidden" name="listAmount" value="15"/>
 	<input type="hidden" name="searchType" value=""/>
 	<input type="hidden" name="keyword" value=""/>
-	<input type="hidden" name="order" value="REGISTERED_DATE DESC"/>
+	<input type="hidden" name="order" value="registered-date-desc"/>
 </form> 
 <script src="/js/index.js"></script>
 </body>  
