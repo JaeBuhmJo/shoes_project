@@ -30,7 +30,7 @@ public class ShoesController {
 	public void detailRead(Model model, int productId) {
 		log.info("detail 화면");
 
-	//	ProductDTO product = service.detailRead(productId);
+		//model 은 jsp에서 여기선 product.productId,product.price등의 값들을 주기 위해 사용
 		model.addAttribute("product", service.detail(productId));
 
 	}

@@ -72,7 +72,7 @@
 						<i class="bi bi-code-slash"></i>
 					</div>
 					<h3 class="fw-bolder mb-0">
-						<span class="text-gradient d-inline">팀명</span>
+						<span class="text-gradient d-inline">함선</span>
 					</h3>
 				</div>
 				<div class="row row-cols-1 row-cols-md-3 mb-4">
@@ -87,7 +87,7 @@
 						<i class="bi bi-code-slash"></i>
 					</div>
 					<h3 class="fw-bolder mb-0">
-						<span class="text-gradient d-inline">팀장</span>
+						<span class="text-gradient d-inline">선장</span>
 					</h3>
 				</div>
 				<div class="row row-cols-1 row-cols-md-3 mb-4">
@@ -102,7 +102,7 @@
 						<i class="bi bi-code-slash"></i>
 					</div>
 					<h3 class="fw-bolder mb-0">
-						<span class="text-gradient d-inline">팀원</span>
+						<span class="text-gradient d-inline">선원</span>
 					</h3>
 				</div>
 				<div class="row row-cols-1 row-cols-md-3 mb-4">

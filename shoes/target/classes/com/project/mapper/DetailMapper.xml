@@ -32,8 +32,8 @@
 	left outer join inventories i on i.product_id=p.product_id
 	where p.product_id=#{productId} -->	
 	<insert id="cartInsert">
-		insert into carts(member_id, product_id,cart_amount)
-		values(#{memberId},#{productId},#{cartAmount})
+		insert into carts(member_id, product_id,cart_amount,inventory_id)
+		values(#{memberId},#{productId},#{cartAmount},#{inventoryId})
 	</insert>
 	
 	

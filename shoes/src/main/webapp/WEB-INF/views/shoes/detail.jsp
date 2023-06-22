@@ -139,14 +139,14 @@
 					<form action="" method="post" id="detailForm">
 					
 						<h1 class="h2" id="brandcart">${product.brand}</h1>
-						<p class="h3 py-2" id="pricecart">${product.price}</p>
+						<p class="h3 py-2" id="pricecart">가격:${product.price}</p>
 						<p class="py-2">
 							<i class="fa fa-star text-warning">1</i>
 							<i class="fa fa-star text-warning">2</i>
 							<i class="fa fa-star text-warning">3</i>
 							<i class="fa fa-star text-warning">4</i>
 							<i class="fa fa-star text-secondary">5</i>
-							<span class="list-inline-item text-dark">별점 4.8 | 36 댓글 수</span>
+							<span class="list-inline-item text-dark">별점 4.8 | ${qnaPage.total}23</span>
 						</p>
 						<ul class="list-inline">
 							<li class="list-inline-item">
@@ -163,7 +163,6 @@
 							
 							<p>
 							 이번 버전의 가젤은 큰 인기를 얻었던 1991 가젤의 클래식한 소재, 칼라, 텍스쳐, 구조를 그대로 이어갑니다. 가죽 갑피에 대비색상 3-스트라이프와 힐 탭을 더해 90년대 초반의 오리지널 스타일을 선보입니다.</p>
-						
 
 						<form action="" method="post" id="radiodetail">
 							<input type="hidden" name="product-title" value="Activewear" id="footSize">
@@ -171,7 +170,7 @@
 								<div class="col-auto">
 									<ul class="list-inline pb-3" id="detailsize">
 										<li class="list-inline-item">Size : </li>
-										<select class="form-select" aria-label="" name="size" id="size">
+										<select class="form-select" aria-label="" name="productSize" id="productSize">
 										  <option selected>사이즈 선택</option>
 										  <option value="200">200</option>
 										  <option value="210">210</option>
@@ -183,10 +182,10 @@
 										  <option value="270">270</option>
 										  <option value="280">280</option>
 										</select>										
+									<input class="form-control me-2" id="productCnt" type="search" placeholder="수량 입력" aria-label="Search">																
 							</ul>
-													
-																								
 								</div>
+								
 								
 							</div>
 							<div class="row pb-3">
@@ -207,10 +206,6 @@
 	</div>
 </section>
 <!-- Close Content -->
-
-
-
-
 
 
 <!-- 캐러셀 섹션 러프 -->
@@ -295,27 +290,14 @@
 										</div>
 									</div>
 								</div>
-								<div class="accordion-item">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-										data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">상품문의</button>
-									</h2>
-									<div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-										<div class="accordion-body">
-											
-											<p>상품문의</p>
-											
-											
-										</div>
-									</div>
-								</div>
+
 								
 							</div>
 							
 
 							<h2 id="scrollspyHeading5">제품 구매 시 필독</h2>
 							<h3></h3>
-							<p>제품 구매 시 교환 및 확인 불가능하다는 점 미리 양해 안내 드립니다.</p>
+							<p>제품 구매 시 교환 및 환불 불가능하다는 점 미리 양해 안내 드립니다.</p>
 						</div>
 						
 						
@@ -497,24 +479,22 @@
 <link href="/powe/adidas3.img">
 <link href="/powe/adidas4.img">
 
+<form action="" id="operForm">
+	<%-- pageDTO.cri.page 가능 --%>
+	<input type="hidden" name="cartId" value="${cart.cartId}" />
+	
+</form>
 <!-- End Script -->
  <script>
 	// 스크립트 실행순서: 첫번째 실행
 	//게글 글번호 가져오기
+
 	const product = ${product.productId};
+	const csrfToken='${_csrf.token}';
 </script>
 
 
 
 
 <%@include file="../include/footer.jsp"%>
-
-
-
-
-
-
-
-
-
 

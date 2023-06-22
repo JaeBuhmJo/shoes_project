@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class QnaDTO {
 
-	public int QnaId;
+	public int qnaId;
 	public String memberId;
 	public int productId;
 	public String question;

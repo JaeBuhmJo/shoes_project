@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 
@@ -134,45 +134,46 @@
   </div>
 </div>
 
-<div class="col-lg-5 mt-5">
-	
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  		<button class="btn btn-success" type="button" onclick="location.href='/member/question'">문의글 작성</button>
+
 </div>
 <table class="table table-striped table-bordered table-hover">
 	<thead>
 		<tr>
 			<th scope="col">번호</th>
-			<th scope="col">제목</th>
 			<th scope="col">작성자</th>
+			<th scope="col">제목</th>
 			<th scope="col">문의 등록일</th>
 			<th scope="col">답변 등록일</th>
 		</tr>
 	</thead>
 	<tbody>
-		
+		<c:forEach var="qna" items="${list}">
 			<tr>
 				<th scope="row">${qna.qnaId}</th>
-				<td><a href="${qna.qnaId}" class="move">${qna.title}</a></td>
 				<td>${qna.memberId}</td>
+				<td><a href="${qna.qnaId}" class="qna">${qna.title}</a></td>
 				<td>${qna.questionDate} </td>
 				<td>${qna.answerDate} </td>
 			</tr>
-		
+		</c:forEach>
 	</tbody>
 </table> 
 <!-- 페이지 나누기 시작 -->
  <nav aria-label="...">
 	<ul class="pagination justify-content-center">
 
-		<c:if test="${qnaPageDTO.prev}">
-			<li class="page-item"><a class="page-link" href="${qnaPageDTO.startPage-1} ">Previous</a></li>
+		<c:if test="${qnaPage.prev}">
+			<li class="page-item"><a class="page-link" href="${qnaPage.startPage-1} ">Previous</a></li>
 		</c:if>
 
-		<c:forEach begin="${qnaPageDTO.startPage}" end="${qnaPageDTO.endPage}" var="idx">
-			<li class="page-item ${qnaPageDTO.cri.page==idx?'active':'' }"><a class="page-link" href="${idx}">${idx}</a></li>
+		<c:forEach begin="${qnaPage.startPage}" end="${qnaPage.endPage}" var="idx">
+			<li class="page-item ${qnaPage.cri.page==idx?'active':'' }"><a class="page-link" href="${idx}">${idx}</a></li>
 		</c:forEach>
 
-		<c:if test="${qnaPageDTO.next}">
-			<li class="page-item"><a class="page-link" href="${qnaPageDTO.endPage+1} ">Next</a></li>
+		<c:if test="${qnaPage.next}">
+			<li class="page-item"><a class="page-link" href="${qnaPage.endPage+1} ">Next</a></li>
 		</c:if>
 	</ul>
 </nav> 
@@ -285,7 +286,14 @@
 <%-- 	<input type="hidden" name="keyword" value="${cri.keyword}" /> --%>
 </form>
 
+
+
 <script>
+const path= '${pageContext.request.requestURI}';
 	const result = '${result}';
 </script>
+<script src="/poweqnajs/qna.js"> </script>
+
 <%@include file="../include/footer.jsp"%>
+
+

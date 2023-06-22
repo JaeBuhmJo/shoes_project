@@ -36,21 +36,31 @@ public class MemberController {
 
 	//Optional<Integer> productId,
 	
-	@PostMapping("/cart")
-	public String cartInsert(@RequestBody  CartDTO cart,RedirectAttributes rttr) {
-		log.info("cart 로 데이터 보내기" + cart);		
-		
-//		if(productId.isPresent()) {
-//			int id = productId.get();
-//		}
-		
-		if(service.cartInsert(cart)) {
-			rttr.addAttribute("productId",cart.getProductId());
-		}
-		
-		return "redirect:/shoes/detail";
+	@GetMapping("/info")
+	public void info() {
 		
 	}
+	@GetMapping("/cart")
+	public void cart() {
+		
+	}
+	
+	@PostMapping
+	public String cartInsert(@RequestBody  CartDTO cart,Model model,RedirectAttributes rttr) {
+		log.info("cart 로 데이터 보내기" + cart);		
+		
+
+		
+		if(service.cartInsert(cart)) {
+			model.addAttribute("cart", cart);
+			rttr.addAttribute("memberId", cart.getMemberId());
+		}
+		return "redirect:/shoes/detail";
+		
+		
+	}
+	
+	
 	
 	
 	@GetMapping("/qna")
@@ -66,6 +76,39 @@ public class MemberController {
 	
 		model.addAttribute("list", list);
 		model.addAttribute("qnaPage", new QnaPageDTO(cri, total));
+		
+		
+	}
+	@GetMapping("/question")
+	public void qnaInsert() {
+		log.info("질문 작성 창 띄우기");
+	}
+	@PostMapping("/question")
+	public String qnaPost(@RequestBody QnaDTO qna, RedirectAttributes rttr,Criteria cri) {
+		
+		log.info("qna Post");
+		
+		if(qnaService.qnaInsert(qna)) {
+			rttr.addAttribute("qndId", qna.getQnaId());
+			rttr.addAttribute("page", cri.getPage());
+			rttr.addAttribute("amount", cri.getAmount());
+			return "redirect:/member/qna";
+		}
+		log.info("글 작성 성공");
+		return "/redirect:/member/question";
+
+	}
+	@GetMapping("/qnaread")
+	public void qnaRead(int qnaId,Model model, Criteria cri) {
+		log.info("질문 폼 읽기");
+		
+		QnaDTO qna = qnaService.qnaRead(qnaId);
+		model.addAttribute("qna",qna );
+		
+		log.info("qnaid 읽기"+qnaId);
+		log.info("question 읽기"+qna.question);
+		log.info("memberid 읽기"+qna.memberId);
+		
 		
 		
 	}

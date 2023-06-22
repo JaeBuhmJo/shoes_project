@@ -15,4 +15,5 @@ public interface QnaMapper {
 		public List<QnaDTO> qnaList(Criteria cri);
 		public int qnaTotal(Criteria cri);
 		public int qnaInsert(QnaDTO qna);
+		public QnaDTO qnaRead(int qnaId);
 }

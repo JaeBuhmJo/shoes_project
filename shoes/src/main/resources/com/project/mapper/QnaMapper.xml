@@ -7,11 +7,12 @@
 	
 	<select id="qnaList" resultType="com.project.domain.QnaDTO">
 	<![CDATA[
-		select question,answer,question_date,answer_date,title
-		from (select /*+INDEX_DESC(qnas qna_id)*/ rownum rn,question,answer,question_date,answer_date,title
-		from qnas 
-		where rownum <= (#{page}*#{amount})
-		and rn > (#{page}-1)*#{amount}
+		select qna_id,member_id,title,question_date,answer_date
+		from (
+			select /*+INDEX_DESC(qnas qna_id)*/ rownum rn,qna_id,member_id,title,question_date,answer_date
+			from qnas
+			where rownum <= (#{page}*#{amount}))
+			where rn > (#{page}-1)*#{amount}
 	]]>
 	</select>
 	
@@ -26,5 +27,10 @@
 <select id="qnaTotal" resultType="java.lang.Integer">
 		select count(*) from qnas where qna_id > 0
 </select>
+	
+	<select id="qnaRead" resultType="com.project.domain.QnaDTO"> 
+		select member_id, title, question, qna_id
+		from qnas where qna_id=#{qnaId}
+	</select>
 	
 </mapper>

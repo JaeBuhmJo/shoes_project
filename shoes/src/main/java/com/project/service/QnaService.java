@@ -10,4 +10,5 @@ public interface QnaService {
 	public List<QnaDTO> qnaList(Criteria cri);
 	public int qnaTotal(Criteria cri);
 	public boolean qnaInsert(QnaDTO qna);
+	public QnaDTO qnaRead(int qnaId);
 }
