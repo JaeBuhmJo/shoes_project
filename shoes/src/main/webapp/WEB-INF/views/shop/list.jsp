@@ -8,38 +8,40 @@
 <!-- Start Content -->
 <div class="container py-5">
 	<div class="row">
-
+ 
 		<div class="col-lg-3">
 			<h1 class="h2 pb-4">Categories</h1>
 			<ul class="list-unstyled templatemo-accordion">
-				<li class="pb-3"><a
-					class="collapsed d-flex justify-content-between h3 text-decoration-none"
-					href="#"> Gender <i
-						class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-				</a>
-					<ul class="collapse show list-unstyled pl-3">
-						<li><a class="text-decoration-none" href="#">Men</a></li>
-						<li><a class="text-decoration-none" href="#">Women</a></li>
-					</ul></li>
+				<li class="pb-3" id="gender"> Gender <i class="fa fa-fw fa-chevron-circle-right mt-1"></i>
+						<input type="radio" class="btn-check" value="" id="option1" autocomplete="off" ${productListPage.cri.gender==''?'checked':''}>
+						<label class="btn btn-secondary" for="option1">전체</label>
+						<input type="radio" class="btn-check" value="for-men" id="option2" autocomplete="off" ${productListPage.cri.gender=='for-men'?'checked':''}>
+						<label class="btn btn-secondary" for="option2">남성</label>
+						<input type="radio" class="btn-check" value="for-women" id="option4" autocomplete="off" ${productListPage.cri.gender=='for-women'?'checked':''}>
+						<label class="btn btn-secondary" for="option4">여성</label>
+					</li>
+				<!-- 	
 				<li class="pb-3"><a
 					class="collapsed d-flex justify-content-between h3 text-decoration-none"
 					href="#"> Sale <i
 						class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-				</a>
+				</a> 
 					<ul id="collapseTwo" class="collapse list-unstyled pl-3">
 						<li><a class="text-decoration-none" href="#">Sport</a></li>
 						<li><a class="text-decoration-none" href="#">Luxury</a></li>
 					</ul></li>
-				<li class="pb-3"><a
-					class="collapsed d-flex justify-content-between h3 text-decoration-none"
-					href="#"> Product <i
-						class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+					 -->
+				<li class="pb-3" id="category"> 
+				<a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#"> 
+					Product <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
 				</a>
 					<ul id="collapseThree" class="collapse list-unstyled pl-3">
-						<li><a class="text-decoration-none" href="#">Bag</a></li>
-						<li><a class="text-decoration-none" href="#">Sweather</a></li>
-						<li><a class="text-decoration-none" href="#">Sunglass</a></li>
-					</ul></li>
+						<li><a class="text-decoration-none" href="">전체</a></li>
+						<li><a class="text-decoration-none" href="running">운동화</a></li>
+						<li><a class="text-decoration-none" href="shoes">구두</a></li>
+						<li><a class="text-decoration-none" href="slipper">슬리퍼</a></li>
+					</ul> 
+				</li> 
 			</ul>
 		</div>
 
@@ -66,15 +68,13 @@
 			</div>
 			
 			<div class="row productList">
-				<c:forEach items="${list}" var="item">
+				<c:forEach items="${list}" var="item"> 
 					<div class="col-md-4">
 						<div class="card mb-4 product-wap rounded-0">
-							<div class="card rounded-0">
-								<img class="card-img rounded-0 img-fluid" src="/attachment?fileName=${item.filePath}">
+							<div class="card rounded-0 image-wrapper">
+								<img class="card-img rounded-0 img-fluid" src="/attachment/file?fileName=${item.filePath}">
 								<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
 									<ul class="list-unstyled">
-										<li><a class="btn btn-success text-white"
-											href="shop-single.html"><i class="far fa-heart"></i></a></li>
 										<li><a class="btn btn-success text-white mt-2"
 											href="shop-single.html"><i class="far fa-eye"></i></a></li>
 										<li><a class="btn btn-success text-white mt-2"
@@ -108,13 +108,13 @@
 								</ul>
 								<p class="text-center mb-0">${item.price}원</p>
 							</div>
-						</div>
+						</div>  
 					</div>
 				</c:forEach>
 			</div>
 
 			<!-- pagination -->
-			<div div="row">
+			<div div="row">      
 				<ul class="pagination pagination-lg justify-content-end" id="shopPagination">
 					<c:if test="${productListPage.prev }">
 					<li class="page-item"><a
@@ -259,6 +259,8 @@
 	<input type="hidden" name="searchType" value="${productListPage.cri.searchType}"/>
 	<input type="hidden" name="keyword" value="${productListPage.cri.keyword}"/>
 	<input type="hidden" name="order" value="${productListPage.cri.order}"/>
+	<input type="hidden" name="gender" value="${productListPage.cri.gender}"/>
+	<input type="hidden" name="category" value="${productListPage.cri.category}"/>
 </form>
   
 <!-- Start Script -->
@@ -270,7 +272,10 @@
 	let keyword = "${productListPage.cri.keyword}"
 	let order = "${productListPage.cri.order}"
 </script>
- -->
+ --> 
+<script>
+	let page = ${productListPage.cri.page} 
+</script>
 <script src="/assets/js/jquery-1.11.0.min.js"></script>
 <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="/assets/js/bootstrap.bundle.min.js"></script>

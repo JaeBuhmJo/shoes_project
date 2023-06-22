@@ -7,7 +7,7 @@ import com.project.domain.ProductDTO;
 
 public interface ProductService {
 	public List<ProductDTO> getSaleProducts(Criteria cri);
-	public int getSaleCount();
+	public int getSaleCount(Criteria cri);
 	public List<ProductDTO> getAllProducts(Criteria cri);
 	public boolean registerProduct(ProductDTO productDTO);
 	public int getCurrentProductId();

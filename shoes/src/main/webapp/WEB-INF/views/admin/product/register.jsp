@@ -39,21 +39,17 @@
 		</div>
 		<div class="form-check form-switch">
 		  <input class="form-check-input" type="checkbox" name="onSale"  role="switch" id="flexSwitchCheckChecked" value="1" checked>
-		  <label class="form-check-label" for="flexSwitchCheckChecked" >판매하기</label>
+		  <label class="form-check-label" for="flexSwitchCheckChecked" >판매 여부</label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-		  <label class="form-check-label" for="flexRadioDefault1">
-		    남성화
-		  </label>
+		  <input class="form-check-input" type="checkbox" name="forMen" value="1" id="flexCheckDefault1" checked>
+		  <label class="form-check-label" for="flexCheckDefault1">남성화</label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-		  <label class="form-check-label" for="flexRadioDefault2">
-		    여성화
-		  </label>
+		  <input class="form-check-input" type="checkbox" name="forWomen" value="1" id="flexCheckDefault2" checked>
+		  <label class="form-check-label" for="flexCheckDefault2">여성화</label>
 		</div>
-		
+	
 		<hr>
 		<b>사이즈별 재고 수량 입력</b>
 		<div class="">
@@ -95,12 +91,14 @@
 		  <label for="exampleFormControlTextarea1" class="form-label"><b>상품 상세정보</b></label>
 		  <textarea class="form-control" id="exampleFormControlTextarea1" name="detail" rows="3"></textarea>
 		</div>
-		<hr> 
-		<div class="input-group mb-3">
+		<hr>  
+		<div class="input-group mb-3">            
 		  <label class="input-group-text" for="inputGroupFile01">상품 이미지</label>
 		  <input type="file" class="form-control" id="attachment" name="attachment" multiple>
 		</div>
-		
+		<hr>
+		<b>대표 이미지 ▽</b>     
+		   
 		<div class="row row-cols-1 row-cols-md-6 g-6 mb-3 attachmentResult">
 			 
 		</div>     

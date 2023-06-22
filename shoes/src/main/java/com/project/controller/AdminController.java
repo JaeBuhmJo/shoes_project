@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.domain.AttachmentDTO;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
+import com.project.service.AttachmentService;
 import com.project.service.InventoryService;
 import com.project.service.ProductService;
 
@@ -33,6 +35,9 @@ public class AdminController {
 
 	@Autowired
 	private InventoryService inventoryService;
+
+	@Autowired
+	private AttachmentService attachmentService;
 
 	@GetMapping("/index")
 	public void indexGet() {
@@ -78,8 +83,21 @@ public class AdminController {
 
 	@Transactional
 	@PostMapping("/product/modify")
-	public String productModifyGet(ProductDTO productDTO, InventoryDTO inventoryDTO, @RequestParam List<Integer> quantity) {
+	public String productModifyGet(ProductDTO productDTO, InventoryDTO inventoryDTO,
+			@RequestParam List<Integer> quantity) {
 		log.info("상품 페이지 상품 수정 요청 : " + productDTO.toString());
+
+		// 원래 있던 목록 지우고
+		String productId = productDTO.getProductId();
+		attachmentService.removeAttachmentList(productId);
+		// 첨부파일 정보 바꾸기.
+		if (productDTO.getAttachmentList() != null) {
+			for (AttachmentDTO attachmentDTO : productDTO.getAttachmentList()) {
+				attachmentDTO.setProductId(productId);
+				attachmentService.registerAttachment(attachmentDTO);
+			}
+		}
+
 		productService.modifyProduct(productDTO);
 		modifyInventory(inventoryDTO, quantity);
 		return "redirect:/admin/product/list";
@@ -87,7 +105,8 @@ public class AdminController {
 
 	@Transactional
 	@PostMapping("/inventory/modify")
-	public String inventoryModifyGet(ProductDTO productDTO, InventoryDTO inventoryDTO, @RequestParam List<Integer> quantity) {
+	public String inventoryModifyGet(ProductDTO productDTO, InventoryDTO inventoryDTO,
+			@RequestParam List<Integer> quantity) {
 		log.info("재고 페이지 상품 수정 요청 : " + productDTO.toString());
 		productService.modifyProduct(productDTO);
 		modifyInventory(inventoryDTO, quantity);
@@ -101,15 +120,29 @@ public class AdminController {
 
 	@Transactional
 	@PostMapping("/product/register")
-	public String productRegisterPost(ProductDTO productDTO, InventoryDTO inventoryDTO, @RequestParam List<Integer> quantity) {
-		//상품 등록할 때 이미지도 같이 등록해야됨
+	public String productRegisterPost(ProductDTO productDTO, InventoryDTO inventoryDTO,
+			@RequestParam List<Integer> quantity) {
+		// 상품 DB 등록
 		log.info("상품 등록 요청 : " + productDTO.toString());
 		productService.registerProduct(productDTO);
-		inventoryDTO.setProductId(String.valueOf(productService.getCurrentProductId()));
+		String productId = String.valueOf(productService.getCurrentProductId());
+
+		// 첨부파일 DB등록
+		List<AttachmentDTO> attachmentList = productDTO.getAttachmentList();
+		if (attachmentList!=null) {
+			for (AttachmentDTO attachmentDTO : attachmentList) {
+				attachmentDTO.setProductId(productId);
+				log.info("첨부파일 등록 요청 : " + attachmentDTO.toString());
+				attachmentService.registerAttachment(attachmentDTO);
+			}
+		}
+
+		// 재고 DB등록
+		inventoryDTO.setProductId(productId);
 		stockInventory(inventoryDTO, quantity);
 		return "redirect:/admin/product/list";
 	}
-	
+
 	public void modifyInventory(InventoryDTO inventoryDTO, List<Integer> quantity) {
 		int size = productSize;
 		log.info("재고 수정 요청 : " + inventoryDTO.toString() + quantity);
@@ -120,7 +153,7 @@ public class AdminController {
 			size += productSizeIncrement;
 		}
 	}
-	
+
 	public void stockInventory(InventoryDTO inventoryDTO, List<Integer> quantity) {
 		int size = productSize;
 		log.info("재고 입고 요청 : " + inventoryDTO.toString() + quantity);

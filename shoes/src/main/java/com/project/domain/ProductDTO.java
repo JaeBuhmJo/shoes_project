@@ -13,7 +13,6 @@ public class ProductDTO {
 	private String productId;
 	private String category;
 	private String brand;
-	private int gender;
 	private String detail;
 	private int price;
 	private int discountPrice;
@@ -24,6 +23,9 @@ public class ProductDTO {
 	private int soldCount;
 	private Date registeredDate;
 	private Date modifiedDate;
+	private boolean forMen;
+	private boolean forWomen;
+	
 	private String filePath;
 	 
 	private List<InventoryDTO> inventories;

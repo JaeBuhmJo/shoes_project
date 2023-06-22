@@ -11,6 +11,8 @@ public class Criteria {
 	private String searchType;
 	private String keyword;
 	private String order;
+	private String category;
+	private String gender;
 
 	public Criteria(int page, int listAmount, String order) {
 		super();

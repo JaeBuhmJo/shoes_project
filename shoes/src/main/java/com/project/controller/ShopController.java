@@ -1,7 +1,5 @@
 package com.project.controller;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,19 +27,18 @@ public class ShopController {
 	private ProductService productService;
 
 	@GetMapping("/list")
-	public void listGet(@ModelAttribute("cri") Criteria cri, Model model,
-			@RequestHeader("User-agent") String userAgent) {
+	public void listGet(@ModelAttribute("cri") Criteria cri, Model model, @RequestHeader("User-agent") String userAgent) {
 		log.info("list 요청");
-		int total = productService.getSaleCount();
+		int total = productService.getSaleCount(cri);
 		List<ProductDTO> list = productService.getSaleProducts(cri);
 		for (ProductDTO productDTO : list) {
-			if (productDTO.getAttachmentList().get(0) != null) {
+			String filePath = "/default/txt-file.png";
+			if (productDTO.getAttachmentList().get(0).getUuid() != null) {
 				AttachmentDTO dto = productDTO.getAttachmentList().get(0);
-				String filePath = dto.getUploadPath() + "\\" + dto.getUuid() + "_" + dto.getFileName();
-				productDTO.setFilePath(filePath.replace("\\", "/"));
+				filePath = dto.getUploadPath() + "\\" + dto.getUuid() + "_" + dto.getFileName();
 			}
+			productDTO.setFilePath(filePath.replace("\\", "/"));
 		}
-
 		model.addAttribute("productListPage", new ListPageDTO(cri, total));
 		model.addAttribute("list", list);
 	}

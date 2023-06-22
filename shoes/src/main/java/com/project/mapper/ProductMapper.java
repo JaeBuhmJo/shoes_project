@@ -10,7 +10,7 @@ import com.project.domain.ProductDTO;
 @Mapper
 public interface ProductMapper {
 	public List<ProductDTO> getOnSaleList(Criteria cri);
-	public int getOnSaleCount();
+	public int getOnSaleCount(Criteria cri);
 	public List<ProductDTO> getTotalList(Criteria cri);
 	public int insertProduct(ProductDTO productDTO);
 	public int getCurrentProductSequence();

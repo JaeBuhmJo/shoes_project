@@ -17,11 +17,9 @@
 	</resultMap>
 
  	<select id="getOnSaleList" resultMap="productMap">
- 	<![CDATA[
  		SELECT pr.product_id, pr.product_name, pr.brand, pr.price, at.uuid, at.upload_path, at.file_name
 		FROM (
 			SELECT product_id, product_name, brand, price, ROW_NUMBER() OVER (ORDER BY
-		]]>
 		    <choose>
 		      <when test="order== 'registered-date-desc'">registered_date desc</when>
 		      <when test="order== 'sold-count-desc'">sold_count desc</when>
@@ -29,18 +27,38 @@
 		      <when test="order== 'price-asc'">price asc</when>
 		      <otherwise></otherwise>
 		    </choose>
-		<![CDATA[
 		     ) AS rnum
 		    FROM products 
 		    WHERE on_sale = 1 
+		    <choose>
+		      <when test="gender== 'for-men'">and for_men=1 </when>
+		      <when test="gender== 'for-women'">and for_women=1 </when>
+		      <otherwise></otherwise>
+		    </choose>
+		    <choose>
+		      <when test="category== 'running'">and category = '운동화'</when>
+		      <when test="category== 'shoes'">and category = '구두'</when>
+		      <when test="category== 'slipper'">and category = '슬리퍼'</when>
+		      <otherwise></otherwise>
+		    </choose>
 		) pr
 		left outer JOIN attachments at ON pr.product_id = at.product_id
 		WHERE pr.rnum BETWEEN ((#{page}-1)*#{listAmount})+1 AND (#{page}*#{listAmount})
-		]]>
 	</select>
 	
 	<select id="getOnSaleCount">
 		select count(*) from products where on_sale = 1
+			<choose>
+		      <when test="gender== 'for-men'">and for_men=1 </when>
+		      <when test="gender== 'for-women'">and for_women=1 </when>
+		      <otherwise></otherwise>
+		    </choose>  
+		    <choose>
+		      <when test="category== 'running'">and category = '운동화'</when>
+		      <when test="category== 'shoes'">and category = '구두'</when>
+		      <when test="category== 'slipper'">and category = '슬리퍼'</when>
+		      <otherwise></otherwise>
+		    </choose>
 	</select>
 	
 	<select id="getTotalList">
@@ -54,9 +72,9 @@
 	</select>
 	
 	<insert id="insertProduct">
-		insert into products values(products_seq.nextval,#{category},#{brand},#{gender},#{detail},#{price},
+		insert into products values(products_seq.nextval,#{category},#{brand},#{detail},#{price},
 									#{discountPrice},#{productCountry},#{productYear},#{productName},#{onSale},
-									0,sysdate,sysdate)
+									0,sysdate,sysdate,#{forMen},#{forWomen})
 	</insert>
 
 	<select id="getCurrentProductSequence">
@@ -68,10 +86,10 @@
 	</select>
 	
 	<update id="updateProduct">
-		 update products set category=#{category}, brand=#{brand}, gender=#{gender}, detail=#{detail}, price=#{price},
+		 update products set category=#{category}, brand=#{brand}, detail=#{detail}, price=#{price},
 		 					 discount_price=#{discountPrice}, product_country=#{productCountry},
 		 					 product_year=#{productYear}, product_name=#{productName}, on_sale=#{onSale},
-		 					 modified_date=sysdate
+		 					 modified_date=sysdate, for_men=#{forMen}, for_women=#{forWomen}
 		 where product_id = #{productId}
 	</update>
 

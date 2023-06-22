@@ -10,4 +10,5 @@ import com.project.domain.AttachmentDTO;
 public interface AttachmentMapper {
 	public List<AttachmentDTO> getAttachments(String productId);
 	public int insertAttachments(AttachmentDTO attachmentDTO);
+	public int deleteAttachments(String productId);
 }
