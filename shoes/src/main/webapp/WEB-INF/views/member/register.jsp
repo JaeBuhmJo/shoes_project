@@ -358,8 +358,8 @@ https://templatemo.com/tm-559-zay-shop
 
     </footer>                                
     <!-- End Footer -->
-
-    <!-- Start Script -->
+                
+    <!-- Start Script -->                      
     <script>
                                  
     //CSRF 토큰 값 생성                           
@@ -370,7 +370,7 @@ https://templatemo.com/tm-559-zay-shop
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/templatemo.js"></script>
     <script src="/assets/js/custom.js"></script>
-    <script src="/js/register.js"></script>
+    <script src="/assets/js/register.js"></script>
     <!-- End Script -->   
 </body>
 

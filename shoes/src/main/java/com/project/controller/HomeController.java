@@ -26,5 +26,8 @@ public class HomeController {
 		return SecurityContextHolder.getContext().getAuthentication();
 	}
 	
-
+	@GetMapping("member/contact")
+	public void contactGet() {
+		
+	}
 }
