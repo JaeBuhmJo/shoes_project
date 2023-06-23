@@ -17,6 +17,7 @@ public class QnaPageDTO {
 	private int total;
 	
 	private Criteria cri;
+	
 
 	public QnaPageDTO(Criteria cri, int total) {
 		
@@ -32,6 +33,8 @@ public class QnaPageDTO {
 		this.prev = this.startPage>1;
 		this.next = this.endPage < realEnd;
 	}
+
+
 	
 
 

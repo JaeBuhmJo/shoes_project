@@ -6,11 +6,11 @@ document.getElementById("goCart").addEventListener("submit", (e) => {
 
   // 가격, 브랜드, 카테고리 보낼 준비
   const cartItem = {
-    brand: document.getElementById("brandcart").innerHTML,
-    category: document.getElementById("categorycart").innerHTML,
-    price: document.getElementById("pricecart").innerHTML,
+    brand: document.getElementById("brand").innerHTML,
+    category: document.getElementById("category").innerHTML,
+    price: document.getElementById("price").innerHTML,
     size: document.getElementById("productSize").value,
-    count: document.querySelector("#productCnt").value,
+    count: document.querySelector("#cartAmount").value,
   };
 
   //사이즈랑 가격,브랜드,카테고리 보내기
@@ -19,7 +19,7 @@ document.getElementById("goCart").addEventListener("submit", (e) => {
     body: JSON.stringify(cartItem),
     headers: {
       //      "X-CSRF-TOKEN": csrfToken,
-      "Content-Type": "application/json",
+      "content-Type": "application/json",
     },
   })
     .then((response) => {

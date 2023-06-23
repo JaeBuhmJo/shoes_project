@@ -7,8 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.domain.ProductDTO;
+
 import com.project.service.DetailService;
+import com.project.service.QnaService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,13 +21,14 @@ public class ShoesController {
 
 	@Autowired
 	private DetailService service;
+
 	
 	@GetMapping("/sale")
 	public void saleGet() {
 		log.info("sale 화면");
 
 	}
-	@GetMapping("/detail")
+	@GetMapping("/detail2")
 	public void detailRead(Model model, int productId) {
 		log.info("detail 화면");
 

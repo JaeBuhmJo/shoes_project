@@ -32,7 +32,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 			</div>
 			<div class="col-md-4">
-				<img src="/img/about-hero.svg" alt="About Hero">
+				<img src="/assets/img/about-hero.svg" alt="About Hero">
 			</div>
 		</div>
 	</div>
@@ -134,10 +134,7 @@
   </div>
 </div>
 
-<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  		<button class="btn btn-success" type="button" onclick="location.href='/member/question'">문의글 작성</button>
 
-</div>
 <table class="table table-striped table-bordered table-hover">
 	<thead>
 		<tr>

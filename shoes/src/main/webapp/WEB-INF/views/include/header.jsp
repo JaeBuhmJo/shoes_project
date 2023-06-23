@@ -62,7 +62,7 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-dark logo h1 align-self-center blackpearl" style="black" href="index.html">
+            <a class="navbar-brand text-dark logo h1 align-self-center blackpearl" style="black" href="/member/qna">
                 BLACKPEARL
             </a>
 
@@ -77,7 +77,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="/">home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">추천상품</a>
+                            <a class="nav-link" href="/member/qna">문의사항</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">신상품</a>

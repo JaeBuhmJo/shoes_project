@@ -54,12 +54,13 @@ public class MemberController {
 		if(service.cartInsert(cart)) {
 			model.addAttribute("cart", cart);
 			rttr.addAttribute("memberId", cart.getMemberId());
+
 		}
 		return "redirect:/shoes/detail";
 		
 		
 	}
-	
+
 	
 	
 	
@@ -72,9 +73,9 @@ public class MemberController {
 		
 		List<QnaDTO> list = qnaService.qnaList(cri);
 		
+		model.addAttribute("list", list);
 		int total = qnaService.qnaTotal(cri);
 	
-		model.addAttribute("list", list);
 		model.addAttribute("qnaPage", new QnaPageDTO(cri, total));
 		
 		
@@ -84,18 +85,20 @@ public class MemberController {
 		log.info("질문 작성 창 띄우기");
 	}
 	@PostMapping("/question")
-	public String qnaPost(@RequestBody QnaDTO qna, RedirectAttributes rttr,Criteria cri) {
+	public String qnaPost(QnaDTO qna, RedirectAttributes rttr,Criteria cri) {
 		
 		log.info("qna Post");
 		
-		if(qnaService.qnaInsert(qna)) {
-			rttr.addAttribute("qndId", qna.getQnaId());
+		if(service.qnaInsert(qna)) {
+			rttr.addFlashAttribute("result", qna.getMemberId());
+
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("amount", cri.getAmount());
+			log.info("insert"+qna);
 			return "redirect:/member/qna";
 		}
 		log.info("글 작성 성공");
-		return "/redirect:/member/question";
+		return "/member/question";
 
 	}
 	@GetMapping("/qnaread")

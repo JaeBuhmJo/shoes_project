@@ -16,17 +16,13 @@
 	]]>
 	</select>
 	
-	<insert id="qnaInsert">
-			insert into qnas(qna_id,member_id,product_id,
-			question,answer,question_date,answer_date,title)
-			values(#{qnaId},#{memberId},
-			#{productId},#{question},#{answer},
-			#{questionDate},#{answerDate},#{title})
-	</insert> 
+
 	
 <select id="qnaTotal" resultType="java.lang.Integer">
 		select count(*) from qnas where qna_id > 0
 </select>
+
+
 	
 	<select id="qnaRead" resultType="com.project.domain.QnaDTO"> 
 		select member_id, title, question, qna_id

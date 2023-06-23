@@ -14,9 +14,9 @@ public class ProductDTO {
 	private int productId;
 	private String category;
 	private String brand;
-	private boolean gender;
 	private String detail;
 	private String productCountry;
+	private String productYear;
 	private int price;
 	private int discountPrice;
 	private String productImageOne;
@@ -26,6 +26,11 @@ public class ProductDTO {
 	private int soldCount;
 	private Date registeredDate;
 	private Date modifiedDate;
+	private String productName;
+	private int forMen;
+	private int forWomen;
+	private int onSale;
+	
 	
 
 	//inventory 에서 productSize 가져오기

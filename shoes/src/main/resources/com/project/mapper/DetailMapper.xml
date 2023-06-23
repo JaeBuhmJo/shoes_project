@@ -31,13 +31,20 @@
 	from products p
 	left outer join inventories i on i.product_id=p.product_id
 	where p.product_id=#{productId} -->	
+	
 	<insert id="cartInsert">
 		insert into carts(member_id, product_id,cart_amount,inventory_id)
 		values(#{memberId},#{productId},#{cartAmount},#{inventoryId})
 	</insert>
 	
 	
-	
+	<insert id="qnaInsert">
+		<selectKey keyProperty="qnaId" order="BEFORE" resultType="int">
+			select qnas_seq.nextval from dual
+		</selectKey>
+			insert into qnas(qna_id,member_id,product_id,question,title)
+			values(#{qnaId},#{memberId},#{productId},#{question},#{title})
+	</insert>
 	
 	
 	
