@@ -29,6 +29,5 @@ public class ProductDTO {
 	
 	private String filePath;
 	 
-	private List<InventoryDTO> inventories;
 	private List<AttachmentDTO> attachmentList;
 }

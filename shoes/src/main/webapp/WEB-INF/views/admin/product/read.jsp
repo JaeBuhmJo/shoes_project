@@ -137,6 +137,7 @@
         </main> 
 <script>
 	const productId = ${productDTO.productId } 
+	const pageIsRead = true;
 </script>
 <script src="/js/attachment.js"></script>
 <script src="/js/admin-product-read.js"></script>

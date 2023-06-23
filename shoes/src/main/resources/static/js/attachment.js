@@ -35,8 +35,8 @@ attachment.addEventListener("change", () => {
     .catch((error) => console.log(error));
 });
 
-// 상품코드를 타고 들어오는 경우 -> read페이지. 이미지 조회
-if (productId) {
+// 정보 수정 페이지인경우 productId 기준으로 첨부파일 불러오기
+if (pageIsRead) {
   fetch("/attachment/" + productId)
     .then((response) => {
       if (!response.ok) {
@@ -54,22 +54,12 @@ function showAttachments(attachmentList) {
   let str = "";
   attachmentList.forEach((item, idx) => {
     let fileCallPath = encodeURIComponent(item.uploadPath + "\\thumb_" + item.uuid + "_" + item.fileName);
-    str +=
-      '<div class="col cards" data-path="' +
-      item.uploadPath +
-      '" data-uuid="' +
-      item.uuid +
-      '" data-filename="' +
-      item.fileName +
-      '">';
+    str += '<div class="col cards" data-path="' + item.uploadPath + '" data-uuid="' + item.uuid + '" data-filename="' + item.fileName + '">';
     str += '<div class="card col" style="width: 10rem;">';
     str += '<img src="/attachment/file?fileName=' + fileCallPath + '" class="card-img-top">';
     str += '<div class="card-body">';
     str += '<p class="card-text">' + item.fileName + "</p>";
-    str +=
-      '<button type="button" class="btn btn-sm btn-circle btn-outline-danger delete-button" data-file="' +
-      fileCallPath +
-      '"data-type="file"> <b>X</b> </button>';
+    str += '<button type="button" class="btn btn-sm btn-circle btn-outline-danger delete-button" data-file="' + fileCallPath + '"data-type="file"><i class="fa-solid fa-xmark"></i></button>';
     str += "</div>";
     str += "</div>";
     str += "</div>";
@@ -79,7 +69,7 @@ function showAttachments(attachmentList) {
 
 // x버튼 클릭 시 카드 삭제
 document.querySelector(".attachmentResult").addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON" || e.target.tagName === "B") {
+  if (e.target.tagName === "BUTTON" || e.target.tagName === "I") {
     const targetFile = e.target.dataset.file;
     const cards = e.target.closest(".cards");
 

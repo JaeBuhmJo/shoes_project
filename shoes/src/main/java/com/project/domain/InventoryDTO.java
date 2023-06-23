@@ -11,7 +11,15 @@ import lombok.NoArgsConstructor;
 public class InventoryDTO {
 	private String inventoryId;
 	private String productId;
-	private int productSize;
+	private String productSize;
 	private int quantity;
 	private Date stockedDate;
+	private String productColor;
+	
+	public InventoryDTO(String productId, String productColor, String productSize, int quantity) {
+		this.productId = productId;
+		this.productColor = productColor;
+		this.productSize = productSize;
+		this.quantity = quantity;
+	}
 }

@@ -10,7 +10,7 @@ import com.project.domain.ProductDTO;
 
 @Mapper
 public interface InventoryMapper {
-	public int insertInventory(InventoryDTO inventoryDTO);
+	public int insertInventory(List<InventoryDTO> inventoryDTOList);
 	public List<InventoryDTO> getInventories(String productId);
 	public int updateInventory(InventoryDTO inventoryDTO);
 	public int deleteInventory(InventoryDTO inventoryDTO);

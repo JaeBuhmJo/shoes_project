@@ -5,8 +5,8 @@
 	<resultMap type="com.project.domain.ProductDTO" id="productMap">
 		<id column="product_id" property="productId"/>
 		<result column="product_name" property="productName"/>
-		<result column="brand" property="brand"/>
 		<result column="price" property="price"/>
+		<result column="colors" property="colors"/>
 		<collection property="attachmentList" resultMap="attachmentMap"/>
 	</resultMap>
 	<resultMap type="com.project.domain.AttachmentDTO" id="attachmentMap">
@@ -17,9 +17,9 @@
 	</resultMap>
 
  	<select id="getOnSaleList" resultMap="productMap">
- 		SELECT pr.product_id, pr.product_name, pr.brand, pr.price, at.uuid, at.upload_path, at.file_name
+ 		SELECT pr.product_id, pr.product_name, pr.price, pr.colors, at.uuid, at.upload_path, at.file_name
 		FROM (
-			SELECT product_id, product_name, brand, price, ROW_NUMBER() OVER (ORDER BY
+			SELECT product_id, product_name, price, colors, ROW_NUMBER() OVER (ORDER BY
 		    <choose>
 		      <when test="order== 'registered-date-desc'">registered_date desc</when>
 		      <when test="order== 'sold-count-desc'">sold_count desc</when>

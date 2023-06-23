@@ -4,10 +4,11 @@ import java.util.List;
 
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
+import com.project.domain.InventoryRequestDTO;
 import com.project.domain.ProductDTO;
 
 public interface InventoryService {
-	public boolean stockInventory(InventoryDTO inventoryDTO);
+	public boolean stockInventory(InventoryRequestDTO inventoryRequestDTO, String productId);
 	public List<InventoryDTO> getProductInventories(String productId);
 	public boolean modifyInventory(InventoryDTO inventoryDTO);
 	public boolean removeInventory(InventoryDTO inventoryDTO);
