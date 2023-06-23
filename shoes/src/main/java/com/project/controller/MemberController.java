@@ -119,14 +119,15 @@ public class MemberController {
 	}
 	
 	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
-	@GetMapping("/memberPage")
-	public void memberPageGet() {
+	@GetMapping("/memberDetail")  
+	public void memberDetailGet() {
 		log.info("유저 상세페이지");
 	}
 	
+	
 	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
-	@GetMapping("/shop")
-	public void shopGet() {
+	@GetMapping("/memberPage")  
+	public void memberPageGet() {
 		log.info("회원 페이지 요청");
 	}
 	

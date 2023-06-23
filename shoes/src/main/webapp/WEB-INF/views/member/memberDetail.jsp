@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <html lang="en">
 <head>
     <title>Zay Shop - Contact</title>
@@ -128,7 +129,7 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
         <div class="col-md-6 m-auto text-center">
-            <h1 class="h1">회원가입 </h1>
+            <h1 class="h1">회원 상세페이지 </h1>
             <p>
                 저희 쇼핑몰에 오신걸 환영합니다.
             </p>
@@ -160,58 +161,56 @@ https://templatemo.com/tm-559-zay-shop
     Ena Map -->
 
 	 <!-- Start Contact -->
+<security:authentication property="principal.memberDTO" var="userDetails" />
 <div class="container py-5">
   <div class="row py-5">
-    <form class="col-md-9 m-auto" method="post" role="form" id="register" novalidate>
-      <div class="form-group mb-3">                   
+    <form class="col-md-9 m-auto" method="get" role="form" action="/member/modify">
+      <div class="form-group mb-3">
         <label for="memberId">아이디</label>
-        <input type="text" class="form-control mt-1" id="memberId" name="memberId" placeholder="hong123" required pattern="^[a-zA-Z0-9]{3,16}$">
-        <!-- 3~16개 영어, 숫자로 입력해주세요 -->
-        <div class="invalid-feedback">아이디를 확인해 주세요</div>
-        	<div class="col-2">
-				<button type="button" class="w-100 btn btn-danger">중복아이디</button>
-			</div>
+        <input type="text" class="form-control mt-1" id="memberId" name="memberId" placeholder="아이디" value="${userDetails.memberId }" readonly>
       </div>
       <div class="form-group mb-3">
         <label for="name">이름</label>
-        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="홍길동" required pattern="^[a-zA-Z가-힣]{3,10}$">
-        <div class="invalid-feedback">이름을 확인해 주세요</div>
-      </div>
-      <div class="form-group mb-3">
-        <label for="password">비밀번호</label>
-        <input type="password" class="form-control mt-1" id="password" name="password" placeholder="비밀번호" required pattern="^\d+$">
-        <!-- 숫자만 -->
-        <div class="invalid-feedback">비밀번호를 확인해 주세요</div>
+        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="이름" value="${userDetails.name }" readonly>
       </div>
       <div class="form-group mb-3">
         <label for="phone">휴대폰</label>
-        <input type="text" class="form-control mt-1" id="phone" name="phone" placeholder="휴대폰" required>
-        <div class="invalid-feedback">휴대폰 번호를 확인해 주세요</div>
+        <input type="text" class="form-control mt-1" id="phone" name="phone" placeholder="휴대폰" value="${userDetails.phone }" readonly>
       </div>
       <div class="form-group mb-3">
         <label for="address">주소</label>
-        <input type="text" class="form-control mt-1" id="address" name="address" placeholder="주소" required>
-        <div class="invalid-feedback">주소를 확인해 주세요</div>
+        <input type="text" class="form-control mt-1" id="address" name="address" placeholder="주소" value="${userDetails.address }" readonly>
       </div>
       <div class="form-group mb-3">
         <label for="email">이메일</label>
-        <input type="email" class="form-control mt-1" id="email" name="email" placeholder=example@example.com required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">	
-        <div class="invalid-feedback">이메일을 확인해 주세요</div>
+        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="이메일"value="${userDetails.email }" readonly>
       </div>
       <div class="form-group mb-3">
         <label for="footSize">발사이즈</label>
-        <input type="text" class="form-control mt-1" id="footSize" name="footSize" placeholder="250" required>
-        <div class="invalid-feedback">발사이즈를 확인해 주세요</div>
+        <input type="text" class="form-control mt-1" id="footSize" name="footSize" placeholder="발사이즈"value="${userDetails.footSize }" readonly>
       </div>
       <div class="row">
         <div class="col text-end mt-2">
-          <button type="submit" class="btn btn-success btn-lg px-3">회원가입</button>
-        </div>
+          <button type="submit" class="btn btn-success btn-lg px-3">회원수정</button>
+        </div>  
       </div>
-      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+      <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> --%>
     </form>
+    <form class="col-md-9 m-auto" method="get" role="form" action="/member/remove">
+		<input type="hidden" class="form-control mt-1" id="memberId" name="memberId" placeholder="아이디" value="${userDetails.memberId }" readonly>
+	    	<div class="col text-end mt-2">
+          		<button type="submit" class="btn btn-danger btn-lg px-3">회원탈퇴</button>
+    		</div>
+	</form>   
+	 <form class="col-md-9 m-auto" action="/logout"  method="post" >
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<div class="col text-end mt-2">
+			<button class="btn btn-info btn-lg px-3" type="submit">로그아웃</button>
+		</div>
+	 </form>             
   </div>
 </div> 
+
 
 
     <%--  <!-- Start Contact -->
@@ -313,7 +312,7 @@ https://templatemo.com/tm-559-zay-shop
 
             </div>
 
-            <div class="row text-light mb-4">                                  
+            <div class="row text-light mb-4">
                 <div class="col-12 mb-3">
                     <div class="w-100 my-3 border-top border-light"></div>
                 </div>
@@ -354,24 +353,18 @@ https://templatemo.com/tm-559-zay-shop
                     </div>
                 </div>
             </div>
-        </div>                            
+        </div>
 
-    </footer>                                
+    </footer>
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script>
-                                 
-    //CSRF 토큰 값 생성                           
-  	const csrfToken = '${_csrf.token}';
-    </script>
     <script src="/assets/js/jquery-1.11.0.min.js"></script>
     <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/templatemo.js"></script>
     <script src="/assets/js/custom.js"></script>
-    <script src="/js/register.js"></script>
-    <!-- End Script -->   
+    <!-- End Script -->
 </body>
 
 </html>

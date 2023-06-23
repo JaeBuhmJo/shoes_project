@@ -9,9 +9,9 @@ https://templatemo.com/tm-559-zay-shop
 'use strict';
 $(document).ready(function() {
 
-    // Accordion
+     // Accordion
     var all_panels = $('.templatemo-accordion > li > ul').hide();
-
+    
     $('.templatemo-accordion > li > a').click(function() {
         console.log('Hello world!');
         var target =  $(this).next();
@@ -21,7 +21,7 @@ $(document).ready(function() {
         }
       return false;
     });
-    // End accordion
+    // End accordion 
 
     // Product detail
     $('.product-links-wap a').click(function(){

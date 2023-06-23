@@ -19,6 +19,7 @@
 	 </form>	
 	 <a href="/member/modify">회원수정</a>
 	 <a href="/member/remove">회원삭제</a>
-	 <a href="/member/memberPage">회원상세정보</a>
+	 <a href="/member/memberDetail">회원상세정보</a>
+	 <a href="/member/memberPage">회원페이지</a>
 </security:authorize> 
 	

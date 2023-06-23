@@ -19,7 +19,6 @@ public class HomeController {
 	}
 	
 	
-	
 	@GetMapping("/auth")
 	@ResponseBody
 	public Authentication authen() {
