@@ -1,9 +1,6 @@
 document.getElementById("goCart").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // const form = document.querySelector("#operForm");
-  // form.submit();
-
   // 가격, 브랜드, 카테고리 보낼 준비
   const cartItem = {
     brand: document.getElementById("brand").innerHTML,
@@ -19,7 +16,7 @@ document.getElementById("goCart").addEventListener("submit", (e) => {
     body: JSON.stringify(cartItem),
     headers: {
       //      "X-CSRF-TOKEN": csrfToken,
-      "content-Type": "application/json",
+      "Content-Type": "application/json",
     },
   })
     .then((response) => {

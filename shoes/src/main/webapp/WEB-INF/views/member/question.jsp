@@ -4,7 +4,7 @@
  <!-- Start Contact -->
     <div class="container py-5">
         <div class="row py-5">
-            <form class="col-md-9 m-auto" id="qnaForm" role="form" method="post">
+            <form class="col-md-9 m-auto" action="/member/qna" id="qnaForm" role="form" method="post">
                 <div class="row">
                     <div class="mb-3" >
                         <label for="memberid"></label>

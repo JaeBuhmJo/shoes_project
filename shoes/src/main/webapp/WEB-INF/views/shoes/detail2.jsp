@@ -138,8 +138,8 @@
 					<div id="productdetail">
 					<form action="" method="post" id="detailForm">
 					
-						<h1 class="h2" id="brand" name="brand">${product.brand}</h1>
-						<p class="h3 py-2" id="price" name="price">가격:${product.price}</p>
+						<h1 class="h2" id="brand" >${product.brand}</h1>
+						<p class="h3 py-2" id="price" >가격:${product.price}</p>
 						<p class="py-2">
 							<i class="fa fa-star text-warning">1</i>
 							<i class="fa fa-star text-warning">2</i>
@@ -150,11 +150,12 @@
 						</p>
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<h6 id="category" name="category">${product.category}</h6>
+								<h6 id="category" >${product.category}</h6>
 								
 							</li>
 							
-						</ul>
+							
+							</ul>
 					</form>
 					</div>
 								<!-- 상품 간략 정보 -->
@@ -190,10 +191,11 @@
 							</div>
 							<div class="row pb-3">
 								<div class="col d-grid">
-									<button type="button" class="btn btn-success btn-lg"  onclick="location.href='/member/question?productId=${product.productId}'">문의 하기</button>
+									<button type="button" class="btn btn-success btn-lg"
+									  onclick="location.href='/member/question?productId=${product.productId}'">문의 하기</button>
 								</div>
 								<div class="col d-grid">
-									<button type="submit" class="btn btn-success btn-lg" id="goCart" name="submit" value="addtocard">Add To Cart</button>
+									<button type="button" class="btn btn-success btn-lg" id="goCart" name="submit" value="addtocard">Add To Cart</button>
 								</div>
 							</div>
 						</form>
@@ -759,17 +761,15 @@
 <script src="/assets/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/js/templatemo.js"></script>
 <script src="/assets/js/custom.js"></script>
+
 <script src="/powedetailjs/detail.js"></script>
+
 <link href="/powe/adidas1.img">
 <link href="/powe/adidas2.img">
 <link href="/powe/adidas3.img">
 <link href="/powe/adidas4.img">
 
-<form action="" id="operForm">
-	<%-- pageDTO.cri.page 가능 --%>
-	<input type="hidden" name="cartId" value="${cart.cartId}" />
-	
-</form>
+
 <!-- End Script -->
  <script>
 	// 스크립트 실행순서: 첫번째 실행

@@ -45,16 +45,17 @@ public class MemberController {
 		
 	}
 	
+	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 
 	@PostMapping
-	public String cartInsert(@RequestBody  CartDTO cart,Model model,RedirectAttributes rttr) {
+	public String cartInsert(@RequestBody  CartDTO cart,RedirectAttributes rttr) {
 		log.info("cart 로 데이터 보내기" + cart);		
 		
 
 		
 		if(service.cartInsert(cart)) {
-			model.addAttribute("cart", cart);
-			rttr.addAttribute("memberId", cart.getMemberId());
+			rttr.addFlashAttribute("memberId", cart.getMemberId());
 
+			
 		}
 		return "redirect:/shoes/detail";
 		

@@ -1,4 +1,5 @@
 // 게시글 등록
+
 const qnaForm = document.querySelector("#qnaForm");
 qnaForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -16,7 +17,7 @@ qnaForm.addEventListener("submit", (e) => {
       if (!response.ok) {
         throw new Error("게시글 등록 실패");
       }
-      return response.text();
+      return response.json();
     })
     .then((data) => {
       console.log(data);
