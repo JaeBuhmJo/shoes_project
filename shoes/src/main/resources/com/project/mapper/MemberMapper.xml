@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.MemberMapper">
+
+<!-- insert into members 오라클 필드명과 동일 -->
+<!-- values memberDTO 필드명과 동일 -->
+
+	<!-- 회원가입 sql 구문  -->
+	<insert id="register">
+		insert into members (member_id,name,password,phone,address,email,foot_size)
+		values(#{memberId},#{name},#{password},#{phone},#{address},#{email},#{footSize})
+	</insert>
+
+	<!-- 암호화된 비번 가져오기 -->
+	<select id="getPass" resultType="java.lang.String">
+		select password from members
+		where member_id=#{memberId}
+	</select>
+	
+	<!-- 로그인 : memberId, password 일치 시 전체조회 -->
+	<select id="login" resultType="com.project.domain.MemberDTO">
+		select * from members
+		where member_id=#{memberId}
+	</select>
+
+	<!-- 회원정보 변경  -->
+	<update id="update" parameterType="com.project.domain.MemberDTO">
+    update members
+    set name = #{name}, password = #{newPassword}, phone = #{phone}, address = #{address}, email = #{email}, foot_size = #{footSize}
+    where member_id = #{memberId}
+	</update>
+	
+	<!-- 회원탈퇴  -->
+	<delete id="remove" >
+		delete from members where member_id=#{memberId}
+	</delete>
+		
+	<!-- 중복아이디 -->
+	<select id="dupid" resultType="java.lang.Integer">
+	select count(*) from members where member_id = #{memberId}
+	</select>
+
+</mapper>
