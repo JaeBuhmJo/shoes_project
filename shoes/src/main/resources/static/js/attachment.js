@@ -2,40 +2,41 @@
  *
  */
 
-if (document.querySelector("#attachment")) {
-  const attachment = document.querySelector("#attachment");
+const attachment = document.querySelector("#attachment");
 
-  //파일 첨부시 파일명 오름차순으로 정렬, 첨부 파일 put
-  attachment.addEventListener("change", () => {
-    const formData = new FormData();
+//파일 첨부 변경 시 파일명 오름차순으로 정렬, 첨부 파일 put
+attachment.addEventListener("change", () => {
+  const formData = new FormData();
 
-    const fileList = Array.from(attachment.files);
-    fileList.sort((a, b) => {
-      return a.name.localeCompare(b.name);
-    });
-    fileList.forEach((file) => {
-      formData.append("attachment", file);
-    });
-
-    fetch("/attachment", {
-      method: "put",
-      // headers: {
-      //   "X-CSRF-TOKEN": csrfToken,
-      // },
-      body: formData,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("파일 업로드 실패");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        showAttachments(data);
-      })
-      .catch((error) => console.log(error));
+  const fileList = Array.from(attachment.files);
+  fileList.sort((a, b) => {
+    return a.name.localeCompare(b.name);
   });
-} else {
+  fileList.forEach((file) => {
+    formData.append("attachment", file);
+  });
+
+  fetch("/attachment", {
+    method: "put",
+    // headers: {
+    //   "X-CSRF-TOKEN": csrfToken,
+    // },
+    body: formData,
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("파일 업로드 실패");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      showAttachments(data);
+    })
+    .catch((error) => console.log(error));
+});
+
+// 상품코드를 타고 들어오는 경우 -> read페이지. 이미지 조회
+if (productId) {
   fetch("/attachment/" + productId)
     .then((response) => {
       if (!response.ok) {

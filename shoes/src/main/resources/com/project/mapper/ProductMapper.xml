@@ -74,7 +74,7 @@
 	<insert id="insertProduct">
 		insert into products values(products_seq.nextval,#{category},#{brand},#{detail},#{price},
 									#{discountPrice},#{productCountry},#{productYear},#{productName},#{onSale},
-									0,sysdate,sysdate,#{forMen},#{forWomen})
+									0,sysdate,sysdate,#{forMen},#{forWomen},#{colors})
 	</insert>
 
 	<select id="getCurrentProductSequence">

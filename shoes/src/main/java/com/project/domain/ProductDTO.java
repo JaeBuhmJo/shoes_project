@@ -25,6 +25,7 @@ public class ProductDTO {
 	private Date modifiedDate;
 	private boolean forMen;
 	private boolean forWomen;
+	private String colors;
 	
 	private String filePath;
 	 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.domain.AttachmentDTO;
+import com.project.domain.ColorSizeDTO;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
@@ -49,6 +50,9 @@ public class AdminController {
 		log.info("상품 등록 폼 요청");
 	}
 
+	
+	//재고등록, 재고수정은 따로 만들어야함.
+	
 	@GetMapping("/inventory/list")
 	public void inventoryListGet(Model model, Criteria cri) {
 		log.info("재고 목록 요청");
@@ -73,6 +77,7 @@ public class AdminController {
 		return "/admin/inventory/read";
 	}
 
+	//색상, 사이즈 목록을 가져와서 뿌려줘야함.
 	@GetMapping("/product/read/{productId}")
 	public String productReadGet(Model model, @PathVariable String productId) {
 		log.info("상품 상세 정보 요청 : " + productId);
@@ -83,23 +88,18 @@ public class AdminController {
 
 	@Transactional
 	@PostMapping("/product/modify")
-	public String productModifyGet(ProductDTO productDTO, InventoryDTO inventoryDTO,
-			@RequestParam List<Integer> quantity) {
+	public String productModifyGet(ProductDTO productDTO, InventoryDTO inventoryDTO) {
 		log.info("상품 페이지 상품 수정 요청 : " + productDTO.toString());
-
 		// 원래 있던 목록 지우고
 		String productId = productDTO.getProductId();
 		attachmentService.removeAttachmentList(productId);
 		// 첨부파일 정보 바꾸기.
-		if (productDTO.getAttachmentList() != null) {
+		if (productDTO.getAttachmentList() != null && productDTO.getAttachmentList().size()>0) {
 			for (AttachmentDTO attachmentDTO : productDTO.getAttachmentList()) {
 				attachmentDTO.setProductId(productId);
 				attachmentService.registerAttachment(attachmentDTO);
 			}
 		}
-
-		productService.modifyProduct(productDTO);
-		modifyInventory(inventoryDTO, quantity);
 		return "redirect:/admin/product/list";
 	}
 
@@ -120,26 +120,29 @@ public class AdminController {
 
 	@Transactional
 	@PostMapping("/product/register")
-	public String productRegisterPost(ProductDTO productDTO, InventoryDTO inventoryDTO,
-			@RequestParam List<Integer> quantity) {
+	public String productRegisterPost(ProductDTO productDTO, InventoryDTO inventoryDTO, ColorSizeDTO colorSizeDTO) {
 		// 상품 DB 등록
+		StringBuilder sb = new StringBuilder();
+		List<String> colorsList = colorSizeDTO.getColorList();
+		for (String string : colorsList) {
+			sb.append(string);
+			sb.append(",");
+		}
+		String colors = sb.delete(sb.length()-1, sb.length()).toString(); 
+		productDTO.setColors(colors);
 		log.info("상품 등록 요청 : " + productDTO.toString());
 		productService.registerProduct(productDTO);
 		String productId = String.valueOf(productService.getCurrentProductId());
 
 		// 첨부파일 DB등록
 		List<AttachmentDTO> attachmentList = productDTO.getAttachmentList();
-		if (attachmentList!=null) {
+		if (attachmentList!=null && attachmentList.size()>0) {
 			for (AttachmentDTO attachmentDTO : attachmentList) {
 				attachmentDTO.setProductId(productId);
 				log.info("첨부파일 등록 요청 : " + attachmentDTO.toString());
 				attachmentService.registerAttachment(attachmentDTO);
 			}
 		}
-
-		// 재고 DB등록
-		inventoryDTO.setProductId(productId);
-		stockInventory(inventoryDTO, quantity);
 		return "redirect:/admin/product/list";
 	}
 
