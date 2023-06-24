@@ -207,7 +207,16 @@ https://templatemo.com/tm-559-zay-shop
 		<div class="col text-end mt-2">
 			<button class="btn btn-info btn-lg px-3" type="submit">로그아웃</button>
 		</div>
-	 </form>             
+	 </form>   
+	 <form class="col-md-9 m-auto" method="get" role="form">
+    	<div class="col text-end mt-2">
+    		 <button type="button" class="btn btn-secondary  btn-lg px-3" onclick="location.href='/member/memberPage'">
+    		 취소
+    		 </button>
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+          <input type="hidden" style="color: black;" class="form-control mt-1" id="memberId" name="memberId" placeholder="아이디" value="${userDetails.memberId}" readonly >
+      	</div>
+    </form>           
   </div>
 </div> 
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <title>Zay Shop - Contact</title>
@@ -208,6 +209,15 @@ https://templatemo.com/tm-559-zay-shop
       </div>
       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     </form>
+    <form class="col-md-9 m-auto" method="get" role="form">
+    	<div class="col text-end mt-2">
+    		 <button type="button" class="btn btn-secondary  btn-lg px-3" onclick="location.href='/member/memberPage'">
+    		 취소
+    		 </button>
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+          <input type="hidden" style="color: black;" class="form-control mt-1" id="memberId" name="memberId" placeholder="아이디" value="${userDetails.memberId}" readonly >
+      	</div>
+    </form> 
   </div>
 </div> 
 
@@ -351,10 +361,10 @@ https://templatemo.com/tm-559-zay-shop
                         </p>
                     </div>
                 </div>
-            </div>
+            </div>                                             
         </div>
 
-    </footer>
+    </footer>              
     <!-- End Footer -->
 
     <!-- Start Script -->
@@ -363,6 +373,7 @@ https://templatemo.com/tm-559-zay-shop
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/templatemo.js"></script>
     <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/modify.js"></script>
     <!-- End Script -->
 </body>
 
