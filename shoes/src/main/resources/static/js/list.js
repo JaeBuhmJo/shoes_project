@@ -47,6 +47,7 @@ category.addEventListener("click", (e) => {
     operForm.submit();
   }
 });
+
 // 아래로는 리스트의 ajax화 시도의 흔적
 
 // document.querySelector("#shopPagination").addEventListener("click", (e) => {

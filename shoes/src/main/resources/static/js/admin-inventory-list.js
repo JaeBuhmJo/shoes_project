@@ -14,7 +14,7 @@ document.querySelector(".btn-success").addEventListener("click", () => {
 
 const operForm = document.querySelector("#operForm");
 
-const table = document.querySelector(".product-list-table");
+const table = document.querySelector(".inventory-list-table");
 table.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.tagName === "A") {

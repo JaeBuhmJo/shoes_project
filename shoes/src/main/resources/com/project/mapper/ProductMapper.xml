@@ -17,9 +17,9 @@
 	</resultMap>
 
  	<select id="getOnSaleList" resultMap="productMap">
- 		SELECT pr.product_id, pr.product_name, pr.price, pr.colors, at.uuid, at.upload_path, at.file_name
-		FROM (
-			SELECT product_id, product_name, price, colors, ROW_NUMBER() OVER (ORDER BY
+ 		select p.product_id, p.product_name, p.price, p.colors, at.uuid, at.upload_path, at.file_name
+		from (
+			select product_id, product_name, price, colors, row_number() over (order by
 		    <choose>
 		      <when test="order== 'registered-date-desc'">registered_date desc</when>
 		      <when test="order== 'sold-count-desc'">sold_count desc</when>
@@ -27,9 +27,9 @@
 		      <when test="order== 'price-asc'">price asc</when>
 		      <otherwise></otherwise>
 		    </choose>
-		     ) AS rnum
-		    FROM products 
-		    WHERE on_sale = 1 
+		     ) rnum
+		    from products 
+		    where on_sale = 1 and discontinued = 0
 		    <choose>
 		      <when test="gender== 'for-men'">and for_men=1 </when>
 		      <when test="gender== 'for-women'">and for_women=1 </when>
@@ -41,18 +41,18 @@
 		      <when test="category== 'slipper'">and category = '슬리퍼'</when>
 		      <otherwise></otherwise>
 		    </choose>
-		) pr
-		left outer JOIN attachments at ON pr.product_id = at.product_id
-		WHERE pr.rnum BETWEEN ((#{page}-1)*#{listAmount})+1 AND (#{page}*#{listAmount})
+		) p
+		left outer join attachments at on p.product_id = at.product_id
+		where p.rnum between ((#{page}-1)*#{listAmount})+1 and (#{page}*#{listAmount})
 	</select>
 	
 	<select id="getOnSaleCount">
-		select count(*) from products where on_sale = 1
+		select count(*) from products where on_sale = 1 and discontinued = 0
 			<choose>
 		      <when test="gender== 'for-men'">and for_men=1 </when>
 		      <when test="gender== 'for-women'">and for_women=1 </when>
 		      <otherwise></otherwise>
-		    </choose>  
+		    </choose>
 		    <choose>
 		      <when test="category== 'running'">and category = '운동화'</when>
 		      <when test="category== 'shoes'">and category = '구두'</when>
@@ -62,19 +62,24 @@
 	</select>
 	
 	<select id="getTotalList">
-		select * from products
+		select * from products where
 			<choose>
-		      <when test="searchType == 'productId'"> where product_id = #{keyword} </when>
-		      <when test="searchType == 'productName'"> where product_name like CONCAT('%',CONCAT(#{keyword},'%')) </when>
+		      <when test="discontinued==1"> discontinued = 1 </when>
+		      <otherwise>discontinued = 0</otherwise>
+		    </choose>
+			<choose>
+		      <when test="searchType == 'productId'"> and product_id = #{keyword} </when>
+		      <when test="searchType == 'productName'"> and product_name like CONCAT('%',CONCAT(#{keyword},'%')) </when>
 		      <otherwise></otherwise>
 		    </choose>
 		order by registered_date desc
 	</select>
 	
 	<insert id="insertProduct">
-		insert into products values(products_seq.nextval,#{category},#{brand},#{detail},#{price},
-									#{discountPrice},#{productCountry},#{productYear},#{productName},#{onSale},
-									0,sysdate,sysdate,#{forMen},#{forWomen},#{colors})
+		insert into products (product_id, category, brand, detail, price, product_country, product_year, 
+							  product_name, on_sale, sold_count, for_men, for_women, colors)
+			values(products_seq.nextval,#{category},#{brand},#{detail},#{price},#{productCountry},
+					#{productYear},#{productName},#{onSale},0,#{forMen},#{forWomen},#{colors})
 	</insert>
 
 	<select id="getCurrentProductSequence">
@@ -89,7 +94,7 @@
 		 update products set category=#{category}, brand=#{brand}, detail=#{detail}, price=#{price},
 		 					 discount_price=#{discountPrice}, product_country=#{productCountry},
 		 					 product_year=#{productYear}, product_name=#{productName}, on_sale=#{onSale},
-		 					 modified_date=sysdate, for_men=#{forMen}, for_women=#{forWomen}
+		 					 modified_date=sysdate, for_men=#{forMen}, for_women=#{forWomen}, discontinued=#{discontinued}
 		 where product_id = #{productId}
 	</update>
 

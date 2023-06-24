@@ -2,15 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.AttachmentMapper">
 
-	<select id="getAttachments" resultType="com.project.domain.AttachmentDTO">
-		select * from attachments where product_id = #{productId} order by file_name
+	<select id="getAttachments"
+		resultType="com.project.domain.AttachmentDTO">
+		select * from attachments where product_id = #{productId}
+		order by file_name
 	</select>
-	
+
 	<insert id="insertAttachments">
-		insert into attachments values(#{uuid}, #{productId}, #{uploadPath}, #{fileName})
+	    insert into attachments (uuid, product_id, upload_path, file_name)
+	    select * from (
+	        <foreach collection="attachmentDTOList" item="item" separator="UNION ALL">
+	            select #{item.uuid}, #{productId}, #{item.uploadPath}, #{item.fileName} from dual
+	        </foreach>
+	    )
 	</insert>
 
 	<delete id="deleteAttachments">
-		delete from attachments where product_id = #{product_id}
+		delete from attachments where product_id =
+		#{product_id}
 	</delete>
 </mapper>

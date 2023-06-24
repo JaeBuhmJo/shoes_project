@@ -15,6 +15,7 @@ public class InventoryDTO {
 	private int quantity;
 	private Date stockedDate;
 	private String productColor;
+	private boolean discontinued;
 	
 	public InventoryDTO(String productId, String productColor, String productSize, int quantity) {
 		this.productId = productId;

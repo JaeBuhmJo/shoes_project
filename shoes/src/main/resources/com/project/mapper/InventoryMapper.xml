@@ -3,15 +3,15 @@
 <mapper namespace="com.project.mapper.InventoryMapper">
 	
 	<insert id="insertInventory" parameterType="list" >
-	    INSERT INTO inventories (inventory_id, product_id, product_size, quantity, product_color)
-	    SELECT inventories_seq.nextval, x.product_id, x.product_size, x.quantity, x.product_color
-	    FROM (
-	        <foreach collection="list" item="item" separator="UNION ALL">
-	            SELECT #{item.productId} as product_id, 
+	    insert into inventories (inventory_id, product_id, product_size, quantity, product_color)
+	    select inventories_seq.nextval, x.product_id, x.product_size, x.quantity, x.product_color
+	    from (
+	        <foreach collection="list" item="item" separator="union all">
+	            select #{item.productId} as product_id, 
 	                   #{item.productSize} as product_size,
 	                   #{item.quantity} as quantity,
 	                   #{item.productColor} as product_color
-	            FROM dual
+	            from dual
 	        </foreach>
 	    ) x
 	</insert>
@@ -29,23 +29,31 @@
 		<result property="productSize" column="product_size"/>
 		<result property="quantity" column="quantity"/>
 		<result property="stockedDate" column="stocked_date"/>
+		<result property="productColor" column="product_color"/>
+		<result property="discontinued" column="discontinued"/>
 	</resultMap>
 	
 	<select id="getTotalInventories" resultMap="productMap">
 		select p.product_id, i.inventory_id, p.product_name, i.product_size, i.quantity, 
-		p.on_sale, p.sold_count, i.stocked_date, p.price
+		p.on_sale, p.sold_count, i.stocked_date, p.price, i.product_color, i.discontinued
 		from inventories i join products p on i.product_id = p.product_id
+		where
 			<choose>
-		      <when test="searchType == 'quantity'"> where i.quantity > 0 </when>
-		      <when test="searchType == 'productId'"> where p.product_id = #{keyword} </when>
-		      <when test="searchType == 'productName'"> where p.product_name like CONCAT('%',CONCAT(#{keyword},'%')) </when>
+		      <when test="discontinued==1"> i.discontinued = 1 </when>
+		      <otherwise> i.discontinued = 0</otherwise>
+		    </choose>
+			<choose>
+		      <when test="searchType == 'quantity'"> and i.quantity > 0 </when>
+		      <when test="searchType == 'productName'"> and p.product_name like CONCAT('%',CONCAT(#{keyword},'%')) </when>
+		      <when test="searchType == 'productId'"> and p.product_id = #{keyword} </when>
+		      <when test="searchType == 'inventoryId'"> and i.inventory_id = #{keyword} </when>
 		      <otherwise></otherwise>
 		    </choose>
-		order by i.stocked_date desc, product_size asc
+		order by p.product_id desc, i.inventory_id asc
 	</select>
 	
 	<select id="getInventories" resultType="com.project.domain.InventoryDTO">
-		select * from inventories where product_id = #{productId} order by product_id asc
+		select * from inventories where product_id = #{productId} order by inventory_id asc
 	</select>
 	
 	<select id="checkInventory" resultType="Integer">
@@ -53,10 +61,14 @@
 	</select>
 	
 	<update id="updateInventory">
-		update inventories set quantity = #{quantity} where product_size = #{productSize} and product_id = #{productId} 
+	    <foreach collection="list" item="inventory" separator=";" open="DECLARE BEGIN" close="; END;">
+          update inventories
+          set quantity = #{inventory.quantity}
+          where product_id = #{inventory.productId} and product_color = #{inventory.productColor} and product_size = #{inventory.productSize}
+      </foreach>
 	</update>
 	
-	<delete id="deleteInventory">
-		delete from inventories where product_size = #{productSize} and product_id = #{productId} 
+	<delete id="closeInventory">
+		update inventories set quantity=0, discontinued = 1 where product_id = #{productId} 
 	</delete>
 </mapper>

@@ -39,10 +39,10 @@ public class AttachmentController {
 
 	@Value("${shoes.uploadPath}")
 	private String uploadPath;
-	
+
 	@Autowired
 	private AttachmentService attachmentService;
-	
+
 	@GetMapping("/{productId}")
 	public ResponseEntity<List<AttachmentDTO>> getAttachments(@PathVariable String productId){
 		log.info("첨부 리스트 요청 : " + productId);

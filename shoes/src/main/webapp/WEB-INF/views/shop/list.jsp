@@ -278,26 +278,14 @@
 
 <form action="/shop/list" id="operForm">
 	<input type="hidden" name="page" value="${productListPage.cri.page}" />
-	<input type="hidden" name="listAmount"
-		value="${productListPage.cri.listAmount}" /> <input type="hidden"
-		name="searchType" value="${productListPage.cri.searchType}" /> <input
-		type="hidden" name="keyword" value="${productListPage.cri.keyword}" />
+	<input type="hidden" name="listAmount" value="${productListPage.cri.listAmount}" /> 
+	<input type="hidden" name="searchType" value="${productListPage.cri.searchType}" /> 
+	<input type="hidden" name="keyword" value="${productListPage.cri.keyword}" />
 	<input type="hidden" name="order" value="${productListPage.cri.order}" />
-	<input type="hidden" name="gender"
-		value="${productListPage.cri.gender}" /> <input type="hidden"
-		name="category" value="${productListPage.cri.category}" />
+	<input type="hidden" name="gender" value="${productListPage.cri.gender}" /> 
+	<input type="hidden" name="category" value="${productListPage.cri.category}" />
 </form>
 
-<!-- Start Script -->
-<!-- 
-<script> 
-	let page = ${productListPage.cri.page} 
-	let listAmount = ${productListPage.cri.listAmount}
-	let searchType = "${productListPage.cri.searchType}"
-	let keyword = "${productListPage.cri.keyword}"
-	let order = "${productListPage.cri.order}"
-</script>
- -->
 <script>
 	let page = $
 	{

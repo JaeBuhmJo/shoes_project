@@ -13,6 +13,7 @@ public class Criteria {
 	private String order;
 	private String category;
 	private String gender;
+	private boolean discontinued;
 
 	public Criteria(int page, int listAmount, String order) {
 		super();

@@ -26,8 +26,13 @@ public class ProductDTO {
 	private boolean forMen;
 	private boolean forWomen;
 	private String colors;
+	private boolean discontinued;
 	
 	private String filePath;
-	 
+
+	private List<InventoryDTO> inventories;
 	private List<AttachmentDTO> attachmentList;
+	private List<String> colorList;
+	private List<String> sizeList;
+	private List<Integer> quantityList;
 }

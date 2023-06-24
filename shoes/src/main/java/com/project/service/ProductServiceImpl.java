@@ -36,15 +36,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public boolean registerProduct(ProductDTO productDTO, List<String> colorList) {
 		StringBuilder sb = new StringBuilder();
-		if (colorList != null && !colorList.isEmpty()) {
-			for (String string : colorList) {
-				sb.append(string);
-				sb.append(",");
+		String priorColor= "";
+		for (String color : colorList) {
+			if(!color.equals(priorColor)) {
+			sb.append(color);
+			sb.append(",");
 			}
-			String colors = sb.delete(sb.length() - 1, sb.length()).toString();
-			productDTO.setColors(colors);
+			priorColor = color;
 		}
-		// 상세설명을 등록 원치 않을 경우, DB Null 인서트 방지
+		String colors = sb.delete(sb.length() - 1, sb.length()).toString();
+		productDTO.setColors(colors);
 		if (productDTO.getDetail().isEmpty()) {
 			productDTO.setDetail(" ");
 		}
@@ -63,6 +64,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public boolean modifyProduct(ProductDTO productDTO) {
+		if (productDTO.getDetail().isEmpty()) {
+			productDTO.setDetail(" ");
+		}
 		return productMapper.updateProduct(productDTO) == 1 ? true : false;
 	}
 }

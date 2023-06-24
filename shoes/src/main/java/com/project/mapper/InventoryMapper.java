@@ -12,8 +12,8 @@ import com.project.domain.ProductDTO;
 public interface InventoryMapper {
 	public int insertInventory(List<InventoryDTO> inventoryDTOList);
 	public List<InventoryDTO> getInventories(String productId);
-	public int updateInventory(InventoryDTO inventoryDTO);
-	public int deleteInventory(InventoryDTO inventoryDTO);
+	public int updateInventory(List<InventoryDTO> inventoryDTOList);
+	public int closeInventory(String productId);
 	public int checkInventory(InventoryDTO inventoryDTO);
 	public List<ProductDTO> getTotalInventories(Criteria cri);
 }

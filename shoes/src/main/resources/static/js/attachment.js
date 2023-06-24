@@ -40,7 +40,7 @@ if (pageIsRead) {
   fetch("/attachment/" + productId)
     .then((response) => {
       if (!response.ok) {
-        throw new Error("첨부 리스트 가져오기 실패");
+        throw new Error("첨부 파일이 없습니다.");
       }
       return response.json();
     })
@@ -68,8 +68,9 @@ function showAttachments(attachmentList) {
 }
 
 // x버튼 클릭 시 카드 삭제
+
 document.querySelector(".attachmentResult").addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON" || e.target.tagName === "I") {
+  if (e.target.tagName === "BUTTON" || e.target.matches("svg") || e.target.matches("path")) {
     const targetFile = e.target.dataset.file;
     const cards = e.target.closest(".cards");
 

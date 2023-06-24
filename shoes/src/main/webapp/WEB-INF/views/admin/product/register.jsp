@@ -19,7 +19,7 @@
 				    <input class="form-check-input me-1" type="radio" name="category" value="구두" id="secondRadio">
 				    <label class="form-check-label" for="secondRadio">구두</label>
 				  </li>
-				  <li class="list-group-item">
+				  <li class="list-group-item"> 
 				    <input class="form-check-input me-1" type="radio" name="category" value="슬리퍼" id="thirdRadio">
 				    <label class="form-check-label" for="thirdRadio">슬리퍼</label>
 				  </li>
@@ -99,10 +99,10 @@
 			    	<button id="addRow" tabindex="-1" type="button" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i></button>
 				</div>
 				<div class="col-sm-2">   
-				      <input type="text" name="colorList[0]" class="form-control colorList" placeholder="색상 *(필수 입력 필드)">
+				      <input type="text" class="form-control colorList" placeholder="색상 *(필수 입력 필드)">
 				</div> 
 				<div class="col-sm-4">
-				      <input type="text" name="sizeList[0]" class="form-control" placeholder="ex)260,270,280 (쉼표로 구분) *(필수 입력 필드)">
+				      <input type="text" class="form-control" placeholder="ex)260,270,280 (쉼표로 구분) *(필수 입력 필드)">
 				</div>
 			</div>       
 		<div class="" id="newRow"></div> 
@@ -127,7 +127,7 @@
 			</div>  
 		</div> 
 	 	   
-	 	<hr> 
+	 	<hr>   
         <div class="mb-3">            
 		  <label for="exampleFormControlTextarea1" class="form-label"><b>상품 상세정보</b></label>
 		  <textarea class="form-control" id="exampleFormControlTextarea1" name="detail" rows="3" ></textarea>
@@ -142,13 +142,13 @@
 		   
 		<div class="row row-cols-1 row-cols-md-6 g-6 mb-3 attachmentResult">
 			  
-		</div>      
+		</div>       
 		      
 		<button type="submit" class="btn btn-primary">상품 등록</button>
 		<button type="button" class="btn btn-secondary">목록으로</button>
+	</form>
 		</div>   
 
-	</form>
         </main>
 <script>
 	let colorCount = 1;
@@ -156,4 +156,5 @@
 </script>
 <script src="/js/attachment.js"></script>
 <script src="/js/admin-product-register.js"></script>
+<script src="/js/color-size-tool.js"></script>
 <%@ include file="../../include/adminfooter.jsp" %>

@@ -2,7 +2,6 @@ package com.project.service;
 
 import java.util.List;
 
-import com.project.domain.ColorSizeDTO;
 import com.project.domain.Criteria;
 import com.project.domain.ProductDTO;
 
