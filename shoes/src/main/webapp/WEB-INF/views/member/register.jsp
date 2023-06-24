@@ -165,10 +165,10 @@ https://templatemo.com/tm-559-zay-shop
     <form class="col-md-9 m-auto" method="post" role="form" id="register" novalidate>
       <div class="form-group mb-3">                   
         <label for="memberId">아이디</label>
-        <input type="text" class="form-control mt-1" id="memberId" name="memberId" placeholder="hong123" required pattern="^[a-zA-Z0-9]{3,16}$">
+        <input type="text" class="form-control mt-1" id="memberId" name="memberId" placeholder="아이디" required pattern="^[a-zA-Z0-9]{3,16}$">
         <!-- 3~16개 영어, 숫자로 입력해주세요 -->
         <div class="invalid-feedback">아이디를 확인해 주세요</div>
-        	<div class="col-2">
+        	<div class="col-2" style="text-align: right;">
 				<button type="button" class="w-100 btn btn-danger">중복아이디</button>
 			</div>
       </div>
@@ -203,10 +203,11 @@ https://templatemo.com/tm-559-zay-shop
         <input type="text" class="form-control mt-1" id="footSize" name="footSize" placeholder="250" required>
         <div class="invalid-feedback">발사이즈를 확인해 주세요</div>
       </div>
-      <div class="row">
+      <div class="row">	
         <div class="col text-end mt-2">
           <button type="submit" class="btn btn-success btn-lg px-3">회원가입</button>
-        </div>
+           <a href="../index.jsp" class="btn btn-danger btn-lg px-3">취소</a>
+        </div>    
       </div>
       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     </form>

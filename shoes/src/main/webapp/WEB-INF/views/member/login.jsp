@@ -183,6 +183,7 @@ https://templatemo.com/tm-559-zay-shop
 		<div style="text-align: center;">
 			<button class="btn btn-primary" style="width: 470px; height: 40px;">로그인</button>
 		</div>
+
 		<%-- 로그인 에러 메세지 보여주기 --%>
 		<div class="text-danger text-center mt-2" style="text-align: center;">
 			<small class="text-danger">${error}</small>
