@@ -18,6 +18,5 @@ public interface DetailMapper {
 	// 장바구니에 담기 누를 시 장바구니에 제품 정보 보내기
 		public int cartInsert(CartDTO cart);
 
-		
 		public int qnaInsert(QnaDTO qna);
 }

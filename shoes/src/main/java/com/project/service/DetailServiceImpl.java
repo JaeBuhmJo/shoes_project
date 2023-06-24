@@ -24,7 +24,6 @@ public class DetailServiceImpl implements DetailService {
 		
 		return detailMapper.detail(productId);
 	}
-
 	//카트에 선택한 정보 보내기 코드
 	@Override
 	public boolean cartInsert(CartDTO cart) {

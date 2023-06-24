@@ -18,7 +18,6 @@
 			<result property="productSize" column="product_size"/>	
 	</resultMap>
 
-
 	<select id="detail" resultMap="productDTO">
 
 

@@ -5,7 +5,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="w-100 pt-1 mb-5 text-right">
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -19,7 +19,7 @@
 			</div>
 		</form>
 	</div>
-</div>
+</div> 
 
 
 
@@ -126,17 +126,14 @@
                         <!--End Controls-->
                     </div>
 					<!--End Carousel Wrapper-->
-					
 				</div>
 			</div>
-			
-			
 			<!-- col end -->
 			<div class="col-lg-7 mt-5" >
 				<div class="card">
 					<div class="card-body">
 					<div id="productdetail">
-					<form action="" method="post" id="detailForm">
+					<form action="/member/cart" method="post" id="detailForm">
 					
 						<h1 class="h2" id="brand" >${product.brand}</h1>
 						<p class="h3 py-2" id="price" >가격:${product.price}</p>
@@ -151,22 +148,16 @@
 						<ul class="list-inline">
 							<li class="list-inline-item">
 								<h6 id="category" >${product.category}</h6>
-								
 							</li>
-							
-							
-							</ul>
-					</form>
-					</div>
+						</ul>
 								<!-- 상품 간략 정보 -->
-						${product.detail}
-							<h4>변함없는 디자인으로 돌아온 1991 가젤 30년이 넘는 시간 동안 사랑받아 온 심플함의 아이콘.</h4>
+						
+							<h4>${product.detail}변함없는 디자인으로 돌아온 1991 가젤 30년이 넘는 시간 동안 사랑받아 온 심플함의 아이콘.</h4>
 							
 							<p>
 							 이번 버전의 가젤은 큰 인기를 얻었던 1991 가젤의 클래식한 소재, 칼라, 텍스쳐, 구조를 그대로 이어갑니다. 가죽 갑피에 대비색상 3-스트라이프와 힐 탭을 더해 90년대 초반의 오리지널 스타일을 선보입니다.</p>
 
-						<form action="" method="post" id="radiodetail">
-							<input type="hidden" name="product-title" value="Activewear" id="footSize">
+
 							<div class="row">
 								<div class="col-auto">
 									<ul class="list-inline pb-3" id="detailsize">
@@ -183,11 +174,11 @@
 										  <option value="270">270</option>
 										  <option value="280">280</option>
 										</select>										
-									<input class="form-control me-2" id="cartAmount" name="cartAmount" type="search" placeholder="수량 입력" aria-label="Search">																
+									<input class="form-control me-2" id="cartAmount" name="cartAmount" 
+									type="search" placeholder="수량 입력" aria-label="Search">																
 							</ul>
 								</div>
-								
-								
+
 							</div>
 							<div class="row pb-3">
 								<div class="col d-grid">
@@ -195,12 +186,11 @@
 									  onclick="location.href='/member/question?productId=${product.productId}'">문의 하기</button>
 								</div>
 								<div class="col d-grid">
-									<button type="button" class="btn btn-success btn-lg" id="goCart" name="submit" value="addtocard">Add To Cart</button>
+									<button type="submit" class="btn btn-success btn-lg" id="goCart"value="addtocard">Add To Cart</button>
 								</div>
 							</div>
 						</form>
-
-					
+					</div>				
 					</div>
 				</div>
 			</div>
@@ -208,6 +198,14 @@
 	</div>
 </section>
 <!-- Close Content -->
+
+
+
+
+
+
+
+
 
 
             <!--Start Carousel Wrapper-->
