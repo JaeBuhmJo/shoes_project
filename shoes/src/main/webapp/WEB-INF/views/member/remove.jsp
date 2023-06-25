@@ -184,31 +184,90 @@ https://templatemo.com/tm-559-zay-shop
     Ena Map -->
 
 	<!-- Start Contact -->
-	 <security:authentication property="principal.memberDTO" var="userDetails" />
-	 <form class="col-md-9 m-auto" method="post" role="form">
-	 <div class="form-group mb-3 ">          
-        <label for="memberId">아이디</label>
-        <input type="text" class="form-control mt-1" id="memberId" name="memberId" placeholder="아이디" value="${userDetails.memberId}" readonly >
-      </div>
-	 <div class="form-group mb-3">
-        <label for="password">기존 비밀번호</label>
-        <input type="password" class="form-control mt-1" id="password" name="password" placeholder="비밀번호" value="">
-      </div>
-      <div class="col text-end mt-2">
-          <button type="submit" class="btn btn-danger btn-lg px-3">회원삭제</button>
-      </div>
-      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    </form> 
-    <form class="col-md-9 m-auto" method="get" role="form">
-    	<div class="col text-end mt-2">
-    		 <button type="button" class="btn btn-secondary  btn-lg px-3" onclick="location.href='/member/memberPage'">
-    		 취소
-    		 </button>
-          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-          <input type="hidden" style="color: black;" class="form-control mt-1" id="memberId" name="memberId" placeholder="아이디" value="${userDetails.memberId}" readonly >
-      	</div>
-    </form> 
-    <!-- End Contact -->
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-lg-3">
+                <h1 class="h2 pb-4">회원 페이지</h1>
+                <ul class="list-unstyled">
+                    <li class="pb-3">
+                        <a class="d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/memberDetail">
+                            회원상세 
+                            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/modify">
+                            회원정보 수정 
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li>
+                     <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#"> <!-- /cart/cart?cart=1  -->
+                            장바구니
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                            주문내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/remove">
+                            회원탈퇴
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                            구매후기
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                            상품문의
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                </ul>
+            </div>
+			<div class="col-lg-9">
+				<security:authentication property="principal.memberDTO"
+					var="userDetails" />
+				<form class="col-md-9 m-auto" method="post" role="form">
+					<div class="form-group mb-3 ">
+						<label for="memberId">아이디</label> <input type="text"
+							class="form-control mt-1" id="memberId" name="memberId"
+							placeholder="아이디" value="${userDetails.memberId}" readonly>
+					</div>
+					<div class="form-group mb-3">
+						<label for="password">기존 비밀번호</label> <input type="password"
+							class="form-control mt-1" id="password" name="password"
+							placeholder="비밀번호" value="">
+					</div>
+					<div class="col text-end mt-2">
+						<button type="submit" class="btn btn-danger btn-lg px-3">회원탈퇴</button>
+					</div>
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}">
+				</form>
+				<form class="col-md-9 m-auto" method="get" role="form">
+					<div class="col text-end mt-2">
+						<button type="button" class="btn btn-secondary  btn-lg px-3"
+							onclick="location.href='/member/memberPage'">취소</button>
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}"> <input type="hidden"
+							style="color: black;" class="form-control mt-1" id="memberId"
+							name="memberId" placeholder="아이디" value="${userDetails.memberId}"
+							readonly>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- End Contact -->
 
 	<!-- Start Footer -->
 	<footer class="bg-dark" id="tempaltemo_footer">

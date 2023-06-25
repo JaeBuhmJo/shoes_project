@@ -26,7 +26,7 @@ public class HomeController {
 		return SecurityContextHolder.getContext().getAuthentication();
 	}
 	
-	@GetMapping("member/memberPage2")
+	@GetMapping("/main")
 	public void contactGet() {
 		
 	}

@@ -133,28 +133,46 @@ https://templatemo.com/tm-559-zay-shop
                 <ul class="list-unstyled">
                     <li class="pb-3">
                         <a class="d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/memberDetail">
-                            회원 상세 
+                            회원상세 
                             <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                     </li>
                     <li class="pb-3">
                         <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/modify">
-                            회원 정보 수정 
+                            회원정보 수정 
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                     </li>
                      <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#"> <!-- /cart/cart?cart=1  -->
                             장바구니
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                     </li>
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/remove">
-                            회원 탈퇴
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                            주문내역
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
-                    </li>
+                    </li> 
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/remove">
+                            회원탈퇴
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                            구매후기
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                            상품문의
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
                 </ul>
             </div>
             <div class="col-lg-9">
