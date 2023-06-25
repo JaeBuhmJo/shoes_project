@@ -1,6 +1,8 @@
 package com.project.mapper;
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -8,6 +10,7 @@ import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
 import com.project.domain.ProductDTO;
 import com.project.domain.QnaDTO;
+import com.project.domain.ReviewDTO;
 
 @Mapper
 public interface DetailMapper {
@@ -18,5 +21,7 @@ public interface DetailMapper {
 	// 장바구니에 담기 누를 시 장바구니에 제품 정보 보내기
 		public int cartInsert(CartDTO cart);
 
-		public int qnaInsert(QnaDTO qna);
+		public List<ReviewDTO> reviewList(Criteria cri);
+		public int reviewTotal(Criteria cri);
+
 }

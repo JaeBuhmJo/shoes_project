@@ -1,9 +1,12 @@
 package com.project.service;
 
 
+import java.util.List;
+
 import com.project.domain.CartDTO;
+import com.project.domain.Criteria;
 import com.project.domain.ProductDTO;
-import com.project.domain.QnaDTO;
+import com.project.domain.ReviewDTO;
 
 public interface DetailService {
 
@@ -13,6 +16,7 @@ public interface DetailService {
 	// 상품 상제 정보 페이지에서 cart에 데이터 보내기
 	public boolean cartInsert(CartDTO cart);
 	
-	public boolean qnaInsert(QnaDTO qna);
+	public List<ReviewDTO> reviewList(Criteria cri);
+	public int reviewTotal(Criteria cri);
 }
 

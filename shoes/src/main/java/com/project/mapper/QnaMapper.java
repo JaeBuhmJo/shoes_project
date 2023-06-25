@@ -13,10 +13,11 @@ import com.project.domain.QnaPageDTO;
 @Mapper
 public interface QnaMapper {
 
-	// 댓글 정보 보여주기
+	// 문의 정보 보여주기
 		public List<QnaDTO> qnaList(Criteria cri);
 		public int qnaTotal(Criteria cri);
 
 		public QnaDTO qnaRead(int qnaId);
-
+		
+		public int qnaInsert(QnaDTO qna);
 }

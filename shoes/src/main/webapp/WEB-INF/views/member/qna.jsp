@@ -142,17 +142,17 @@
 			<th scope="col">작성자</th>
 			<th scope="col">제목</th>
 			<th scope="col">문의 등록일</th>
-			<th scope="col">답변 등록일</th>
+
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach var="qna" items="${list}">
 			<tr>
 				<th scope="row">${qna.qnaId}</th>
+
 				<td>${qna.memberId}</td>
 				<td><a href="${qna.qnaId}" class="qna">${qna.title}</a></td>
 				<td>${qna.questionDate} </td>
-				<td>${qna.answerDate} </td>
 			</tr>
 		</c:forEach>
 	</tbody>

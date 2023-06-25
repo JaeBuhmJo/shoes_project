@@ -36,14 +36,20 @@
 		values(#{memberId},#{productId},#{cartAmount},#{inventoryId})
 	</insert>
 	
-	
-	<insert id="qnaInsert">
-		<selectKey keyProperty="qnaId" order="BEFORE" resultType="int">
-			select qnas_seq.nextval from dual
-		</selectKey>
-			insert into qnas(qna_id,member_id,product_id,question,title)
-			values(#{qnaId},#{memberId},#{productId},#{question},#{title})
-	</insert>
+	<select id="reviewTotal" resultType="java.lang.Integer">
+		select count(*) from reviews where review_id > 0
+</select>
+
+	<select id="reviewList" resultType="com.project.domain.ReviewDTO">
+	<![CDATA[
+		select review_id,regdate,contents,product_id,member_id
+		from (
+			select /*+INDEX_DESC(qnas qna_id)*/ rownum rn,review_id,regdate,contents,product_id,member_id
+			from reviews
+			where rownum <= (#{page}*#{amount}))
+			where rn > (#{page}-1)*#{amount} order by review_id desc
+	]]>
+	</select>
 	
 	
 	

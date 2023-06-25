@@ -1,11 +1,15 @@
 package com.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.CartDTO;
+import com.project.domain.Criteria;
 import com.project.domain.ProductDTO;
 import com.project.domain.QnaDTO;
+import com.project.domain.ReviewDTO;
 import com.project.mapper.DetailMapper;
 import com.project.mapper.QnaMapper;
 
@@ -30,11 +34,16 @@ public class DetailServiceImpl implements DetailService {
 		// TODO Auto-generated method stub
 		return detailMapper.cartInsert(cart)==1?true:false;
 	}
-	
 	@Override
-	public boolean qnaInsert(QnaDTO qna) {
-		log.info("qna 작성");
-		return detailMapper.qnaInsert(qna)==1?true:false;
-	}
+	public List<ReviewDTO> reviewList(Criteria cri) {
 
+		return detailMapper.reviewList(cri);
+	}
+	@Override
+	public int reviewTotal(Criteria cri) {
+		
+		return detailMapper.reviewTotal(cri);
+	}
+	
+	
 }

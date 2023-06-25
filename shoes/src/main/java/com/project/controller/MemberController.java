@@ -40,18 +40,21 @@ public class MemberController {
 	public void info() {
 		
 	}
+	
+
 	@GetMapping("/cart")
 	public void cart() {
 		
 	}
 	
 	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 
-	@PostMapping("/shoes/detail")
+	@PostMapping("/cart")
 	public String cartInsert(@RequestBody  CartDTO cart,RedirectAttributes rttr) {
 		log.info("cart 로 데이터 보내기" + cart);		
 		
 		if(service.cartInsert(cart)) {
-			rttr.addFlashAttribute("productId", cart.getProductId());
+			rttr.addAttribute("productId", cart.getProductId());
+			rttr.addAttribute("memberId", cart.getMemberId());
 
 			
 			
@@ -59,8 +62,6 @@ public class MemberController {
 		return "redirect:/shoes/detail";
 		
 	}
-
-	
 	
 	
 	@GetMapping("/qna")
@@ -88,7 +89,7 @@ public class MemberController {
 		
 		log.info("qna Post");
 		
-		if(service.qnaInsert(qna)) {
+		if(qnaService.qnaInsert(qna)) {
 			rttr.addFlashAttribute("result", qna.getMemberId());
 
 			rttr.addAttribute("page", cri.getPage());
@@ -96,7 +97,7 @@ public class MemberController {
 			log.info("insert"+qna);
 			return "redirect:/member/qna";
 		}
-		log.info("글 작성 성공");
+
 		return "/member/question";
 
 	}

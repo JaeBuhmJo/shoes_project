@@ -11,7 +11,10 @@ import com.project.domain.QnaDTO;
 import com.project.domain.QnaPageDTO;
 import com.project.mapper.QnaMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class QnaServiceImpl implements QnaService {
 
 	@Autowired
@@ -43,6 +46,12 @@ public class QnaServiceImpl implements QnaService {
 //		
 //		return mapper.qna(total);
 //	}
+	@Override
+	public boolean qnaInsert(QnaDTO qna) {
+		log.info("qna 작성");
+		return mapper.qnaInsert(qna)==1?true:false;
+	}
+
 	
 
 

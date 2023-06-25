@@ -31,7 +31,7 @@
 //   //     console.log(data);
 //   //   })
 //   //   .catch((error) => console.log(error));
-//   registerForm.submit(cartItem);
+//   detailForm.submit(cartItem);
 // });
 const detailForm = document.getElementById("detailForm");
 
@@ -65,5 +65,31 @@ detailForm.addEventListener("submit", (e) => {
   console.log("selected Amount: " + selectedAmount);
 
   // 폼 submit
-  detailForm.submit();
+  //  detailForm.submit();
+  //사이즈랑 가격,브랜드,카테고리 보내기
+  fetch("/member/cart", {
+    method: "post",
+    body: JSON.stringify({
+      size: selectedSize,
+      amount: selectedAmount,
+      category: category,
+      price: price,
+      brand: brand,
+    }),
+    headers: {
+      //      "X-CSRF-TOKEN": csrfToken,
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("카트에 전송 실패");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      detailForm.submit();
+    })
+    .catch((error) => console.log(error));
 });
