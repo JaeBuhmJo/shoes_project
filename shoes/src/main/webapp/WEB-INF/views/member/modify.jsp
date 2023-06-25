@@ -295,7 +295,7 @@ https://templatemo.com/tm-559-zay-shop
 							readonly>
 					</div>
 				</form>
-			</div>
+			</div>   
 		</div>
 	</div>
 	</div>
