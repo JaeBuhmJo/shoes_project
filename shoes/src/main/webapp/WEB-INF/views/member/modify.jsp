@@ -147,7 +147,7 @@ https://templatemo.com/tm-559-zay-shop
 						<i class="fa fa-fw fa-search text-white"></i>
 					</button>
 				</div>
-			</form>
+			</form>   
 		</div>
 	</div>
 
