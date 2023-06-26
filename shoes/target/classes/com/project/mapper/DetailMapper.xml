@@ -10,10 +10,11 @@
 			<result property="detail" column="detail"/>
 			<result property="category" column="category"/>
 			<result property="productCountry" column="product_country"/>
-			<collection property="productSize" resultMap="pi"/>
+			<collection property="inventories" resultMap="pi"/>
 	</resultMap>
 
 	<resultMap type="com.project.domain.InventoryDTO" id="pi">
+		<!-- 컬러도 같이 셀렉트 해야함. -->
 			<result property="productId" column="product_id"/>
 			<result property="productSize" column="product_size"/>	
 	</resultMap>
@@ -46,8 +47,8 @@
 		from (
 			select /*+INDEX_DESC(reviews review_id)*/ rownum rn,review_id,regdate,contents,product_id,member_id
 			from reviews
-			where rownum <= (#{page}*#{amount}))
-			where rn > (#{page}-1)*#{amount} order by review_id desc
+			where rownum <= (#{page}*#{listAmount}))
+			where rn > (#{page}-1)*#{listAmount} order by review_id desc
 	]]>
 	</select>
 	

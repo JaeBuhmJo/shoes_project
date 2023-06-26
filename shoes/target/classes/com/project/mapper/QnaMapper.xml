@@ -11,8 +11,8 @@
 		from (
 			select /*+INDEX_DESC(qnas qna_id)*/ rownum rn,qna_id,member_id,title,question_date
 			from qnas
-			where rownum <= (#{page}*#{amount}))
-			where rn > (#{page}-1)*#{amount}
+			where rownum <= (#{page}*#{listAmount}))
+			where rn > (#{page}-1)*#{listAmount}
 	]]>
 	</select>
 	

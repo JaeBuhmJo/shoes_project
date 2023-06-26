@@ -42,7 +42,7 @@ detailForm.addEventListener("submit", (e) => {
       brand: brand,
     }),
     headers: {
-       "X-CSRF-TOKEN": csrfToken,
+      "X-CSRF-TOKEN": csrfToken,
       "Content-Type": "application/json",
     },
   })
@@ -59,7 +59,8 @@ detailForm.addEventListener("submit", (e) => {
     .catch((error) => console.log(error));
 });
 
-<ul class="list-inline pb-3" id="detailsize">
+{
+  /* <ul class="list-inline pb-3" id="detailsize">
 										<li class="list-inline-item">Size : </li>
 										<select class="form-select" aria-label="" name="productSize" id="productSize">
 										  <option selected>사이즈 선택</option>
@@ -75,4 +76,5 @@ detailForm.addEventListener("submit", (e) => {
 										</select>										
 									<input class="form-control me-2" id="cartAmount" name="cartAmount" 
 									type="search" placeholder="수량 입력" aria-label="Search">																
-							</ul>
+							</ul> */
+}
