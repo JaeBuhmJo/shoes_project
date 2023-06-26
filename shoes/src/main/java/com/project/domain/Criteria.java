@@ -1,10 +1,12 @@
 package com.project.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Criteria {
 	private int page;
 	private int listAmount;
@@ -19,7 +21,7 @@ public class Criteria {
 		super();
 			this.order = order;
 	}
-	
+
 	public Criteria(String keyword, String searchType) {
 		this.keyword = keyword;
 		this.searchType = searchType;
