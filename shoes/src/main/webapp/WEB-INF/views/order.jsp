@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ include file="include/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +11,6 @@
 <title>Welcome 재범Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/templatemo.css">
-    <link rel="stylesheet" href="/assets/css/custom.css">
     <link rel="stylesheet" href="/assets/css/order.css">
 
     <!-- Load fonts style after rendering the layout styles -->
@@ -119,7 +114,6 @@ $(function(){
 
 
 <body>
-	<c:import url="/WEB-INF/views/include/header.jsp" />
 	
 	 <table class="cart__list">
 	         <thead>

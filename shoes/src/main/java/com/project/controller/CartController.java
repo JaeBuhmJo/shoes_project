@@ -83,7 +83,6 @@ public class CartController {
     	 System.out.println(request.getSession().getAttribute("member"));
     	 
       return "/order";
-      
      }
  }
 

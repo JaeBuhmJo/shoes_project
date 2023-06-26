@@ -18,7 +18,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String home() {
 		log.info("welcome shop!");   
-		return "main";
+		return "index";
 	}
 	
 	

@@ -14,7 +14,6 @@ toList.addEventListener("click", (e) => {
 const toAdmin = document.querySelector("#toAdmin");
 toAdmin.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log(operForm);
   operForm.action = toAdmin.getAttribute("href");
   operForm.submit();
 });

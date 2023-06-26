@@ -209,9 +209,9 @@ $(function(){
                     <td><span id="finalTotalkind_span">전체 주문금액</span></td>
                     <td><span id="finalTotalPrice_span">00,000</span></td>
                 </tr>
-            </table>
+            </table> 
             <div class="cart__mainbtns">
-	          <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
+	          <button class="cart__bigorderbtn left" >쇼핑 계속하기</button>
 	          <button class="cart__bigorderbtn right" onclick="location.href='/cart/order?order=1'" >주문하기</button>
          	</div>
        	</div>
@@ -223,7 +223,7 @@ $(function(){
 			<input type="hidden" name="member_id" value="${member.memberId}">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>	
-				
+				  
 		<!-- 삭제 form -->
 		<form action="/cart/delete" method="post" class="quantity_delete_form">
 			<input type="hidden" name="cart_id" class="delete_cart_id">
@@ -236,10 +236,18 @@ $(function(){
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	
 		</form>	
+		<form action="" id="operForm">
+			<input type="hidden" name="page" value="1"/>
+			<input type="hidden" name="listAmount" value="15"/>
+			<input type="hidden" name="searchType" value=""/>
+			<input type="hidden" name="keyword" value=""/>
+			<input type="hidden" name="order" value="registered-date-desc"/>
+		</form> 
 		<script>
 		const csrfToken='${_csrf.token}';
-		</script>
+		</script> 
     </section>
 	<c:import url="/WEB-INF/views/include/footer.jsp"/>
+<script src="/js/cart.js"></script>
 </body>
 </html>
