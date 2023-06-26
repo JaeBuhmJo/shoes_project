@@ -70,3 +70,6 @@ td {
   font-size: 0.875rem;
   line-height: 1;
 }
+.min-h {
+  min-height: 500px;
+}
