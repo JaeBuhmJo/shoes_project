@@ -3,6 +3,7 @@ package com.project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
@@ -36,11 +36,13 @@ public class AdminProductController {
 	private AttachmentService attachmentService;
 
 	@GetMapping("/index")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public void indexGet() {
 		log.info("어드민 인덱스 요청");
 	}
 
 	@GetMapping("/list")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public void productListGet(Model model, Criteria cri) {
 		log.info("상품 목록 요청");
 		List<ProductDTO> list = productService.getAllProducts(cri);
@@ -49,12 +51,14 @@ public class AdminProductController {
 	}
 	
 	@GetMapping("/register")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public void productRegisterGet() {
 		log.info("상품 등록 폼 요청");
 	}
 
 	@Transactional
 	@PostMapping("/register")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public String productRegisterPost(ProductDTO productDTO) {
 		log.info("상품 등록 요청 : " + productDTO.toString());
 		productService.registerProduct(productDTO, productDTO.getColorList());
@@ -67,6 +71,7 @@ public class AdminProductController {
 	}
 
 	@GetMapping("/read/{productId}")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public String productReadGet(Model model, @PathVariable String productId) {
 		log.info("상품 상세 정보 요청 : " + productId);
 		model.addAttribute("productDTO", productService.getSingleProduct(productId));
@@ -76,6 +81,7 @@ public class AdminProductController {
 
 	@Transactional
 	@PostMapping("/modify")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public String productModifyGet(ProductDTO productDTO, InventoryDTO inventoryDTO) {
 		log.info("상품 페이지 상품 수정 요청 : " + productDTO.toString());
 		productService.modifyProduct(productDTO);

@@ -133,6 +133,7 @@
 			  
 		</div>      
 		<c:if test="${!productDTO.discontinued}">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<button type="submit" class="btn btn-primary">상품 수정</button>
 		</c:if>
 		<button type="button" class="btn btn-secondary">목록으로</button>

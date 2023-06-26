@@ -56,6 +56,7 @@
 		</div>
 
 		<hr>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<button type="submit" class="btn btn-primary">재고 수정</button>
 		<button type="button" class="btn btn-secondary">목록으로</button>
 		<hr>

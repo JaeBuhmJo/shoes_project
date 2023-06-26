@@ -143,7 +143,7 @@
 		<div class="row row-cols-1 row-cols-md-6 g-6 mb-3 attachmentResult">
 			  
 		</div>       
-		      
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<button type="submit" class="btn btn-primary">상품 등록</button>
 		<button type="button" class="btn btn-secondary">목록으로</button>
 	</form>
@@ -153,6 +153,7 @@
 <script>
 	let colorCount = 1;
 	const pageIsRead = false;
+	const csrfToken = '${_csrf.token}';
 </script>
 <script src="/js/attachment.js"></script>
 <script src="/js/admin-product-register.js"></script>
