@@ -36,7 +36,7 @@
 	 <form action="/logout" method="post" >
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<button class="btn btn-info" type="submit">로그아웃</button>
-	 </form>	
+	 </form>
 	 <a href="/member/modify">회원수정</a>
 	 <a href="/member/remove">회원삭제</a>
 	 <a href="/member/memberDetail">회원상세정보</a>

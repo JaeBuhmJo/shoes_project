@@ -31,6 +31,7 @@ public class ShopController {
 		log.info("list 요청");
 		int total = productService.getSaleCount(cri);
 		List<ProductDTO> list = productService.getSaleProducts(cri);
+		log.info("크라이"+cri);
 		for (ProductDTO productDTO : list) {
 			String filePath = "/default/txt-file.png";
 			if (productDTO.getAttachmentList().get(0).getUuid() != null) {

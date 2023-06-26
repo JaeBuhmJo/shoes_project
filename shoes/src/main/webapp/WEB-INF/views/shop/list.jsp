@@ -26,17 +26,6 @@
 					${productListPage.cri.gender=='for-women'?'checked':''}> <label
 					class="btn btn-secondary" for="option4">여성</label>
 				</li>
-				<!-- 	
-				<li class="pb-3"><a
-					class="collapsed d-flex justify-content-between h3 text-decoration-none"
-					href="#"> Sale <i
-						class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-				</a> 
-					<ul id="collapseTwo" class="collapse list-unstyled pl-3">
-						<li><a class="text-decoration-none" href="#">Sport</a></li>
-						<li><a class="text-decoration-none" href="#">Luxury</a></li>
-					</ul></li>
-					 -->
 				<li class="pb-3" id="category"><a
 					class="collapsed d-flex justify-content-between h3 text-decoration-none"
 					href="#"> Product <i
@@ -276,7 +265,7 @@
 </section>
 <!--End Brands-->
 
-<form action="/shop/list" id="operForm">
+<form action="/shop/list" id="operForm" method="get">
 	<input type="hidden" name="page" value="${productListPage.cri.page}" />
 	<input type="hidden" name="listAmount" value="${productListPage.cri.listAmount}" /> 
 	<input type="hidden" name="searchType" value="${productListPage.cri.searchType}" /> 

@@ -17,9 +17,9 @@
 	</resultMap>
 
  	<select id="getOnSaleList" resultMap="productMap">
- 		select p.product_id, p.product_name, p.price, p.colors, at.uuid, at.upload_path, at.file_name
+ 		select p.product_id, p.product_name, p.price, p.colors, p.registered_date, p.sold_count, a.uuid, a.upload_path, a.file_name, p.rnum
 		from (
-			select product_id, product_name, price, colors, row_number() over (order by
+			select product_id, product_name, price, colors, registered_date, sold_count, ROW_NUMBER() over(order by
 		    <choose>
 		      <when test="order== 'registered-date-desc'">registered_date desc</when>
 		      <when test="order== 'sold-count-desc'">sold_count desc</when>
@@ -42,8 +42,16 @@
 		      <otherwise></otherwise>
 		    </choose>
 		) p
-		left outer join attachments at on p.product_id = at.product_id
+		left outer join attachments a on p.product_id = a.product_id 
 		where p.rnum between ((#{page}-1)*#{listAmount})+1 and (#{page}*#{listAmount})
+		 order by
+		  <choose>
+		      <when test="order== 'registered-date-desc'">registered_date desc</when>
+		      <when test="order== 'sold-count-desc'">sold_count desc</when>
+		      <when test="order== 'price-desc'">price desc</when>
+		      <when test="order== 'price-asc'">price asc</when>
+		      <otherwise></otherwise>
+		   </choose>
 	</select>
 	
 	<select id="getOnSaleCount">

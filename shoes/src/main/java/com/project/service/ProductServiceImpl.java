@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.domain.ColorSizeDTO;
 import com.project.domain.Criteria;
 import com.project.domain.ProductDTO;
 import com.project.mapper.ProductMapper;
