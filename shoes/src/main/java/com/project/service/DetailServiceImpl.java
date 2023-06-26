@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.CartDTO;
+import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
@@ -48,6 +49,11 @@ public class DetailServiceImpl implements DetailService {
 	@Override
 	public List<InventoryDTO> inventory(InventoryDTO inventory) {
 		return detailMapper.inventory(inventory);
+	}
+	@Override
+	public ColorSize colorSize(ColorSize cs) {
+		
+		return detailMapper.colorSize(cs);
 	}
 	
 	

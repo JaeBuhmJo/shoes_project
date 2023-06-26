@@ -162,10 +162,37 @@
 							
 							<p>
 							 이번 버전의 가젤은 큰 인기를 얻었던 1991 가젤의 클래식한 소재, 칼라, 텍스쳐, 구조를 그대로 이어갑니다. 가죽 갑피에 대비색상 3-스트라이프와 힐 탭을 더해 90년대 초반의 오리지널 스타일을 선보입니다.</p>
-								
-								<!-- 색상, 사이즈 -->
 
-								
+
+								<%-- <div class="row">
+									<div class="col-auto">
+
+										<!-- 해당 페이지의 상품이 가지고 있는 color 가져오기 -->
+										<ul class="list-inline pb-3" id="detailColor">
+											<li class="list-inline-item">color :</li>
+											<select class="form-select" aria-label="" name="productColor" id="productColor">
+												<option selected>색상 선택</option>
+												<c:forEach items="${inv}" var="inventory">
+													<option value="${inventory.productColor}">${inventory.productColor}</option>
+												</c:forEach>
+											</select>
+										</ul>
+
+										<!-- 해당 페이지의 상품이 가지고 있는 size 가져오기 -->
+										<ul class="list-inline pb-3" id="detailSize">
+											<li class="list-inline-item">size :</li>
+											<select class="form-select" aria-label="" name="productSize" id="productSize">
+												<option selected>사이즈 선택</option>
+												<c:forEach items="${inv}" var="inventory">
+													<option value="${inventory.productSize}">${inventory.productSize}</option>
+												</c:forEach>
+											</select>
+										</ul>
+				
+										
+									</div>
+
+								</div> --%>
 								<div class="row pb-3">
 								<div class="col d-grid">
 									<button type="button" class="btn btn-success btn-lg"
@@ -175,20 +202,8 @@
 									<button type="submit" class="btn btn-success btn-lg" id="goCart"value="addtocard">Add To Cart</button>
 								</div>
 							</div>
-
-				<%-- 			<ul class="list-inline pb-3" id="detailColor">
-								<li class="list-inline-item">color :</li>
-									 <select class="form-select" aria-label="" name="productColor" id="productColor">							
-									<option selected>색상선택</option>
-									
-								<c:forEach var="cs" items="${csList}">
-									 <option value="${cs.productColor}">${cs.productColor}</option>
-					
-								</c:forEach>
-								</select>
-							</ul> --%>
-
-							</form>
+						
+						</form>
 					</div>				
 					</div>
 				</div>
@@ -294,7 +309,44 @@
 						
 					</div>
 		
+<!-- 		<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<th scope="col">번호</th>
+			<th scope="col">작성자</th>
+			<th scope="col">후기</th>
+			<th scope="col">리뷰 등록일</th>
 
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach var="" items="${list}">
+			<tr>
+				<th scope="row">${review.reviewId}</th>
+				<td>${review.memberId}</td>
+				<td><a href="${review.reviewId}" class="qna">${review.contents}</a></td>
+				<td>${review.regdate} </td>
+			</tr>
+		</c:forEach>
+	</tbody>
+</table> 
+ 페이지 나누기 시작 
+ <nav aria-label="...">
+	<ul class="pagination justify-content-center">
+
+		<c:if test="${qnaPage.prev}">
+			<li class="page-item"><a class="page-link" href="${qnaPage.startPage-1} ">Previous</a></li>
+		</c:if>
+
+		<c:forEach begin="${qnaPage.startPage}" end="${qnaPage.endPage}" var="idx">
+			<li class="page-item ${qnaPage.cri.page==idx?'active':'' }"><a class="page-link" href="${idx}">${idx}</a></li>
+		</c:forEach>
+
+		<c:if test="${qnaPage.next}">
+			<li class="page-item"><a class="page-link" href="${qnaPage.endPage+1} ">Next</a></li>
+		</c:if>
+	</ul>
+</nav>  -->
 <!-- 페이지 나누기 종료 -->
 		            <!--Start Carousel Wrapper-->
             <div id="carousel-related-product">

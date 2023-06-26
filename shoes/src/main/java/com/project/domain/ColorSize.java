@@ -7,13 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartDTO {
+public class ColorSize {
 
-	private String memberId;
-	private int productId;
-	private int cartAmount;
-	private int inventoryId;
-
-	
-	
+	private String productColor;
+	private int productSize;
+	private String productId;
 }

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.project.domain.CartDTO;
+import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
@@ -27,4 +28,6 @@ public interface DetailMapper {
 		
 		public List<InventoryDTO> inventory(InventoryDTO inventory);
 
+		
+		public ColorSize colorSize(ColorSize cs);
 }

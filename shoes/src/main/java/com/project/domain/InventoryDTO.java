@@ -15,7 +15,7 @@ public class InventoryDTO {
 	private String productId;
 	private String productSize;
 	private int quantity;
-	private Date StockDate;
+	private Date stockDate;
 	private String productColor;
 	private boolean discontinued;
 	

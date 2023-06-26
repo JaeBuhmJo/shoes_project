@@ -4,6 +4,7 @@ package com.project.service;
 import java.util.List;
 
 import com.project.domain.CartDTO;
+import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
@@ -21,5 +22,8 @@ public interface DetailService {
 	public int reviewTotal(Criteria cri);
 	
 	public List<InventoryDTO> inventory(InventoryDTO inventory);
+	
+	public ColorSize colorSize(ColorSize cs);
+
 }
 

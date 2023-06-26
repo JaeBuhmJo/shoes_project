@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.CartDTO;
+import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.QnaDTO;
@@ -41,16 +42,12 @@ public class ShoesController {
 
 	}
 	@GetMapping("/detail")
-	public void detailRead(Model model,InventoryDTO inventory ,String productId,@ModelAttribute("cri") Criteria cri) {
+	public void detailRead(Model model,ColorSize cs ,String productId,@ModelAttribute("cri") Criteria cri) {
 		log.info("detail 화면");
 		
-		List<InventoryDTO> inv = service.inventory(inventory);
 		
-		model.addAttribute("inventory", inv);
-		
-		
-		
-		
+//		ColorSize csList = service.colorSize(cs);
+//		model.addAttribute("csList", csList);
 
 		//model 은 jsp에서 여기선 product.productId,product.price등의 값들을 주기 위해 사용
 		model.addAttribute("product", service.detail(productId));

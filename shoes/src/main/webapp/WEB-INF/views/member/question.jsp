@@ -28,10 +28,14 @@
                 </div>
                 <!-- productId -->
                 <input type="hidden" name="productId"  value='<%=request.getParameter("productId")%>'/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+               
             </form>
         </div>
     </div>
-
+<script>
+const csrfToken='${_csrf.token}';
+</script>
    <script src="/poweqnajs/question.js"> </script>
     
     <%@include file="../include/footer.jsp"%>

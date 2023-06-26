@@ -52,9 +52,20 @@
 	</select>
 	
 	<select id="inventory" resultType="com.project.domain.InventoryDTO">
-		select inventory_id,product_id,product_size,qnantity,
+		select inventory_id,product_id,product_size,quantity,
 			   stocked_date,product_color,discontinued
-		where inventory_id=#{inventory_id}
+		from inventories
+		where inventory_id=#{inventoryId}
 	</select>
+	
+	<select id="colorSize" resultType="com.project.domain.ColorSize">
+	SELECT DISTINCT
+	product_color,product_size
+	FROM inventories
+	WHERE product_id = #{productId}
+	GROUP BY product_color,product_size
+	order by product_color
+	</select>
+	
 	
 </mapper>
