@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
+import com.project.domain.InventoryDTO;
 import com.project.domain.QnaDTO;
 import com.project.domain.QnaPageDTO;
 import com.project.domain.ReviewDTO;
@@ -40,13 +41,21 @@ public class ShoesController {
 
 	}
 	@GetMapping("/detail")
-	public void detailRead(Model model, int productId,@ModelAttribute("cri") Criteria cri) {
+	public void detailRead(Model model,InventoryDTO inventory ,int productId,@ModelAttribute("cri") Criteria cri) {
 		log.info("detail 화면");
+		
+		List<InventoryDTO> inv = service.inventory(inventory);
+		
+		model.addAttribute("inventory", inv);
+		
+		
+		
+		
 
 		//model 은 jsp에서 여기선 product.productId,product.price등의 값들을 주기 위해 사용
 		model.addAttribute("product", service.detail(productId));
 
-List<ReviewDTO> list = service.reviewList(cri);
+		List<ReviewDTO> list = service.reviewList(cri);
 		
 		model.addAttribute("list", list);
 		int total = service.reviewTotal(cri);
@@ -56,19 +65,18 @@ List<ReviewDTO> list = service.reviewList(cri);
 
 //	@GetMapping("/detail")
 //	public void qnaList(@ModelAttribute("cri") Criteria cri,Model model) {
-//		log.info("qna 페이지 get");
-		
-	
-		
-		
-//		List<ReviewDTO> list = service.reviewList(cri);
-		
+//		log.info("qna 페이지 get");	
+//	
+//		
+//		
+//	List<ReviewDTO> list = service.reviewList(cri);
+//		
 //		model.addAttribute("list", list);
 //		int total = service.reviewTotal(cri);
-	
+//	
 //		model.addAttribute("reviewPage", new ReviewPageDTO(cri, total));
-		
-		
+//		
+//		
 //	}
 	
 	

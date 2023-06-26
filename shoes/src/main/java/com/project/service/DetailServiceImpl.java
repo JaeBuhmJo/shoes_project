@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
+import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
 import com.project.domain.QnaDTO;
 import com.project.domain.ReviewDTO;
@@ -43,6 +44,10 @@ public class DetailServiceImpl implements DetailService {
 	public int reviewTotal(Criteria cri) {
 		
 		return detailMapper.reviewTotal(cri);
+	}
+	@Override
+	public List<InventoryDTO> inventory(InventoryDTO inventory) {
+		return detailMapper.inventory(inventory);
 	}
 	
 	

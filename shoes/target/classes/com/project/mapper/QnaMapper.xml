@@ -12,7 +12,7 @@
 			select /*+INDEX_DESC(qnas qna_id)*/ rownum rn,qna_id,member_id,title,question_date
 			from qnas
 			where rownum <= (#{page}*#{amount}))
-			where rn > (#{page}-1)*#{amount} order by qna_id desc
+			where rn > (#{page}-1)*#{amount}
 	]]>
 	</select>
 	

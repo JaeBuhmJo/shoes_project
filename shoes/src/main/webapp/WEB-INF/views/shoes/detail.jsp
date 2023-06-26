@@ -166,24 +166,30 @@
 
 							<div class="row">
 								<div class="col-auto">
-									<ul class="list-inline pb-3" id="detailsize">
-										<li class="list-inline-item">Size : </li>
-										<select class="form-select" aria-label="" name="productSize" id="productSize">
-										  <option selected>사이즈 선택</option>
-										  <option value="200">200</option>
-										  <option value="210">210</option>
-										  <option value="220">220</option>
-										  <option value="230">230</option>
-										  <option value="240">240</option>
-										  <option value="250">250</option>
-										  <option value="260">260</option>
-										  <option value="270">270</option>
-										  <option value="280">280</option>
-										</select>										
-									<input class="form-control me-2" id="cartAmount" name="cartAmount" 
-									type="search" placeholder="수량 입력" aria-label="Search">																
-							</ul>
-								</div>
+
+										<table class="table table-striped table-bordered table-hover">
+											<thead>
+												<tr>
+													<th scope="col">색상</th>
+													<th scope="col">작성자</th>
+													<th scope="col">후기</th>
+													<th scope="col">리뷰 등록일</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach var="qna" items="${list}">
+													<tr>
+														<th scope="row">${review.reviewId}</th>
+														<td>${review.memberId}</td>
+														<td><a href="${review.reviewId}" class="qna">${review.contents}</a></td>
+														<td>${review.regdate}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+
+									</div>
 
 							</div>
 							<div class="row pb-3">
@@ -301,7 +307,7 @@
 						
 					</div>
 		
-		<table class="table table-striped table-bordered table-hover">
+<!-- 		<table class="table table-striped table-bordered table-hover">
 	<thead>
 		<tr>
 			<th scope="col">번호</th>
@@ -322,7 +328,7 @@
 		</c:forEach>
 	</tbody>
 </table> 
-<!-- 페이지 나누기 시작 -->
+ 페이지 나누기 시작 
  <nav aria-label="...">
 	<ul class="pagination justify-content-center">
 
@@ -338,7 +344,7 @@
 			<li class="page-item"><a class="page-link" href="${qnaPage.endPage+1} ">Next</a></li>
 		</c:if>
 	</ul>
-</nav> 
+</nav>  -->
 <!-- 페이지 나누기 종료 -->
 		            <!--Start Carousel Wrapper-->
             <div id="carousel-related-product">

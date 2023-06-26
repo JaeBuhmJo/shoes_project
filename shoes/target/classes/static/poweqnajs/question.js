@@ -3,7 +3,7 @@
 const qnaForm = document.querySelector("#qnaForm");
 qnaForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
+  qnaForm.submit();
   // if ((document.querySelector("#memberId").value = "")) {
   //   alert("아이디를 입력해주세요");
   //   return;
@@ -17,8 +17,6 @@ qnaForm.addEventListener("submit", (e) => {
   //   alert("질문 내용을 입력해 주세요");
   //   return;
   // }
-
-  qnaForm.submit();
 
   //  const formData = new FormData(qnaForm);
 

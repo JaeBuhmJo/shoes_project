@@ -12,10 +12,12 @@ import lombok.NoArgsConstructor;
 public class InventoryDTO {
 
 	private int inventoryId;
+	private int productId;
 	private String productSize;
 	private int quantity;
-	private int productId;
 	private Date StockDate;
+	private String productColor;
+	private boolean discontinued;
 	
 	
 	

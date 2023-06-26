@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
+import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
 import com.project.domain.ReviewDTO;
 
@@ -18,5 +19,7 @@ public interface DetailService {
 	
 	public List<ReviewDTO> reviewList(Criteria cri);
 	public int reviewTotal(Criteria cri);
+	
+	public List<InventoryDTO> inventory(InventoryDTO inventory);
 }
 
