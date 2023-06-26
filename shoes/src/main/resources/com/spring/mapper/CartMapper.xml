@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.CartMapper">
+		
+      <!-- 장바구니 추가 -->
+	  <insert id="addCart">
+		insert into carts(memberId, productId, cartAmount)
+		values(#{memberId}, #{productId}, #{cartAmount}) 
+	  </insert>
+	  
+	  <!-- 장바구니 삭제 -->
+	  <delete id="deleteCart">
+		delete from carts where cartId = #{cartId} and memberId = #{memberId};
+	   </delete>
+	   
+	   <!-- 장바구니 수량 수정 -->
+	  <update id="modifyamount">
+	  update 
+	  	carts set cart_amount=#{cartAmount} where cartId = #{cartId}
+	  </update>
+	  
+	  <!-- 카트 목록 -->
+	  <select id="getCart" resultType="com.project.domain.CartDTO" >
+		select 
+			a.cartId
+			, a.memberId
+			, a.procuctId
+			, a.cartamount
+			, b.productName
+			, b.Price
+			, b.discountPrice
+		from 
+			carts a 
+			left join products b on a.procuctId = b.procuctId
+		where memberId = #{memberId}	
+	  </select>
+	  
+	     <!-- 카트 확인 -->
+	    <select id="checkCart" resultType="com.project.domain.CartDTO">
+		  select * from carts
+		  where memberId = #{memberId} and productId = #{productId}
+	    </select>	
+	
+
+</mapper>
