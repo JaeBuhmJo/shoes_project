@@ -1,98 +1,181 @@
-    <!-- Start Footer -->
-    <footer class="bg-dark" id="tempaltemo_footer">
-        <div class="container">
-            <div class="row">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
-                        </li>
-                        <li>
-                            <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="row text-light mb-4">
-                <div class="col-12 mb-3">
-                    <div class="w-100 my-3 border-top border-light"></div>
-                </div>
-                <div class="col-auto me-auto">
-                    <ul class="list-inline text-left footer-icons">
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-100 bg-black py-3">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-12">
-                        <p class="text-left text-light">
-                            Copyright &copy; 2021 Company Name 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </footer>
-    <!-- End Footer -->
 
 </body>
-</html>
 
+</html>
+<section>
+	<!-- Skillset Card-->
+	<div>
+	<div>
+	<div>
+	<div class="card shadow border-0 rounded-4 mb-5">
+		<div class="card-body p-5">
+			<!-- Professional skills list-->
+			<div class="mb-5">
+				<div class="d-flex align-items-center mb-4">
+					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
+						<i class="bi bi-tools"></i>
+					</div>
+					<h3 class="fw-bolder mb-0">
+						<span class="text-gradient d-inline">Professional Skills</span>
+					</h3>
+				</div>
+				<div class="row row-cols-1 row-cols-md-3 mb-4">
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">github</div>
+					</div>
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">mybatis</div>
+					</div>
+					<div class="col">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">spring-boot</div>
+					</div>
+				</div>
+				<div class="row row-cols-1 row-cols-md-3">
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">-----</div>
+					</div>
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">-----</div>
+					</div>
+					<div class="col">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">-----</div>
+					</div>
+				</div>
+			</div>
+			<!-- Languages list-->
+			<div class="mb-0">
+				<div class="d-flex align-items-center mb-4">
+					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
+						<i class="bi bi-code-slash"></i>
+					</div>
+					<h3 class="fw-bolder mb-0">
+						<span class="text-gradient d-inline">Languages</span>
+					</h3>
+				</div>
+				<div class="row row-cols-1 row-cols-md-3 mb-4">
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">HTML</div>
+					</div>
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">java</div>
+					</div>
+					<div class="col">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">JavaScript</div>
+					</div>
+				</div>
+			</div>
+			<div class="mb-0">
+				<div class="d-flex align-items-center mb-4">
+					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
+						<i class="bi bi-code-slash"></i>
+					</div>
+					<h3 class="fw-bolder mb-0">
+						<span class="text-gradient d-inline">함선</span>
+					</h3>
+				</div>
+				<div class="row row-cols-1 row-cols-md-3 mb-4">
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">블랙펄</div>
+					</div>
+				</div>
+			</div>
+			<div class="mb-0">
+				<div class="d-flex align-items-center mb-4">
+					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
+						<i class="bi bi-code-slash"></i>
+					</div>
+					<h3 class="fw-bolder mb-0">
+						<span class="text-gradient d-inline">선장</span>
+					</h3>
+				</div>
+				<div class="row row-cols-1 row-cols-md-3 mb-4">
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">조재범</div>
+					</div>
+				</div>
+			</div>
+			<div class="mb-0">
+				<div class="d-flex align-items-center mb-4">
+					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
+						<i class="bi bi-code-slash"></i>
+					</div>
+					<h3 class="fw-bolder mb-0">
+						<span class="text-gradient d-inline">선원</span>
+					</h3>
+				</div>
+				<div class="row row-cols-1 row-cols-md-3 mb-4">
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">박경태</div>
+					</div>
+					<div class="col mb-4 mb-md-0">
+						<div class="d-flex  bg-light rounded-4 p-3">하성훈</div>
+					</div>
+					<div class="col">
+						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">이광열</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+</section>
+<!-- Footer-->
+<footer class="bg-white py-4 mt-auto">
+	<div class="container px-5">
+		<div class="row align-items-center justify-content-between flex-column flex-sm-row">
+			<div class="col-auto">
+				<div class="small m-0">Copyright &copy; Your Website 2023</div>
+			</div>
+			<div class="col-auto">
+				<a class="small" href="#!">Privacy</a> <span class="mx-1">&middot;</span> <a class="small" href="#!">Terms</a> <span class="mx-1">&middot;</span> <a class="small" href="#!">Contact</a>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/templatemo.js"></script>
+    <script src="/assets/js/custom.js"></script>
+ <!-- Start Slider Script -->
+    <script src="/assets/js/slick.min.js"></script>
+    <script>
+        $('#carousel-related-product').slick({
+            infinite: true,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

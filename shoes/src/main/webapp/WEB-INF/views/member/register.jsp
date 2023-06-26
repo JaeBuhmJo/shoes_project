@@ -428,5 +428,4 @@ https://templatemo.com/tm-559-zay-shop
 	<script src="/assets/js/register.js"></script>
 	<!-- End Script -->
 </body>
-
 </html>

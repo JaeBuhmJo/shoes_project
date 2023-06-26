@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.DetailMapper">
+
+	<!-- 상품 상세 조회 -->
+	<resultMap type="com.project.domain.ProductDTO" id="productDTO">
+			<id property="productId" column="product_id"/>
+			<result property="brand" column="brand"/>
+			<result property="price" column="price"/>
+			<result property="detail" column="detail"/>
+			<result property="category" column="category"/>
+			<result property="productCountry" column="product_country"/>
+			<collection property="inventories" resultMap="pi"/>
+	</resultMap>
+
+	<resultMap type="com.project.domain.InventoryDTO" id="pi">
+		<!-- 컬러도 같이 셀렉트 해야함. -->
+			<result property="productId" column="product_id"/>
+			<result property="productSize" column="product_size"/>	
+	</resultMap>
+
+	<select id="detail" resultMap="productDTO">
+
+
+	select p.brand, p.price, p.detail, p.category, p.product_id, p.product_country, i.product_size
+	from products p
+	left OUTER JOIN inventories i ON i.product_id = p.product_id
+	where p.product_id = #{productId}
+	</select>
+<!-- 	select p.brand,p.price,p.detail,p.category,p.product_id, p.product_country,i.product_size
+	from products p
+	left outer join inventories i on i.product_id=p.product_id
+	where p.product_id=#{productId} -->	
+	
+	<insert id="cartInsert">
+		insert into carts(member_id, product_id,cart_amount,inventory_id)
+		values(#{memberId},#{productId},#{cartAmount},#{inventoryId})
+	</insert>
+	
+	<select id="reviewTotal" resultType="java.lang.Integer">
+		select count(*) from reviews where review_id > 0
+	</select>
+
+	<select id="reviewList" resultType="com.project.domain.ReviewDTO">
+	<![CDATA[
+		select review_id,regdate,contents,product_id,member_id
+		from (
+			select /*+INDEX_DESC(reviews review_id)*/ rownum rn,review_id,regdate,contents,product_id,member_id
+			from reviews
+			where rownum <= (#{page}*#{listAmount}))
+			where rn > (#{page}-1)*#{listAmount} order by review_id desc
+	]]>
+	</select>
+	
+	<select id="inventory" resultType="com.project.domain.InventoryDTO">
+		select inventory_id,product_id,product_size,quantity,
+			   stocked_date,product_color,discontinued
+		from inventories
+		where inventory_id=#{inventoryId}
+	</select>
+	
+	<select id="colorSize" resultType="com.project.domain.ColorSize">
+	SELECT DISTINCT
+	product_color,product_size
+	FROM inventories
+	WHERE product_id = #{productId}
+	GROUP BY product_color,product_size
+	order by product_color
+	</select>
+	
+	
+</mapper>

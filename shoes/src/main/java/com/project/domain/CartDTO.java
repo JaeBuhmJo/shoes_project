@@ -2,7 +2,6 @@ package com.project.domain;
 
 import java.util.List;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +24,7 @@ public class CartDTO {
 	
 	private int cartAmount; // 담은 수량
 	
+	private int inventoryId; // 재고 코드
 	// product
 	
 	private int productName; // 상품명
@@ -42,9 +42,4 @@ public class CartDTO {
 	private List<Product_ImageDTO> imagelist;
 
 }
-
-	
-	
-	
-	
 

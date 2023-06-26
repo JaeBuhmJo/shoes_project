@@ -10,10 +10,4 @@ class ShoesApplicationTests {
 	void contextLoads() {
 	}
 	
-	@Test
-	public void test() {
-		
-		
-	}
-
 }

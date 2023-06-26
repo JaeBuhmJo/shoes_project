@@ -21,7 +21,6 @@ public class HomeController {
 		return "index";
 	}
 	
-	
 	@GetMapping("/auth")
 	@ResponseBody
 	public Authentication authen() {

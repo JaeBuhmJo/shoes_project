@@ -2,10 +2,8 @@ package com.project.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class Criteria {
 	private int page;
@@ -25,5 +23,15 @@ public class Criteria {
 	public Criteria(String keyword, String searchType) {
 		this.keyword = keyword;
 		this.searchType = searchType;
+	}
+	
+	public Criteria() {
+		this(1,10);
+	}
+
+	public Criteria(int page, int listAmount) {
+		super();
+		this.page= page;
+		this.listAmount = listAmount;
 	}
 }
