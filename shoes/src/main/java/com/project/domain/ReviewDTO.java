@@ -14,6 +14,6 @@ public class ReviewDTO {
 	public int reviewId;
 	public Date regdate;
 	public String contents;
-	public int productId;
+	public String productId;
 	public String memberId;
 }

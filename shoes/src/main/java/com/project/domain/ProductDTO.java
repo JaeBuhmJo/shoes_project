@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductDTO {
 
-	private int productId;
+	private String productId;
 	private String category;
 	private String brand;
 	private String detail;

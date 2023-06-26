@@ -25,7 +25,7 @@ public class DetailServiceImpl implements DetailService {
 
 	
 	@Override
-	public ProductDTO detail(int productId) {
+	public ProductDTO detail(String productId) {
 		
 		return detailMapper.detail(productId);
 	}

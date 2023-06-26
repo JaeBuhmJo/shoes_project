@@ -41,7 +41,7 @@ public class ShoesController {
 
 	}
 	@GetMapping("/detail")
-	public void detailRead(Model model,InventoryDTO inventory ,int productId,@ModelAttribute("cri") Criteria cri) {
+	public void detailRead(Model model,InventoryDTO inventory ,String productId,@ModelAttribute("cri") Criteria cri) {
 		log.info("detail 화면");
 		
 		List<InventoryDTO> inv = service.inventory(inventory);

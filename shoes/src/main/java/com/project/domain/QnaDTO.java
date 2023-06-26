@@ -13,7 +13,7 @@ public class QnaDTO {
 
 	public int qnaId;
 	public String memberId;
-	public int productId;
+	public String productId;
 	public String question;
 	public String answer;
 	public Date questionDate;

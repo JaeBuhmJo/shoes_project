@@ -12,7 +12,7 @@ import com.project.domain.ReviewDTO;
 public interface DetailService {
 
 	// 제품 조회 폼에서 회원이(memberId) 선택한 제품(productId) 정보 보여주기
-	public ProductDTO detail(int productId);
+	public ProductDTO detail(String productId);
 	
 	// 상품 상제 정보 페이지에서 cart에 데이터 보내기
 	public boolean cartInsert(CartDTO cart);

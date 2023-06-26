@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InventoryDTO {
 
-	private int inventoryId;
-	private int productId;
+	private String inventoryId;
+	private String productId;
 	private String productSize;
 	private int quantity;
 	private Date StockDate;
