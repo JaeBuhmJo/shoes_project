@@ -50,7 +50,7 @@
 			      <th scope="col">누적 판매량</th>
 			      <th scope="col">판매중 여부</th> 
 			      <th scope="col">최초 입고일</th> 
-			    </tr> 
+			    </tr>  
 			  </thead>
 			  <tbody class="table-group-divider overflow-auto inventory-list-table">
 			  	<c:forEach items="${list}" var="product"> 
@@ -73,9 +73,5 @@
 			</table>
 		</div>
         </main>
-<form action="" id="operForm">
-	<input type="hidden" name="searchType" value="${inventoryCri.searchType}" /> 
-	<input type="hidden" name="keyword" value="${inventoryCri.searchType}" />
-</form>
 <script src="/js/admin-product-list.js"></script>
 <%@ include file="../../include/adminfooter.jsp" %>

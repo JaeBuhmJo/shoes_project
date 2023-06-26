@@ -2,8 +2,11 @@
  *
  */
 
+const operForm = document.querySelector("#operForm");
+
 document.querySelector(".btn-secondary").addEventListener("click", () => {
-  location.href = "/admin/inventory/list";
+  operForm.action = "/admin/inventory/list";
+  operForm.submit();
 });
 
 document.querySelector(".btn-success").addEventListener("click", () => {

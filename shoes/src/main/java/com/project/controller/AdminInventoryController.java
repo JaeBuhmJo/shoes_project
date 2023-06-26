@@ -38,15 +38,16 @@ public class AdminInventoryController {
 		model.addAttribute("list", list);
 		model.addAttribute("inventoryCri", cri);
 	}
-	
+
 	@GetMapping("/read/{productId}")
-	public String inventoryReadGet(Model model, @PathVariable String productId) {
+	public String inventoryReadGet(Model model, @PathVariable String productId, Criteria cri) {
 		log.info("재고 상세 정보 요청 : " + productId);
 		model.addAttribute("productDTO", productService.getSingleProduct(productId));
 		model.addAttribute("inventoryList", inventoryService.getProductInventories(productId));
+		model.addAttribute("inventoryCri", cri);
 		return "/admin/inventory/read";
 	}
-	
+
 	@Transactional
 	@PostMapping("/modify")
 	public String inventoryModifyPost(ProductDTO productDTO) {

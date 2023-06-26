@@ -90,9 +90,14 @@
 			<input class="" type="hidden" name="forMen" value="${productDTO.forMen?'true':'false' }" id="flexCheckDefault1" >
 			<input class="" type="hidden" name="forWomen" value="${productDTO.forWomen?'true':'false' }" id="flexCheckDefault2" >
 		</form>
-        </main>              
-        </main> 
-<script >
+        </main>
+        </main>
+        <form action="/inventory/list" id="operForm">
+			<input type="hidden" name="searchType" value="${inventoryCri.searchType}" /> 
+			<input type="hidden" name="keyword" value="${inventoryCri.keyword}" />
+			<input type="hidden" name="discontinued" value="${inventoryCri.discontinued}" />
+		</form>
+<script > 
 	const productId = ${productDTO.productId }
 	let colorCount = 0
 </script>
