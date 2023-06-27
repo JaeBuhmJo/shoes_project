@@ -43,8 +43,7 @@ $(function(){
 			   $("input[name=cbox]").prop("checked", true);
 			 } else {
 			   $("input[name=cbox]").prop("checked", false);
-			 }
-						 
+			 }					 
 		});
 	
 		
@@ -55,13 +54,52 @@ $(function(){
 			}else{
 				$("#cboxAll").prop("checked", false)
 			}
-			
-			// 전체 합계 금액 
+				 
 			
 		});
 		
-		// 선택 삭제
-		
+		 // 카트 선택 삭제
+		 $(".abutton1").click(function () {
+         $("input[name=cbox]:checked").each(function () {
+             var cartId = $(this).data("cartId");
+         // 선택된 상품을 삭제하는 로직을 추가하세요
+         $(this).closest(".cart__list__detail").remove();
+          });
+       });
+		 
+		 // 카트 전체 삭제
+		 $(".abutton2").click(function () {
+         $(".cart__list__detail").remove();
+        });
+		 
+		 // 전체 합계 금액
+		 
+	 $("input[name=cbox]").click(function () {
+         var totalKind = $("input[name=cbox]:checked").length;
+         var totalAmount = 0;
+         var discount = 0;
+         var shipPrice = 0;
+         var finalTotalPrice = 0;
+
+  	$("input[name=cbox]:checked").each(function () {
+   		 var price = $(this).closest(".cart__list__detail").find(".price").text();
+    	 price = price.replace(/[^0-9]/g, "");
+   		 totalAmount += parseInt(price);
+     });
+
+         finalTotalPrice = totalAmount - discount;
+
+	  $("#totalCount_span").text("상품수: " + totalKind);
+	  $("#totalCount_span").text(totalKind);
+	  $("#totalamount_span").text("상품금액: " + totalAmount.toLocaleString() + "원");
+	  $("#totalamount_span").text(totalAmount.toLocaleString());
+	  $("#disCount_span").text("할인금액: " + discount.toLocaleString() + "원");
+	  $("#disCount_span").text(discount.toLocaleString());
+	  $("#shipfree_span").text("배송비: " + shipPrice.toLocaleString() + "원");
+	  $("#shipfree_span").text(shipPrice.toLocaleString());
+	  $("#finalTotalPrice_span").text("전체 주문금액: " + finalTotalPrice.toLocaleString() + "원");
+	  $("#finalTotalPrice_span").text(finalTotalPrice.toLocaleString());
+});
 		
 		
 		
@@ -136,7 +174,7 @@ $(function(){
            	 <tbody>
              	<tr class="cart__list__detail">
                  	<td>
-                 		<input type="checkbox" name="cbox" id="checkbox2">
+                 		<input type="checkbox" name="cbox" id="checkbox2" data-cartId="${clist.cartId}">
 	                </td>
 	                <td>
 	                 	<img src="" alt="나이키 슬리퍼">
@@ -145,7 +183,7 @@ $(function(){
 	                 	<span class="cart__list__smartstore">나이키 슬리퍼</span>
 	                    <p>편하게 신을수 있는 슬리퍼</p>
 	                    <span class="price">30,000원</span>
-	                    <span style="text-decoration: line-through; color: lightgray;">00,000</span>
+	                    <span style="text-decoration: line-through; color: lightgray;">00,000원</span>
 	    			</td>
 				    <td class="cart__list__option">
 				        <p>수량 : <span class="productCount">1</span>개</p>                 
@@ -158,7 +196,7 @@ $(function(){
 				</tr>
 				<tr class="cart__list__detail">
 				   <td>
-                 		<input type="checkbox" name="cbox" id="checkbox2">
+                 		<input type="checkbox" name="cbox" id="checkbox2" data-cartId="${clist.cartId}">
 	                </td>
 	                <td>
 	                 	<img src="" alt="아디다스 운동화">
@@ -167,7 +205,7 @@ $(function(){
 	                 	<span class="cart__list__smartstore">아디다스 운동화</span>
 	                    <p> 걸음이 편한 운동화</p>
 	                    <span class="price">70,000원</span>
-	                    <span style="text-decoration: line-through; color: lightgray;">00,000</span>
+	                    <span style="text-decoration: line-through; color: lightgray;">00,000원</span>
 	    			</td>
 				    <td class="cart__list__option">
 				        <p>수량 : <span class="productCount">1</span>개</p>                 

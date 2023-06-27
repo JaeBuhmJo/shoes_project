@@ -62,7 +62,34 @@ $(function(){
 				$("#cboxAll").prop("checked", false)
 			}
 			
-			// 전체 합계 금액 
+			// 전체 합계 금액
+			 
+			 $("input[name=cbox]").click(function () {
+		         var totalKind = $("input[name=cbox]:checked").length;
+		         var totalAmount = 0;
+		         var discount = 0;
+		         var shipPrice = 0;
+		         var finalTotalPrice = 0;
+
+		  	$("input[name=cbox]:checked").each(function () {
+		   		 var price = $(this).closest(".cart__list__detail").find(".price").text();
+		    	 price = price.replace(/[^0-9]/g, "");
+		   		 totalAmount += parseInt(price);
+		     });
+
+		         finalTotalPrice = totalAmount - discount;
+
+			  $("#totalCount_span").text("상품수: " + totalKind);
+			  $("#totalCount_span").text(totalKind);
+			  $("#totalamount_span").text("상품금액: " + totalAmount.toLocaleString() + "원");
+			  $("#totalamount_span").text(totalAmount.toLocaleString());
+			  $("#disCount_span").text("할인금액: " + discount.toLocaleString() + "원");
+			  $("#disCount_span").text(discount.toLocaleString());
+			  $("#shipfree_span").text("배송비: " + shipPrice.toLocaleString() + "원");
+			  $("#shipfree_span").text(shipPrice.toLocaleString());
+			  $("#finalTotalPrice_span").text("전체 주문금액: " + finalTotalPrice.toLocaleString() + "원");
+			  $("#finalTotalPrice_span").text(finalTotalPrice.toLocaleString());
+		});
 			
 		});
 
@@ -204,34 +231,30 @@ $(function(){
                             </tr>
                         </table>
                     </article>
-                     <div class="final">
-                        <h2>최종결제 정보</h2>
-                        <table>
-                            <tr>
-                                <td>총</td>
-                                <td>0 건</td>
-                            </tr>
-                            <tr>
-                                <td>상품금액</td>
-                                <td>00,000</td>
-                            </tr>
-                            <tr>
-                                <td>할인금액</td>
-                                <td>-1,000</td>
-                            </tr>
-                            <tr>
-                                <td>배송비</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>포인트 할인</td>
-                                <td>-1,000</td>
-                            </tr>
-                            <tr>
-                                <td>전체주문금액</td>
-                                <td>00,000</td>
-                            </tr>
-                        </table>
+                     <div class="total">
+            <h2>전체합계</h2>
+            <table>
+                <tr>
+                    <td><span id="totalKind_span">상품수</span></td>
+                    <td><span id="totalCount_span">2</span></td>
+                </tr>
+                <tr>
+                    <td><span id="totalKinds_span">상품금액</span></td>
+                    <td><span id="totalamount_span">00,000</span></td>
+                </tr>
+                <tr>
+                    <td><span id="disCounts_span">할인금액</span></td>
+                    <td><span id="disCount_span">-1,000</span></td>
+                </tr>
+                <tr>
+                    <td><span id="shipprice_span">배송비</span></td>
+                    <td><span id="shipfree_span">무료</span></td>
+                </tr>
+                <tr>
+                    <td><span id="finalTotalkind_span">전체 주문금액</span></td>
+                    <td><span id="finalTotalPrice_span">00,000</span></td>
+                </tr>
+            </table> 
                         <input type="submit" value="결제하기">
                     </div>
 
@@ -241,15 +264,10 @@ $(function(){
                     <article class="payment">
                         <h1>결제방법</h1>
                         <div>
-                            <span>기타</span>
                             <p>
-                                <label>
-                                    <input type="radio" name="payment" value="type4">무통장 입금
-                                </label>
-                                <label>
-                                    <input type="radio" name="payment" value="type5">카카오페이
-                                    <img src="/assets/img/img_kakaopay.png" alt="카카오페이">
-                                </label>
+                                <button type="button">
+								  <img src="/assets/img/kakaopay.png" alt="카카오페이">
+								</button>
                             </p>
                         </div>
                     </article>

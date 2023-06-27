@@ -36,7 +36,7 @@ public class CartController {
 	@PostMapping("/cart/add")
 	@ResponseBody
 	public String addCartPost(CartDTO cart, HttpServletRequest request) {
-		// 로그인 체크
+		// 먼저 로그인 여부를 체크하고 로그인되지 않았을 경우 5를 반환하도록 코드를 추가
 		HttpSession session = request.getSession();
 		MemberDTO memberDto = (MemberDTO)session.getAttribute("member");
 		if(memberDto == null) {
