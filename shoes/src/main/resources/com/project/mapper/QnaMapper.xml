@@ -22,6 +22,9 @@
 		select count(*) from qnas where qna_id > 0
 </select>
 
+	<select id="getNoAnswerqnas">
+		select count(*) from qnas
+	</select>
 
 	
 	<select id="qnaRead" resultType="com.project.domain.QnaDTO"> 

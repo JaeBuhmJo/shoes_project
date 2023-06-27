@@ -69,8 +69,14 @@
 		    </choose>
 	</select>
 	
+	<select id="getOffCount">
+		select count(*) from products where on_sale = 0 and discontinued = 0
+	</select>
+
 	<select id="getTotalList">
-		select * from products where
+		select product_id, product_name, category, brand, price, product_country, product_year
+			   on_sale, sold_count, to_char(registered_date,'yyyy-MM-dd HH:mm:ss') as registered_date,
+			   to_char(modified_date,'yyyy-MM-dd HH:mm:ss') as modified_date from products where
 			<choose>
 		      <when test="discontinued==1"> discontinued = 1 </when>
 		      <otherwise>discontinued = 0</otherwise>

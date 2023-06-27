@@ -33,6 +33,7 @@ order.addEventListener("change", () => {
 const gender = document.querySelector("#gender");
 gender.addEventListener("click", (e) => {
   if (e.target.tagName === "INPUT") {
+    document.querySelector("#operForm input[name='page']").value = 1;
     document.querySelector("#operForm input[name='gender']").value = e.target.value;
     operForm.submit();
   }

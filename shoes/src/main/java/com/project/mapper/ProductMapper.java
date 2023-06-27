@@ -11,6 +11,7 @@ import com.project.domain.ProductDTO;
 public interface ProductMapper {
 	public List<ProductDTO> getOnSaleList(Criteria cri);
 	public int getOnSaleCount(Criteria cri);
+	public int getOffCount();
 	public List<ProductDTO> getTotalList(Criteria cri);
 	public int insertProduct(ProductDTO productDTO);
 	public int getCurrentProductSequence();

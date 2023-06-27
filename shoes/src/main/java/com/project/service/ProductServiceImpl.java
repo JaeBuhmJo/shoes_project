@@ -68,4 +68,9 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return productMapper.updateProduct(productDTO) == 1 ? true : false;
 	}
+
+	@Override
+	public int getOffCount() {
+		return productMapper.getOffCount();
+	}
 }

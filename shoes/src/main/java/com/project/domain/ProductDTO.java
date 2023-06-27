@@ -21,8 +21,8 @@ public class ProductDTO {
 	private String productName;
 	private boolean onSale;
 	private int soldCount;
-	private Date registeredDate;
-	private Date modifiedDate;
+	private String registeredDate;
+	private String modifiedDate;
 	private boolean forMen;
 	private boolean forWomen;
 	private String colors;

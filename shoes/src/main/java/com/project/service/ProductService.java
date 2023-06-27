@@ -8,6 +8,7 @@ import com.project.domain.ProductDTO;
 public interface ProductService {
 	public List<ProductDTO> getSaleProducts(Criteria cri);
 	public int getSaleCount(Criteria cri);
+	public int getOffCount();
 	public List<ProductDTO> getAllProducts(Criteria cri);
 	public boolean registerProduct(ProductDTO productDTO, List<String> colorList);
 	public int getCurrentProductId();

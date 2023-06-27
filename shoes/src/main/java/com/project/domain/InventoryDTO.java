@@ -1,7 +1,5 @@
 package com.project.domain;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +11,7 @@ public class InventoryDTO {
 	private String productId;
 	private String productSize;
 	private int quantity;
-	private Date stockedDate;
+	private String stockedDate;
 	private String productColor;
 	private boolean discontinued;
 	
