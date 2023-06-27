@@ -185,7 +185,7 @@
 								</c:forEach>
 							</select>
 							</ul>
-							 <ul class="list-inline pb-3" id="detailSize" style="visibility:visible;">
+							 <ul class="list-inline pb-3" id="detailSize" style="visibility:hidden;">
 									<li class="list-inline-item">size :</li>
 									<select class="form-select" aria-label="" name="productSize" id="productSize">
 										<option selected>사이즈 선택</option>
@@ -203,6 +203,8 @@
 	</div>
 </section>
 <!-- Close Content -->
+
+
 
 
 <!-- 캐러셀 섹션 러프 -->
