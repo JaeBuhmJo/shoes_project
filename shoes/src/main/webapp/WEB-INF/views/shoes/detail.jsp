@@ -175,19 +175,25 @@
 									<button type="submit" class="btn btn-success btn-lg" id="goCart"value="addtocard">Add To Cart</button>
 								</div>
 							</div>
-
-				<%-- 			<ul class="list-inline pb-3" id="detailColor">
-								<li class="list-inline-item">color :</li>
-									 <select class="form-select" aria-label="" name="productColor" id="productColor">							
-									<option selected>색상선택</option>
-									
-								<c:forEach var="cs" items="${csList}">
-									 <option value="${cs.productColor}">${cs.productColor}</option>
-					
+						<ul class="list-inline pb-3" id="detailColor">
+							<li class="list-inline-item">color :</li>
+								 <select class="form-select" aria-label="" name="productColor" id="productColor">							
+								<option selected>색상선택</option>
+								
+								<c:forEach var="cs" items="${color}">
+									<option value="${cs.productColor}">${cs.productColor}</option>					
 								</c:forEach>
-								</select>
-							</ul> --%>
-
+							</select>
+							</ul>
+							 <ul class="list-inline pb-3" id="detailSize" style="visibility:visible;">
+									<li class="list-inline-item">size :</li>
+									<select class="form-select" aria-label="" name="productSize" id="productSize">
+										<option selected>사이즈 선택</option>
+											 <c:forEach var="cs" items="${size}">
+												<option value="${cs.productSize}">${cs.productSize}</option>					
+											</c:forEach> 
+									</select>
+								</ul> 
 							</form>
 					</div>				
 					</div>
@@ -957,7 +963,12 @@
 </script>
 
 <script src="/poweqnajs/qna.js"> </script>
+<script src="/powedetailjs/shoesinfo.js"> </script>
 
 
 <%@include file="../include/footer.jsp"%>
+
+
+
+
 

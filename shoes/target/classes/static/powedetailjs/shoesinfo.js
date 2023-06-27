@@ -1,27 +1,37 @@
-const colorSelect = document.querySelector("#productColor");
-const sizeSelect = document.querySelector("#productSize");
+function getSizes() {
+  var colorSelect = document.querySelector("#productColor");
+  var selectedColor = colorSelect.value;
 
-colorSelect.addEventListener("change", () => {
-  const selectedColor = colorSelect.ariaValueMax;
-  const sizes = getSizeForColor(selectedColor);
-  // 함수를 통해 선택한 color에 해당하는 사이즈 데이터를 가져옴
+  if (selectedColor !== "색상선택") {
+    var urlParams = new URLSearchParams(window.location.search);
+    var productId = urlParams.get("productId"); //productId 값 설정 필요
 
-  // 사이즈 옵션 업데이트
-  sizeSelect.innerHTML = "";
-  sizes.forEach(function (size) {
-    const option = document.createElement("option");
-    option.value = size;
-    option.textContent = size;
-    sizeSelect.appendChild(option);
-  });
-});
+    fetch(
+      "/size?productId=${encodeURIComponent(productId)}&productColor=${encodeURIComponent(selectedColor)}"
+    )
+      .then((response) => response.json())
+      .then((data) => updateSizeOptions(data))
+      .catch((error) => console.error(error));
+  } else {
+    updateSizeOptions([]);
+  }
+}
 
-function getSizeForColor(color) {
-  // 여기서 서버에서 필요한 데이터를 가져오거나, 클라이언트 측에서 가지고 있는 데이터를 활용하여 처리합니다.
-  // 예를 들어, inventory 배열에서 선택한 color에 해당하는 사이즈를 필터링하고 반환할 수 있습니다.
+function updateSizeOptions(sizes) {
+  var sizeSelect = document.querySelector("#productSize");
 
-  const inventory = [{ productColor: "red" }];
-  return inventory
-    .filter((item) => item.productColor === color)
-    .map((item) => item.productSize);
+  while (sizeSelect.firstChild) {
+    sizeSelect.removeChild(sizeSelect.firstChild);
+  }
+  if (sizes.length > 0) {
+    sizes.forEach(function (size) {
+      var option = document.createElement("option");
+      option.value = size;
+      option.textContent = size;
+      sizeSelect.appendChild(option);
+    });
+    sizeSelect.style.visibility = "visible";
+  } else {
+    sizeSelect.style.visibility = "hidden";
+  }
 }

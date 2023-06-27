@@ -1,16 +1,3 @@
-/*
-
-
-*/
-
-// const qna = document.querySelector("#qnaForm");
-
-// qna.addEventListener("submit",(e)=>{
-//     e.preventDefault();
-
-//     if(!qna.checkVisibility)
-// })
-
 // 페이지 넘어가는 기능
 
 const pagination = document.querySelector(".pagination");

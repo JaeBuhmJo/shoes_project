@@ -22,11 +22,14 @@
 	<select id="detail" resultMap="productDTO">
 
 
-	select p.brand, p.price, p.detail, p.category, p.product_id, p.product_country, i.product_size
+	select p.brand, p.price, p.detail, p.category, p.product_id, p.product_country
 	from products p
 	left OUTER JOIN inventories i ON i.product_id = p.product_id
 	where p.product_id = #{productId}
 	</select>
+	
+	
+	
 <!-- 	select p.brand,p.price,p.detail,p.category,p.product_id, p.product_country,i.product_size
 	from products p
 	left outer join inventories i on i.product_id=p.product_id
@@ -59,13 +62,20 @@
 		where inventory_id=#{inventoryId}
 	</select>
 	
-	<select id="colorSize" resultType="com.project.domain.ColorSize">
-	SELECT DISTINCT
-	product_color,product_size
-	FROM inventories
-	WHERE product_id = #{productId}
-	GROUP BY product_color,product_size
-	order by product_color
+	<select id="color" resultType="com.project.domain.ColorSize">
+		SELECT DISTINCT	product_color
+		FROM inventories
+		WHERE product_id = #{productId}		
+		order by product_color
+	</select>
+	
+	<select id="size" resultType="com.project.domain.ColorSize">
+		SELECT DISTINCT  product_size
+		FROM
+		    inventories
+		WHERE
+		    product_id = #{productId} and product_color=#{productColor}
+		order by product_size
 	</select>
 	
 	

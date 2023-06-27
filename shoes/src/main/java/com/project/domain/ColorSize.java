@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class ColorSize {
 
 	private String productColor;
-	private int productSize;
-	private String productId;
+	private int productSize;	
 }

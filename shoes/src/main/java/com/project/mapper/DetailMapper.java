@@ -29,5 +29,6 @@ public interface DetailMapper {
 		public List<InventoryDTO> inventory(InventoryDTO inventory);
 
 		
-		public ColorSize colorSize(ColorSize cs);
+		public List<ColorSize> color(String productId);
+		public List<ColorSize> size(String productId,String productColor);
 }

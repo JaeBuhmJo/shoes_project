@@ -51,9 +51,13 @@ public class DetailServiceImpl implements DetailService {
 		return detailMapper.inventory(inventory);
 	}
 	@Override
-	public ColorSize colorSize(ColorSize cs) {
+	public List<ColorSize> color(String productId) {
 		
-		return detailMapper.colorSize(cs);
+		return detailMapper.color(productId);
+	}
+	@Override
+	public List<ColorSize> size(String productId, String productColor) {
+		return detailMapper.size(productId,productColor);
 	}
 	
 	
