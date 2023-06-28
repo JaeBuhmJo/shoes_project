@@ -40,9 +40,13 @@ public class CustomerController {
 	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 @RequestBody
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/cart")
-	public String cartInsert(CartDTO cart,RedirectAttributes rttr) {
-		log.info("cart 로 데이터 보내기" + cart);		
+	public String cartInsert(@RequestBody CartDTO cart,RedirectAttributes rttr) {
+		log.info("cart 로 데이터 보내기" + cart);	
 		InventoryDTO dto = new InventoryDTO();
+
+
+
+		
 		if(service.cartInsert(cart)) {
 			rttr.addAttribute("productId", cart.getProductId());
 			rttr.addAttribute("memberId", cart.getMemberId());
@@ -51,7 +55,7 @@ public class CustomerController {
 			rttr.addAttribute("color", dto.getProductColor());
 		
 
-			return "redirect:/cart/cart";
+			
 			
 		}
 		return "redirect:/shoes/detail";
@@ -85,7 +89,7 @@ public class CustomerController {
 	@PostMapping("/question")
 	public String qnaPost(QnaDTO qna, RedirectAttributes rttr,Criteria cri) {
 		
-		log.info("qna Post");
+		log.info("qna Post",qna);
 		
 		if(qnaService.qnaInsert(qna)) {
 			rttr.addFlashAttribute("result", qna.getMemberId());

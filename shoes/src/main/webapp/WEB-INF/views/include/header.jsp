@@ -5,6 +5,11 @@
     
 <!DOCTYPE html>
 <html lang="en">
+<style>
+	#cartstyle{
+		margin: 0 1em;
+	}
+</style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <head>
 
@@ -94,10 +99,9 @@ https://templatemo.com/tm-559-zay-shop
 						<button class="btn btn-outline-success" type="submit" id="shoesSearch" value="${product.brand}">Search</button>
 					</form>
 
-					<a class="nav-icon position-relative text-decoration-none" href="/cart/cart?cart=1">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
+					<button type="button" id="cartstyle" class="btn btn-danger btn-lg"
+									  onclick="location.href='/cart/cart?cartId=${cart.cartId}'">cart</button>
+
 					<div class="dropdown">
 						<a class="btn btn-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
 							aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small">

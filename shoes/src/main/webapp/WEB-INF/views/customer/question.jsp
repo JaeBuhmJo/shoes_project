@@ -26,20 +26,16 @@
                         <button type="reset" class="btn btn-danger btn-lg px-3">취소</button>
                     </div>
                 </div>
-                <!-- productId -->
-                <input type="hidden" name="productId"  value='<%=request.getParameter("productId")%>'/>
+                
+                
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                
             </form>
         </div>
     </div>
-    <form action="" id="operForm">
-	
-	<input type="hidden" name="memberId" value="${member.memberId}" />
-	
 
-</form>
 <script>
+//const member = ${member.memberId}
 const csrfToken='${_csrf.token}';
 </script>
    <script src="/poweqnajs/question.js"> </script>

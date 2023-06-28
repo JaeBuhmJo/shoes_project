@@ -292,8 +292,50 @@
 											
 											<p>상품평</p>
 											<span class="list-inline-item text-dark">별점 4.8 | 36 </span>
-											
-										</div>
+								<table class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th scope="col">번호</th>
+											<th scope="col">작성자</th>
+											<th scope="col">후기</th>
+											<th scope="col">리뷰 등록일</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="review" items="${list}">
+											<tr>
+												<th scope="row">${review.reviewId}</th>
+												<td>${review.memberId}</td>
+												<td><a href="${review.reviewId}" class="qna">${review.contents}</a></td>
+												<td>${review.regdate}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+								<nav aria-label="...">
+									<ul class="pagination justify-content-center">
+
+										<c:if test="${reviewPage.prev}">
+											<li class="page-item">
+												<a class="page-link" href="${reviewPage.startPage-1} ">Previous</a>
+											</li>
+										</c:if>
+
+										<c:forEach begin="${reviewPage.startPage}" end="${reviewPage.endPage}" var="idx">
+											<li class="page-item ${reviewPage.cri.page==idx?'active':'' }">
+												<a class="page-link" href="${idx}">${idx}</a>
+											</li>
+										</c:forEach>
+
+										<c:if test="${reviewPage.next}">
+											<li class="page-item">
+												<a class="page-link" href="${reviewPage.endPage+1} ">Next</a>
+											</li>
+										</c:if>
+									</ul>
+								</nav>
+							</div>
 									</div>
 								</div>
 
@@ -948,7 +990,7 @@
 
 <form action="" id="cartForm">
 	<%-- pageDTO.cri.page 가능 --%>
-	<input type="hidden" name="cartId" value="${cart.cartId}" />
+	<input type="hidden" name="inventoryId" value="${inventory.inventoryId}" />
 	
 </form>
 <form action="/shoes/detail" id="operForm">
@@ -965,11 +1007,14 @@
 	const path= '${pageContext.request.requestURI}';
 	
 	const product = ${product.productId};
-//	const inventory = ${invevtory.inventoryId};
-//	const review = ${review.reviewId};
+	const result = '${result}';
+
 	const csrfToken='${_csrf.token}';
 	const pageIsRead=false;
 
+	
+	
+	
 </script>
 
 <!-- <script src="/poweqnajs/qna.js"> </script> -->

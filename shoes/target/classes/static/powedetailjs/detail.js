@@ -83,7 +83,7 @@ shoesForm.addEventListener("submit", (e) => {
   // 폼 submit
   //  detailForm.submit();
   //사이즈랑 가격,브랜드 보내기
-  fetch("/cart/cart", {
+  fetch("/customer/cart", {
     method: "post",
     body: JSON.stringify({
       size: selectedSize,
