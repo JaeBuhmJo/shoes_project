@@ -35,7 +35,7 @@
 	
 	<select id="getTotalInventories" resultMap="productMap">
 		select p.product_id, i.inventory_id, p.product_name, i.product_size, i.quantity, 
-		p.on_sale, p.sold_count, to_char(i.stocked_date,'yyyy-MM-dd HH:mm:ss') as stocked_date , p.price, i.product_color, i.discontinued
+		p.on_sale, p.sold_count, to_char(i.stocked_date,'yyyy-MM-dd/HH:mm:ss') as stocked_date , p.price, i.product_color, i.discontinued
 		from inventories i join products p on i.product_id = p.product_id
 		where
 			<choose>

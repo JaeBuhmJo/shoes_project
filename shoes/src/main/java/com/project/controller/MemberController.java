@@ -65,14 +65,14 @@ public class MemberController {
 		return "/member/login";
 	}
 
-	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')")
 	@GetMapping("/modify")
 	public void modifyGET() {
 		log.info("수정페이지 요청");
 	
 	}
 
-	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
+	@PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')")
 	@PostMapping("/modify")
 	public String modifyPost(MemberDTO memberDTO, HttpSession session) {
 		log.info("비밀번호 수정 요청 " + memberDTO);

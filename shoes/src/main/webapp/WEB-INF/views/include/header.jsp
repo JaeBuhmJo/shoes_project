@@ -27,6 +27,8 @@
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="/assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/slick-theme.css">
+    <!-- 방문자 집계 -->
+	<script src="/js/visit-counter.js"></script>
 <!--
     
 TemplateMo 559 Zay Shop

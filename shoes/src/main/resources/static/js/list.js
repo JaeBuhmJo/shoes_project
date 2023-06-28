@@ -48,3 +48,15 @@ category.addEventListener("click", (e) => {
     operForm.submit();
   }
 });
+const productList = document.querySelector(".productList");
+productList.addEventListener("click", (e) => {
+  let target = e.target;
+
+  while (target !== productList) {
+    if (target.matches(".productCard")) {
+      const productId = target.getAttribute("data-productId");
+      location.href = "/shoes/detail?productId=" + productId;
+    }
+    target = target.parentElement;
+  }
+});

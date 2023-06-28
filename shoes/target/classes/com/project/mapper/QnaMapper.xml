@@ -16,16 +16,9 @@
 	]]>
 	</select>
 	
-
-	
 <select id="qnaTotal" resultType="java.lang.Integer">
 		select count(*) from qnas where qna_id > 0
 </select>
-
-	<select id="getNoAnswerqnas">
-		select count(*) from qnas
-	</select>
-
 	
 	<select id="qnaRead" resultType="com.project.domain.QnaDTO"> 
 		select member_id, title, question, qna_id

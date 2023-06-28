@@ -13,11 +13,11 @@
 			<ul class="list-unstyled templatemo-accordion">
 				<li class="pb-3 d-flex justify-content-between h3" id="gender">Gender <i class="fa fa-fw fa-chevron-circle-right mt-1"></i>
 					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-						<input type="radio" class="btn-check" name="btnradio" value="" id="option1" autocomplete="off" ${productListPage.cri.gender==''?'checked':''}>
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="" id="option1" autocomplete="off" ${productListPage.cri.gender==''?'checked':''}>
 						<label class="btn btn-outline-dark" for="option1">전체</label>
-						<input type="radio" class="btn-check" name="btnradio" value="for-men" id="option2" autocomplete="off" ${productListPage.cri.gender=='for-men'?'checked':''}>
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-men" id="option2" autocomplete="off" ${productListPage.cri.gender=='for-men'?'checked':''}>
 						<label class="btn btn-outline-dark" for="option2">남성</label>
-						<input type="radio" class="btn-check" name="btnradio" value="for-women" id="option4" autocomplete="off" ${productListPage.cri.gender=='for-women'?'checked':''}>
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-women" id="option4" autocomplete="off" ${productListPage.cri.gender=='for-women'?'checked':''}>
 						<label class="btn btn-outline-dark" for="option4">여성</label>
 					</div>
 
@@ -57,15 +57,11 @@
 
 			<div class="row productList">
 				<c:forEach items="${list}" var="item">
-					<div class="col-md-4">
+					<div class="col-md-4 productCard" data-productId ="${item.productId}">
 						<div class="card mb-4 product-wap rounded-0">
 							<div class="card rounded-0 image-wrapper">
 								<img class="card-img rounded-0 img-fluid" src="/attachment/file?fileName=${item.filePath}">
 								<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-									<ul class="list-unstyled">
-										<li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-										<li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-									</ul>
 								</div>
 							</div>
 							<div class="card-body">
@@ -80,7 +76,7 @@
 								<p class="text-center mb-0">${item.price}원</p>
 							</div>
 						</div>
-					</div>
+					</div> 
 				</c:forEach>
 			</div>
 
@@ -211,10 +207,7 @@
 </form>
  
 <script>
-	let page = $
-	{
-		productListPage.cri.page
-	}
+	let page = ${productListPage.cri.page}
 </script>
 <script src="/assets/js/jquery-1.11.0.min.js"></script>
 <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>

@@ -19,6 +19,6 @@ public interface QnaMapper {
 		
 		public int qnaInsert(QnaDTO qna);
 		
-		public int getNoAnswerqnas();
+
 
 }

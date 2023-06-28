@@ -18,7 +18,15 @@ registerForm.addEventListener("submit", (e) => {
     alert("제조 연도는 숫자만 입력해주세요");
     return;
   }
-  if (document.querySelector("input[name='colorList[0]']").value == "" || document.querySelector("input[name='sizeList[0]']").value == "") {
+  if (!sizeCreated) {
+    alert("재고입력을 생성해주세요");
+    return;
+  }
+
+  if (
+    document.querySelector("input[name='colorList[0]']").value == "" ||
+    document.querySelector("input[name='sizeList[0]']").value == ""
+  ) {
     alert("필수 색상과 사이즈를 입력해주세요");
     return;
   }

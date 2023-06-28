@@ -54,7 +54,6 @@ public class AttachmentController {
  
 	@GetMapping("/file")
 	public ResponseEntity<byte[]> getAttachment(String fileName) {
-		log.info("상품 이미지 요청 : " + fileName);
 		File file = new File(uploadPath+fileName);
 		
 		ResponseEntity<byte[]> result = null;
@@ -107,7 +106,7 @@ public class AttachmentController {
 		}
 		return new ResponseEntity<>(attachmentList, HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping()
 	public ResponseEntity<String> deleteAttachment(String fileName) {
 		log.info("파일 제거 요청"+fileName);

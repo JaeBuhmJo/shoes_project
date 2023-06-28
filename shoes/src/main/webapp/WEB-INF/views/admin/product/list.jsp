@@ -34,9 +34,9 @@
 		</div>
 			<hr />
 			<!-- 이거 테이블로 하자 --> 
-		<div class="overflow-auto product-list-table">
-			<table class="table table-sm table-hover table-striped table-bordered">
-			  <thead class="table-light">
+		<div class="overflow-auto product-list-div">
+			<table class="table table-sm table-hover table-striped table-bordered product-list-table">
+			  <thead class="table-light text-center">
 			    <tr>
 			      <th scope="col">상품 코드</th>
 			      <th scope="col">상품명</th> 
@@ -46,9 +46,9 @@
 			      <th scope="col">제조국</th> 
 			      <th scope="col">제조연도</th>
 			      <th scope="col">판매중 여부</th>
-			      <th scope="col">누적 판매량</th>
+			      <th scope="col">누적 판매량</th> 
 			      <th scope="col">판매등록일시</th> 
-			      <th scope="col">정보수정일시</th> 
+			      <th scope="col">정보수정일시</th>  
 			    </tr>  
 			  </thead>  
 			  <tbody class="table-group-divider overflow-auto product-list-table">

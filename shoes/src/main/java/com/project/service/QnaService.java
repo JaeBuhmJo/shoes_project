@@ -15,5 +15,5 @@ public interface QnaService {
 	public QnaDTO qnaRead(int qnaId);
 
 	public boolean qnaInsert(QnaDTO qna);
-	public int getNoAnswerqnas();
+
 }

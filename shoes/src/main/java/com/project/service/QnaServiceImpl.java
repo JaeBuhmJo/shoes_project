@@ -52,10 +52,7 @@ public class QnaServiceImpl implements QnaService {
 		return mapper.qnaInsert(qna)==1?true:false;
 	}
 
-	@Override
-	public int getNoAnswerqnas() {
-		return mapper.getNoAnswerqnas();
-	}
+
 
 	
 

@@ -5,15 +5,23 @@ Custom Css
   width: 200px;
 }
 
+.product-list-div {
+  max-height: 600px;
+  overflow-y: auto;
+}
 .product-list-table {
-  max-height: 700px;
-  overflow-x: auto;
-  max-width: 90%;
+  overflow: auto;
+  min-width: 1200px;
+  max-width: 1800px;
+}
+.inventory-list-div {
+  max-height: 650px;
+  overflow-y: auto;
 }
 .inventory-list-table {
-  max-height: 800px;
-  overflow-x: auto;
-  max-width: 90%;
+  overflow: auto;
+  min-width: 1200px;
+  max-width: 1800px;
 }
 thead th {
   height: 15px;
