@@ -8,6 +8,7 @@
 <security:authorize access="!isAuthenticated">
 	<h1> 인덱스 페이지</h1>
 	<h1><a href="/shop/list" id="toList">list</a></h1>
+	<h1><a href="/shoes/detail" id="detail">detail</a></h1>
 <h1><a href="/admin/index" id="toAdmin">admin</a></h1>
 
 <form action="" id="operForm">
@@ -24,6 +25,8 @@
 </security:authorize>
 <security:authorize access="isAuthenticated"> 
 	<h1><a href="/shop/list" id="toList">list</a></h1>
+		<h1><a href="/shoes/detail" id="detail">detail</a></h1>
+	
 <h1><a href="/admin/index" id="toAdmin">admin</a></h1>
 
 <form action="" id="operForm">

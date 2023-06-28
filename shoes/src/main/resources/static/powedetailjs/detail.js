@@ -1,20 +1,33 @@
-const detailForm = document.getElementById("detailForm");
+const shoesForm = document.querySelector("#shoesForm");
 
-detailForm.addEventListener("submit", (e) => {
+shoesForm.addEventListener("submit", (e) => {
   e.preventDefault();
   //선택한 사이즈 가져오기
   var sizeSelect = document.getElementById("productSize");
   var selectedSize = sizeSelect.value;
 
-  if ((selectedSize.value = "")) {
+  var colorSelect = document.getElementById("productColor");
+  var selectedColor = colorSelect.value;
+
+  if (selectedSize.value === "") {
     alert("사이즈를 선택해주세요");
+    return;
+  }
+  if (selectedColor.value === "") {
+    alert("사이즈를 선택해주세요");
+    return;
   }
 
   //수량 가져오기
   var amountInput = document.getElementById("cartAmount");
   var selectedAmount = amountInput.value;
 
-  if (isNaN.selectedAmount) {
+  if (selectedAmount === "") {
+    alert("수량을 입력해 주세요");
+    return;
+  }
+
+  if (isNaN(selectedAmount)) {
     alert("숫자만 입력해주세요");
     return;
   }
@@ -32,7 +45,7 @@ detailForm.addEventListener("submit", (e) => {
   // 폼 submit
   //  detailForm.submit();
   //사이즈랑 가격,브랜드,카테고리 보내기
-  fetch("/member/cart", {
+  fetch("/cart/cart", {
     method: "post",
     body: JSON.stringify({
       size: selectedSize,
@@ -54,27 +67,7 @@ detailForm.addEventListener("submit", (e) => {
     })
     .then((data) => {
       console.log(data);
-      detailForm.submit();
+      shoesForm.submit();
     })
     .catch((error) => console.log(error));
 });
-
-{
-  /* <ul class="list-inline pb-3" id="detailsize">
-										<li class="list-inline-item">Size : </li>
-										<select class="form-select" aria-label="" name="productSize" id="productSize">
-										  <option selected>사이즈 선택</option>
-										  <option value="200">200</option>
-										  <option value="210">210</option>
-										  <option value="220">220</option>
-										  <option value="230">230</option>
-										  <option value="240">240</option>
-										  <option value="250">250</option>
-										  <option value="260">260</option>
-										  <option value="270">270</option>
-										  <option value="280">280</option>
-										</select>										
-									<input class="form-control me-2" id="cartAmount" name="cartAmount" 
-									type="search" placeholder="수량 입력" aria-label="Search">																
-							</ul> */
-}

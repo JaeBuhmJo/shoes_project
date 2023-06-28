@@ -43,7 +43,7 @@ public class ShoesController {
 		model.addAttribute("product", service.detail(productId));
 		// 색상
 		model.addAttribute("color", service.color(productId));
-
+		log.info("신발 색상 선택");
 		List<ReviewDTO> list = service.reviewList(cri);
 
 		model.addAttribute("list", list);
@@ -61,5 +61,4 @@ public class ShoesController {
 	  
 	  }
 	 
-
 }

@@ -276,7 +276,7 @@
 <!--End Brands-->
 
 <%--페이지 나누기 링크 처리를 위한 폼 --%>
-<form action="/member/qna" id="operForm">
+<form action="/customer/qna" id="operForm">
 	<%-- QnaPageDTO.cri.page 가능 --%>
 	<input type="hidden" name="page" value="${cri.page}" />
 	<input type="hidden" name="listAmount" value="${cri.listAmount}" />

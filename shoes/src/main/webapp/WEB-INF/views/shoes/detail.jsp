@@ -3,7 +3,6 @@
 <%@include file="../include/header.jsp"%>
 
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- Modal -->
  <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -21,8 +20,6 @@
 		</form>
 	</div>
 </div> 
-
-
 
 
 
@@ -139,7 +136,7 @@
 				<div class="card">
 					<div class="card-body">
 					<div id="productdetail">
-					<form action="/cart/cart" method="post" id="detailForm">
+					<form action="/cart/cart" method="post" id="shoesForm">
 					
 						<h1 class="h2" id="brand" >${product.brand}</h1>
 						<p class="h3 py-2" id="price" >가격:${product.price}</p>
@@ -163,9 +160,11 @@
 							<p>
 							 이번 버전의 가젤은 큰 인기를 얻었던 1991 가젤의 클래식한 소재, 칼라, 텍스쳐, 구조를 그대로 이어갑니다. 가죽 갑피에 대비색상 3-스트라이프와 힐 탭을 더해 90년대 초반의 오리지널 스타일을 선보입니다.</p>
 								
-								<!-- 색상, 사이즈 -->
-
 								
+								
+								
+								
+								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
 								<div class="col d-grid">
 									<button type="button" class="btn btn-success btn-lg"
@@ -185,15 +184,23 @@
 								</c:forEach>
 							</select>
 							</ul>
-							 <ul class="list-inline pb-3" id="detailSize" style="visibility:hidden;">
+							  <ul class="list-inline pb-3" id="detailSize" style="visibility: hidden;">
 									<li class="list-inline-item">size :</li>
 									<select class="form-select" aria-label="" name="productSize" id="productSize">
 										<option selected>사이즈 선택</option>
-											 <c:forEach var="cs" items="${size}">
-												<option value="${cs.productSize}">${cs.productSize}</option>					
+											 <c:forEach var="size" items="${size}">
+												<option value="${size.productSize}">${size.productSize}</option>					
 											</c:forEach> 
 									</select>
-								</ul> 
+								</ul>  
+										
+								
+								
+								
+									<input class="form-control me-2" id="cartAmount" name="cartAmount" 
+									type="search" placeholder="수량 입력" aria-label="Search" >																
+						    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							
 							</form>
 					</div>				
 					</div>
@@ -204,14 +211,9 @@
 </section>
 <!-- Close Content -->
 
-
-
-
 <!-- 캐러셀 섹션 러프 -->
 <section class="py-5">
-	<div class="container">
-		
-							
+	<div class="container">							
 					<div class="detail-list">
 						
 						
@@ -934,7 +936,6 @@
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/templatemo.js"></script>
 <script src="../assets/js/custom.js"></script>
-<script src="../powedetailjs/detail.js"></script>
 <link href="../powe/adidas1.img">
 <link href="../powe/adidas2.img">
 <link href="../powe/adidas3.img">
@@ -957,17 +958,20 @@
 	//게글 글번호 가져오기
  
 	const path= '${pageContext.request.requestURI}';
+	
 	const product = ${product.productId};
+	const inventory = ${invevtory.inventoryId};
 //	const review = ${review.reviewId};
 	const csrfToken='${_csrf.token}';
 
 
 </script>
 
-<script src="/poweqnajs/qna.js"> </script>
+<!-- <script src="/poweqnajs/qna.js"> </script> -->
 <script src="/powedetailjs/shoesinfo.js"> </script>
+<script src="/powedetailjs/detail.js"> </script>
 
-
+ 
 <%@include file="../include/footer.jsp"%>
 
 

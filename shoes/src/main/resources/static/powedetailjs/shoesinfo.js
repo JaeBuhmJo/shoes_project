@@ -6,11 +6,16 @@ function getSizes() {
     var urlParams = new URLSearchParams(window.location.search);
     var productId = urlParams.get("productId"); //productId 값 설정 필요
 
-    fetch(
-      "/size?productId=${encodeURIComponent(productId)}&productColor=${encodeURIComponent(selectedColor)}"
-    )
+    var url =
+      "/shoes/size?productId=" +
+      encodeURIComponent(productId) +
+      "&productColor=" +
+      encodeURIComponent(selectedColor);
+
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        console.log("size", data);
         updateSizeOptions(data);
         if (data.length > 0) {
           document.querySelector("#productSize").disabled = false;
@@ -25,12 +30,15 @@ function getSizes() {
   }
 }
 
+document.querySelector("#productColor").addEventListener("change", getSizes);
+
 function updateSizeOptions(sizes) {
   var sizeSelect = document.querySelector("#productSize");
+  sizeSelect.innerHTML = "";
 
-  while (sizeSelect.firstChild) {
-    sizeSelect.removeChild(sizeSelect.firstChild);
-  }
+  // while (sizeSelect.firstChild) {
+  //   sizeSelect.removeChild(sizeSelect.firstChild);
+  // }
   if (sizes.length > 0) {
     sizes.forEach(function (size) {
       var option = document.createElement("option");
