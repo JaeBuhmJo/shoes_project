@@ -1,3 +1,42 @@
+// document.querySelector("#shoesForm").addEventListener("submit", (e) => {
+//   e.preventDefault();
+
+//   // 폼 데이터 수집
+//   var form = e.target;
+
+//   var productColor = form.querySelector("#productColor").value;
+//   var productSize = form.querySelector("#productSize").value;
+//   var cartAmount = form.querySelector("#cartAmount").value;
+
+//   //AJAX 요청
+
+//   var requestOptions = {
+//     method: "post",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "X-CSRF-TOKEN": csrfToken,
+//     },
+//     body: JSON.stringify({
+//       productColor: productColor,
+//       productSize: productSize,
+//       cartAmount: cartAmount,
+//     }),
+//   };
+
+//   fetch("/cart/cart", requestOptions)
+//     .then((response) => {
+//       if (response.ok) {
+//         return response.json();
+//       } else {
+//         throw new Error("Request failed.");
+//       }
+//     })
+//     .then((data) => {
+//       console.log(data);
+//     })
+//     .catch((error) => console.log(error));
+// });
+
 const shoesForm = document.querySelector("#shoesForm");
 
 shoesForm.addEventListener("submit", (e) => {
@@ -14,7 +53,7 @@ shoesForm.addEventListener("submit", (e) => {
     return;
   }
   if (selectedColor.value === "") {
-    alert("사이즈를 선택해주세요");
+    alert("색상을 선택해주세요");
     return;
   }
 
@@ -39,8 +78,9 @@ shoesForm.addEventListener("submit", (e) => {
   console.log("Category : " + category);
   console.log("Price: " + price);
   console.log("Brand: " + brand);
-  console.log("selected Size: " + selectedSize);
-  console.log("selected Amount: " + selectedAmount);
+  console.log("size: " + selectedSize);
+  console.log("color: " + selectedColor);
+  console.log("amount: " + selectedAmount);
 
   // 폼 submit
   //  detailForm.submit();
@@ -49,6 +89,7 @@ shoesForm.addEventListener("submit", (e) => {
     method: "post",
     body: JSON.stringify({
       size: selectedSize,
+      color: selectedColor,
       amount: selectedAmount,
       category: category,
       price: price,

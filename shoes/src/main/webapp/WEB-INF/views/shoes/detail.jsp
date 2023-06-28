@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-lg-5 mt-5">
 				<div class="card mb-3">
-					<img class="powe-adidas1" src="/powe/adidas1.img" alt="Card image cap" id="product-detail">
+					<img class="powe-adidas1" src="/attachment/file?fileName=${filePathList[0] }" alt="Card image cap" id="product-detail">
 				</div>
 				<div class="row">
 					
@@ -136,9 +136,9 @@
 				<div class="card">
 					<div class="card-body">
 					<div id="productdetail">
-					<form action="/cart/cart" method="post" id="shoesForm">
+					<form action="/shoes/detail" method="post" id="shoesForm">
 					
-						<h1 class="h2" id="brand" >${product.brand}</h1>
+						<h1 class="h2" id="productName" >${product.productName}</h1>
 						<p class="h3 py-2" id="price" >가격:${product.price}</p>
 						<p class="py-2">
 							<i class="fa fa-star text-warning">1</i>
@@ -148,21 +148,10 @@
 							<i class="fa fa-star text-secondary">5</i>
 							<span class="list-inline-item text-dark">별점 4.8 | 23</span>
 						</p>
-						<ul class="list-inline">
-							<li class="list-inline-item">
-								<h6 id="category" >${product.category}</h6>
-							</li>
-						</ul>
 								<!-- 상품 간략 정보 -->
 						
-							<h4>${product.detail}변함없는 디자인으로 돌아온 1991 가젤 30년이 넘는 시간 동안 사랑받아 온 심플함의 아이콘.</h4>
+							<h5>${product.detail}</h5>
 							
-							<p>
-							 이번 버전의 가젤은 큰 인기를 얻었던 1991 가젤의 클래식한 소재, 칼라, 텍스쳐, 구조를 그대로 이어갑니다. 가죽 갑피에 대비색상 3-스트라이프와 힐 탭을 더해 90년대 초반의 오리지널 스타일을 선보입니다.</p>
-								
-								
-								
-								
 								
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
@@ -192,12 +181,8 @@
 												<option value="${size.productSize}">${size.productSize}</option>					
 											</c:forEach> 
 									</select>
-								</ul>  
-										
-								
-								
-								
-									<input class="form-control me-2" id="cartAmount" name="cartAmount" 
+								</ul>  						
+								<input class="form-control me-2" id="cartAmount" name="cartAmount" 
 									type="search" placeholder="수량 입력" aria-label="Search" >																
 						    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							
@@ -211,14 +196,31 @@
 </section>
 <!-- Close Content -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- 캐러셀 섹션 러프 -->
 <section class="py-5">
 	<div class="container">							
 					<div class="detail-list">
-						
-						
-						
-													<!--  상세 설명 및 주의 사항 등등 detail -->
+						<!--  상세 설명 및 주의 사항 등등 detail -->
 
 
 						<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
@@ -960,18 +962,19 @@
 	const path= '${pageContext.request.requestURI}';
 	
 	const product = ${product.productId};
-	const inventory = ${invevtory.inventoryId};
+//	const inventory = ${invevtory.inventoryId};
 //	const review = ${review.reviewId};
 	const csrfToken='${_csrf.token}';
-
+	const pageIsRead=false;
 
 </script>
 
 <!-- <script src="/poweqnajs/qna.js"> </script> -->
+<script src="/js/attachment.js"> </script>
 <script src="/powedetailjs/shoesinfo.js"> </script>
 <script src="/powedetailjs/detail.js"> </script>
 
- 
+  
 <%@include file="../include/footer.jsp"%>
 
 

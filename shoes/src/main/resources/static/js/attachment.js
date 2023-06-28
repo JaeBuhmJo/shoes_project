@@ -5,35 +5,37 @@
 const attachment = document.querySelector("#attachment");
 
 //파일 첨부 변경 시 파일명 오름차순으로 정렬, 첨부 파일 put
-attachment.addEventListener("change", () => {
-  const formData = new FormData();
+if (attachment) {
+  attachment.addEventListener("change", () => {
+    const formData = new FormData();
 
-  const fileList = Array.from(attachment.files);
-  fileList.sort((a, b) => {
-    return a.name.localeCompare(b.name);
-  });
-  fileList.forEach((file) => {
-    formData.append("attachment", file);
-  });
+    const fileList = Array.from(attachment.files);
+    fileList.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+    fileList.forEach((file) => {
+      formData.append("attachment", file);
+    });
 
-  fetch("/attachment", {
-    method: "put",
-    headers: {
-      "X-CSRF-TOKEN": csrfToken,
-    },
-    body: formData,
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("파일 업로드 실패");
-      }
-      return response.json();
+    fetch("/attachment", {
+      method: "put",
+      headers: {
+        "X-CSRF-TOKEN": csrfToken,
+      },
+      body: formData,
     })
-    .then((data) => {
-      showAttachments(data);
-    })
-    .catch((error) => console.log(error));
-});
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("파일 업로드 실패");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        showAttachments(data);
+      })
+      .catch((error) => console.log(error));
+  });
+}
 
 // 정보 수정 페이지인경우 productId 기준으로 첨부파일 불러오기
 if (pageIsRead) {
@@ -53,7 +55,9 @@ if (pageIsRead) {
 function showAttachments(attachmentList) {
   let str = "";
   attachmentList.forEach((item, idx) => {
-    let fileCallPath = encodeURIComponent(item.uploadPath + "\\thumb_" + item.uuid + "_" + item.fileName);
+    let fileCallPath = encodeURIComponent(
+      item.uploadPath + "\\thumb_" + item.uuid + "_" + item.fileName
+    );
     str +=
       '<div class="col cards" data-path="' +
       item.uploadPath +
@@ -63,7 +67,10 @@ function showAttachments(attachmentList) {
       item.fileName +
       '">';
     str += '<div class="card col" style="width: 10rem;">';
-    str += '<img src="/attachment/file?fileName=' + fileCallPath + '" class="card-img-top">';
+    str +=
+      '<img src="/attachment/file?fileName=' +
+      fileCallPath +
+      '" class="card-img-top">';
     str += '<div class="card-body">';
     str += '<p class="card-text">' + item.fileName + "</p>";
     str +=
@@ -74,13 +81,19 @@ function showAttachments(attachmentList) {
     str += "</div>";
     str += "</div>";
   });
-  document.querySelector(".attachmentResult").insertAdjacentHTML("beforeend", str);
+  document
+    .querySelector(".attachmentResult")
+    .insertAdjacentHTML("beforeend", str);
 }
 
 // x버튼 클릭 시 카드 삭제
 
 document.querySelector(".attachmentResult").addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON" || e.target.matches("svg") || e.target.matches("path")) {
+  if (
+    e.target.tagName === "BUTTON" ||
+    e.target.matches("svg") ||
+    e.target.matches("path")
+  ) {
     const targetFile = e.target.dataset.file;
     const cards = e.target.closest(".cards");
 

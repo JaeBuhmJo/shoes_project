@@ -55,7 +55,7 @@
 			  	<c:forEach items="${list}" var="item"> 
 				    <tr>
 				      <th scope="row"><a href="/admin/product/read/${item.productId}" class="text-decoration-none"> ${item.productId }</a></th>
-				      <th ><a href="/admin/product/read/${item.productId}" class="text-decoration-none"> ${item.productName }</a></td>
+				      <th ><a href="/admin/product/read/${item.productId}" class="text-decoration-none"> ${item.productName }</a></th>
 				      <td class="text-end">${item.category }</td>
 				      <td class="text-end">${item.brand }</td>
 				      <td class="text-end">${item.price}</td>

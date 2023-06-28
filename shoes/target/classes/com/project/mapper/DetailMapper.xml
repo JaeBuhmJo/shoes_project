@@ -22,7 +22,7 @@
 	<select id="detail" resultType="com.project.domain.ProductDTO">
 
 
-	select brand, price, detail, category, product_id, product_country
+	select brand, price, detail, category, product_id, product_country,product_name
 	from products
 	where product_id = #{productId}
 	</select>

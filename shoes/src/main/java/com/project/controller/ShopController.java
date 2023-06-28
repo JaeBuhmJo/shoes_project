@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,8 @@ public class ShopController {
 		model.addAttribute("productListPage", new ListPageDTO(cri, total));
 		model.addAttribute("list", list);
 	}
+	
+
 
 //	아래로는 리스트 ajax화의 흔적
 //	@GetMapping("/list")

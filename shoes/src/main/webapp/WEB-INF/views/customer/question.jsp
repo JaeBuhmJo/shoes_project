@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="mb-3" >
                         <label for="memberid">아이디</label>
-                        <input type="text" class="form-control mt-1" id="memberid" name="memberId">
+                        <input type="text" class="form-control mt-1" value="${member.memberId}" id="memberid" name="memberId">
                     </div>
                     <div class="mb-3">
                         <label for="title">title</label>
@@ -33,6 +33,12 @@
             </form>
         </div>
     </div>
+    <form action="" id="operForm">
+	
+	<input type="hidden" name="memberId" value="${member.memberId}" />
+	
+
+</form>
 <script>
 const csrfToken='${_csrf.token}';
 </script>
