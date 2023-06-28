@@ -71,29 +71,26 @@ shoesForm.addEventListener("submit", (e) => {
     return;
   }
 
-  const category = document.querySelector("#category").innerHTML;
   const price = document.querySelector("#price").innerHTML;
-  const brand = document.querySelector("#brand").innerHTML;
+  const name = document.querySelector("#productName").innerHTML;
   //선택한 정보 출력
-  console.log("Category : " + category);
   console.log("Price: " + price);
-  console.log("Brand: " + brand);
+  console.log("Brand: " + name);
   console.log("size: " + selectedSize);
   console.log("color: " + selectedColor);
   console.log("amount: " + selectedAmount);
 
   // 폼 submit
   //  detailForm.submit();
-  //사이즈랑 가격,브랜드,카테고리 보내기
+  //사이즈랑 가격,브랜드 보내기
   fetch("/cart/cart", {
     method: "post",
     body: JSON.stringify({
       size: selectedSize,
       color: selectedColor,
       amount: selectedAmount,
-      category: category,
       price: price,
-      brand: brand,
+      name: name,
     }),
     headers: {
       "X-CSRF-TOKEN": csrfToken,

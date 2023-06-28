@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-lg-5 mt-5">
 				<div class="card mb-3">
-					<img class="powe-adidas1" src="/attachment/file?fileName=${filePathList[0] }" alt="Card image cap" id="product-detail">
+					<img class="powe-adidas1" src="/attachment/file?fileName=${filePathList[0]}" alt="Card image cap" id="product-detail">
 				</div>
 				<div class="row">
 					
@@ -151,8 +151,11 @@
 								<!-- 상품 간략 정보 -->
 						
 							<h5>${product.detail}</h5>
-							
-								
+						
+						
+						
+						
+			
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
 								<div class="col d-grid">

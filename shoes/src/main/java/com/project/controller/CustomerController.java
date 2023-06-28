@@ -39,7 +39,7 @@ public class CustomerController {
 	
 	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 @RequestBody
 	@PreAuthorize("isAuthenticated()")
-	@PostMapping("/cart/cart")
+	@PostMapping("/cart")
 	public String cartInsert(CartDTO cart,RedirectAttributes rttr) {
 		log.info("cart 로 데이터 보내기" + cart);		
 		InventoryDTO dto = new InventoryDTO();
@@ -51,7 +51,7 @@ public class CustomerController {
 			rttr.addAttribute("color", dto.getProductColor());
 		
 
-			
+			return "redirect:/cart/cart";
 			
 		}
 		return "redirect:/shoes/detail";

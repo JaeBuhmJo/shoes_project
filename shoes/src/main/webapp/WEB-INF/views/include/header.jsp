@@ -98,11 +98,74 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="/member/memberDetail">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
-                </div>
+					<div class="dropdown">
+						<a class="btn btn-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+									<security:authorize access="isAuthenticated()">
+										<security:authentication property="principal.memberDTO.name" />
+									</security:authorize>
+									<span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+							</span>
+							</a>
+
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="/member/memberDetail"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a> <a class="dropdown-item" href="/customer/qna"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> qna
+								</a> <a class="dropdown-item" href="/shop/list"> <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 목록으로
+								</a>
+							</li>
+							<li>
+								<security:authorize access="isAnonymous()">
+									<a class="dropdown-item" href="/member/login"> <i
+										class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Login
+									</a>
+								</security:authorize>
+							</li>
+							<li>
+								<security:authorize access="isAuthenticated()">
+									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i
+										class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+									</a>
+								</security:authorize>
+							</li>
+						</ul>
+					</div>
+					<%--  <ul class="navbar-nav ml-auto">
+                   <li class="nav-item dropdown no-arrow">
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
+							 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+									<security:authorize access="isAuthenticated()">
+										<security:authentication property="principal.memberDTO.name" />
+									</security:authorize>
+							</span> <img class="img-profile rounded-circle" src="/powe/undraw_profile.svg">
+							</a>
+							<!-- Dropdown - User Information -->
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="/member/memberDetail"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a> <a class="dropdown-item" href="/customer/qna"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> qna
+								</a> <a class="dropdown-item" href="/shop/list"> <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 목록으로
+								</a>
+								<div class="dropdown-divider"></div>
+
+								<!--  인증 정보 여부에 따라 Login/Logout 메뉴 설정 -->
+
+								<security:authorize access="isAnonymous()">
+									<a class="dropdown-item" href="/member/login"> <i
+										class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Login
+									</a>
+								</security:authorize>
+
+								<security:authorize access="isAuthenticated()">
+									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i
+										class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+									</a>
+								</security:authorize>
+							</div>
+						</li>
+						</ul>  --%>
+                
             </div>
 
         </div>
