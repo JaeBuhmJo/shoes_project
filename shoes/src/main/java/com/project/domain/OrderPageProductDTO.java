@@ -7,8 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -17,7 +19,7 @@ public class OrderPageProductDTO {
 	
 	
 	/* view로부터 전달 받을값 */
-	private int productId;
+	private String productId;
 	
 	private int cartamount;
 	
@@ -34,6 +36,6 @@ public class OrderPageProductDTO {
     
     
      /* 상품 이미지 */
- 	private List<Product_ImageDTO> imagelist;	     
+ 	private List<AttachmentDTO> attachmentList;	     
 
 }

@@ -102,47 +102,13 @@ $(function(){
 });
 		
 		
-		
-
-		
-		 /* // 수량 플러스 
-		$('.plus_btn').click(function(){
+    	//$('#orderBtn').click(function(){
+		//	$("input[name=cbox]:checked").each(function(){
+		//		$('#orderForm').append('<input type="hidden" name="cartIdList['+i+'].memberId" value="' + $(this).val() +'"/>')
+		//	})
 			
-			const numberText = $(this).parents('.cart__list__option').find('.productCount');
-			let thisNumber = Number(numberText.text());
-			thisNumber++;
-			numberText.text(thisNumber);
-			
-			const $totalPrice = $(this).parents('.cart__list__detail').find('.totalPrice');
-			
-			
-			let parserPrice = Number(numberParser($totalPrice.text()))
-			const culPrice = parserPrice + Number($totalPrice.data('price'))
-			$totalPrice.text(culPrice.toLocaleString() + '원')
-		})
-		
-		// 수량 마이너스
-		$('.minus_btn').click(function(){
-			
-			const numberText = $(this).parents('.cart__list__option').find('.productCount');
-			let thisNumber = Number(numberText.text());
-			if(thisNumber == 1){
-				return false;
-			}
-			thisNumber--;
-			numberText.text(thisNumber);
-			let parserPrice = Number(numberParser($('.totalPrice').text()))
-			const culPrice = parserPrice - Number($('.totalPrice').data('price'))
-			$('.totalPrice').text(culPrice.toLocaleString() + '원')
-		 })
-		
-		function numberParser(str){
-			str = str.replace(',','');
-			str = str.replace('원','');
-			return str;
-		}  */
-		
-		
+		//	$('#orderForm').submit();
+		// })
 		
 });
 </script>
@@ -157,7 +123,8 @@ $(function(){
             </ul>
         </div>
         
-			
+        
+        
 		 <table class="cart__list">
 	         <thead>
 	             <tr>
@@ -172,52 +139,38 @@ $(function(){
 	             </tr>
 	         </thead>             			
            	 <tbody>
-             	<tr class="cart__list__detail">
-                 	<td>
-                 		<input type="checkbox" name="cbox" id="checkbox2" data-cartId="${clist.cartId}">
-	                </td>
-	                <td>
-	                 	<img src="" alt="나이키 슬리퍼">
-                	</td>
-	                <td>
-	                 	<span class="cart__list__smartstore">나이키 슬리퍼</span>
-	                    <p>편하게 신을수 있는 슬리퍼</p>
-	                    <span class="price">30,000원</span>
-	                    <span style="text-decoration: line-through; color: lightgray;">00,000원</span>
-	    			</td>
-				    <td class="cart__list__option">
-				        <p>수량 : <span class="productCount">1</span>개</p>                 
-				    </td>
-				    <td>			 
-				    	<span class="totalPrice" data-price="30000">30,000원</span>
-				    	<br>
-				    </td>
-		    		<td>무료</td>
-				</tr>
-				<tr class="cart__list__detail">
-				   <td>
-                 		<input type="checkbox" name="cbox" id="checkbox2" data-cartId="${clist.cartId}">
-	                </td>
-	                <td>
-	                 	<img src="" alt="아디다스 운동화">
-                	</td>
-	                <td>
-	                 	<span class="cart__list__smartstore">아디다스 운동화</span>
-	                    <p> 걸음이 편한 운동화</p>
-	                    <span class="price">70,000원</span>
-	                    <span style="text-decoration: line-through; color: lightgray;">00,000원</span>
-	    			</td>
-				    <td class="cart__list__option">
-				        <p>수량 : <span class="productCount">1</span>개</p>                 
-				    </td>
-				    <td>			 
-				    	<span class="totalPrice" data-price="70000">70,000원</span>
-				    	<br>
-				    </td>
-		    		<td>무료</td>
-	            </tr>            
+      	 		
+           	 	<c:forEach var="cart" items="${cartList}" varStatus="status">
+           	 	
+	           	 	<tr class="cart__list__detail">
+	                 	<td>
+	                 		<input type="checkbox" name="cbox" id="checkbox2" value="${cart.cartId}" data-cartId="${clist.cartId}">
+		                </td>
+		                <td>
+		                 	<img src="" alt="나이키 슬리퍼">
+	                	</td>
+		                <td>
+		                 	<span class="cart__list__smartstore">나이키 슬리퍼 </span>
+		                    <p>편하게 신을수 있는 슬리퍼</p>
+		                    <span class="price">${cart.price}원</span>
+		                    <span style="text-decoration: line-through; color: lightgray;">00,000원</span>
+		    			</td>
+					    <td class="cart__list__option">
+					        <p>수량 : <span class="productCount">1</span>개</p>                 
+					    </td>
+					    <td>			 
+					    	<span class="totalPrice" data-price="30000">30,000원</span>
+					    	<br>
+					    </td>
+			    		<td>무료</td>
+					</tr>
+           	 	</c:forEach>
 	      	</tbody>
 		</table>
+		
+		<form action="/cart/order" method="get" id="orderForm">
+		
+		</form>
 		
 		<div class="right-align basketrowcmd">
                 <a class="abutton1" onclick="javascript:basket.delCheckedItem();">선택상품삭제</a>
@@ -247,12 +200,17 @@ $(function(){
                     <td><span id="finalTotalkind_span">전체 주문금액</span></td>
                     <td><span id="finalTotalPrice_span">00,000</span></td>
                 </tr>
+                
             </table> 
             <div class="cart__mainbtns">
 	          <button class="cart__bigorderbtn left" >쇼핑 계속하기</button>
-	          <button class="cart__bigorderbtn right" onclick="location.href='/cart/order?order=1'" >주문하기</button>
+	          <button class="cart__bigorderbtn right" id="orderBtn" onclick="location.href='/cart/order?order=1'" >주문하기</button>
          	</div>
        	</div>
+       	
+       
+       		
+       	
        	
         <!-- 수량 조정 form -->
 		<form action="/cart/update" method="post" class="quantity_update_form">

@@ -4,7 +4,7 @@
 
          <!-- 주문 상품 정보 -->
          
-	<select id="getOrder_list" resultType="com.project.domain.OrderPageProductDTO">
+	<select id="getOrderlist" resultType="com.project.domain.OrderPageProductDTO">
 	
 	select productId, productName, Price, discountPrice
 	from shoes where productId = #{productId}	
@@ -17,6 +17,22 @@
 	from shoes where productId = #{productId}	
 	
 	</select>
+	
+	<!-- 주문 테이블 등록 -->
+	<insert id="Order">
+	
+		insert into Orders(orderId, oredrAddress, memberId)
+    	values(#{orderId},#{addressee}, #{memberId})
+	
+	</insert>	
+	
+	<!-- 주문 아이템 테이블 등록 -->
+	<insert id="OrderProduct">
+	
+		insert into Orders(orderId, productId, cartAmount, Price, discountPrice, detail)
+		values(#{orderId}, #{productId}, #{cartAmount}, #{Price}, #{discountPrice}, #{detail})
+	
+	</insert>	
 
 
 

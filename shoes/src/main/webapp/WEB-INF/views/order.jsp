@@ -28,7 +28,14 @@
     <!-- Main Theme files-->
     <!-- <script src="/assets/js/sliders-init.js"></script> -->
     <!-- <script src="/assets/js/theme.js"></script> -->
+    
     <script src="/assets/js/code.jquery.com_jquery-3.7.0.min.js"></script>
+    
+    <!-- iamport 결제에 필요한것들 -->
+    <!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     
     
 </head>
@@ -265,7 +272,7 @@ $(function(){
                         <h1>결제방법</h1>
                         <div>
                             <p>
-                                <button type="button">
+                                <button type="button" id="pay_btn"  onclick="requestPay({{ auth()->check() }})">
 								  <img src="/assets/img/kakaopay.png" alt="카카오페이">
 								</button>
                             </p>

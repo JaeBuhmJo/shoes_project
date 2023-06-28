@@ -11,12 +11,16 @@
 	  <!-- 장바구니 삭제 -->
 	  <delete id="deleteCart">
 		delete from carts where cartId = #{cartId} and memberId = #{memberId};
-	   </delete>
+	  </delete>
 	   
 	   <!-- 장바구니 수량 수정 -->
 	  <update id="modifyamount">
-	  update 
-	  	carts set cart_amount=#{cartAmount} where cartId = #{cartId}
+ 		update 
+	  		carts 
+		set 
+			cartAmount = #{cartAmount} 
+		where 
+			cartId = #{cartId}
 	  </update>
 	  
 	  <!-- 카트 목록 -->
@@ -38,8 +42,14 @@
 	  
 	     <!-- 카트 확인 -->
 	    <select id="checkCart" resultType="com.project.domain.CartDTO">
-		  select * from carts
-		  where memberId = #{memberId} and productId = #{productId}
+		  select 
+		  	* 
+		  from 
+		  	carts
+		  where 
+		  	memberId = #{memberId} 
+		  	and 
+		  	productId = #{productId}
 	    </select>	
 	
 

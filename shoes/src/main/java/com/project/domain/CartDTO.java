@@ -2,12 +2,15 @@ package com.project.domain;
 
 import java.util.List;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -20,7 +23,7 @@ public class CartDTO {
 	
 	private String memberId; // 회원 이름
 	         
-	private int productId; // 제품 코드
+	private String productId; // 제품 코드
 	
 	private int cartAmount; // 담은 수량
 	
@@ -40,7 +43,7 @@ public class CartDTO {
 	private int totalPrice;
 	
 	// 상품 이미지
-	private List<Product_ImageDTO> imagelist;
+	private List<AttachmentDTO> attachmentList;
 
 }
 

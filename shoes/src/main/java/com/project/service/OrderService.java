@@ -8,7 +8,7 @@ import com.project.domain.OrderPageProductDTO;
 public interface OrderService {
 	
 	/* 주문 정보 */
-	public List<OrderPageProductDTO> getorder_list(List<OrderPageProductDTO> orders);
+	public List<OrderPageProductDTO> getOrderlist(List<OrderPageProductDTO> orders);
 	
 	/* 주문 하기 */
 	public void order(OrderDTO orderdto);
