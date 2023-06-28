@@ -20,4 +20,6 @@ public interface MemberMapper {
 	public int remove (String memberId);
 	// 중복아이디
 	public int dupid (String memberId);
+	// 로그인 못한 유저 비밀번호 변경
+	public int changePassword (MemberDTO memberDTO);
 }

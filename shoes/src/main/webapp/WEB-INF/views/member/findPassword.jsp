@@ -154,7 +154,7 @@ https://templatemo.com/tm-559-zay-shop
 	<!-- Start Content Page -->
 	<div class="container-fluid bg-light py-5">
 		<div class="col-md-6 m-auto text-center">
-			<h1 class="h1">회원 상세페이지</h1>
+			<h1 class="h1">회원 탈퇴</h1>
 			<p>저희 쇼핑몰에 오신걸 환영합니다.</p>
 		</div>
 	</div>
@@ -184,173 +184,96 @@ https://templatemo.com/tm-559-zay-shop
     Ena Map -->
 
 	<!-- Start Contact -->
-	<security:authentication property="principal.memberDTO"
-		var="userDetails" />
 	<div class="container py-5">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 class="h2 pb-4">회원 페이지</h1>
-				<ul class="list-unstyled">
-					<li class="pb-3"><a
-						class="d-flex justify-content-between h3 text-decoration-none"
-						style="color: black;" href="/member/memberDetail"> 회원상세 <i
-							class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-					</a></li>
-					<li class="pb-3"><a
-						class="collapsed d-flex justify-content-between h3 text-decoration-none"
-						style="color: black;" href="/member/modify"> 회원정보 수정 <i
-							class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-					</a></li>
-					<li class="pb-3"><a
-						class="collapsed d-flex justify-content-between h3 text-decoration-none"
-						style="color: black;" href="#"> <!-- /cart/cart?cart=1  -->
-							장바구니 <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-					</a></li>
-					<li class="pb-3"><a
-						class="collapsed d-flex justify-content-between h3 text-decoration-none"
-						style="color: black;" href="#"> 주문내역 <i
-							class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-					</a></li>
-					<li class="pb-3"><a
-						class="collapsed d-flex justify-content-between h3 text-decoration-none"
-						style="color: black;" href="/member/remove"> 회원탈퇴 <i
-							class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-					</a></li>
-					<li class="pb-3"><a
-						class="collapsed d-flex justify-content-between h3 text-decoration-none"
-						style="color: black;" href="#"> 구매후기 <i
-							class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-					</a></li>
-					<li class="pb-3"><a
-						class="collapsed d-flex justify-content-between h3 text-decoration-none"
-						style="color: black;" href="#"> 상품문의 <i
-							class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-					</a></li>
-				</ul>
-			</div>
+                <h1 class="h2 pb-4">회원 페이지</h1>
+                <ul class="list-unstyled">
+                    <li class="pb-3">
+                        <a class="d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/memberDetail">
+                            회원상세 
+                            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/modify">
+                            회원정보 수정 
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li>
+                     <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#"> <!-- /cart/cart?cart=1  -->
+                            장바구니
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                            주문내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="/member/remove">
+                            회원탈퇴
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                            구매후기
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" style="color: black;" href="#">
+                            상품문의
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                    </li> 
+                </ul>
+            </div>
 			<div class="col-lg-9">
-				<form class="col-md-9 m-auto" method="get" role="form"
-					action="/member/modify">
-					<div class="form-group mb-3">
-						<label for="memberId">아이디</label> <input type="text"
-							class="form-control mt-1" id="memberId" name="memberId"
-							placeholder="아이디" value="${userDetails.memberId }" readonly>
-					</div>
-					<div class="form-group mb-3">
-						<label for="name">이름</label> <input type="text"
-							class="form-control mt-1" id="name" name="name" placeholder="이름"
-							value="${userDetails.name }" readonly>
-					</div>
-					<div class="form-group mb-3">
-						<label for="phone">휴대폰</label> <input type="text"
-							class="form-control mt-1" id="phone" name="phone"
-							placeholder="휴대폰" value="${userDetails.phone }" readonly>
-					</div>
-					<div class="form-group mb-3">
-						<label for="address">주소</label> <input type="text"
-							class="form-control mt-1" id="address" name="address"
-							placeholder="주소" value="${userDetails.address }" readonly>
+				<form class="col-md-9 m-auto" method="post" role="form" action="/member/findPassword">
+					<div class="form-group mb-3 ">
+						<label for="memberId">아이디</label>
+						 <input type="text" class="form-control mt-1" id="memberId" name="memberId"
+							placeholder="아이디" >
 					</div>
 					<div class="form-group mb-3">
 						<label for="email">이메일</label> <input type="email"
 							class="form-control mt-1" id="email" name="email"
-							placeholder="이메일" value="${userDetails.email }" readonly>
+							placeholder="이메일">
+							<button class="btn btn-info btn-lg px-3" type="button" id="emailConfirm">이메일 인증</button>
 					</div>
-					<div class="form-group mb-3">
-						<label for="footSize">발사이즈</label> <input type="text"
-							class="form-control mt-1" id="footSize" name="footSize"
-							placeholder="발사이즈" value="${userDetails.footSize }" readonly>
-					</div>
-					<div class="row">
-						<div class="col text-end mt-2">
-							<button type="submit" class="btn btn-success btn-lg px-3">회원수정</button>
-						</div>
-					</div>
-					<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> --%>
-				</form>
-				<form class="col-md-9 m-auto" method="get" role="form"
-					action="/member/remove">
-					<input type="hidden" class="form-control mt-1" id="memberId"
-						name="memberId" placeholder="아이디" value="${userDetails.memberId }"
-						readonly>
+					<div class="form-group mb-3">                       
+					<label for="checkNumber">인증번호</label> <input type="text"                      
+						class="form-control mt-1" id="checkNumber" name="checkNumber"
+						placeholder="숫자 6자리" >
+					<button class="btn btn-success btn-lg px-3" type="button" id="emailCheckConfirm">인증번호 확인</button>	
+					<div class="invalid-feedback">인증번호를 확인해 주세요</div>
+				</div>    
 					<div class="col text-end mt-2">
-						<button type="submit" class="btn btn-danger btn-lg px-3">회원탈퇴</button>
-					</div>
-				</form>
-				<form class="col-md-9 m-auto" action="/logout" method="post">
+						<button type="submit" id="submitButton" class="btn btn-danger btn-lg px-3" >비밀번호 수정</button>
+					</div>                                                
 					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" />
-					<div class="col text-end mt-2">
-						<button class="btn btn-info btn-lg px-3" type="submit">로그아웃</button>
-					</div>
+						value="${_csrf.token}">
 				</form>
+				                       
+				
+				
 				<form class="col-md-9 m-auto" method="get" role="form">
 					<div class="col text-end mt-2">
 						<button type="button" class="btn btn-secondary  btn-lg px-3"
 							onclick="location.href='/member/memberPage'">취소</button>
 						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}"> <input type="hidden"
-							style="color: black;" class="form-control mt-1" id="memberId"
-							name="memberId" placeholder="아이디" value="${userDetails.memberId}"
-							readonly>
+							value="${_csrf.token}"> 
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	</div>                        
-
-
-
-	<%--  <!-- Start Contact -->
-    <div class="container py-5">
-        <div class="row py-5">
-            <form class="col-md-9 m-auto" method="post" role="form">
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">아이디</label>
-                        <input type="text" class="form-control mt-1" id="memberId" name="memberId" placeholder="아이디">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">이름</label>
-                        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="name">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">비밀번호</label>
-                        <input type="password" class="form-control mt-1" id="password" name="password" placeholder="password">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">휴대폰</label>
-                        <input type="text" class="form-control mt-1" id="phone" name="phone" placeholder="phone">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">주소</label>
-                        <input type="text" class="form-control mt-1" id="address" name="address" placeholder="address">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">이메일</label>
-                        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="email">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="inputsubject">발사이즈</label>
-                    <input type="text" class="form-control mt-1" id="footSize" name="footSize" placeholder="발사이즈">
-                </div>
-                <div class="row">
-                    <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">회원가입</button>
-                    </div>
-                </div>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
-        </div>
-    </div>
-    <!-- End Contact -->
- --%>
+	<!-- End Contact -->
 
 	<!-- Start Footer -->
 	<footer class="bg-dark" id="tempaltemo_footer">
@@ -426,7 +349,7 @@ https://templatemo.com/tm-559-zay-shop
 							<a class="text-light text-decoration-none" target="_blank"
 							href="https://twitter.com/"><i
 								class="fab fa-twitter fa-lg fa-fw"></i></a>
-						</li>                          
+						</li>
 						<li
 							class="list-inline-item border border-light rounded-circle text-center">
 							<a class="text-light text-decoration-none" target="_blank"
@@ -458,16 +381,21 @@ https://templatemo.com/tm-559-zay-shop
 				</div>
 			</div>
 		</div>
-
+                            
 	</footer>
 	<!-- End Footer -->
+	<script>
+                                 
+    //CSRF 토큰 값 생성                           
+  	const csrfToken = '${_csrf.token}';
+    </script>
 
 	<!-- Start Script -->
 	<script src="/assets/js/jquery-1.11.0.min.js"></script>
 	<script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
 	<script src="/assets/js/bootstrap.bundle.min.js"></script>
 	<script src="/assets/js/templatemo.js"></script>
-	<script src="/assets/js/custom.js"></script>
+	<script src="/assets/js/findPassword.js"></script>
 	<!-- End Script -->
 </body>
 

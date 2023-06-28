@@ -57,7 +57,7 @@ public class MemberServiceImpl implements MemberService {
 			return false;
 		}
 
-	}                              
+	}
 
 	// 중복아이디
 	@Override
@@ -65,6 +65,13 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.dupid(memberId) == 1 ? true : false;
 	}
 
-
+	// 로그인 못한 회원 비밀번호 변경
+	@Override
+	public boolean changePassword(MemberDTO memberDTO) {
+		
+		// 변경 비빌번호 암호화
+		memberDTO.setNewPassword(bPasswordEncoder.encode(memberDTO.getNewPassword()));
+		return mapper.changePassword(memberDTO) == 1 ? true : false;
+	}
 
 }
