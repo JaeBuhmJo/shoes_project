@@ -9,9 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.AttachmentDTO;
 import com.project.domain.ColorSize;
@@ -19,6 +20,7 @@ import com.project.domain.Criteria;
 import com.project.domain.ProductDTO;
 import com.project.domain.ReviewDTO;
 import com.project.domain.ReviewPageDTO;
+import com.project.service.CustomerService;
 import com.project.service.DetailService;
 import com.project.service.ProductService;
 
@@ -35,6 +37,28 @@ public class ShoesController {
 	@Autowired
 	private ProductService productService;
 
+	@Autowired
+	private CustomerService customerService;
+	
+	@GetMapping("/review")
+	public void reviewInsert() {
+	}
+	
+	@PostMapping("/review")
+	public String reviewPost(ReviewDTO review,RedirectAttributes rttr,Criteria cri) {
+		log.info("review post");
+		
+		if(customerService.reviewInsert(review)) {
+			rttr.addAttribute("result", review.getReviewId());
+			rttr.addAttribute("page", cri.getPage());
+			rttr.addAttribute("amount", cri.getListAmount());
+			log.info("review write",review);
+			return "redirect:/shoes/detail";
+		}
+		
+		return "redirect:/shoes/detail";
+	}
+	
 	@GetMapping("/sale")
 	public void saleGet() {
 		log.info("sale 화면");

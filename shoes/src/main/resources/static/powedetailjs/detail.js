@@ -83,7 +83,7 @@ shoesForm.addEventListener("submit", (e) => {
   // 폼 submit
   //  detailForm.submit();
   //사이즈랑 가격,브랜드 보내기
-  fetch("/cart/cart", {
+  fetch("/customer/cart", {
     method: "post",
     body: JSON.stringify({
       size: selectedSize,
@@ -108,4 +108,33 @@ shoesForm.addEventListener("submit", (e) => {
       shoesForm.submit();
     })
     .catch((error) => console.log(error));
+});
+
+// 페이지 넘어가는 기능
+
+const pagination = document.querySelector(".pagination");
+const operForm = document.querySelector("#operForm");
+
+pagination.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  let href = e.target.getAttribute("href");
+
+  operForm.firstElementChild.value = href;
+
+  operForm.submit();
+});
+
+var loading = false;
+var currentPage = 1;
+
+window.addEventListener("scroll", () => {
+  var scrollTop = document.documentElement.scrollTop;
+  var windowHeight = window.innerHeight;
+  var documentHeight = document.documentElement.scrollHeight;
+
+  if (scrollTop + windowHeight >= documentHeight && !loading) {
+    loadReviews(currentPage + 1);
+  }
+  loadReviews(1);
 });

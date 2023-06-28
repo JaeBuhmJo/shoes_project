@@ -19,6 +19,7 @@ import com.project.domain.InventoryDTO;
 import com.project.domain.MemberDTO;
 import com.project.domain.QnaDTO;
 import com.project.domain.QnaPageDTO;
+import com.project.service.CustomerService;
 import com.project.service.DetailService;
 import com.project.service.QnaService;
 
@@ -35,7 +36,6 @@ public class CustomerController {
 	@Autowired
 	private QnaService qnaService;
 	
-
 	
 	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 @RequestBody
 	@PreAuthorize("isAuthenticated()")
@@ -44,25 +44,17 @@ public class CustomerController {
 		log.info("cart 로 데이터 보내기" + cart);	
 		InventoryDTO dto = new InventoryDTO();
 
-
-
-		
 		if(service.cartInsert(cart)) {
 			rttr.addAttribute("productId", cart.getProductId());
 			rttr.addAttribute("memberId", cart.getMemberId());
 			rttr.addAttribute("cartAmount", cart.getCartAmount());
 			rttr.addAttribute("size", dto.getProductSize());
 			rttr.addAttribute("color", dto.getProductColor());
-		
 
-			
-			
 		}
 		return "redirect:/shoes/detail";
 		
 	}
-	
-	
 	@GetMapping("/qna")
 	@PreAuthorize("isAuthenticated()")
 	public void qnaList(@ModelAttribute("cri") Criteria cri,Model model) {

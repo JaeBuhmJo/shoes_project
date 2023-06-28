@@ -292,7 +292,7 @@
 											
 											<p>상품평</p>
 											<span class="list-inline-item text-dark">별점 4.8 | 36 </span>
-								<table class="table table-striped table-bordered table-hover">
+  								<table class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
 											<th scope="col">번호</th>
@@ -302,17 +302,19 @@
 
 										</tr>
 									</thead>
-									<tbody>
-										<c:forEach var="review" items="${list}">
-											<tr>
+									<tbody>  
+									<c:forEach var="review" items="${list}">
+									
+								 		
+											 <tr>
 												<th scope="row">${review.reviewId}</th>
 												<td>${review.memberId}</td>
-												<td><a href="${review.reviewId}" class="qna">${review.contents}</a></td>
 												<td>${review.regdate}</td>
+												<td><a href="" class="review">${review.contents}</a></td>
 											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
+										</c:forEach> 
+								 	</tbody>
+								</table> 
 								<nav aria-label="...">
 									<ul class="pagination justify-content-center">
 
@@ -334,11 +336,20 @@
 											</li>
 										</c:if>
 									</ul>
-								</nav>
+								</nav> 
 							</div>
 									</div>
 								</div>
-
+										<%-- <c:forEach var="review" items="${list}">
+											<div class="card" style="width: 18rem;">
+												<div class="card-body">
+													<h5 class="card-title">${review.regdate}</h5>
+													<p class="card-text">${review.jumsu}</p>
+													<p class="card-text review">${review.contents}</p>
+													
+												</div>
+											</div> 
+										</c:forEach>  --%>
 								
 							</div>
 							
@@ -988,11 +999,7 @@
 <link href="../powe/adidas3.img">
 <link href="../powe/adidas4.img">
 
-<form action="" id="cartForm">
-	<%-- pageDTO.cri.page 가능 --%>
-	<input type="hidden" name="inventoryId" value="${inventory.inventoryId}" />
-	
-</form>
+
 <form action="/shoes/detail" id="operForm">
 	<%-- QnaPageDTO.cri.page 가능 --%>
 	<input type="hidden" name="page" value="${cri.page}" />

@@ -2,10 +2,13 @@ function getSizes() {
   var colorSelect = document.querySelector("#productColor");
   var selectedColor = colorSelect.value;
 
+  //색이 선택되었다면 url에 있는 productId의 값을 가져오고
   if (selectedColor !== "색상선택") {
     var urlParams = new URLSearchParams(window.location.search);
     var productId = urlParams.get("productId"); //productId 값 설정 필요
 
+    // size를 가져오기위함의 url을 만들어서 shoes/size 컨트롤러에서 responseBody어노테이션을 통해
+    // productId와 productColor이 일치하는 size를 가져오게 만들어서 color가 바뀔 때마다 size도 바뀌어서 가져온다
     var url =
       "/shoes/size?productId=" +
       encodeURIComponent(productId) +
@@ -51,23 +54,4 @@ function updateSizeOptions(sizes) {
     sizeSelect.style.visibility = "hidden";
   }
 }
-// function getsize() {
-//   var colorSelect = document.querySelector("#productColor");
-//   var selectedColor = colorSelect.value;
 
-//   if (selectedColor !== "색상선택") {
-//     var sizeSelect = document.querySelector("#productSize");
-//     var sizeptions = sizeSelect.querySelectorAll("option");
-
-//     sizeOptions.forEach(function (option) {
-//       if (option.value === selectedColor) {
-//         option.style.display = "block";
-//       } else {
-//         option.style.display = "none";
-//       }
-//     });
-//     sizeSelect.style.visibility = "visible";
-//   } else {
-//     updateSizeOptions([]);
-//   }
-// }

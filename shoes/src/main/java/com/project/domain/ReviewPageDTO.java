@@ -23,10 +23,10 @@ public class ReviewPageDTO {
 		
 		this.total = total;
 		this.cri = cri;
-		this.endPage=(int)(Math.ceil(cri.getPage()/10.0))*5;
-		this.startPage=this.endPage-4;
+		this.endPage=(int)(Math.ceil(cri.getPage()/10.0))*10;
+		this.startPage=this.endPage-9;
 		
-		int realEnd =(int)((Math.ceil(total)/1.0)/cri.getListAmount());
+		int realEnd =(int)(Math.ceil((total/1.0)/cri.getListAmount()));
 		if(realEnd < this.endPage) {
 			this.endPage=realEnd;
 		}

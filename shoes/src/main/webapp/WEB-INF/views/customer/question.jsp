@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col text-end mt-2">
                         <button type="submit" class="btn btn-success btn-lg px-3" id="qnaRegister" >등록</button>
-                        <button type="reset" class="btn btn-danger btn-lg px-3">취소</button>
+                        <button type="button" class="btn btn-danger btn-lg px-3">취소</button>
                     </div>
                 </div>
                 
@@ -35,7 +35,6 @@
     </div>
 
 <script>
-//const member = ${member.memberId}
 const csrfToken='${_csrf.token}';
 </script>
    <script src="/poweqnajs/question.js"> </script>

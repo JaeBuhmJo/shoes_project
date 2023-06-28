@@ -7,5 +7,5 @@ import com.project.domain.ReviewDTO;
 @Mapper
 public interface CustomerMapper {
 
-	public ReviewDTO reviewInsert(int reviewId);
+	public int reviewInsert(ReviewDTO review);
 }
