@@ -13,8 +13,8 @@
 	                   #{item.productColor} as product_color
 	            from dual
 	        </foreach>
-	    ) x
-	</insert>
+	    ) x 
+	</insert> 
 	
 	<resultMap type="com.project.domain.ProductDTO" id="productMap">
 		<id property="productId" column="product_id"/>

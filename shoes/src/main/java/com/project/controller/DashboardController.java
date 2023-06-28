@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,7 @@ public class DashboardController {
 	private DashboardService dashboardService;
 	
 	@GetMapping("/statistics")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public ResponseEntity<DashboardDataDTO> statisticsGet() {
 		log.info("어드민 대시보드 통계 데이터 요청");
 		DashboardDataDTO dashboardData = dashboardService.getDashboardData();
@@ -34,6 +36,7 @@ public class DashboardController {
 	}
 	
 	@GetMapping("/areachart")
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 	public ResponseEntity<Map<String, Integer>> areachartGet(){
 		Map<String, Integer> areaChartData = dashboardService.getAreaChart();
 		if(areaChartData!=null) {
