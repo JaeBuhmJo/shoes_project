@@ -85,7 +85,7 @@ document.getElementById("productSize").addEventListener("change", () => {
 
 async function getInventoryId(productId, productSize, productColor) {
   const response = await fetch(
-    "/shoes/getInventoryId?productId=${product.productId}&productSize=${size.productSize}&productColor=${cs.productColor}"
+    `/shoes/getInventoryId?productId=${productId}&productSize=${productSize}&productColor=${productColor}`
   );
   const inventoryId = await response.text();
   document.getElementById("inventoryId").value = inventoryId;

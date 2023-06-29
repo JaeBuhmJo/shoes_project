@@ -153,11 +153,9 @@
 							<span class="list-inline-item text-dark">별점 4.8 | 23</span>
 						</p>
 								<!-- 상품 간략 정보 -->
-						
+	
 							<h5>${product.detail}</h5>
-			
-			
-			
+		
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
 								<div class="col d-grid">

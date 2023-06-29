@@ -69,6 +69,11 @@ public class DetailServiceImpl implements DetailService {
 		
 		return detailMapper.inventoryIdGet(productId,productColor,productSize);
 	}
+//	@Override
+//	public InventoryDTO inventoryIdGet(InventoryDTO dto) {
+//		
+//		return detailMapper.inventoryIdGet(dto);
+//	}
 	
 	
 	

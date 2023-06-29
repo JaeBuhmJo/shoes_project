@@ -32,43 +32,35 @@ public class CustomerController {
 
 	@Autowired
 	private DetailService service;
-	
 	@Autowired
 	private QnaService qnaService;
-	
 	
 	@GetMapping("/review")
 	public void review() {
 		
 	}
-	
 	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 @RequestBody
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/cart")
 	public String cartInsert(@RequestBody CartDTO cart,RedirectAttributes rttr) {
 		log.info("cart 로 데이터 보내기" + cart);	
-		InventoryDTO dto = new InventoryDTO();
-		
-		cart.setInventoryId(dto.getInventoryId());
+//		InventoryDTO dto = new InventoryDTO();
+//		
+//		cart.setInventoryId(dto.getInventoryId());
 		
 		if(service.cartInsert(cart)) {
 			rttr.addFlashAttribute("successMessage", "장바구니에 상품 추가 성공");
-
 		}else {
 			rttr.addFlashAttribute("errorMessage", "장바구니에 상품 추가 실패");
-			
 		}
 		return "redirect:/shoes/detail";
-		
 	}
+	
 	@GetMapping("/qna")
 	@PreAuthorize("isAuthenticated()")
 	public void qnaList(@ModelAttribute("cri") Criteria cri,Model model) {
 		log.info("qna 페이지 get");
-		
-	
-		
-		
+
 		List<QnaDTO> list = qnaService.qnaList(cri);
 		
 		model.addAttribute("list", list);

@@ -66,9 +66,9 @@ public class ShoesController {
 		log.info("sale 화면");
 
 	}
-
+// 
 	@GetMapping("/detail")
-	public void detailRead(Model model, String productId,String productColor,String productSize, @ModelAttribute("cri") Criteria cri) {
+	public void detailRead(Model model,String productId,String productColor,String productSize, @ModelAttribute("cri") Criteria cri) {
 		log.info("detail 화면");
 
 		// model 은 jsp에서 여기선 product.productId,product.price등의 값들을 주기 위해 사용
@@ -79,6 +79,7 @@ public class ShoesController {
 		List<ReviewDTO> list = service.reviewList(cri);
 
 		model.addAttribute("inventory", service.inventoryIdGet(productId, productColor, productSize));
+//		model.addAttribute("inventory", service.inventoryIdGet(dto));
 		model.addAttribute("list", list);
 		int total = service.reviewTotal(cri);
 		
@@ -90,9 +91,10 @@ public class ShoesController {
 
 	@GetMapping("/getInventoryId")
 	@ResponseBody
-	public InventoryDTO product(@RequestParam("productColor") String productColor,@RequestParam("productSize") String productSize,@RequestParam("productId") String productId) {
-		
-		return service.inventoryIdGet(productId, productColor, productSize);
+	public String product(@RequestParam("productColor") String productColor,@RequestParam("productSize") String productSize,@RequestParam("productId") String productId) {
+		InventoryDTO inventoryDTO = service.inventoryIdGet(productId, productColor, productSize);
+//		InventoryDTO inventoryDTO = service.inventoryIdGet(null);
+		return inventoryDTO!=null?inventoryDTO.getInventoryId():null;
 	}
 
 	
