@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DashboardDataDTO {
+public class DashboardStatisticsDTO {
 	private int onSaleProductsCount;
 	private int offSaleProductsCount;
 	private int dayPurchaseCount;
@@ -18,7 +18,4 @@ public class DashboardDataDTO {
 	private int todayVisitCount;
 	private int dailyVisitCount;
 	private int totalVisitCount;
-	
-	private int salesAmount;
-	private String salesDate;
 }

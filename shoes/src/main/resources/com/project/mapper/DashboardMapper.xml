@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.DashboardMapper">
 
-	<select id="getStatistics" resultType="com.project.domain.DashboardDataDTO">
+	<select id="getStatistics" resultType="com.project.domain.DashboardStatisticsDTO">
 	select
 		(select nvl(count(product_id),0) from products where on_sale = 1 and discontinued = 0) as onSaleProductsCount,
 		(select nvl(count(product_id),0) from products where on_sale = 0 and discontinued = 0) as offSaleProductsCount,
@@ -16,13 +16,41 @@
 		(select nvl(count(client_ip_address),0) from visit_counter) as totalVisitCount
 	from dual
 	</select>
+
+	<select id="getWeeklySalesAmount" resultType="com.project.domain.DashboardChartDTO">
+		<![CDATA[
+			select nvl(sum(pu.purchase_amount * pr.price), 0) as salesAmount, 
+			       d.dt as salesDate
+			from (
+				  select to_date(to_char(trunc(sysdate - level), 'YYYY-MM-DD')) as dt
+				  from dual
+				  connect by level <= 7
+			     ) d
+			left outer join purchases pu on trunc(pu.purchase_date) = d.dt
+			left outer join products pr ON pu.product_id = pr.product_id
+			where d.dt between trunc(sysdate - 7) and trunc(sysdate - 1)
+			group by d.dt
+			order by d.dt
+		]]>
+	</select>
 	
-	<select id="getWeeklySalesAmount" resultType="com.project.domain.DashboardDataDTO">
-		select nvl(sum(pu.purchase_amount*pr.price),0) as salesAmount, 
-			   trunc(pu.purchase_date) as salesDate
-		from purchases pu join products pr on pu.product_id = pr.product_id 
-		where trunc(pu.purchase_date) between trunc(sysdate-7) and trunc(sysdate-1)
-		group by trunc(pu.purchase_date)
+	<select id="getWeeklyTopThree" resultType="com.project.domain.DashboardChartDTO">
+		<![CDATA[
+			with top_products as(
+			  select row_number() over (order by sum(pu.purchase_amount * pr.price) DESC) as row_num, 
+			  		 pr.product_id, pr.product_name, SUM(pu.purchase_amount * pr.price) as product_sales_amount
+			  from purchases pu join products pr on pu.product_id = pr.product_id
+			  where trunc(pu.purchase_date) between trunc(sysdate - 7) and trunc(sysdate - 1)
+			  group by pr.product_id, pr.product_name
+			)
+			select product_id, product_name, product_sales_amount
+			from top_products
+			where row_num <= 3
+			union all
+			select null as product_id, '기타' as product_name, sum(product_sales_amount) as product_sales_amount
+			from top_products
+			where row_num > 3
+		]]>
 	</select>
 	
 </mapper>

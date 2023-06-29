@@ -96,13 +96,13 @@
 							<canvas id="myPieChart" width="100%" height="40"></canvas>
 						</div>
 					</div>
-				</div>
+				</div> 
 			</div>
 			<!-- chart end -->
- 
-		</div>
+   
+		</div>  
 	</main>
-	<!-- dashboard end -->
+	<!-- dashboard end --> 
 
 	<script src="/js/scripts.js"></script>
 	<script

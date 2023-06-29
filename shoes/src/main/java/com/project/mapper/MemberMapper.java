@@ -3,7 +3,6 @@ package com.project.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 
-import com.project.domain.LoginDTO;
 import com.project.domain.MemberDTO;
 
 @Mapper

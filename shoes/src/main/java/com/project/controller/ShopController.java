@@ -32,7 +32,7 @@ public class ShopController {
 
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private VisitCounterMapper visitCounterMapper;
 
@@ -41,26 +41,27 @@ public class ShopController {
 		String clientIpAddress = request.getRemoteAddr();
 		Cookie[] cookies = request.getCookies();
 
+		LocalDate currentDate = LocalDate.now();
 		// 해당 IP의 쿠키를 이미 가지고 있는 경우 -> 리턴
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("blackpearl_visited") && cookie.getValue().equals(clientIpAddress)) {
+				if (cookie.getName().equals("blackpearl_visited_" + currentDate.toString()) && cookie.getValue().equals(clientIpAddress)) {
 					return;
 				}
 			}
 		}
 
 		// 해당 IP의 쿠키를 가지고 있지 않은 경우
-		LocalDate currentDate = LocalDate.now();
 		VisitDTO visitDTO = new VisitDTO(currentDate, clientIpAddress);
 
-		if (visitCounterMapper.wasVisited(visitDTO)==0? true:false) {
-			log.info("미방문 고객 쿠키 생성"+visitDTO);
+		if (visitCounterMapper.wasVisited(visitDTO) == 0 ? true : false) {
+			log.info("미방문 고객 쿠키 생성" + visitDTO);
 			visitCounterMapper.createVisit(visitDTO);
 		}
 
 		// Send a new cookie to the client
-		Cookie visitCookie = new Cookie("blackpearl_visited", clientIpAddress);
+		Cookie visitCookie = new Cookie("blackpearl_visited_" + currentDate.toString(), clientIpAddress);
+		visitCookie.setComment(currentDate.toString());
 		visitCookie.setMaxAge(24 * 60 * 60);
 		visitCookie.setPath("/");
 		response.addCookie(visitCookie);

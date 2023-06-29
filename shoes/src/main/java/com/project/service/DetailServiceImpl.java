@@ -10,11 +10,8 @@ import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
-import com.project.domain.QnaDTO;
 import com.project.domain.ReviewDTO;
 import com.project.mapper.DetailMapper;
-import com.project.mapper.QnaMapper;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Service

@@ -3,9 +3,10 @@ package com.project.service;
 import java.util.List;
 import java.util.Map;
 
-import com.project.domain.DashboardDataDTO;
+import com.project.domain.DashboardStatisticsDTO;
 
 public interface DashboardService {
-	public DashboardDataDTO getDashboardData();
-	public Map<String, Integer> getAreaChart();
+	public DashboardStatisticsDTO getDashboardData();
+	public Map<String, Integer> getAreaChartData();
+	public List<String> getPieChartData();
 }
