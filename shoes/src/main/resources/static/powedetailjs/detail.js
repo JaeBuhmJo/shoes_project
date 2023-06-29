@@ -125,16 +125,16 @@ pagination.addEventListener("click", (e) => {
   operForm.submit();
 });
 
-var loading = false;
-var currentPage = 1;
+// var loading = false;
+// var currentPage = 1;
 
-window.addEventListener("scroll", () => {
-  var scrollTop = document.documentElement.scrollTop;
-  var windowHeight = window.innerHeight;
-  var documentHeight = document.documentElement.scrollHeight;
+// window.addEventListener("scroll", () => {
+//   var scrollTop = document.documentElement.scrollTop;
+//   var windowHeight = window.innerHeight;
+//   var documentHeight = document.documentElement.scrollHeight;
 
-  if (scrollTop + windowHeight >= documentHeight && !loading) {
-    loadReviews(currentPage + 1);
-  }
-  loadReviews(1);
-});
+//   if (scrollTop + windowHeight >= documentHeight && !loading) {
+//     loadReviews(currentPage + 1);
+//   }
+//   loadReviews(1);
+// });
