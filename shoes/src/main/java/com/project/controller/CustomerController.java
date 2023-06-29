@@ -52,11 +52,6 @@ public class CustomerController {
 		cart.setInventoryId(dto.getInventoryId());
 		
 		if(service.cartInsert(cart)) {
-//			rttr.addAttribute("productId", cart.getProductId());
-//			rttr.addAttribute("memberId", cart.getMemberId());
-//			rttr.addAttribute("cartAmount", cart.getCartAmount());
-//			rttr.addAttribute("size", dto.getProductSize());
-//			rttr.addAttribute("color", dto.getProductColor());
 			rttr.addFlashAttribute("successMessage", "장바구니에 상품 추가 성공");
 
 		}else {

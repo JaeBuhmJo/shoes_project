@@ -34,6 +34,6 @@ public class OrderPageProductDTO {
     
     
      /* 상품 이미지 */
- 	private List<Product_ImageDTO> imagelist;	     
+ 	private List<ProductImageDTO> imagelist;	     
 
 }

@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.CartDTO;
-import com.project.domain.Product_ImageDTO;
+import com.project.domain.ProductImageDTO;
 import com.project.mapper.CartMapper;
-import com.project.mapper.Product_ImageMapper;
+import com.project.mapper.ProductImageMapper;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -18,7 +18,7 @@ public class CartServiceImpl implements CartService {
 	private CartMapper cartMapper;
 	
 	@Autowired
-	private Product_ImageMapper imageMapper;
+	private ProductImageMapper imageMapper;
 	
 	
 	
@@ -48,9 +48,9 @@ public class CartServiceImpl implements CartService {
 		for(CartDTO dto : cart) {
 			
 			// 이미지 정보 얻기
-			int productId = dto.getProductId();
+			String productId = dto.getProductId();
 			
-			List<Product_ImageDTO> imagelist = imageMapper.getProduct_ImageDTOList(productId);
+			List<ProductImageDTO> imagelist = imageMapper.getProduct_ImageDTOList(productId);
 			
 			dto.setImagelist(imagelist);
 		}

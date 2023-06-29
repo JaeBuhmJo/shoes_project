@@ -14,7 +14,7 @@ import com.project.domain.OrderDTO;
 import com.project.domain.OrderPageDTO;
 import com.project.domain.OrderPageProductDTO;
 import com.project.domain.OrderProductDTO;
-import com.project.domain.Product_ImageDTO;
+import com.project.domain.ProductImageDTO;
 import com.project.mapper.CartMapper;
 import com.project.mapper.OrderMapper;
 

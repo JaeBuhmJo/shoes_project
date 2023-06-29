@@ -1,6 +1,6 @@
 package com.project.domain;
 
-public class Product_ImageDTO {
+public class ProductImageDTO {
 	
 	private String fileName;
 	private String uploadPath;
