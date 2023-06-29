@@ -26,5 +26,7 @@ public interface DetailService {
 	public List<ColorSize> color(String productId);
 	public List<ColorSize> size(String productId,String productColor);
 
+	public InventoryDTO inventoryIdGet(String inventoryId,String productColor,int productSize);
+	public CartDTO cartIdGet(String memberId);
 }
 

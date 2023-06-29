@@ -20,14 +20,14 @@ public class CartDTO {
 	
 	private String memberId; // 회원 이름
 	         
-	private int productId; // 제품 코드
+	private String productId; // 제품 코드
 	
 	private int cartAmount; // 담은 수량
 	
-	private int inventoryId; // 재고 코드
+	private String inventoryId; // 재고 코드
 	// product
 	
-	private int productName; // 상품명
+	private String productName; // 상품명
 	
 	private int Price; // 가격
 	

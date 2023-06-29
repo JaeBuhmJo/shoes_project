@@ -37,20 +37,31 @@ public class CustomerController {
 	private QnaService qnaService;
 	
 	
+	@GetMapping("/review")
+	public void review() {
+		
+	}
+	
 	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 @RequestBody
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/cart")
 	public String cartInsert(@RequestBody CartDTO cart,RedirectAttributes rttr) {
 		log.info("cart 로 데이터 보내기" + cart);	
 		InventoryDTO dto = new InventoryDTO();
-
+		
+		cart.setInventoryId(dto.getInventoryId());
+		
 		if(service.cartInsert(cart)) {
-			rttr.addAttribute("productId", cart.getProductId());
-			rttr.addAttribute("memberId", cart.getMemberId());
-			rttr.addAttribute("cartAmount", cart.getCartAmount());
-			rttr.addAttribute("size", dto.getProductSize());
-			rttr.addAttribute("color", dto.getProductColor());
+//			rttr.addAttribute("productId", cart.getProductId());
+//			rttr.addAttribute("memberId", cart.getMemberId());
+//			rttr.addAttribute("cartAmount", cart.getCartAmount());
+//			rttr.addAttribute("size", dto.getProductSize());
+//			rttr.addAttribute("color", dto.getProductColor());
+			rttr.addFlashAttribute("successMessage", "장바구니에 상품 추가 성공");
 
+		}else {
+			rttr.addFlashAttribute("errorMessage", "장바구니에 상품 추가 실패");
+			
 		}
 		return "redirect:/shoes/detail";
 		

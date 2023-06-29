@@ -27,9 +27,20 @@
 	where product_id = #{productId}
 	</select>
 	
+	
+	<select id="inventoryIdGet" resultType="com.project.domain.InventoryDTO">
+			select inventoryId from inventories
+			 where productSize=#{productSize} and productColor=#{productColor} and productId=#{productId}
+	</select>
+	
+	<select id="cartIdGet" resultType="com.project.domain.CartDTO">
+		select distinct cart_id from carts
+		where member_id=#{memberId} 
+	</select>
+	
 	<insert id="cartInsert">
-		insert into carts(member_id, product_id,cart_amount,inventory_id,cart_id)
-		values(#{memberId},#{productId},#{cartAmount},#{inventoryId},#{cartId})
+		insert into carts(member_id, product_id,cart_amount,inventory_id)
+		values(#{memberId},#{productId},#{cartAmount},#{inventoryId})
 	</insert>
 	
 	<select id="reviewTotal" resultType="java.lang.Integer">

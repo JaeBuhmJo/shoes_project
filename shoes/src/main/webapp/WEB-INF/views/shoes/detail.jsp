@@ -130,7 +130,9 @@
                     </div>
 					<!--End Carousel Wrapper-->
 				</div>
-			</div>
+			</div>			
+			
+			<security:authentication property="principal.memberDTO" 	var="userDetails" />
 			<!-- col end -->
 			<div class="col-lg-7 mt-5" >
 				<div class="card">
@@ -139,7 +141,9 @@
 					<form action="/shoes/detail" method="post" id="shoesForm">
 					
 						<h1 class="h2" id="productName" >${product.productName}</h1>
-						<p class="h3 py-2" id="price" >가격:${product.price}</p>
+						<p class="h3 py-2" id="price" >
+							가격: <span>${product.price}</span>  
+						</p>
 						<p class="py-2">
 							<i class="fa fa-star text-warning">1</i>
 							<i class="fa fa-star text-warning">2</i>
@@ -186,8 +190,15 @@
 									</select>
 								</ul>  						
 								<input class="form-control me-2" id="cartAmount" name="cartAmount" 
-									type="search" placeholder="수량 입력" aria-label="Search" >																
+									type="search" placeholder="수량 입력" aria-label="Search" >	
+																								
+						    <input type="hidden" name="cartAmount" value="cart.cartAmount" id="cartAmount"/>
 						    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						    <input type="hidden" name="memberId" value="${userDetails.memberId}" id="memberId"/>
+						    <input type="hidden" name="productId" value="${product.productId}" id="productId"/>
+						    <input type="hidden" name="inventoryId" value="${cart.inventoryId}" id="inventoryId"/>
+							
+							
 							
 							</form>
 					</div>				
@@ -198,25 +209,6 @@
 	</div>
 </section>
 <!-- Close Content -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- 캐러셀 섹션 러프 -->
@@ -291,6 +283,7 @@
 										<div class="accordion-body">
 											
 											<p>상품평</p>
+											
 											<span class="list-inline-item text-dark">별점 4.8 | 36 </span>
   								<table class="table table-striped table-bordered table-hover">
 									<thead>
