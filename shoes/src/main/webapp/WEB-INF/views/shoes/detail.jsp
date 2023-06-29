@@ -155,10 +155,8 @@
 								<!-- 상품 간략 정보 -->
 						
 							<h5>${product.detail}</h5>
-						
-						
-						
-						
+			
+			
 			
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
@@ -196,11 +194,14 @@
 						    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						    <input type="hidden" name="memberId" value="${userDetails.memberId}" id="memberId"/>
 						    <input type="hidden" name="productId" value="${product.productId}" id="productId"/>
-						    <input type="hidden" name="inventoryId" value="${cart.inventoryId}" id="inventoryId"/>
+						    <input type="hidden" name="inventoryId" value="${inventory.inventoryId}" id="inventoryId"/>
 							
-							
-							
-							</form>
+								</form>
+								
+				
+				
+				
+								
 					</div>				
 					</div>
 				</div>

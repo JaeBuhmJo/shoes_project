@@ -28,10 +28,18 @@
 	</select>
 	
 	
+	
+	
 	<select id="inventoryIdGet" resultType="com.project.domain.InventoryDTO">
-			select inventoryId from inventories
-			 where productSize=#{productSize} and productColor=#{productColor} and productId=#{productId}
+			select inventory_id from inventories
+			 where product_size=#{productSize}
+			  and product_color=#{productColor}
+			   and product_id=#{productId}
 	</select>
+	
+	
+	
+	
 	
 	<select id="cartIdGet" resultType="com.project.domain.CartDTO">
 		select distinct cart_id from carts

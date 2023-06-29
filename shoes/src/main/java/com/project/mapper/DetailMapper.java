@@ -11,7 +11,6 @@ import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
-import com.project.domain.QnaDTO;
 import com.project.domain.ReviewDTO;
 
 @Mapper
@@ -32,6 +31,6 @@ public interface DetailMapper {
 		public List<ColorSize> color(String productId);
 		public List<ColorSize> size(String productId,String productColor);
 		
-		public InventoryDTO inventoryIdGet(String inventoryId,String productColor,int productSize);
+		public InventoryDTO inventoryIdGet(String productId, String productColor,String productSize);
 		public CartDTO cartIdGet(String memberId);
 }

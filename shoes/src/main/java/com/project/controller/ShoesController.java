@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.AttachmentDTO;
 import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
+import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
 import com.project.domain.ReviewDTO;
 import com.project.domain.ReviewPageDTO;
@@ -66,7 +68,7 @@ public class ShoesController {
 	}
 
 	@GetMapping("/detail")
-	public void detailRead(Model model, String productId, @ModelAttribute("cri") Criteria cri) {
+	public void detailRead(Model model, String productId,String productColor,String productSize, @ModelAttribute("cri") Criteria cri) {
 		log.info("detail 화면");
 
 		// model 은 jsp에서 여기선 product.productId,product.price등의 값들을 주기 위해 사용
@@ -76,6 +78,7 @@ public class ShoesController {
 		log.info("신발 색상 선택");
 		List<ReviewDTO> list = service.reviewList(cri);
 
+		model.addAttribute("inventory", service.inventoryIdGet(productId, productColor, productSize));
 		model.addAttribute("list", list);
 		int total = service.reviewTotal(cri);
 		
@@ -85,11 +88,20 @@ public class ShoesController {
 		model.addAttribute("reviewPage", new ReviewPageDTO(cri, total));
 	}
 
+	@GetMapping("/getInventoryId")
+	@ResponseBody
+	public InventoryDTO product(@RequestParam("productColor") String productColor,@RequestParam("productSize") String productSize,@RequestParam("productId") String productId) {
+		
+		return service.inventoryIdGet(productId, productColor, productSize);
+	}
+
+	
+	
 	
 	 //데이터만 넘김
-	  
 	  @GetMapping("/size")  
-	  @ResponseBody public List<ColorSize> getSize(String productId,String productColor){ 
+	  @ResponseBody 
+	  public List<ColorSize> getSize(String productId,String productColor){ 
 	  return service.size(productId, productColor);
 	  
 	  }

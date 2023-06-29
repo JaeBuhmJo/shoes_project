@@ -31,34 +31,65 @@ pagination.addEventListener("click", (e) => {
 
 //size에 변경 이벤트가 일어나면
 const inventoryId = document.querySelector("#productSize");
-inventoryId.addEventListener("change", () => {
-  const productId = document.getElementById("productId");
+// inventoryId.addEventListener("change", (e) => {
+//   e.preventDefault();
+//   const productId = document.getElementById("productId");
 
-  // inventoryId 조회 요청
-  fetch(
-    "/product/inventoryId?color=" +
-      color +
-      "&size=" +
-      size +
-      "&procudtId=" +
-      productId
-  )
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error("inventoryId 조회 실패");
-      }
-    })
-    .then((data) => {
-      console.log("선택된 제품의 inventoryId", data);
-      const inventoryId = data;
-      //inventoryId를 사용하여 필요한 작업 수행
-      // 예 : 장바구니에 추가, 동적 수행 등
-      document.value = inventoryId;
-    })
-    .catch((error) => console.log(error));
+//   var size = document.getElementById("productSize").value;
+//   var color = document.getElementById("productColor").value;
+//   // inventoryId 조회 요청
+//   fetch(
+//     "/product/inventoryId?color=" +
+//       encodeURIComponent(color) +
+//       "&size=" +
+//       encodeURIComponent(size) +
+//       "&productId=" +
+//       encodeURIComponent(productId)
+//   )
+//     .then((response) => {
+//       if (response.ok) {
+//         return response.json();
+//       } else {
+//         throw new Error("inventoryId 조회 실패");
+//       }
+//     })
+//     .then((data) => {
+//       console.log("선택된 제품의 inventoryId", data);
+//       const inventoryId = data;
+//       //inventoryId를 사용하여 필요한 작업 수행
+//       // 예 : 장바구니에 추가, 동적 수행 등
+//       document.getElementById("inventoryId").value = inventoryId;
+//     })
+//     .catch((error) => console.log(error));
+// });
+
+document.getElementById("productColor").addEventListener("change", () => {
+  const productColor = this.value;
+  const productId = document.getElementById("productId").value;
+  const productSize = document.getElementById("productSize").value;
+
+  if (productColor && productSize) {
+    getInventoryId(productId, productSize, productColor);
+  }
 });
+
+document.getElementById("productSize").addEventListener("change", () => {
+  const productSize = this.value;
+  const productColor = document.getElementById("productColor").value;
+  const productId = document.getElementById("productId").value;
+
+  if (productColor && productSize) {
+    getInventoryId(productId, productSize, productColor);
+  }
+});
+
+async function getInventoryId(productId, productSize, productColor) {
+  const response = await fetch(
+    "/shoes/getInventoryId?productId=${product.productId}&productSize=${size.productSize}&productColor=${cs.productColor}"
+  );
+  const inventoryId = await response.text();
+  document.getElementById("inventoryId").value = inventoryId;
+}
 
 const shoesForm = document.querySelector("#shoesForm");
 
@@ -94,6 +125,7 @@ shoesForm.addEventListener("submit", (e) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      //db에 넘어가는 값들을 넘겨주기
       cartAmount: amount,
       productId: productId,
       memberId: memberId,
