@@ -47,7 +47,6 @@ public class AttachmentController {
 	public ResponseEntity<List<AttachmentDTO>> getAttachments(@PathVariable String productId){
 		log.info("첨부 리스트 요청 : " + productId);
 		List<AttachmentDTO> list = attachmentService.getAttachmentList(productId);
-		log.info("첨부 리스트 요청 : " + list.toString());
 		return list.isEmpty()? new ResponseEntity<List<AttachmentDTO>>(HttpStatus.INTERNAL_SERVER_ERROR):
 								new ResponseEntity<List<AttachmentDTO>>(list, HttpStatus.OK);
 	}

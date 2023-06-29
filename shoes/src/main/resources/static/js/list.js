@@ -2,13 +2,8 @@
  *
  */
 
-const operForm = document.querySelector("#operForm");
-
-//json stringify로 세션스토리지 저장
-
-//json parse로 활용값으로 변환
-
-let cri = {
+// replaceState
+let criteria = {
   page: 1,
   listAmount: 15,
   searchType: "",
@@ -18,49 +13,78 @@ let cri = {
   gender: "",
 };
 
+function updateUrl(cri) {
+  const queryString = new URLSearchParams();
+  for (const key in cri) {
+    if (cri[key] !== "") {
+      queryString.append(key, cri[key]);
+    }
+  }
+  console.log(queryString.toString());
+  // 필터 변경은 히스토리 남기지 않음 -> 앞으로가기, 뒤로가기시 필터 조작 감지 방지
+  window.history.replaceState({}, document.title, `?${queryString.toString()}`);
+}
+
+function updateFilters(e, key, value, targetPage) {
+  e.preventDefault();
+  criteria[key] = value;
+  criteria.page = targetPage ? targetPage : 1;
+  updateUrl(criteria);
+  getList(criteria);
+}
+
+window.onpopstate = function (event) {
+  if (event.state) {
+    criteria = event.state;
+    getList(criteria);
+  }
+};
+
+function loadFiltersFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  for (const [key, value] of urlParams.entries()) {
+    if (criteria.hasOwnProperty(key)) {
+      criteria[key] = value;
+    }
+  }
+}
+loadFiltersFromUrl();
+// replaceState
+
+// 페이지 이동
 document.querySelector("#shopPagination").addEventListener("click", (e) => {
-  e.preventDefault();
   if (e.target.tagName === "A") {
-    cri.page = e.target.getAttribute("href");
-    getList(cri);
+    updateFilters(e, "page", e.target.getAttribute("href"));
   }
 });
 
+// n개씩 보기
 const listAmount = document.querySelector("#listAmount");
-listAmount.addEventListener("change", () => {
+listAmount.addEventListener("change", (e) => {
   if (listAmount.value == 15) {
-    cri.page = cri.page * 2 - 1;
+    updateFilters(e, "listAmount", listAmount.value, criteria.page * 2 - 1);
   } else if (listAmount.value == 30) {
-    cri.page = Math.floor((cri.page - 1) / 2) + 1;
+    updateFilters(e, "listAmount", listAmount.value, Math.floor((criteria.page - 1) / 2) + 1);
   }
-  cri.listAmount = listAmount.value;
-  getList(cri);
 });
 
+// 정렬 순서
 const order = document.querySelector("#order");
-order.addEventListener("change", () => {
-  cri.page.value = 1;
-  cri.order = order.value;
-  getList(cri);
+order.addEventListener("change", (e) => {
+  updateFilters(e, "order", order.value);
 });
 
-const gender = document.querySelector("#gender");
-gender.addEventListener("click", (e) => {
+// 남성화, 여성화
+document.querySelector("#gender").addEventListener("click", (e) => {
   if (e.target.tagName === "INPUT") {
-    cri.page = 1;
-    cri.gender = e.target.value;
-
-    getList(cri);
+    updateFilters(e, "gender", e.target.value);
   }
 });
 
-const category = document.querySelector("#category");
-category.addEventListener("click", (e) => {
-  e.preventDefault();
+// 카테고리
+document.querySelector("#category").addEventListener("click", (e) => {
   if (e.target.tagName === "A") {
-    cri.page = 1;
-    cri.category = e.target.getAttribute("href");
-    getList(cri);
+    updateFilters(e, "category", e.target.getAttribute("href"));
   }
 });
 
@@ -78,7 +102,7 @@ productList.addEventListener("click", (e) => {
   }
 });
 
-//상품 목록 가져오기
+// 상품 목록 가져오기
 function getList(cri) {
   fetch("/shop/list", {
     method: "POST",
@@ -98,12 +122,11 @@ function getList(cri) {
       const productList = document.querySelector(".productList");
       let products = "";
       data.productDTOs.forEach((item) => {
-        products += '<div class="col-md-4 productCard" data-productId ="' + item.productId + '">';
-        products += '<div class="card mb-4 product-wap rounded-0">';
+        products += '<div class="col-md-4 mb-4">';
+        products += '<div class="card product-wap productCard rounded-0" data-productId ="' + item.productId + '">';
         products += '<div class="card rounded-0 image-wrapper">';
         products += '<img class="card-img rounded-0 img-fluid" src="/attachment/file?fileName=' + item.filePath + '">';
-        products +=
-          '<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">';
+        products += '<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">';
         products += "</div>";
         products += "</div>";
         products += '<div class="card-body">';
@@ -123,15 +146,17 @@ function getList(cri) {
         products += "</div> ";
       });
       productList.innerHTML = products;
+      setFilter(criteria);
       showProductPage(data.totalCount);
     })
     .catch((error) => console.log(error));
 }
-getList(cri);
+getList(criteria);
 
+// 상품목록 페이지네이션
 function showProductPage(total) {
-  let realend = Math.ceil((total * 1.0) / cri.listAmount);
-  let endPage = Math.ceil(cri.page / 5.0) * 5;
+  let realend = Math.ceil((total * 1.0) / criteria.listAmount);
+  let endPage = Math.ceil(criteria.page / 5.0) * 5;
   let startPage = endPage - 4;
   let prev = startPage != 1;
   let next = false;
@@ -145,34 +170,30 @@ function showProductPage(total) {
 
   let str = "";
   if (prev) {
-    str +=
-      '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="' +
-      (startPage - 1) +
-      '">prev</a></li>';
+    str += '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="' + (startPage - 1) + '">prev</a></li>';
   }
   for (let i = startPage; i <= endPage; i++) {
-    let disabled = cri.page == i ? "disabled" : "";
-    let active = cri.page == i ? "active" : "";
-    let textDark = cri.page == i ? "text-dark" : "";
-    str +=
-      '<li class="page-item ' +
-      disabled +
-      '"><a class="page-link ' +
-      active +
-      " rounded-0 shadow-sm border-top-0 border-left-0 " +
-      textDark +
-      '" href=' +
-      i +
-      ">" +
-      i +
-      "</a></li>";
+    let disabled = criteria.page == i ? "disabled" : "";
+    let active = criteria.page == i ? "active" : "";
+    let textDark = criteria.page == i ? "text-dark" : "";
+    str += '<li class="page-item ' + disabled + '"><a class="page-link ' + active + " rounded-0 shadow-sm border-top-0 border-left-0 " + textDark + '" href=' + i + ">" + i + "</a></li>";
   }
 
   if (next) {
-    str +=
-      '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href=' +
-      (endPage + 1) +
-      ">next</a></li>";
+    str += '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href=' + (endPage + 1) + ">next</a></li>";
   }
   document.querySelector("#shopPagination").innerHTML = str;
+}
+
+// criteria에 따른 필터값 세팅
+function setFilter(cri) {
+  document.querySelector("#listAmount").value = cri.listAmount;
+  document.querySelector("#order").value = cri.order;
+
+  const radioGender = document.querySelectorAll(".radio-gender");
+  radioGender.forEach((radio) => {
+    if (radio.value == cri.gender) {
+      radio.checked = true;
+    }
+  });
 }

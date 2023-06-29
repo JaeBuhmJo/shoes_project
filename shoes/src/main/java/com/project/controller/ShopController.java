@@ -1,7 +1,6 @@
 package com.project.controller;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.domain.AttachmentDTO;
 import com.project.domain.Criteria;
 import com.project.domain.ListPageDTO;
-import com.project.domain.ProductDTO;
 import com.project.domain.VisitDTO;
 import com.project.mapper.VisitCounterMapper;
 import com.project.service.ProductService;
@@ -76,9 +72,9 @@ public class ShopController {
 	public void listGet(@ModelAttribute("cri") Criteria cri, Model model) {
 		log.info("list 폼 요청");
 	}
-
+	 
 	@PostMapping("/list")
-	public ResponseEntity<ListPageDTO> listPost(@RequestBody Criteria cri) {
+	public ResponseEntity<ListPageDTO> listPost(@RequestBody Criteria cri, Model model) {
 		log.info("list body 요청 "+cri);
 		return new ResponseEntity<ListPageDTO>(productService.getProductsList(cri), HttpStatus.OK);
 	}

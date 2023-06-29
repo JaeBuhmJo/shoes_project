@@ -13,25 +13,25 @@
 			<ul class="list-unstyled templatemo-accordion">
 				<li class="pb-3 d-flex justify-content-between h3" id="gender">Gender <i class="fa fa-fw fa-chevron-circle-right mt-1"></i>
 					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-						<input type="radio" class="btn-check radio-gender" name="btnradio" value="" id="option1" autocomplete="off" checked>
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="" id="option1" autocomplete="off"> 
 						<label class="btn btn-outline-dark" for="option1">전체</label>
-						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-men" id="option2" autocomplete="off" >
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-men" id="option2" autocomplete="off">
 						<label class="btn btn-outline-dark" for="option2">남성</label>
-						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-women" id="option4" autocomplete="off" >
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-women" id="option4" autocomplete="off">
 						<label class="btn btn-outline-dark" for="option4">여성</label>
 					</div>
-
+    
 				</li>
-				<li class="pb-3" id="category"><a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#"> Product <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+				<li class="pb-3" id="category"><a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#"> Category <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
 				</a>
 					<ul id="collapseThree" class="collapse list-unstyled pl-3">
 						<li><a class="text-decoration-none" href="">전체</a></li>
 						<li><a class="text-decoration-none" href="running">운동화</a></li>
 						<li><a class="text-decoration-none" href="shoes">구두</a></li>
-						<li><a class="text-decoration-none" href="slipper">슬리퍼</a></li>
+						<li><a class="text-decoration-none" href="slipper">슬리퍼</a></li>  
 					</ul></li>
 			</ul>
-		</div>
+		</div>  
 
 		<div class="col-lg-9">
 			<div class="d-flex justify-content-between">
@@ -47,7 +47,7 @@
 				</div>
 				<div class="col-md-2 pb-4 ">
 					<div class="d-flex ">
-						<select class="form-control" id="listAmount" name="listAmount">
+						<select class="form-control text-center" id="listAmount" name="listAmount">
 							<option value="15" >15개씩 보기</option>
 							<option value="30" >30개씩 보기</option>
 						</select>
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 
-			<div class="row productList"> 
+			<div class="row productList">    
 			</div>
 
 			<!-- pagination -->
@@ -160,11 +160,11 @@
 					<!--End Controls-->
 				</div> 
 			</div> 
-		</div>
-	</div>
+		</div>          
+	</div> 
 </section>
 <!--End Brands-->      
- 
+           
 <script>
 	const csrfToken = '${_csrf.token}';
 </script>
