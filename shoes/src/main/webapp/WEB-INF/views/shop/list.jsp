@@ -13,11 +13,11 @@
 			<ul class="list-unstyled templatemo-accordion">
 				<li class="pb-3 d-flex justify-content-between h3" id="gender">Gender <i class="fa fa-fw fa-chevron-circle-right mt-1"></i>
 					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-						<input type="radio" class="btn-check radio-gender" name="btnradio" value="" id="option1" autocomplete="off" ${productListPage.cri.gender==''?'checked':''}>
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="" id="option1" autocomplete="off" checked>
 						<label class="btn btn-outline-dark" for="option1">전체</label>
-						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-men" id="option2" autocomplete="off" ${productListPage.cri.gender=='for-men'?'checked':''}>
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-men" id="option2" autocomplete="off" >
 						<label class="btn btn-outline-dark" for="option2">남성</label>
-						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-women" id="option4" autocomplete="off" ${productListPage.cri.gender=='for-women'?'checked':''}>
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-women" id="option4" autocomplete="off" >
 						<label class="btn btn-outline-dark" for="option4">여성</label>
 					</div>
 
@@ -38,66 +38,35 @@
 				<div class="col-md-4 pb-4">
 					<div class="d-flex align-items-center">
 						<select class="form-control" id="order" name="order">
-							<option value="registered-date-desc" ${productListPage.cri.order=='registered-date-desc'? 'selected':'' }>최근 등록 순</option>
-							<option value="sold-count-desc" ${productListPage.cri.order=='sold-count-desc'? 'selected':'' }>많이 팔린 순</option>
-							<option value="price-desc" ${productListPage.cri.order=='price-desc'? 'selected':'' }>높은 가격 순</option>
-							<option value="price-asc" ${productListPage.cri.order=='price-asc'? 'selected':'' }>낮은 가격 순</option>
+							<option value="registered-date-desc" >최근 등록 순</option>
+							<option value="sold-count-desc" >많이 팔린 순</option>
+							<option value="price-desc" >높은 가격 순</option>
+							<option value="price-asc" >낮은 가격 순</option>
 						</select>
 					</div>
 				</div>
 				<div class="col-md-2 pb-4 ">
 					<div class="d-flex ">
 						<select class="form-control" id="listAmount" name="listAmount">
-							<option value="15" ${productListPage.cri.listAmount==15? 'selected':'' }>15개씩 보기</option>
-							<option value="30" ${productListPage.cri.listAmount==30? 'selected':'' }>30개씩 보기</option>
+							<option value="15" >15개씩 보기</option>
+							<option value="30" >30개씩 보기</option>
 						</select>
 					</div>
 				</div>
 			</div>
 
-			<div class="row productList">
-				<c:forEach items="${list}" var="item">
-					<div class="col-md-4 productCard" data-productId ="${item.productId}">
-						<div class="card mb-4 product-wap rounded-0">
-							<div class="card rounded-0 image-wrapper">
-								<img class="card-img rounded-0 img-fluid" src="/attachment/file?fileName=${item.filePath}">
-								<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-								</div>
-							</div>
-							<div class="card-body">
-								<a href="shop-single.html" class="h3 text-decoration-none">${item.productName}</a>
-								<ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-									<li class="text-secondary"><small>${item.colors }</small></li>
-									<li class="pt-2"><span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span></li>
-								</ul>
-								<ul class="list-unstyled d-flex justify-content-center mb-1">
-									<li><i class="text-warning fa fa-star"></i> <i class="text-warning fa fa-star"></i> <i class="text-warning fa fa-star"></i> <i class="text-muted fa fa-star"></i> <i class="text-muted fa fa-star"></i></li>
-								</ul>
-								<p class="text-center mb-0">${item.price}원</p>
-							</div>
-						</div>
-					</div> 
-				</c:forEach>
+			<div class="row productList"> 
 			</div>
 
 			<!-- pagination -->
 			<div div="row">
 				<ul class="pagination pagination-lg justify-content-end" id="shopPagination">
-					<c:if test="${productListPage.prev }">
-						<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="${productListPage.startPage - 1 }">prev</a></li>
-					</c:if>
-					<c:forEach begin="${productListPage.startPage }" end="${productListPage.endPage }" var="page">
-						<li class="page-item ${productListPage.cri.page==page? 'disabled':'' }"><a class="page-link ${productListPage.cri.page==page? 'active':'' } rounded-0 shadow-sm border-top-0 border-left-0 ${productListPage.cri.page==page? '':'text-dark' }" href="${page }">${page }</a></li>
-					</c:forEach>
-					<c:if test="${productListPage.next }">
-						<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="${productListPage.endPage + 1 }">next</a></li>
-					</c:if>
-				</ul>
+				</ul>             
 			</div>
 		</div>
-
+    
 	</div>
-</div>
+</div>       
 <!-- End Content -->
 
 <!-- Modal -->
@@ -189,25 +158,15 @@
 						</a>
 					</div>
 					<!--End Controls-->
-				</div>
-			</div>
+				</div> 
+			</div> 
 		</div>
 	</div>
 </section>
-<!--End Brands-->
-
-<form action="/shop/list" id="operForm" method="get">
-	<input type="hidden" name="page" value="${productListPage.cri.page}" />
-	<input type="hidden" name="listAmount" value="${productListPage.cri.listAmount}" />
-	<input type="hidden" name="searchType" value="${productListPage.cri.searchType}" />
-	<input type="hidden" name="keyword" value="${productListPage.cri.keyword}" />
-	<input type="hidden" name="order" value="${productListPage.cri.order}" />
-	<input type="hidden" name="gender" value="${productListPage.cri.gender}" />
-	<input type="hidden" name="category" value="${productListPage.cri.category}" />
-</form>
+<!--End Brands-->      
  
 <script>
-	let page = ${productListPage.cri.page}
+	const csrfToken = '${_csrf.token}';
 </script>
 <script src="/assets/js/jquery-1.11.0.min.js"></script>
 <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>

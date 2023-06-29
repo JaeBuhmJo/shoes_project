@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.project.domain.Criteria;
+import com.project.domain.ListPageDTO;
 import com.project.domain.ProductDTO;
 import com.project.mapper.ProductMapper;
 
@@ -17,8 +18,10 @@ public class ProductServiceImpl implements ProductService {
 	private ProductMapper productMapper;
 
 	@Override
-	public List<ProductDTO> getSaleProducts(Criteria cri) {
-		return productMapper.getOnSaleList(cri);
+	public ListPageDTO getProductsList(Criteria cri) {
+		List<ProductDTO> list = productMapper.getOnSaleList(cri);
+		int total = productMapper.getOnSaleCount(cri);
+		return new ListPageDTO(total, list);
 	}
 
 	@Override
