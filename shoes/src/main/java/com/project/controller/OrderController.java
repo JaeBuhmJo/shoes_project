@@ -26,17 +26,11 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	
+	@Autowired
 	private MemberService memberService;
 	
-	@GetMapping("/order/{memberId}")
-	public String orderPgaeGET(@PathVariable("memberId") String memberId, OrderPageDTO opd, Model model) {
-		
-		model.addAttribute("orderList", orderService.getOrderlist(opd.getOrders()));
-		model.addAttribute("memberInfo", memberService.equals(memberId));
-		
-		
-		return "/order";
-	}
+	
+	
 	
 	@PostMapping("/order")
 	public String orderPagePost(OrderDTO od, HttpServletRequest request) {

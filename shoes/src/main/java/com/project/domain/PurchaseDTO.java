@@ -1,5 +1,6 @@
 package com.project.domain;
 
+import java.util.Date;
 /* 상품 데이터 담을 클래스 */
 import java.util.List;
 
@@ -14,14 +15,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OrderPageProductDTO {
+public class PurchaseDTO {
 	
-	
-	
-	/* view로부터 전달 받을값 */
+
+	private int orderId;
+	private String memberId;
 	private String productId;
+	private String inventoryId;
+	private int purchaseAmount;
+	private Date purchaseDate;
 	
-	private int cartamount;
+	private List<OrderProductDTO> orderproduct;
 	
 	/* DB로부터 꺼내올 값 */
     private String productName;

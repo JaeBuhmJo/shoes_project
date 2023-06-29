@@ -1,11 +1,13 @@
 package com.project.service;
 
-import com.project.domain.OrderDTO;
+import java.util.List;
+
+import com.project.domain.PurchaseDTO;
+
 
 public interface PurchaseService {
 	
-	// 주문 등록
-	
-	public void Purchasebuy(OrderDTO orderDTO) throws Exception;
+	/* 주문 정보 */
+	public List<PurchaseDTO> getOrderlist(List<PurchaseDTO> orders);
 
 }

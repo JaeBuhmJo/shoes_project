@@ -1,5 +1,7 @@
 package com.project.domain;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 
 import lombok.Builder;
@@ -26,6 +28,8 @@ public class OrderProductDTO {
     
 	/* 상품 할인 율 */
     private double discountPrice;
+    
+    private List<PurchaseDTO> orders;
     
     
 	// DB테이블 존재 하지 않는 데이터

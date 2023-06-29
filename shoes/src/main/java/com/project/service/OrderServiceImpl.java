@@ -14,7 +14,7 @@ import com.project.domain.AttachmentDTO;
 import com.project.domain.MemberDTO;
 import com.project.domain.OrderDTO;
 import com.project.domain.OrderPageDTO;
-import com.project.domain.OrderPageProductDTO;
+import com.project.domain.PurchaseDTO;
 import com.project.domain.OrderProductDTO;
 import com.project.mapper.AttachmentMapper;
 import com.project.mapper.CartMapper;
@@ -39,32 +39,8 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	private ProductMapper productMapper;
-	
-	
+		
 
-	@Override
-	public List<OrderPageProductDTO> getOrderlist(List<OrderPageProductDTO> orders) {
-		
-		List<OrderPageProductDTO> result = new ArrayList<OrderPageProductDTO>();
-		
-		for(OrderPageProductDTO opd : orders) {
-			
-			OrderPageProductDTO Orderlist = orderMapper.getOrderlist(opd.getProductId());
-			
-			Orderlist.setCartamount(opd.getCartamount());
-			
-			Orderlist.getTotalprice();
-			
-			List<AttachmentDTO> attachmentList = attachmentMapper.getAttachments(Orderlist.getProductId());
-			
-			Orderlist.setAttachmentList(attachmentList);
-			
-			result.add(Orderlist);
-		}
-		return result;
-	}
-	
-	
 	@Override
 	@Transactional
 	public void order(OrderDTO orderdto) {
@@ -92,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
 		orderdto.getOrderfinalPrice();
 		
 
-		/*DB 주문,주문상품(,배송정보) 넣기*/
+		/*DB 주문,주문상품 넣기*/
 		
 		/* orderId만들기 및 OrderDTO객체 orderId에 저장 */
 		Date date = new Date();
@@ -107,6 +83,13 @@ public class OrderServiceImpl implements OrderService {
 			orderMapper.OrderProduct(opd);			
 		}
 
+	}
+
+
+	@Override
+	public List<OrderProductDTO> orderList(String memberId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

@@ -14,13 +14,13 @@ import lombok.NoArgsConstructor;
 public class OrderPageDTO {
 	
 	
-	private List<OrderPageProductDTO> orders;
+	private List<PurchaseDTO> orders;
 	
-	public List<OrderPageProductDTO> getOrders() {
+	public List<PurchaseDTO> getOrders() {
 		return orders;
 	}
 	
-	public void setOrders(List<OrderPageProductDTO> orders) {
+	public void setOrders(List<PurchaseDTO> orders) {
 		this.orders = orders;
 	}
 	
