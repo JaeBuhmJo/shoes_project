@@ -35,4 +35,5 @@ public class ProductDTO {
 	private List<String> colorList;
 	private List<String> sizeList;
 	private List<Integer> quantityList;
+	private List<CartDTO> carts;
 }

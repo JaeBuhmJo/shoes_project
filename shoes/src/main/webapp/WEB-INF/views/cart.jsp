@@ -102,13 +102,13 @@ $(function(){
 });
 		
 		
-    	//$('#orderBtn').click(function(){
-		//	$("input[name=cbox]:checked").each(function(){
-		//		$('#orderForm').append('<input type="hidden" name="cartIdList['+i+'].memberId" value="' + $(this).val() +'"/>')
-		//	})
-			
-		//	$('#orderForm').submit();
-		// })
+    //	$('#orderBtn').click(function(){
+	//		$("input[name=cbox]:checked").each(function(){
+	//			$('#orderForm').append('<input type="hidden" name="cartIdList['+i+'].memberId" value="' + $(this).val() +'"/>')
+	//		})
+	//		
+	//		$('#orderForm').submit();
+	//	 })
 		
 });
 </script>
@@ -142,24 +142,29 @@ $(function(){
       	 		
            	 	<c:forEach var="cart" items="${cartList}" varStatus="status">
            	 	
-	           	 	<tr class="cart__list__detail">
+	           	 	<tr class="cart__list__detail">								
 	                 	<td>
 	                 		<input type="checkbox" name="cbox" id="checkbox2" value="${cart.cartId}" data-cartId="${clist.cartId}">
+             		        <input type="hidden" class="individual_bookPrice_input" value="${ci.Price}">
+							<input type="hidden" class="individual_salePrice_input" value="${ci.discountPrice}">
+							<input type="hidden" class="individual_bookCount_input" value="${ci.cartamount}">
+							<input type="hidden" class="individual_totalPrice_input" value="${ci.discountPrice * ci.cartamount}">
+							<input type="hidden" class="individual_bookId_input" value="${ci.productId}">	
 		                </td>
 		                <td>
 		                 	<img src="" alt="나이키 슬리퍼">
 	                	</td>
 		                <td>
-		                 	<span class="cart__list__smartstore">나이키 슬리퍼 </span>
+		                 	<span class="cart__list__smartstore">${cart.productName}나이키 슬리퍼 </span>
 		                    <p>편하게 신을수 있는 슬리퍼</p>
 		                    <span class="price">${cart.price}원</span>
-		                    <span style="text-decoration: line-through; color: lightgray;">00,000원</span>
+		                    <span style="text-decoration: line-through; color: lightgray;">${cart.discountPrice}00,000원</span>
 		    			</td>
 					    <td class="cart__list__option">
-					        <p>수량 : <span class="productCount">1</span>개</p>                 
+					        <p>수량 : <span class="productCount">${cart.cartamount}</span>개</p>                 
 					    </td>
 					    <td>			 
-					    	<span class="totalPrice" data-price="30000">30,000원</span>
+					    	<span class="totalPrice" data-price="${cart.price}">${cart.totalPrice}30,000원</span>
 					    	<br>
 					    </td>
 			    		<td>무료</td>
@@ -182,15 +187,15 @@ $(function(){
             <table>
                 <tr>
                     <td><span id="totalKind_span">상품수</span></td>
-                    <td><span id="totalCount_span">2</span></td>
+                    <td><span id="totalCount_span">${totalCount}</span></td>
                 </tr>
                 <tr>
                     <td><span id="totalKinds_span">상품금액</span></td>
-                    <td><span id="totalamount_span">00,000</span></td>
+                    <td><span id="totalamount_span">${price}</span></td>
                 </tr>
                 <tr>
                     <td><span id="disCounts_span">할인금액</span></td>
-                    <td><span id="disCount_span">-1,000</span></td>
+                    <td><span id="disCount_span">${discountAmount}</span></td>
                 </tr>
                 <tr>
                     <td><span id="shipprice_span">배송비</span></td>
@@ -198,7 +203,7 @@ $(function(){
                 </tr>
                 <tr>
                     <td><span id="finalTotalkind_span">전체 주문금액</span></td>
-                    <td><span id="finalTotalPrice_span">00,000</span></td>
+                    <td><span id="finalTotalPrice_span">${totalPrice}</span></td>
                 </tr>
                 
             </table> 
@@ -212,17 +217,17 @@ $(function(){
        		
        	
        	
-        <!-- 수량 조정 form -->
+    <%--     <!-- 수량 조정 form -->
 		<form action="/cart/update" method="post" class="quantity_update_form">
 			<input type="hidden" name="cart_id" class="update_cartId">
 			<input type="hidden" name="cart_amount" class="update_cart_amount">
 			<input type="hidden" name="member_id" value="${member.memberId}">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		</form>	
+		</form>	 --%>
 				  
 		<!-- 삭제 form -->
-		<form action="/cart/delete" method="post" class="quantity_delete_form">
-			<input type="hidden" name="cart_id" class="delete_cart_id">
+		<form action="/cart/delete" method="post" class="abutton1_delete_form">
+			<input type="hidden" name="cartId" class="delete_cart_id">
 			<input type="hidden" name="memberId" value="${member.memberId}">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>		

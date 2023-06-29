@@ -29,6 +29,10 @@ public class CartDTO {
 	
 	private int inventoryId; // 재고 코드
 	
+	private List<InventoryDTO> inventories;
+	private List<ProductDTO> products;
+	
+
 	// product
 	
 	private int productName; // 상품명
