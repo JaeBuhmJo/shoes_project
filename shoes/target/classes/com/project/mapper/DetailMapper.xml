@@ -51,9 +51,7 @@
 		values(#{memberId},#{productId},#{cartAmount},#{inventoryId})
 	</insert>
 	
-	<select id="reviewTotal" resultType="java.lang.Integer">
-		select count(*) from reviews where review_id > 0
-	</select>
+
 
 	<select id="reviewList" resultType="com.project.domain.ReviewDTO">
 	<![CDATA[

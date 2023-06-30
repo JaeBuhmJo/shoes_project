@@ -19,7 +19,7 @@ public interface DetailService {
 	public boolean cartInsert(CartDTO cart);
 	
 	public List<ReviewDTO> reviewList(Criteria cri);
-	public int reviewTotal(Criteria cri);
+//	public int reviewTotal(Criteria cri);
 	
 	public List<InventoryDTO> inventory(InventoryDTO inventory);
 	

@@ -131,8 +131,9 @@
 					<!--End Carousel Wrapper-->
 				</div>
 			</div>			
-			
-			<security:authentication property="principal.memberDTO" 	var="userDetails" />
+			<security:authorize access="isAuthenticated()">
+				<security:authentication property="principal.memberDTO" 	var="userDetails" />
+			</security:authorize>
 			<!-- col end -->
 			<div class="col-lg-7 mt-5" >
 				<div class="card">
@@ -192,6 +193,8 @@
  --%>						    <input type="hidden" name="inventoryId" value="" id="inventoryId"/>
 							
 								</form>								
+				
+				
 				
 					</div>				
 					</div>
@@ -280,7 +283,7 @@
 											<p>상품평</p>
 											
 											<span class="list-inline-item text-dark">별점 4.8|${review.total}</span>
-  								<table class="table table-striped table-bordered table-hover">
+  								<%-- <table class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
 											<th scope="col">작성자</th>
@@ -304,8 +307,24 @@
 											</tr>
 										</c:forEach> 
 								 	</tbody>
-								</table> 
-								<nav aria-label="...">
+								</table>  --%>
+								<div class="container">
+									<c:forEach var="review" items="${list}">
+										<div class="card my-3">
+											<div class="card-header">
+												<strong>${review.memberId}</strong>-★:${review.jumsu}
+											</div>
+											<div class="card-body">
+												<p class="card-text">${review.contents}</p>
+												<p class="card-text text-muted">
+												<small>
+													<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.regdate}" />
+												</small>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+								<%-- <nav aria-label="...">
 									<ul class="pagination justify-content-center">
 
 										<c:if test="${reviewPage.prev}">
@@ -326,20 +345,11 @@
 											</li>
 										</c:if>
 									</ul>
-								</nav> 
+								</nav>  --%>
 							</div>
 									</div>
 								</div>
-										<%-- <c:forEach var="review" items="${list}">
-											<div class="card" style="width: 18rem;">
-												<div class="card-body">
-													<h5 class="card-title">${review.regdate}</h5>
-													<p class="card-text">${review.jumsu}</p>
-													<p class="card-text review">${review.contents}</p>
-													
-												</div>
-											</div> 
-										</c:forEach>  --%>
+										
 								
 							</div>
 							
@@ -402,8 +412,6 @@
 	const csrfToken='${_csrf.token}';
 	const pageIsRead=false;
 
-	
-	
 	
 </script>
 

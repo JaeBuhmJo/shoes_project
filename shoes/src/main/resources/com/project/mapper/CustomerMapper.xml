@@ -11,4 +11,8 @@
 		 VALUES (reviews_seq.nextval, sysdate ,#{contents},#{productId},#{memberId},#{jumsu})
 	</insert>
 	
+	
+	<!-- <select id="reviewTotal" resultType="com.project.domain.ReviewDTO">
+		select count(*) from reviews where product_id=#{productId}
+	</select> -->
 </mapper>

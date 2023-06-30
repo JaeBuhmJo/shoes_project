@@ -100,7 +100,6 @@ shoesForm.addEventListener("submit", (e) => {
   }
 
   const memberId = document.querySelector("#memberId").value;
-  const productId = document.querySelector("#productId").value;
   const inventoryId = document.querySelector("#inventoryId").value;
 
   // 폼 submit
@@ -115,7 +114,7 @@ shoesForm.addEventListener("submit", (e) => {
     body: JSON.stringify({
       //db에 넘어가는 값들을 넘겨주기
       cartAmount: amount,
-      productId: productId,
+      productId,
       memberId: memberId,
       inventoryId: inventoryId,
     }),

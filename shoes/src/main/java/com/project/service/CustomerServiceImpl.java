@@ -18,4 +18,12 @@ public class CustomerServiceImpl implements CustomerService {
 		return mapper.reviewInsert(review)==1?true:false;
 	}
 
+//	@Override
+//	public boolean reviewTotal(String productId) {
+//		return mapper.reviewTotal(productId)==1?true:false;
+//	}
+
+
+	
+
 }

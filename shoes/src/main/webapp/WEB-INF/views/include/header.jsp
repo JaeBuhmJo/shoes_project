@@ -55,10 +55,10 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">⚓010-020-0340</a>
                 </div>
                 <div>
-                    <a class="text-light" href="/member/info" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="/member/info" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                    <a class="text-light" href="/member/memberPage" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="/shop/list" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="/member/memberDetail" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
                 </div>
             </div>
         </div>
@@ -85,13 +85,13 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="/">home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/member/qna">문의사항</a>
+                            <a class="nav-link" href="/customer/qna">문의사항</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/shop/list" id="recentProductList">신상품</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/member/qna">qna</a>
+                            <a class="nav-link" href="/customer/qna">qna</a>
                         </li>
                     </ul>
                 </div>
@@ -138,40 +138,7 @@ https://templatemo.com/tm-559-zay-shop
 							</li>
 						</ul>
 					</div>
-					<%--  <ul class="navbar-nav ml-auto">
-                   <li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
-							 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-									<security:authorize access="isAuthenticated()">
-										<security:authentication property="principal.memberDTO.name" />
-									</security:authorize>
-							</span> <img class="img-profile rounded-circle" src="/powe/undraw_profile.svg">
-							</a>
-							<!-- Dropdown - User Information -->
-							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="/member/memberDetail"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-								</a> <a class="dropdown-item" href="/customer/qna"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> qna
-								</a> <a class="dropdown-item" href="/shop/list"> <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 목록으로
-								</a>
-								<div class="dropdown-divider"></div>
-
-								<!--  인증 정보 여부에 따라 Login/Logout 메뉴 설정 -->
-
-								<security:authorize access="isAnonymous()">
-									<a class="dropdown-item" href="/member/login"> <i
-										class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Login
-									</a>
-								</security:authorize>
-
-								<security:authorize access="isAuthenticated()">
-									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i
-										class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
-									</a>
-								</security:authorize>
-							</div>
-						</li>
-						</ul>  --%>
+				
                 
             </div>
 

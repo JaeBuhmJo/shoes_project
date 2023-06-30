@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="/assets/css/templatemo.css">
 <link rel="stylesheet" href="/assets/css/custom.css">
+<link rel="stylesheet" href="/css/login.css">
 
 <!-- Load fonts style after rendering the layout styles -->
 <link rel="stylesheet"
@@ -29,6 +30,7 @@
 	integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
 	crossorigin="" />
 <!--
+    
     
 TemplateMo 559 Zay Shop
 
@@ -156,7 +158,7 @@ https://templatemo.com/tm-559-zay-shop
 	<div class="container-fluid bg-light py-5">
 		<div class="col-md-6 m-auto text-center">
 			<h1 class="h1">로그인 페이지</h1>
-			<p>조재범 프로젝트에 오신 걸 환영합니다.</p>
+			<h2 id="jo-ship">조재범 프로젝트에 오신 걸 환영합니다.</h2>
 		</div>
 	</div>
 	<!-- Start Contact -->
