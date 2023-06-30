@@ -20,15 +20,14 @@ function updateUrl(cri) {
       queryString.append(key, cri[key]);
     }
   }
-  console.log(queryString.toString());
   // 필터 변경은 히스토리 남기지 않음 -> 앞으로가기, 뒤로가기시 필터 조작 감지 방지
   window.history.replaceState({}, document.title, `?${queryString.toString()}`);
 }
 
 function updateFilters(e, key, value, targetPage) {
   e.preventDefault();
-  criteria[key] = value;
   criteria.page = targetPage ? targetPage : 1;
+  criteria[key] = value;
   updateUrl(criteria);
   getList(criteria);
 }
@@ -88,6 +87,22 @@ document.querySelector("#category").addEventListener("click", (e) => {
   }
 });
 
+//검색 누를 시
+document.querySelector("#searchForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  criteria.page = 1;
+  criteria["keyword"] = document.querySelector("#searchKeyword").value;
+  const queryString = new URLSearchParams();
+  for (const key in criteria) {
+    if (criteria[key] !== "") {
+      queryString.append(key, criteria[key]);
+    }
+  }
+  // 검색은 히스토리 남김
+  window.history.pushState(criteria, document.title, `?${queryString.toString()}`);
+  getList(criteria);
+});
+
 //상품 카드 클릭 시 상세정보 페이지로 이동
 const productList = document.querySelector(".productList");
 productList.addEventListener("click", (e) => {
@@ -134,12 +149,15 @@ function getList(cri) {
         products += '<div class="col-md-4 mb-4">';
         products += '<div class="card product-wap productCard rounded-0" data-productId ="' + item.productId + '">';
         products += '<div class="card rounded-0 image-wrapper">';
-        products += '<img class="card-img rounded-0 img-fluid" src="/attachment/file?fileName=' + item.filePath + '">';
+        products +=
+          '<img class="card-img card-img-list rounded-0 img-fluid" src="/attachment/file?fileName=' +
+          item.filePath +
+          '">';
         products +=
           '<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">';
         products += "</div>";
         products += "</div>";
-        products += '<div class="card-body">';
+        products += '<div class="card-body card-body-list">';
         products += '<a href="shop-single.html" class="h3 text-decoration-none">' + item.productName + "</a>";
         products += '<ul class="w-100 list-unstyled d-flex justify-content-between mb-0">';
         products += '<li class="text-secondary"><small>' + item.colors + "</small></li>";
@@ -231,4 +249,5 @@ function setFilter(cri) {
       radio.checked = true;
     }
   });
+  document.querySelector("#searchKeyword").value = cri.keyword;
 }

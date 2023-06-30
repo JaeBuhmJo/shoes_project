@@ -131,7 +131,7 @@
 				<div class="small m-0">Copyright &copy; Your Website 2023</div>
 			</div>
 			<div class="col-auto">
-				<a class="small" href="#!">Privacy</a> <span class="mx-1">&middot;</span> <a class="small" href="#!">Terms</a> <span class="mx-1">&middot;</span> <a class="small" href="#!">Contact</a>
+				<a class="small" href="#">Privacy</a> <span class="mx-1">&middot;</span> <a class="small" href="#">Terms</a> <span class="mx-1">&middot;</span> <a class="small" href="#">Contact</a>
 			</div>
 		</div>
 	</div>
@@ -143,39 +143,7 @@
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/templatemo.js"></script>
     <script src="/assets/js/custom.js"></script>
- <!-- Start Slider Script -->
-    <script src="/assets/js/slick.min.js"></script>
-    <script>
-        $('#carousel-related-product').slick({
-            infinite: true,
-            arrows: false,
-            slidesToShow: 4,
-            slidesToScroll: 3,
-            dots: true,
-            responsive: [{
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 3
-                    }
-                }
-            ]
-        });
-    </script>
+
 </body>
 
 </html>

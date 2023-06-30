@@ -82,9 +82,7 @@ public class ShopController {
 		visitCookie.setMaxAge(24 * 60 * 60);
 		visitCookie.setPath("/");
 		response.addCookie(visitCookie);
-	}
-	
-
+	} 
 
 	@GetMapping("/list")
 	public void listGet(@ModelAttribute("cri") Criteria cri, Model model) {

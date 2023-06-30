@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-lg-5 mt-5">
 				<div class="card mb-3">
-					<img class="powe-adidas1" src="/attachment/file?fileName=${filePathList[0]}" alt="Card image cap" id="product-detail">
+					<img class="powe-adidas1 img-carousel-main" src="/attachment/file?fileName=${filePathList[0]}" alt="Card image cap" id="product-detail">
 				</div>
 				<div class="row">
 					
@@ -51,69 +51,59 @@
                             <div class="carousel-inner product-links-wap" role="listbox">
 
                                 <!--First slide-->
-                                <div class="carousel-item active">
+                                <c:if test="${listLength>0}">
+                                <div class="carousel-item active">  
                                     <div class="row">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas4.img" alt="Product Image 1">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas5.img" alt="Product Image 2">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas6.img" alt="Product Image 3">
-                                            </a>
-                                        </div>
+                                    	<c:forEach items="${filePathList}" var="filePath" varStatus="state">
+                                    		<c:if test="${state.index>=0 && state.index<3}">
+		                                        <div class="col-4">
+		                                            <a href="#">
+		                                                <img class="card-img img-fluid img-carousel" src="/attachment/file?fileName=${filePath}" alt="Product Image 1">
+		                                            </a>
+		                                        </div>
+                                    		</c:if>
+                                    	</c:forEach>
                                     </div>
                                 </div>
+                                </c:if>
                                 <!--/.First slide-->
 
                                 <!--Second slide-->
-                                <div class="carousel-item">
+                                <c:if test="${listLength>3}">
+                                <div class="carousel-item">  
                                     <div class="row">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas7.img" alt="Product Image 4">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas2.img" alt="Product Image 5">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas3.img" alt="Product Image 6">
-                                            </a>
-                                        </div>
+                                    	<c:forEach items="${filePathList}" var="filePath" varStatus="state">
+                                    		<c:if test="${state.index>=3&& state.index<6}">
+		                                        <div class="col-4">
+		                                            <a href="#">
+		                                                <img class="card-img img-fluid img-carousel" src="/attachment/file?fileName=${filePath}" alt="Product Image 1">
+		                                            </a>
+		                                        </div>
+                                    		</c:if>
+                                    	</c:forEach>
                                     </div>
                                 </div>
+                                </c:if>
+                               
                                 <!--/.Second slide-->
 
                                 <!--Third slide-->
-                                <div class="carousel-item">
+                                <c:if test="${listLength>6}">
+                                <div class="carousel-item">  
                                     <div class="row">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas2.img" alt="Product Image 7">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas6.img" alt="Product Image 8">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="/powe/adidas4.img" alt="Product Image 9">
-                                            </a>
-                                        </div>
+                                    	<c:forEach items="${filePathList}" var="filePath" varStatus="state">
+                                    		<c:if test="${state.index>=6&& state.index<9}">
+		                                        <div class="col-4">
+		                                            <a href="#">
+		                                                <img class="card-img img-fluid img-carousel" src="/attachment/file?fileName=${filePath}" alt="Product Image 1">
+		                                            </a>
+		                                        </div>
+                                    		</c:if>
+                                    	</c:forEach>
                                     </div>
                                 </div>
+                                </c:if>
+                                
                                 <!--/.Third slide-->
                             </div>
                             <!--End Slides-->
@@ -131,8 +121,7 @@
 					<!--End Carousel Wrapper-->
 				</div>
 			</div>			
-			
-			<security:authentication property="principal.memberDTO" 	var="userDetails" />
+			 
 			<!-- col end -->
 			<div class="col-lg-7 mt-5" >
 				<div class="card">
@@ -374,14 +363,9 @@
 <!-- Start Script -->
 <script src="../assets/js/jquery-1.11.0.min.js"></script>
 <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/templatemo.js"></script>
 <script src="../assets/js/custom.js"></script>
-<link href="../powe/adidas1.img">
-<link href="../powe/adidas2.img">
-<link href="../powe/adidas3.img">
-<link href="../powe/adidas4.img">
-
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
 
 <form action="/shoes/detail" id="operForm">
 	<%-- QnaPageDTO.cri.page 가능 --%>
@@ -390,6 +374,39 @@
 <%-- 	<input type="hidden" name="keyword" value="${cri.keyword}" /> --%>
 </form>
 <!-- End Script -->
+ <!-- Start Slider Script -->
+    <script src="/assets/js/slick.min.js"></script>
+    <script>
+        $('#carousel-related-product').slick({
+            infinite: true,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                }
+            ]
+        });
+    </script>
  <script>
 	// 스크립트 실행순서: 첫번째 실행
 	// js에서 가져다 쓰기 위한 작업
@@ -402,20 +419,10 @@
 	const csrfToken='${_csrf.token}';
 	const pageIsRead=false;
 
-	
-	
-	
 </script>
 
 <!-- <script src="/poweqnajs/qna.js"> </script> -->
-<script src="/js/attachment.js"> </script>
 <script src="/powedetailjs/shoesinfo.js"> </script>
 <script src="/powedetailjs/detail.js"> </script>
-
   
 <%@include file="../include/footer.jsp"%>
-
-
-
-
-

@@ -41,16 +41,15 @@
 							<option value="sold-count-desc" >많이 팔린 순</option>
 							<option value="price-desc" >높은 가격 순</option>
 							<option value="price-asc" >낮은 가격 순</option>
-							<option value="rating-desc" >평점 높은 순</option>
 						</select>
-					</div>
+					</div> 
 				</div>
 				<div class="col-md-2 pb-4 ">
 					<div class="d-flex ">
 						<select class="form-control text-center" id="listAmount" name="listAmount">
 							<option value="15" >15개씩 보기</option>
 							<option value="30" >30개씩 보기</option>
-						</select>
+						</select>  
 					</div>
 				</div>
 			</div>
@@ -65,7 +64,7 @@
 			</div>
 		</div>
     
-	</div>
+	</div>    
 </div>       
 <!-- End Content -->
 
@@ -172,7 +171,6 @@
 <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="/assets/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/js/templatemo.js"></script>
-<script src="/assets/js/custom.js"></script>
 <script src="/js/list.js"></script>
 <!-- End Script -->
 <%@ include file="../include/footer.jsp"%>

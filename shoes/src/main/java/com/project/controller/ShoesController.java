@@ -21,6 +21,7 @@ import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
 import com.project.domain.ReviewDTO;
 import com.project.domain.ReviewPageDTO;
+import com.project.service.AttachmentService;
 import com.project.service.CustomerService;
 import com.project.service.DetailService;
 import com.project.service.ProductService;
@@ -40,6 +41,9 @@ public class ShoesController {
 
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private AttachmentService attachmentService;
 	
 	@GetMapping("/review")
 	public void reviewInsert() {
@@ -83,7 +87,20 @@ public class ShoesController {
 		model.addAttribute("list", list);
 		int total = service.reviewTotal(cri);
 		
-		model.addAttribute("filePathList", getAttachments(model, productId));
+		List<AttachmentDTO> attachmentDTOs = attachmentService.getAttachmentList(productId);
+		List<String> filePathList = new ArrayList<String>();
+		for (AttachmentDTO attachmentDTO : attachmentDTOs) {
+			StringBuffer sb = new StringBuffer();
+			sb.append(attachmentDTO.getUploadPath());
+			sb.append("\\");
+			sb.append(attachmentDTO.getUuid());
+			sb.append("_");
+			sb.append(attachmentDTO.getFileName());
+			String filePath = sb.toString().replace("\\", "/");
+			filePathList.add(filePath);
+		}
+		model.addAttribute("filePathList", filePathList);
+		model.addAttribute("listLength", filePathList.size());
 		log.info(productId);
 
 		model.addAttribute("reviewPage", new ReviewPageDTO(cri, total));
@@ -108,22 +125,4 @@ public class ShoesController {
 	  
 	  }
 	
-	  public List<String> getAttachments(Model model, String productId) {
-			ProductDTO productDTO = productService.getSingleProduct(productId);
-			//상품 하나에 딸린 이미지 목록 로드
-			List<String> filePathList = new ArrayList<String>();
-			String filePath = "/default/txt-file.png";
-			
-			if (productDTO.getAttachmentList() != null) {
-				for (AttachmentDTO dto : productDTO.getAttachmentList()) {
-					filePath = dto.getUploadPath() + "\\" + dto.getUuid() + "_" + dto.getFileName();
-					filePathList.add(filePath.replace("\\", "/"));
-				}
-			}else {
-				filePathList.add(filePath);
-				return filePathList;
-			}
-			return filePathList;
-	  }
-	 
 }

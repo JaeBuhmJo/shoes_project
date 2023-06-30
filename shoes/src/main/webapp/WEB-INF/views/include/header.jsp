@@ -96,10 +96,10 @@ https://templatemo.com/tm-559-zay-shop
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-
-					<form class="d-flex" role="search">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit" id="shoesSearch" value="${product.brand}">Search</button>
+ 
+					<form class="d-flex" role="search" id="searchForm">      
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchKeyword">
+						<button class="btn btn-outline-success" type="submit" id="shoesSearch">Search</button>
 					</form>
 
 					<button type="button" id="cartstyle" class="btn btn-danger btn-lg"
