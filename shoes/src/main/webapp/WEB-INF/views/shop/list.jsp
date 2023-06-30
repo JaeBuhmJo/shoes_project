@@ -41,6 +41,7 @@
 							<option value="sold-count-desc" >많이 팔린 순</option>
 							<option value="price-desc" >높은 가격 순</option>
 							<option value="price-asc" >낮은 가격 순</option>
+							<option value="rating-desc" >평점 높은 순</option>
 						</select>
 					</div>
 				</div>
@@ -78,9 +79,9 @@
 			<div class="input-group mb-2">
 				<input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
 				<button type="submit" class="input-group-text bg-success text-light">
-					<i class="fa fa-fw fa-search text-white"></i>
-				</button>
-			</div>
+					<i class="fa fa-fw fa-search text-white"></i>   
+				</button>  
+			</div>   
 		</form>
 	</div>
 </div>
@@ -101,7 +102,7 @@
 						</a>
 					</div>
 					<!--End Controls-->
-
+    
 					<!--Carousel Wrapper-->
 					<div class="col">
 						<div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="multi-item-example" data-bs-ride="carousel">

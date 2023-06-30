@@ -7,7 +7,7 @@
 		select * from attachments where product_id = #{productId}
 		order by file_name
 	</select>
-
+	
 	<insert id="insertAttachments">
 	    insert into attachments (uuid, product_id, upload_path, file_name)
 	    select * from (

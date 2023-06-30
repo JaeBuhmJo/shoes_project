@@ -122,11 +122,21 @@ function getList(cri) {
       const productList = document.querySelector(".productList");
       let products = "";
       data.productDTOs.forEach((item) => {
+        let rating = Math.floor(item.rating * 10.0) / 10.0;
+        let coloredStars = Math.floor(rating);
+        let stars = "";
+        for (let i = 0; i < coloredStars; i++) {
+          stars += '<i class="text-warning fa fa-star"></i>';
+        }
+        for (let i = 0; i < 5 - coloredStars; i++) {
+          stars += '<i class="text-muted fa fa-star"></i>';
+        }
         products += '<div class="col-md-4 mb-4">';
         products += '<div class="card product-wap productCard rounded-0" data-productId ="' + item.productId + '">';
         products += '<div class="card rounded-0 image-wrapper">';
         products += '<img class="card-img rounded-0 img-fluid" src="/attachment/file?fileName=' + item.filePath + '">';
-        products += '<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">';
+        products +=
+          '<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">';
         products += "</div>";
         products += "</div>";
         products += '<div class="card-body">';
@@ -138,7 +148,15 @@ function getList(cri) {
         products += "</ul>";
         products += '<ul class="list-unstyled d-flex justify-content-center mb-1">';
         products +=
-          '<li><i class="text-warning fa fa-star"></i> <i class="text-warning fa fa-star"></i> <i class="text-warning fa fa-star"></i> <i class="text-muted fa fa-star"></i> <i class="text-muted fa fa-star"></i></li>';
+          "<li>" +
+          stars +
+          "<span><b> " +
+          rating +
+          "</b></span><span class='fw-lighter'>" +
+          " (" +
+          item.reviewCount +
+          ")" +
+          "</span></li>";
         products += "</ul>";
         products += '<p class="text-center mb-0">' + item.price + "원</p>";
         products += "</div>";
@@ -170,17 +188,34 @@ function showProductPage(total) {
 
   let str = "";
   if (prev) {
-    str += '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="' + (startPage - 1) + '">prev</a></li>';
+    str +=
+      '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="' +
+      (startPage - 1) +
+      '">prev</a></li>';
   }
   for (let i = startPage; i <= endPage; i++) {
     let disabled = criteria.page == i ? "disabled" : "";
     let active = criteria.page == i ? "active" : "";
     let textDark = criteria.page == i ? "text-dark" : "";
-    str += '<li class="page-item ' + disabled + '"><a class="page-link ' + active + " rounded-0 shadow-sm border-top-0 border-left-0 " + textDark + '" href=' + i + ">" + i + "</a></li>";
+    str +=
+      '<li class="page-item ' +
+      disabled +
+      '"><a class="page-link ' +
+      active +
+      " rounded-0 shadow-sm border-top-0 border-left-0 " +
+      textDark +
+      '" href=' +
+      i +
+      ">" +
+      i +
+      "</a></li>";
   }
 
   if (next) {
-    str += '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href=' + (endPage + 1) + ">next</a></li>";
+    str +=
+      '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href=' +
+      (endPage + 1) +
+      ">next</a></li>";
   }
   document.querySelector("#shopPagination").innerHTML = str;
 }
