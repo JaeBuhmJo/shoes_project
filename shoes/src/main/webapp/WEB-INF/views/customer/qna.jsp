@@ -152,7 +152,8 @@
 
 				<td>${qna.memberId}</td>
 				<td><a href="${qna.qnaId}" class="qna">${qna.title}</a></td>
-				<td>${qna.questionDate} </td>
+				
+				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.questionDate}" /> </td>
 			</tr>
 		</c:forEach>
 	</tbody>

@@ -3,12 +3,12 @@
 <mapper namespace="com.project.mapper.CustomerMapper">
 
 	
-	<insert id="reviewInsert">
-	<selectKey keyProperty="review_id" order="BEFORE" resultType="int">
+<!-- 	<selectKey keyProperty="review_id" order="BEFORE" resultType="int">
 			select reviews_seq.nextval from dual
-		</selectKey>
+		</selectKey> -->
+	<insert id="reviewInsert">
 		insert into reviews (review_id,regdate,contents, product_id,member_id,jumsu)
-		 VALUES (#{reviewId},#{regdate},#{contents},#{productId},#{memberId},{jumsu})
+		 VALUES (reviews_seq.nextval, sysdate ,#{contents},#{productId},#{memberId},#{jumsu})
 	</insert>
 	
 </mapper>

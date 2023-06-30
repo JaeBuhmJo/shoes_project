@@ -29,8 +29,6 @@ pagination.addEventListener("click", (e) => {
 //   })
 //   .catch((error) => console.log(error));
 
-//size에 변경 이벤트가 일어나면
-const inventoryId = document.querySelector("#productSize");
 // inventoryId.addEventListener("change", (e) => {
 //   e.preventDefault();
 //   const productId = document.getElementById("productId");
@@ -63,33 +61,23 @@ const inventoryId = document.querySelector("#productSize");
 //     .catch((error) => console.log(error));
 // });
 
-document.getElementById("productColor").addEventListener("change", () => {
-  const productColor = this.value;
-  const productId = document.getElementById("productId").value;
-  const productSize = document.getElementById("productSize").value;
+// document.getElementById("productColor").addEventListener("change", () => {
+//   const productColor = this.value;
+//   const productId = document.getElementById("productId").value;
+//   const productSize = document.getElementById("productSize").value;
 
-  if (productColor && productSize) {
-    getInventoryId(productId, productSize, productColor);
-  }
-});
+//   if (productColor && productSize) {
+//     getInventoryId(productId, productSize, productColor);
+//   }
+// });
 
-document.getElementById("productSize").addEventListener("change", () => {
-  const productSize = this.value;
-  const productColor = document.getElementById("productColor").value;
-  const productId = document.getElementById("productId").value;
-
-  if (productColor && productSize) {
-    getInventoryId(productId, productSize, productColor);
-  }
-});
-
-async function getInventoryId(productId, productSize, productColor) {
-  const response = await fetch(
-    `/shoes/getInventoryId?productId=${productId}&productSize=${productSize}&productColor=${productColor}`
-  );
-  const inventoryId = await response.text();
-  document.getElementById("inventoryId").value = inventoryId;
-}
+// async function getInventoryId(productId, productSize, productColor) {
+//   const response = await fetch(
+//     `/shoes/getInventoryId?productId=${productId}&productSize=${productSize}&productColor=${productColor}`
+//   );
+//   const inventoryId = await response.text();
+//   document.getElementById("inventoryId").value = inventoryId;
+// }
 
 const shoesForm = document.querySelector("#shoesForm");
 

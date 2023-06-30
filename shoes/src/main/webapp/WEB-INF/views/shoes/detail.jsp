@@ -176,13 +176,10 @@
 								</c:forEach>
 							</select>
 							</ul>
-							  <ul class="list-inline pb-3" id="detailSize" style="visibility: hidden;">
+							  <ul class="list-inline pb-3" id="detailSize" style="display: none;">
 									<li class="list-inline-item">size :</li>
 									<select class="form-select" aria-label="" name="productSize" id="productSize">
-										<option selected>사이즈 선택</option>
-											 <c:forEach var="size" items="${size}">
-												<option value="${size.productSize}">${size.productSize}</option>					
-											</c:forEach> 
+										
 									</select>
 								</ul>  						
 								<input class="form-control me-2" id="cartAmount" name="cartAmount" 
@@ -191,15 +188,11 @@
 						    <input type="hidden" name="cartAmount" value="cart.cartAmount" id="cartAmount"/>
 						    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						    <input type="hidden" name="memberId" value="${userDetails.memberId}" id="memberId"/>
-						    <input type="hidden" name="productId" value="${product.productId}" id="productId"/>
-						    <input type="hidden" name="inventoryId" value="${inventory.inventoryId}" id="inventoryId"/>
+<%-- 						    <input type="hidden" name="productId" value="${product.productId}" id="productId"/>
+ --%>						    <input type="hidden" name="inventoryId" value="" id="inventoryId"/>
 							
-								</form>
-								
+								</form>								
 				
-				
-				
-								
 					</div>				
 					</div>
 				</div>
@@ -208,6 +201,9 @@
 	</div>
 </section>
 <!-- Close Content -->
+
+
+
 
 
 <!-- 캐러셀 섹션 러프 -->
@@ -288,8 +284,10 @@
 									<thead>
 										<tr>
 											<th scope="col">작성자</th>
+											<th scope="col">점수</th>
 											<th scope="col">후기</th>
 											<th scope="col">리뷰 등록일</th>
+											
 
 										</tr>
 									</thead>
@@ -299,8 +297,10 @@
 								 		
 											 <tr>
 												<td>${review.memberId}</td>
-												<td><a href="" class="review">${review.contents}</a></td>
-												<td>${review.regdate}</td>
+												<td>${review.jumsu}</td>
+												<td>${review.contents}</td>
+												
+												<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.regdate}" /></td>
 											</tr>
 										</c:forEach> 
 								 	</tbody>
@@ -392,11 +392,11 @@
 <!-- End Script -->
  <script>
 	// 스크립트 실행순서: 첫번째 실행
-	//게글 글번호 가져오기
+	// js에서 가져다 쓰기 위한 작업
  
 	const path= '${pageContext.request.requestURI}';
 	
-	const product = ${product.productId};
+	const productId = ${product.productId};
 	const result = '${result}';
 
 	const csrfToken='${_csrf.token}';

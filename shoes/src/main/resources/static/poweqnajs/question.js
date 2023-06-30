@@ -5,9 +5,11 @@ qnaForm.addEventListener("submit", (e) => {
   e.preventDefault();
   qnaForm.submit();
 });
-
+//취소 버튼 누를시
 document.querySelector(".btn btn-danger").addEventListener("click", () => {
+  form.firstElementChild.remove();
   form.action = "/customer/qna";
+  from.submit();
 });
 
 // if ((document.querySelector("#memberId").value = "")) {

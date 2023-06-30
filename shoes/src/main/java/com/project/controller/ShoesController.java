@@ -47,15 +47,16 @@ public class ShoesController {
 	}
 	
 	@PostMapping("/review")
-	public String reviewPost(ReviewDTO review,RedirectAttributes rttr,Criteria cri) {
+	public String reviewPost(Model model,String productId,ReviewDTO review,RedirectAttributes rttr,Criteria cri) {
 		log.info("review post");
 		
+		model.addAttribute("product", service.detail(productId));
 		if(customerService.reviewInsert(review)) {
 			rttr.addAttribute("result", review.getReviewId());
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("amount", cri.getListAmount());
 			log.info("review write",review);
-			return "redirect:/shoes/detail";
+			return "redirect:/member/memberdetail";
 		}
 		
 		return "redirect:/shoes/detail";
@@ -100,19 +101,20 @@ public class ShoesController {
 	
 	
 	
-	 //데이터만 넘김
+ //데이터만 넘김
 	  @GetMapping("/size")  
 	  @ResponseBody 
 	  public List<ColorSize> getSize(String productId,String productColor){ 
-	  return service.size(productId, productColor);
+		  	return service.size(productId, productColor);
 	  
 	  }
 	
-		public List<String> getAttachments(Model model, String productId) {
+	  public List<String> getAttachments(Model model, String productId) {
 			ProductDTO productDTO = productService.getSingleProduct(productId);
 			//상품 하나에 딸린 이미지 목록 로드
 			List<String> filePathList = new ArrayList<String>();
 			String filePath = "/default/txt-file.png";
+			
 			if (productDTO.getAttachmentList() != null) {
 				for (AttachmentDTO dto : productDTO.getAttachmentList()) {
 					filePath = dto.getUploadPath() + "\\" + dto.getUuid() + "_" + dto.getFileName();
@@ -123,6 +125,6 @@ public class ShoesController {
 				return filePathList;
 			}
 			return filePathList;
-		}
+	  }
 	 
 }

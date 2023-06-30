@@ -35,10 +35,7 @@ public class CustomerController {
 	@Autowired
 	private QnaService qnaService;
 	
-	@GetMapping("/review")
-	public void review() {
-		
-	}
+
 	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 @RequestBody
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/cart")
