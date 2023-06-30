@@ -248,12 +248,12 @@ https://templatemo.com/tm-559-zay-shop
 					</div>
 					<div class="form-group mb-3">
 						<label for="password">신규 비밀번호</label> <input type="password"
-							class="form-control mt-1" id="password" name="newPassword"
+							class="form-control mt-1" id="newPassword" name="newPassword"
 							placeholder="비밀번호" required>
 					</div>
 					<div class="form-group mb-3">
 						<label for="password">재확인 비밀번호</label> <input type="password"
-							class="form-control mt-1" id="password" name="confirmPassword"
+							class="form-control mt-1" id="confirmPassword" name="confirmPassword"
 							placeholder="비밀번호" required>
 					</div>
 					<div class="form-group mb-3">
@@ -295,61 +295,14 @@ https://templatemo.com/tm-559-zay-shop
 							readonly>
 					</div>
 				</form>
-			</div>   
+			</div>
 		</div>
 	</div>
 	</div>
 
 
-	<%--  <!-- Start Contact -->
-    <div class="container py-5">
-        <div class="row py-5">
-            <form class="col-md-9 m-auto" method="post" role="form">
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">아이디</label>
-                        <input type="text" class="form-control mt-1" id="memberId" name="memberId" placeholder="아이디">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">이름</label>
-                        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="name">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">비밀번호</label>
-                        <input type="password" class="form-control mt-1" id="password" name="password" placeholder="password">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">휴대폰</label>
-                        <input type="text" class="form-control mt-1" id="phone" name="phone" placeholder="phone">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">주소</label>
-                        <input type="text" class="form-control mt-1" id="address" name="address" placeholder="address">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">이메일</label>
-                        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="email">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="inputsubject">발사이즈</label>
-                    <input type="text" class="form-control mt-1" id="footSize" name="footSize" placeholder="발사이즈">
-                </div>
-                <div class="row">
-                    <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">회원가입</button>
-                    </div>
-                </div>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
-        </div>
-    </div>
-    <!-- End Contact -->
- --%>
+
+	
 
 	<!-- Start Footer -->
 	<footer class="bg-dark" id="tempaltemo_footer">
