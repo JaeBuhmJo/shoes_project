@@ -24,7 +24,7 @@ qnas.forEach((question) => {
     const qnaId = "<input type='hidden' name='qnaId' value='" + href + "'>";
 
     operForm.insertAdjacentHTML("beforeend", qnaId);
-    operForm.action = "/member/qnaread";
+    operForm.action = "/customer/qnaread";
     operForm.submit();
   });
 });

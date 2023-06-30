@@ -27,7 +27,7 @@
                 </div>
                 <div class="row">
                     <div class="col text-end mt-2">
-                        <button type="button" class="btn btn-success btn-lg px-3" onclick="location.href='/member/qna'">목록</button>
+                        <button type="button" class="btn btn-success btn-lg px-3" onclick="location.href='/customer/qna'">목록</button>
                         
                     </div>
                 </div>

@@ -2,9 +2,15 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
 <!DOCTYPE html>
 <html lang="en">
+<style>
+	#cartstyle{
+		margin: 0 1em;
+	}
+</style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <head>
 
@@ -64,7 +70,7 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-dark logo h1 align-self-center blackpearl" style="black" href="/member/qna">
+            <a class="navbar-brand text-dark logo h1 align-self-center blackpearl" style="black" href="/customer/qna">
                 BLACKPEARL
             </a>
 
@@ -96,15 +102,77 @@ https://templatemo.com/tm-559-zay-shop
 						<button class="btn btn-outline-success" type="submit" id="shoesSearch" value="${product.brand}">Search</button>
 					</form>
 
-					<a class="nav-icon position-relative text-decoration-none" href="/cart/cart?cart=1">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="/member/info">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
-                </div>
+					<button type="button" id="cartstyle" class="btn btn-danger btn-lg"
+									  onclick="location.href='/cart/cart?cartId=${cart.cartId}'">cart</button>
+
+					<div class="dropdown">
+						<a class="btn btn-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+									<security:authorize access="isAuthenticated()">
+										<security:authentication property="principal.memberDTO.name" />
+									</security:authorize>
+									<span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+							</span>
+							</a>
+
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="/member/memberDetail"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a> <a class="dropdown-item" href="/customer/qna"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> qna
+								</a> <a class="dropdown-item" href="/shop/list"> <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 목록으로
+								</a>
+							</li>
+							<li>
+								<security:authorize access="isAnonymous()">
+									<a class="dropdown-item" href="/member/login"> <i
+										class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Login
+									</a>
+								</security:authorize>
+							</li>
+							<li>
+								<security:authorize access="isAuthenticated()">
+									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i
+										class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+									</a>
+								</security:authorize>
+							</li>
+						</ul>
+					</div>
+					<%--  <ul class="navbar-nav ml-auto">
+                   <li class="nav-item dropdown no-arrow">
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
+							 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+									<security:authorize access="isAuthenticated()">
+										<security:authentication property="principal.memberDTO.name" />
+									</security:authorize>
+							</span> <img class="img-profile rounded-circle" src="/powe/undraw_profile.svg">
+							</a>
+							<!-- Dropdown - User Information -->
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="/member/memberDetail"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a> <a class="dropdown-item" href="/customer/qna"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> qna
+								</a> <a class="dropdown-item" href="/shop/list"> <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 목록으로
+								</a>
+								<div class="dropdown-divider"></div>
+
+								<!--  인증 정보 여부에 따라 Login/Logout 메뉴 설정 -->
+
+								<security:authorize access="isAnonymous()">
+									<a class="dropdown-item" href="/member/login"> <i
+										class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Login
+									</a>
+								</security:authorize>
+
+								<security:authorize access="isAuthenticated()">
+									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i
+										class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+									</a>
+								</security:authorize>
+							</div>
+						</li>
+						</ul>  --%>
+                
             </div>
 
         </div>

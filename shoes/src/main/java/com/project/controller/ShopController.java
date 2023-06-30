@@ -83,6 +83,8 @@ public class ShopController {
 		visitCookie.setPath("/");
 		response.addCookie(visitCookie);
 	}
+	
+
 
 	@GetMapping("/list")
 	public void listGet(@ModelAttribute("cri") Criteria cri, Model model) {

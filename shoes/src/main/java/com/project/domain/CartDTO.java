@@ -27,15 +27,13 @@ public class CartDTO {
 	
 	private int cartAmount; // 담은 수량
 	
-	private int inventoryId; // 재고 코드
-	
 	private List<InventoryDTO> inventories;
 	private List<ProductDTO> products;
 	
-
+	private String inventoryId; // 재고 코드
 	// product
 	
-	private int productName; // 상품명
+	private String productName; // 상품명
 	
 	private int price; // 가격
 	
@@ -48,6 +46,7 @@ public class CartDTO {
 	
 	// 상품 이미지
 	private List<AttachmentDTO> attachmentList;
+	private List<ProductImageDTO> imagelist;
 
 }
 

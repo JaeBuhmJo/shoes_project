@@ -6,6 +6,7 @@ import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -97,7 +98,8 @@ public class AttachmentController {
 				int width = origin.getWidth() / ratio;
 				int height = origin.getHeight() / ratio;
 				File thumbnail = new File(uploadFullPath, "thumb_" + fileName);
-				Thumbnails.of(origin).size(width, height).toFile(thumbnail);
+				Thumbnails.of(origin).size(width, height).toFile(thumbnail);				
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
