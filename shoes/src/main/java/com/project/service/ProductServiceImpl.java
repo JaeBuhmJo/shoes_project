@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.project.domain.Criteria;
+import com.project.domain.ListPageDTO;
 import com.project.domain.ProductDTO;
 import com.project.mapper.ProductMapper;
 
@@ -17,8 +18,14 @@ public class ProductServiceImpl implements ProductService {
 	private ProductMapper productMapper;
 
 	@Override
-	public List<ProductDTO> getSaleProducts(Criteria cri) {
-		return productMapper.getOnSaleList(cri);
+	public ListPageDTO getProductsList(Criteria cri) {
+		List<ProductDTO> list = productMapper.getOnSaleList(cri);
+		//리스트 순환하면서 별점이랑 리뷰개수 들고오기
+		for (ProductDTO productDTO : list) {
+		}
+		int productsCount = productMapper.getOnSaleCount(cri);
+		
+		return new ListPageDTO(productsCount, list);
 	}
 
 	@Override
@@ -68,4 +75,5 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return productMapper.updateProduct(productDTO) == 1 ? true : false;
 	}
+
 }

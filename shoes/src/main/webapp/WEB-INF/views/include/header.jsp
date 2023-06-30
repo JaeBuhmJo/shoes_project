@@ -27,6 +27,8 @@
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="/assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/slick-theme.css">
+    <!-- 방문자 집계 -->
+	<script src="/js/visit-counter.js"></script>
 <!--
     
 TemplateMo 559 Zay Shop
@@ -68,8 +70,8 @@ https://templatemo.com/tm-559-zay-shop
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-
+            </button> 
+ 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
@@ -80,7 +82,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="/member/qna">문의사항</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">신상품</a>
+                            <a class="nav-link" href="/shop/list" id="recentProductList">신상품</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/member/qna">qna</a>

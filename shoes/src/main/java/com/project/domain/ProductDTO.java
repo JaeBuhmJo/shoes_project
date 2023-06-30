@@ -1,6 +1,5 @@
 package com.project.domain;
 
-import java.util.Date;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -21,11 +20,13 @@ public class ProductDTO {
 	private String productName;
 	private boolean onSale;
 	private int soldCount;
-	private Date registeredDate;
-	private Date modifiedDate;
+	private String registeredDate;
+	private String modifiedDate;
 	private boolean forMen;
 	private boolean forWomen;
 	private String colors;
+	private int rating;
+	private int reviewCount;
 	private boolean discontinued;
 	
 	private String filePath;
@@ -35,4 +36,5 @@ public class ProductDTO {
 	private List<String> colorList;
 	private List<String> sizeList;
 	private List<Integer> quantityList;
+	private List<CartDTO> carts;
 }

@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.Criteria;
-import com.project.domain.ProductDTO;
 import com.project.domain.QnaDTO;
-import com.project.domain.QnaPageDTO;
 import com.project.mapper.QnaMapper;
 
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +49,8 @@ public class QnaServiceImpl implements QnaService {
 		log.info("qna 작성");
 		return mapper.qnaInsert(qna)==1?true:false;
 	}
+
+
 
 	
 

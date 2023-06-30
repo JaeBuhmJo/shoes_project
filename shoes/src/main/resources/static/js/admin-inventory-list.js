@@ -8,10 +8,6 @@ searchForm.addEventListener("submit", (e) => {
   document.querySelector("input[name='searchType']").value = searchForm.submit();
 });
 
-document.querySelector(".btn-success").addEventListener("click", () => {
-  location.href = "/admin/product/register";
-});
-
 const operForm = document.querySelector("#operForm");
 
 const table = document.querySelector(".inventory-list-table");

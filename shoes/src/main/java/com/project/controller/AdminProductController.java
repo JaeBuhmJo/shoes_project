@@ -86,6 +86,7 @@ public class AdminProductController {
 		log.info("상품 페이지 상품 수정 요청 : " + productDTO.toString());
 		productService.modifyProduct(productDTO);
 		if (productDTO.isDiscontinued()) {
+			//상품 단종 요청시 해당 상품의 재고 모두 단종처리
 			inventoryService.closeInventory(productDTO.getProductId());
 		}
 		if(productDTO.getAttachmentList()!=null&&!productDTO.getAttachmentList().isEmpty()) {

@@ -11,7 +11,6 @@ import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
-import com.project.domain.QnaDTO;
 import com.project.domain.ReviewDTO;
 
 @Mapper

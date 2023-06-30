@@ -1,9 +1,5 @@
 package com.project.service;
 
-import java.lang.reflect.Member;
-
-
-import com.project.domain.LoginDTO;
 import com.project.domain.MemberDTO;
 
 public interface MemberService {

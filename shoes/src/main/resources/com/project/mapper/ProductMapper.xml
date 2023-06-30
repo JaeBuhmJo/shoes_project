@@ -2,22 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.ProductMapper">
 
-	<resultMap type="com.project.domain.ProductDTO" id="productMap">
-		<id column="product_id" property="productId"/>
-		<result column="product_name" property="productName"/>
-		<result column="price" property="price"/>
-		<result column="colors" property="colors"/>
-		<collection property="attachmentList" resultMap="attachmentMap"/>
-	</resultMap>
-	<resultMap type="com.project.domain.AttachmentDTO" id="attachmentMap">
-		<id column="uuid" property="uuid"/>
-		<result column="product_id" property="productId"/>
-		<result column="upload_path" property="uploadPath"/>
-		<result column="file_name" property="fileName"/>
-	</resultMap>
-
- 	<select id="getOnSaleList" resultMap="productMap">
- 		select p.product_id, p.product_name, p.price, p.colors, p.registered_date, p.sold_count, a.uuid, a.upload_path, a.file_name, p.rnum
+ 	<select id="getOnSaleList" resultType="com.project.domain.ProductDTO">
+ 		select p.product_id, p.product_name, p.price, p.colors, p.registered_date, p.sold_count, p.rnum,
+ 			   nvl(replace((a.upload_path||'/'||a.uuid||'_'||a.file_name),'\','/'),'/default/txt-file.png') as filePath
 		from (
 			select product_id, product_name, price, colors, registered_date, sold_count, ROW_NUMBER() over(order by
 		    <choose>
@@ -68,9 +55,11 @@
 		      <otherwise></otherwise>
 		    </choose>
 	</select>
-	
+
 	<select id="getTotalList">
-		select * from products where
+		select product_id, product_name, category, brand, price, product_country, product_year
+			   on_sale, sold_count, to_char(registered_date,'yyyy-MM-dd/HH:mm:ss') as registered_date,
+			   to_char(modified_date,'yyyy-MM-dd/HH:mm:ss') as modified_date from products where
 			<choose>
 		      <when test="discontinued==1"> discontinued = 1 </when>
 		      <otherwise>discontinued = 0</otherwise>

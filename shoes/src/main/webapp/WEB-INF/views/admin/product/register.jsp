@@ -98,16 +98,16 @@
 					<label for="addRow" class="text-secondary">입력 추가하기</label>
 			    	<button id="addRow" tabindex="-1" type="button" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i></button>
 				</div>
-				<div class="col-sm-2">   
-				      <input type="text" class="form-control colorList" placeholder="색상 *(필수 입력 필드)">
+				<div class="col-sm-2">
+				      <input type="text" class="form-control colorList" id="color-necessary" placeholder="색상 *(필수 입력 필드)">
 				</div> 
 				<div class="col-sm-4">
-				      <input type="text" class="form-control" placeholder="ex)260,270,280 (쉼표로 구분) *(필수 입력 필드)">
+				      <input type="text" class="form-control" id="size-necessary" placeholder="ex)260,270,280 (쉼표로 구분) *(필수 입력 필드)">
 				</div>
 			</div>       
 		<div class="" id="newRow"></div> 
 		<div class="d-grid gap-2 col-6 mx-auto">  
-		  <button class="btn btn-success" tabindex="-1" type="button" >색상/사이즈 별 재고입력 생성</button>
+		  <button class="btn btn-success" id="create-detail" tabindex="-1" type="button" >색상/사이즈 별 재고입력 생성</button>
 		</div>
 	 	<hr>   
 	 	
@@ -142,7 +142,7 @@
 		   
 		<div class="row row-cols-1 row-cols-md-6 g-6 mb-3 attachmentResult">
 			  
-		</div>       
+		</div>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<button type="submit" class="btn btn-primary">상품 등록</button>
 		<button type="button" class="btn btn-secondary">목록으로</button>
@@ -155,7 +155,7 @@
 	const pageIsRead = false;
 	const csrfToken = '${_csrf.token}';
 </script>
+<script src="/js/color-size-tool.js"></script>
 <script src="/js/attachment.js"></script>
 <script src="/js/admin-product-register.js"></script>
-<script src="/js/color-size-tool.js"></script>
 <%@ include file="../../include/adminfooter.jsp" %>

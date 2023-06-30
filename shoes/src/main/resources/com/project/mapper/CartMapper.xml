@@ -4,28 +4,33 @@
 		
       <!-- 장바구니 추가 -->
 	  <insert id="addCart">
-		insert into carts(memberId, productId, cartAmount)
-		values(#{memberId}, #{productId}, #{cartAmount}) 
+		insert into carts(memberId, productId, cartAmount, inventoryId)
+		values(#{memberId}, #{productId}, #{cartAmount}, #{inventoryId}) 
 	  </insert>
 	  
 	  <!-- 장바구니 삭제 -->
 	  <delete id="deleteCart">
 		delete from carts where cartId = #{cartId} and memberId = #{memberId};
-	   </delete>
+	  </delete>
 	   
 	   <!-- 장바구니 수량 수정 -->
 	  <update id="modifyamount">
-	  update 
-	  	carts set cart_amount=#{cartAmount} where cartId = #{cartId}
+ 		update 
+	  		carts 
+		set 
+			cartAmount = #{cartAmount} 
+		where 
+			cartId = #{cartId}
 	  </update>
-	  
-	  <!-- 카트 목록 -->
-	  <select id="getCart" resultType="com.project.domain.CartDTO" >
+	
+	 
+	 <!--  <select id="getCart" resultType="com.project.domain.CartDTO" >
 		select 
 			a.cartId
 			, a.memberId
 			, a.procuctId
 			, a.cartamount
+			, a.inventoryId
 			, b.productName
 			, b.Price
 			, b.discountPrice
@@ -33,12 +38,56 @@
 			carts a 
 			left join products b on a.procuctId = b.procuctId
 		where memberId = #{memberId}	
-	  </select>
+	  </select>   -->
+	  
+	  
+	<!-- 장바구니 목록 조회 -->
+    <select id="getCart" parameterType="String" resultMap="cartResultMap">
+        SELECT
+            c.cart_id AS cartId,
+            c.member_id AS memberId,
+            c.product_id AS productId,
+            c.cart_amount AS cartAmount,
+            c.inventory_id AS inventoryId,
+            p.product_name AS productName,
+            p.price,
+            p.discount_price AS discountPrice,
+            p.detail,
+            a.file_path AS filePath
+        FROM
+            cart c
+            INNER JOIN product p ON c.product_id = p.product_id
+            LEFT JOIN attachment a ON p.product_id = a.product_id
+        WHERE
+            c.member_id = #{memberId}
+    </select>
+    <!-- 장바구니 목록 결과를 매핑하기 위한 resultMap 정의 -->
+    <resultMap id="cartResultMap" type="com.project.domain.CartDTO">
+        <id property="cartId" column="cartId" />
+        <result property="memberId" column="memberId" />
+        <result property="productId" column="productId" />
+        <result property="cartAmount" column="cartAmount" />
+        <result property="inventoryId" column="inventoryId" />
+        <result property="productName" column="productName" />
+        <result property="price" column="price" />
+        <result property="discountPrice" column="discountPrice" />
+        <result property="detail" column="detail" />
+        <collection property="attachmentList" ofType="com.project.domain.AttachmentDTO">
+            <result property="uploadPath" column="uploadPath" />
+        </collection>
+    </resultMap>
+ 
 	  
 	     <!-- 카트 확인 -->
 	    <select id="checkCart" resultType="com.project.domain.CartDTO">
-		  select * from carts
-		  where memberId = #{memberId} and productId = #{productId}
+		  select 
+		  	* 
+		  from 
+		  	carts
+		  where 
+		  	memberId = #{memberId} 
+		  	and 
+		  	productId = #{productId}
 	    </select>	
 	
 

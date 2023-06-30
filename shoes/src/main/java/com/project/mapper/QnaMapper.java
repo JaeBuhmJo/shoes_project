@@ -5,9 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.domain.Criteria;
-import com.project.domain.ProductDTO;
 import com.project.domain.QnaDTO;
-import com.project.domain.QnaPageDTO;
 
 
 @Mapper
@@ -20,4 +18,7 @@ public interface QnaMapper {
 		public QnaDTO qnaRead(int qnaId);
 		
 		public int qnaInsert(QnaDTO qna);
+		
+
+
 }

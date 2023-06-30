@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../include/header.jsp"%>
 
@@ -12,158 +11,72 @@
 		<div class="col-lg-3">
 			<h1 class="h2 pb-4">Categories</h1>
 			<ul class="list-unstyled templatemo-accordion">
-				<li class="pb-3" id="gender">Gender <i
-					class="fa fa-fw fa-chevron-circle-right mt-1"></i> <input
-					type="radio" class="btn-check" value="" id="option1"
-					autocomplete="off" ${productListPage.cri.gender==''?'checked':''}>
-					<label class="btn btn-secondary" for="option1">전체</label> <input
-					type="radio" class="btn-check" value="for-men" id="option2"
-					autocomplete="off"
-					${productListPage.cri.gender=='for-men'?'checked':''}> <label
-					class="btn btn-secondary" for="option2">남성</label> <input
-					type="radio" class="btn-check" value="for-women" id="option4"
-					autocomplete="off"
-					${productListPage.cri.gender=='for-women'?'checked':''}> <label
-					class="btn btn-secondary" for="option4">여성</label>
+				<li class="pb-3 d-flex justify-content-between h3" id="gender">Gender <i class="fa fa-fw fa-chevron-circle-right mt-1"></i>
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="" id="option1" autocomplete="off"> 
+						<label class="btn btn-outline-dark" for="option1">전체</label>
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-men" id="option2" autocomplete="off">
+						<label class="btn btn-outline-dark" for="option2">남성</label>
+						<input type="radio" class="btn-check radio-gender" name="btnradio" value="for-women" id="option4" autocomplete="off">
+						<label class="btn btn-outline-dark" for="option4">여성</label>
+					</div>
 				</li>
-				<li class="pb-3" id="category"><a
-					class="collapsed d-flex justify-content-between h3 text-decoration-none"
-					href="#"> Product <i
-						class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+				<li class="pb-3" id="category"><a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#"> Category <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
 				</a>
 					<ul id="collapseThree" class="collapse list-unstyled pl-3">
 						<li><a class="text-decoration-none" href="">전체</a></li>
 						<li><a class="text-decoration-none" href="running">운동화</a></li>
 						<li><a class="text-decoration-none" href="shoes">구두</a></li>
-						<li><a class="text-decoration-none" href="slipper">슬리퍼</a></li>
+						<li><a class="text-decoration-none" href="slipper">슬리퍼</a></li>  
 					</ul></li>
 			</ul>
-		</div>
+		</div>  
 
 		<div class="col-lg-9">
 			<div class="d-flex justify-content-between">
 				<div class="col-md-4 pb-4">
 					<div class="d-flex align-items-center">
 						<select class="form-control" id="order" name="order">
-							<option value="registered-date-desc"
-								${productListPage.cri.order=='registered-date-desc'? 'selected':'' }>최근
-								등록 순</option>
-							<option value="sold-count-desc"
-								${productListPage.cri.order=='sold-count-desc'? 'selected':'' }>많이
-								팔린 순</option>
-							<option value="price-desc"
-								${productListPage.cri.order=='price-desc'? 'selected':'' }>높은
-								가격 순</option>
-							<option value="price-asc"
-								${productListPage.cri.order=='price-asc'? 'selected':'' }>낮은
-								가격 순</option>
+							<option value="registered-date-desc" >최근 등록 순</option>
+							<option value="sold-count-desc" >많이 팔린 순</option>
+							<option value="price-desc" >높은 가격 순</option>
+							<option value="price-asc" >낮은 가격 순</option>
 						</select>
 					</div>
 				</div>
 				<div class="col-md-2 pb-4 ">
 					<div class="d-flex ">
-						<select class="form-control" id="listAmount" name="listAmount">
-							<option value="15"
-								${productListPage.cri.listAmount==15? 'selected':'' }>15개씩
-								보기</option>
-							<option value="30"
-								${productListPage.cri.listAmount==30? 'selected':'' }>30개씩
-								보기</option>
+						<select class="form-control text-center" id="listAmount" name="listAmount">
+							<option value="15" >15개씩 보기</option>
+							<option value="30" >30개씩 보기</option>
 						</select>
 					</div>
 				</div>
 			</div>
 
-			<div class="row productList">
-				<c:forEach items="${list}" var="item">
-					<div class="col-md-4">
-						<div class="card mb-4 product-wap rounded-0">
-							<div class="card rounded-0 image-wrapper">
-								<img class="card-img rounded-0 img-fluid"
-									src="/attachment/file?fileName=${item.filePath}">
-								<div
-									class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-									<ul class="list-unstyled">
-										<li><a class="btn btn-success text-white mt-2"
-											href="shop-single.html"><i class="far fa-eye"></i></a></li>
-										<li><a class="btn btn-success text-white mt-2"
-											href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="card-body">
-								<a href="shop-single.html" class="h3 text-decoration-none">${item.productName}</a>
-								<ul
-									class="w-100 list-unstyled d-flex justify-content-between mb-0">
-									<li class="text-secondary"><small>${item.colors }</small></li>
-									<li class="pt-2"><span
-										class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-										<span
-										class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-										<span
-										class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-										<span
-										class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-										<span
-										class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-									</li>
-								</ul>
-								<ul class="list-unstyled d-flex justify-content-center mb-1">
-									<li><i class="text-warning fa fa-star"></i> <i
-										class="text-warning fa fa-star"></i> <i
-										class="text-warning fa fa-star"></i> <i
-										class="text-muted fa fa-star"></i> <i
-										class="text-muted fa fa-star"></i></li>
-								</ul>
-								<p class="text-center mb-0">${item.price}원</p>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
+			<div class="row productList">    
 			</div>
 
 			<!-- pagination -->
 			<div div="row">
-				<ul class="pagination pagination-lg justify-content-end"
-					id="shopPagination">
-					<c:if test="${productListPage.prev }">
-						<li class="page-item"><a
-							class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-							href="${productListPage.startPage - 1 }">prev</a></li>
-					</c:if>
-					<c:forEach begin="${productListPage.startPage }"
-						end="${productListPage.endPage }" var="page">
-						<li
-							class="page-item ${productListPage.cri.page==page? 'disabled':'' }"><a
-							class="page-link ${productListPage.cri.page==page? 'active':'' } rounded-0 shadow-sm border-top-0 border-left-0 ${productListPage.cri.page==page? '':'text-dark' }"
-							href="${page }">${page }</a></li>
-					</c:forEach>
-					<c:if test="${productListPage.next }">
-						<li class="page-item"><a
-							class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-							href="${productListPage.endPage + 1 }">next</a></li>
-					</c:if>
-				</ul>
+				<ul class="pagination pagination-lg justify-content-end" id="shopPagination">
+				</ul>             
 			</div>
 		</div>
-
+    
 	</div>
-</div>
+</div>       
 <!-- End Content -->
 
 <!-- Modal -->
-<div class="modal fade bg-white" id="templatemo_search" tabindex="-1"
-	role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="w-100 pt-1 mb-5 text-right">
-			<button type="button" class="btn-close" data-bs-dismiss="modal"
-				aria-label="Close"></button>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
-		<form action="" method="get"
-			class="modal-content modal-body border-0 p-0">
+		<form action="" method="get" class="modal-content modal-body border-0 p-0">
 			<div class="input-group mb-2">
-				<input type="text" class="form-control" id="inputModalSearch"
-					name="q" placeholder="Search ...">
+				<input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
 				<button type="submit" class="input-group-text bg-success text-light">
 					<i class="fa fa-fw fa-search text-white"></i>
 				</button>
@@ -178,24 +91,20 @@
 		<div class="row text-center py-3">
 			<div class="col-lg-6 m-auto">
 				<h1 class="h1">Our Brands</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-					do eiusmod Lorem ipsum dolor sit amet.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet.</p>
 			</div>
 			<div class="col-lg-9 m-auto tempaltemo-carousel">
 				<div class="row d-flex flex-row">
 					<!--Controls-->
 					<div class="col-1 align-self-center">
-						<a class="h1" href="#multi-item-example" role="button"
-							data-bs-slide="prev"> <i
-							class="text-light fas fa-chevron-left"></i>
+						<a class="h1" href="#multi-item-example" role="button" data-bs-slide="prev"> <i class="text-light fas fa-chevron-left"></i>
 						</a>
 					</div>
 					<!--End Controls-->
 
 					<!--Carousel Wrapper-->
 					<div class="col">
-						<div class="carousel slide carousel-multi-item pt-2 pt-md-0"
-							id="multi-item-example" data-bs-ride="carousel">
+						<div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="multi-item-example" data-bs-ride="carousel">
 							<!--Slides-->
 							<div class="carousel-inner product-links-wap" role="listbox">
 
@@ -203,20 +112,16 @@
 								<div class="carousel-item active">
 									<div class="row">
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img"
-												src="/assets/img/brand_01.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_01.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img"
-												src="/assets/img/brand_02.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_02.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img"
-												src="/assets/img/brand_03.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_03.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img"
-												src="/assets/img/brand_04.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_04.png" alt="Brand Logo"></a>
 										</div>
 									</div>
 								</div>
@@ -226,20 +131,16 @@
 								<div class="carousel-item">
 									<div class="row">
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img"
-												src="/assets/img/brand_01.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_01.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img"
-												src="/assets/img/brand_02.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_02.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img"
-												src="/assets/img/brand_03.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_03.png" alt="Brand Logo"></a>
 										</div>
 										<div class="col-3 p-md-5">
-											<a href="#"><img class="img-fluid brand-img"
-												src="/assets/img/brand_04.png" alt="Brand Logo"></a>
+											<a href="#"><img class="img-fluid brand-img" src="/assets/img/brand_04.png" alt="Brand Logo"></a>
 										</div>
 									</div>
 								</div>
@@ -252,31 +153,19 @@
 
 					<!--Controls-->
 					<div class="col-1 align-self-center">
-						<a class="h1" href="#multi-item-example" role="button"
-							data-bs-slide="next"> <i
-							class="text-light fas fa-chevron-right"></i>
+						<a class="h1" href="#multi-item-example" role="button" data-bs-slide="next"> <i class="text-light fas fa-chevron-right"></i>
 						</a>
 					</div>
 					<!--End Controls-->
-				</div>
-			</div>
-		</div>
-	</div>
+				</div> 
+			</div> 
+		</div>          
+	</div> 
 </section>
-<!--End Brands-->
-
-<form action="/shop/list" id="operForm" method="get">
-	<input type="hidden" name="page" value="${productListPage.cri.page}" />
-	<input type="hidden" name="listAmount" value="${productListPage.cri.listAmount}" /> 
-	<input type="hidden" name="searchType" value="${productListPage.cri.searchType}" /> 
-	<input type="hidden" name="keyword" value="${productListPage.cri.keyword}" />
-	<input type="hidden" name="order" value="${productListPage.cri.order}" />
-	<input type="hidden" name="gender" value="${productListPage.cri.gender}" /> 
-	<input type="hidden" name="category" value="${productListPage.cri.category}" />
-</form>
-
+<!--End Brands-->      
+           
 <script>
-	let page = ${productListPage.cri.page}
+	const csrfToken = '${_csrf.token}';
 </script>
 <script src="/assets/js/jquery-1.11.0.min.js"></script>
 <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>

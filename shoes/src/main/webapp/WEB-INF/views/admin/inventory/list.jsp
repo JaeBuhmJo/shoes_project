@@ -36,9 +36,9 @@
 			<hr />
 			
 			<!-- 이거 테이블로 하자 -->
-		<div class="overflow-auto product-list-table">
-			<table class="table table-sm table-hover table-striped table-bordered">
-			  <thead class="table-light">
+		<div class="overflow-auto inventory-list-div">
+			<table class="table table-sm table-hover table-striped table-bordered inventory-list-table">
+			  <thead class="table-light text-center">
 			    <tr>
 			      <th scope="col">상품 코드</th>
 			      <th scope="col">상품명</th> 
@@ -47,11 +47,11 @@
 			      <th scope="col">재고 수량</th>
 			      <th scope="col">재고 코드</th>
 			      <th scope="col">가격</th>
-			      <th scope="col">누적 판매량</th>
-			      <th scope="col">판매중 여부</th> 
-			      <th scope="col">최초 입고일</th> 
+			      <th scope="col">누적 판매량</th> 
+			      <th scope="col">판매중 여부</th>    
+			      <th scope="col">최초 입고일시</th> 
 			    </tr>  
-			  </thead>
+			  </thead> 
 			  <tbody class="table-group-divider overflow-auto inventory-list-table">
 			  	<c:forEach items="${list}" var="product"> 
 				  	<c:forEach items="${product.inventories}" var="inventory"> 
@@ -68,10 +68,10 @@
 					      <td class="text-end">${inventory.stockedDate}</td>
 					    </tr>
 				    </c:forEach>
-			    </c:forEach>
+			    </c:forEach> 
 				</tbody> 
 			</table>
 		</div>
         </main>
-<script src="/js/admin-product-list.js"></script>
+<script src="/js/admin-inventory-list.js"></script>
 <%@ include file="../../include/adminfooter.jsp" %>

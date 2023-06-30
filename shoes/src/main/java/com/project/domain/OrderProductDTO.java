@@ -1,5 +1,7 @@
 package com.project.domain;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 
 import lombok.Builder;
@@ -13,19 +15,21 @@ import lombok.NoArgsConstructor;
 public class OrderProductDTO {
 	
 	/* 주문 번호 */
-	private String order_id;
+	private String orderId;
 	
 	/* 상품 번호 */
-    private int product_id;
+    private String productId;
     
 	/* 주문 수량 */
-    private int purchase_amount;
+    private int purchaseAmount;
     
 	/* 상품 가격 */
-    private int price;
+    private int Price;
     
 	/* 상품 할인 율 */
     private double discountPrice;
+    
+    private List<PurchaseDTO> orders;
     
     
 	// DB테이블 존재 하지 않는 데이터
