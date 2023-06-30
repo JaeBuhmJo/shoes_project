@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.domain.MemberDTO;
 import com.project.service.MemberService;
+import com.project.service.OrderService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,6 +27,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private OrderService orderService;
 
 	@GetMapping("/register")
 	public void registerGet() {
@@ -68,8 +74,8 @@ public class MemberController {
 	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	@GetMapping("/modify")
 	public void modifyGET() {
-		log.info("수정페이지 요청");
-	
+		log.info("수정페이지 요청" );
+		
 	}
 
 	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
@@ -114,13 +120,20 @@ public class MemberController {
 	@GetMapping("/memberDetail")  
 	public void memberDetailGet() {
 		log.info("유저 상세페이지");
+		 
 	}
 	
-	
+	// 주문 내역 불러오기
 	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	@GetMapping("/memberPage")  
-	public void memberPageGet() {
-		log.info("회원 페이지 요청");
+	public String memberPageGet(Principal principal) {
+		
+		String memberId = principal.getName();
+		log.info("시큐리티 아이디"+ memberId);
+		
+		
+		log.info("주문내역 요청" + orderService.list(memberId));
+		return null;
 	}
 	
 	@GetMapping("/findPassword")

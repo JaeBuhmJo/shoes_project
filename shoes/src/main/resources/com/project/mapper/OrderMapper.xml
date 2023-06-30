@@ -19,6 +19,28 @@
 	</select>
 
 
+	<!-- 주문내역조회  -->
+	<resultMap type="com.project.domain.OrderListDTO" id="ordersList">
+		<result property="orderId" column="order_id"/>
+		<result property="productId" column="product_id"/>
+		<result property="purchaseAmount" column="purchase_amount"/>
+		<result property="purchaseDate" column="purchase_date"/>
+		<result property="brand" column="brand"/>
+		<result property="price" column="price"/>
+		<result property="colors" column="colors"/>
+		<result property="orderName" column="order_name"/>
+		<result property="orderPayment" column="order_payment"/>
+	</resultMap>
+	
+	<select id="orderList" resultMap="ordersList">
+		select pc.order_id, pc.product_id, pc.purchase_amount, pc.purchase_date,
+		       pd.brand, pd.price, pd.colors,
+		       order_name,order_payment
+		from purchases pc
+		join products pd on pc.product_id = pd.product_id
+	    join orders od on pc.order_id = od.order_id 
+		where pc.member_id = #{memberId}
+	</select>
 
 
 

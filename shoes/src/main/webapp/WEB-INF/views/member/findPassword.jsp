@@ -154,7 +154,7 @@ https://templatemo.com/tm-559-zay-shop
 	<!-- Start Content Page -->
 	<div class="container-fluid bg-light py-5">
 		<div class="col-md-6 m-auto text-center">
-			<h1 class="h1">회원 탈퇴</h1>
+			<h1 class="h1">비밀번호 찾기</h1>
 			<p>저희 쇼핑몰에 오신걸 환영합니다.</p>
 		</div>
 	</div>

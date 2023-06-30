@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.project.domain.OrderListDTO;
 import com.project.domain.OrderPageProductDTO;
 import com.project.domain.OrderProductDTO;
 
@@ -19,5 +20,8 @@ public interface OrderMapper {
 	
 	/* 주문 상품 정보 (주문취소) */
 	public List<OrderProductDTO> gerOrderProductInfo(String orderId);
+	
+	// 주문 상품 내역 조회
+	public List<OrderListDTO> orderList(String memberId);
 
 }

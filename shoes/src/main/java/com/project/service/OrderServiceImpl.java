@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.domain.MemberDTO;
 import com.project.domain.OrderDTO;
+import com.project.domain.OrderListDTO;
 import com.project.domain.OrderPageDTO;
 import com.project.domain.OrderPageProductDTO;
 import com.project.domain.OrderProductDTO;
@@ -75,6 +76,14 @@ public class OrderServiceImpl implements OrderService {
 //			
 		}
 		/* OrderDTO 셋팅 */
+
+
+	// 주문내역 목록 조회
+	@Override
+	public List<OrderListDTO> list(String memberId) {
+		
+		return orderMapper.orderList(memberId);
+	}
 		
 
 	}
