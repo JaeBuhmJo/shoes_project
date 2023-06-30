@@ -20,8 +20,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ListPageDTO getProductsList(Criteria cri) {
 		List<ProductDTO> list = productMapper.getOnSaleList(cri);
-		int total = productMapper.getOnSaleCount(cri);
-		return new ListPageDTO(total, list);
+		//리스트 순환하면서 별점이랑 리뷰개수 들고오기
+		for (ProductDTO productDTO : list) {
+		}
+		int productsCount = productMapper.getOnSaleCount(cri);
+		
+		return new ListPageDTO(productsCount, list);
 	}
 
 	@Override
