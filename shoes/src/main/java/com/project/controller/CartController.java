@@ -1,11 +1,15 @@
 package com.project.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,23 +34,30 @@ public class CartController {
 	// (3)등록된 데이터 존재
 	// (4)로그인필요
 	
-	@PostMapping("/cart/add")
-	@ResponseBody
-	public String addCartPost(CartDTO cart, HttpServletRequest request) {
-		// 로그인 체크
-		HttpSession session = request.getSession();
-		MemberDTO memberDto = (MemberDTO)session.getAttribute("member");
-		if(memberDto == null) {
-			return "5";		
-		}
-		
-		// 장바구니 등록
-		
-		int result = cartService.addCart(cart);
-				
-		return result + "";
-
-  }
+	/*
+	 * @PostMapping("/cart/add")
+	 * 
+	 * @ResponseBody public String addCartPost(CartDTO cart, HttpServletRequest
+	 * request) { // 먼저 로그인 여부를 체크하고 로그인되지 않았을 경우 5를 반환하도록 코드를 추가 HttpSession
+	 * session = request.getSession(); MemberDTO memberDto =
+	 * (MemberDTO)session.getAttribute("member"); if(memberDto == null) { return
+	 * "5"; } // 장바구니 등록 int result = cartService.addCart(cart); return result + "";
+	 * 
+	 * }
+	 */
+	
+	    // 장바구니 페이지를 조회하는 메소드
+        @GetMapping("/cart/{memberId}")
+        public String getCartList(@PathVariable String memberId, Model model) {
+        // 장바구니 목록 조회 로직
+        List<CartDTO> cartList = cartService.getCartList(memberId);
+        
+        // 모델에 장바구니 목록 추가
+        model.addAttribute("cartList", cartList);
+        
+        // 뷰 페이지 반환
+        return "/cart";
+    }
 	
      // 장바구니 페이지 이동
 

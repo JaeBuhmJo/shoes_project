@@ -1,5 +1,7 @@
 package com.project.domain;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,6 +37,9 @@ public class OrderDTO {
 	/* 결제 수단 */
 	private String oredrPayment;
 	
+	/* 주문 상품 */
+	private List<OrderProductDTO> orders;
+	
 	// DB 데이터에 존재하지 않는 데이터
 	
 	/* 판매가(모든 상품 비용) */
@@ -42,5 +47,7 @@ public class OrderDTO {
 	
 	/* 최종 판매 비용 */
 	private int orderfinalPrice;
-
 }
+	
+
+
