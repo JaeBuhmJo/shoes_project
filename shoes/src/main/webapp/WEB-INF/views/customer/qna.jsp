@@ -100,7 +100,7 @@
       </button>
     </h2>
     <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">상품 구매 시 교환 및 환불 불가이오니 이점 유의 바랍니다</div>
+      <div class="accordion-body">구매한 상품의 취소/반품은 마이페이지에서 신청하실수 있습니다</div>
     </div>
   </div>
   <div class="accordion-item">
@@ -114,10 +114,10 @@
     
       <div class="accordion-body">
     <ul>
-        		<li></li>
-        		<li></li>
-        		<li></li>
-        		<li></li>
+        		<li>상품 문의 및 후기게시판을 통해 취소나 환불, 반품 등은 처리되지 않습니다.</li>
+        		<li>가격, 판매자, 교환/환불 및 배송 등 해당 상품 자체와 관련 없는 문의는 고객센터에서 문의 바랍니다</li>
+        		<li>해당 상품 자체와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배 등의 글은 예고 없이 이동, 노출제한, 삭제 등의 조치가 취해질 수 있습니다.</li>
+        		<li>판매자 정보: blackpearl(주) 대표 : 조재범 </li>
         	</ul>  		
       </div>
     </div>
@@ -125,11 +125,21 @@
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        Accordion Item #3
+       교환/반품 관련 안내 사항
       </button>
     </h2>
     <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+      <div class="accordion-body">
+     <ul>
+      	<li>교환/반품에 관한 일반적인 사항은 판매자가 제시사항보다 관계법령이 우선합니다.</li>
+      	<li>1) [총 주문금액] - [반품 상품금액] = 19,800원 미만인 경우 반품비 5,000원</li>
+      	<li>2) [총 주문금액] - [반품 상품금액] = 19,800원 이상인 경우 반품비 2,500원</li>
+      	<li>ㆍ단순변심에 의한 로켓배송 상품의 교환/반품은 제품 수령 후 30일 이내까지, 교환/반품 제한사항에 해당하지 않는 경우에만 가능 (교환/반품 비용 고객부담)</li>
+      	<li>ㆍ상품의 내용이 표시·광고의 내용과 다른 경우에는 상품을 수령한 날부터 3개월 이내, 그 사실을 안 날 또는 알 수 있었던 날부터
+30일 이내에 청약철회 가능</li>
+		<li>상품의 택(TAG) 제거, 라벨 및 상품 훼손, 구성품 누락으로 상품의 가치가 현저히 감소된 경우 반품 불가</li>
+     </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -182,8 +192,8 @@
 	<div class="container my-4">
 		<div class="row text-center py-3">
 			<div class="col-lg-6 m-auto">
-				<h1 class="h1">Our Brands</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet.</p>
+				<h1 class="h1">blackpearl</h1>
+				<p>미성년자가 체결한 계약은 법정대리인이 동의하지 않는 경우 본인 또는 법정대리인이 취소할 수 있습니다.</p>
 			</div>
 			<div class="col-lg-9 m-auto tempaltemo-carousel">
 				<div class="row d-flex flex-row">

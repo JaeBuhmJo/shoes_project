@@ -1,83 +1,38 @@
-// 페이지 넘어가는 기능
+function displayRating(rating) {
+  let stars = "";
 
-const pagination = document.querySelector(".pagination");
-const operForm = document.querySelector("#operForm");
+  const fullstars = Math.floor(rating);
+  const halfStar = rating - fullstars >= 0.5;
 
-pagination.addEventListener("click", (e) => {
-  e.preventDefault();
+  for (let i = 1; i <= 5; i++) {
+    if (i <= fullstars) {
+      stars += "<i class='fas fa-star'></i>";
+    } else if (halfStar && i === fullstars + 1) {
+      stars += "<i class='fas fa-star-half-alt'></i>";
+    } else {
+      stars += "<i class='far fa-star'></i>";
+    }
+  }
+  return stars;
+}
+document.addEventListener("DOMContentLoaded", () => {
+  // 각 리뷰의 별점을 맞게 채우기
+  const ratings = [];
+  document.querySelectorAll(".rating").forEach((ratingElement) => {
+    const jumsu = parseInt(ratingElement.getAttribute("data-jumsu"), 10);
+    ratings.push(jumsu);
+    ratingElement.innerHTML = displayRating(jumsu);
+  });
 
-  let href = e.target.getAttribute("href");
+  // 평균 점수 계산
+  const averageRating = calculateAverageRating(ratings);
 
-  operForm.firstElementChild.value = href;
-
-  operForm.submit();
+  // 평균 별점 표시
+  const averageRatingElement = document.getElementById("averageRating");
+  averageRatingElement.innerHTML = displayRating(averageRating.toFixed(1)); // 소수점 1자리까지 나타냅니다.
 });
 
-// //cartId 조회 요청
-// var memberId = document.querySelector("#memberId").value;
-// fetch("member/cartId?memberId=" + memberId)
-//   .then((response) => {
-//     if (!response.ok) {
-//       throw new Error("cartId 조회 실패");
-//     }
-//     return response.json();
-//   })
-//   .then((data) => {
-//     var cartId = data.cartId;
-//     // cartId를 hidden input 필드에 설정
-//     document.querySelector("#cartId").value = cartId;
-//   })
-//   .catch((error) => console.log(error));
-
-// inventoryId.addEventListener("change", (e) => {
-//   e.preventDefault();
-//   const productId = document.getElementById("productId");
-
-//   var size = document.getElementById("productSize").value;
-//   var color = document.getElementById("productColor").value;
-//   // inventoryId 조회 요청
-//   fetch(
-//     "/product/inventoryId?color=" +
-//       encodeURIComponent(color) +
-//       "&size=" +
-//       encodeURIComponent(size) +
-//       "&productId=" +
-//       encodeURIComponent(productId)
-//   )
-//     .then((response) => {
-//       if (response.ok) {
-//         return response.json();
-//       } else {
-//         throw new Error("inventoryId 조회 실패");
-//       }
-//     })
-//     .then((data) => {
-//       console.log("선택된 제품의 inventoryId", data);
-//       const inventoryId = data;
-//       //inventoryId를 사용하여 필요한 작업 수행
-//       // 예 : 장바구니에 추가, 동적 수행 등
-//       document.getElementById("inventoryId").value = inventoryId;
-//     })
-//     .catch((error) => console.log(error));
-// });
-
-// document.getElementById("productColor").addEventListener("change", () => {
-//   const productColor = this.value;
-//   const productId = document.getElementById("productId").value;
-//   const productSize = document.getElementById("productSize").value;
-
-//   if (productColor && productSize) {
-//     getInventoryId(productId, productSize, productColor);
-//   }
-// });
-
-// async function getInventoryId(productId, productSize, productColor) {
-//   const response = await fetch(
-//     `/shoes/getInventoryId?productId=${productId}&productSize=${productSize}&productColor=${productColor}`
-//   );
-//   const inventoryId = await response.text();
-//   document.getElementById("inventoryId").value = inventoryId;
-// }
+// 페이지 넘어가는 기능
 
 const shoesForm = document.querySelector("#shoesForm");
 
@@ -132,17 +87,3 @@ shoesForm.addEventListener("submit", (e) => {
     // })
     .catch((error) => console.log(error));
 });
-
-// var loading = false;
-// var currentPage = 1;
-
-// window.addEventListener("scroll", () => {
-//   var scrollTop = document.documentElement.scrollTop;
-//   var windowHeight = window.innerHeight;
-//   var documentHeight = document.documentElement.scrollHeight;
-
-//   if (scrollTop + windowHeight >= documentHeight && !loading) {
-//     loadReviews(currentPage + 1);
-//   }
-//   loadReviews(1);
-// });

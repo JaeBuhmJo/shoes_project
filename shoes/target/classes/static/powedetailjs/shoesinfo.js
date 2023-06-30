@@ -51,6 +51,7 @@ function updateSizeOptions(sizes) {
 
 //size에 변경 이벤트가 일어나면
 const productSize = document.querySelector("#productSize");
+const cartAmount = document.getElementById("cartAmount");
 
 productSize.addEventListener("change", (e) => {
   const productSize = e.target.value;
@@ -65,5 +66,8 @@ productSize.addEventListener("change", (e) => {
 
       //도착한 재고 아이디를 전송 폼 안에 넣기
       document.querySelector("#inventoryId").value = data;
+
+      //수량 입력 요소를 보이게 하기
+      cartAmount.classList.remove("hidden");
     });
 });

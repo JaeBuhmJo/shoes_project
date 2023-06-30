@@ -4,6 +4,7 @@
 
 
 
+
 <!-- Modal -->
  <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
@@ -142,21 +143,18 @@
 					<form action="/shoes/detail" method="post" id="shoesForm">
 					
 						<h1 class="h2" id="productName" >${product.productName}</h1>
+						<h3>${product.brand}</h3>
 						<p class="h3 py-2" id="price" >
 							가격: <span>${product.price}</span>  
 						</p>
-						<p class="py-2">
-							<i class="fa fa-star text-warning">1</i>
-							<i class="fa fa-star text-warning">2</i>
-							<i class="fa fa-star text-warning">3</i>
-							<i class="fa fa-star text-warning">4</i>
-							<i class="fa fa-star text-secondary">5</i>
-							<span class="list-inline-item text-dark">별점 4.8 |${review.total}</span>
-						</p>
+								<div id="averageRating">
+									<span>${review.total}</span>
+								</div>
 								<!-- 상품 간략 정보 -->
 	
 							<h5>${product.detail}</h5>
-		
+										
+																	
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
 								<div class="col d-grid">
@@ -183,19 +181,18 @@
 										
 									</select>
 								</ul>  						
-								<input class="form-control me-2" id="cartAmount" name="cartAmount" 
+								<input class="form-control me-2 hiddenAmount" id="cartAmount" name="cartAmount" 
 									type="search" placeholder="수량 입력" aria-label="Search" >	
+																
 																								
+						    <input type="hidden" value="${list}" id="reviewList"/>
 						    <input type="hidden" name="cartAmount" value="cart.cartAmount" id="cartAmount"/>
 						    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						    <input type="hidden" name="memberId" value="${userDetails.memberId}" id="memberId"/>
 <%-- 						    <input type="hidden" name="productId" value="${product.productId}" id="productId"/>
  --%>						    <input type="hidden" name="inventoryId" value="" id="inventoryId"/>
 							
-								</form>								
-				
-				
-				
+								</form>					
 					</div>				
 					</div>
 				</div>
@@ -204,8 +201,6 @@
 	</div>
 </section>
 <!-- Close Content -->
-
-
 
 
 
@@ -247,6 +242,9 @@
 											<p>6. 불꽃 접근시 불길이 옮겨 붙을 가능성이 있으니 주의해 주십시오.</p>
 											<p>7. 신발 뒷꿈치를 꺾어 신지 마십시오.</p>
 											<p>8. 제품의 수명 연장을 위해 사용 용도를 주의해 주십시오.</p>
+										
+										
+											
 											
 											
 										</div>
@@ -275,44 +273,21 @@
 								<div class="accordion-item">
 									<h2 class="accordion-header">
 										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-										data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">상품평</button>
+										data-bs-target="#flush-collapseThree" aria-expanded="false"
+										 aria-controls="flush-collapseThree">구매 후기</button>
 									</h2>
-									<div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+									<div id="flush-collapseThree" class="accordion-collapse collapse"
+									 data-bs-parent="#accordionFlushExample">
 										<div class="accordion-body">
+					
 											
-											<p>상품평</p>
-											
-											<span class="list-inline-item text-dark">별점 4.8|${review.total}</span>
-  								<%-- <table class="table table-striped table-bordered table-hover">
-									<thead>
-										<tr>
-											<th scope="col">작성자</th>
-											<th scope="col">점수</th>
-											<th scope="col">후기</th>
-											<th scope="col">리뷰 등록일</th>
-											
-
-										</tr>
-									</thead>
-									<tbody>  
-									<c:forEach var="review" items="${list}">
-									
-								 		
-											 <tr>
-												<td>${review.memberId}</td>
-												<td>${review.jumsu}</td>
-												<td>${review.contents}</td>
-												
-												<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.regdate}" /></td>
-											</tr>
-										</c:forEach> 
-								 	</tbody>
-								</table>  --%>
 								<div class="container">
 									<c:forEach var="review" items="${list}">
 										<div class="card my-3">
 											<div class="card-header">
-												<strong>${review.memberId}</strong>-★:${review.jumsu}
+												<strong>${review.memberId}</strong>
+											</div>
+								 				<div class="rating" data-jumsu="${review.jumsu}">
 											</div>
 											<div class="card-body">
 												<p class="card-text">${review.contents}</p>
@@ -324,28 +299,7 @@
 										</div>
 									</c:forEach>
 								</div>
-								<%-- <nav aria-label="...">
-									<ul class="pagination justify-content-center">
 
-										<c:if test="${reviewPage.prev}">
-											<li class="page-item">
-												<a class="page-link" href="${reviewPage.startPage-1} ">Previous</a>
-											</li>
-										</c:if>
-
-										<c:forEach begin="${reviewPage.startPage}" end="${reviewPage.endPage}" var="idx">
-											<li class="page-item ${reviewPage.cri.page==idx?'active':'' }">
-												<a class="page-link" href="${idx}">${idx}</a>
-											</li>
-										</c:forEach>
-
-										<c:if test="${reviewPage.next}">
-											<li class="page-item">
-												<a class="page-link" href="${reviewPage.endPage+1} ">Next</a>
-											</li>
-										</c:if>
-									</ul>
-								</nav>  --%>
 							</div>
 									</div>
 								</div>
@@ -355,8 +309,8 @@
 							
 
 							<h2 id="scrollspyHeading5">제품 구매 시 필독</h2>
-							<h3></h3>
-							<p>제품 구매 시 교환 및 환불 불가능하다는 점 미리 양해 안내 드립니다.</p>
+							<h3>교환 불가 안내</h3>
+							<p>제품 사이즈 교환은 불가하며, 반품 후 재구매만 가능합니다.</p>
 						</div>
 						
 						
@@ -366,15 +320,6 @@
 <!-- 페이지 나누기 종료 -->
 
 		
-	
-
-
-
-
-
-
-
-
 
 	</div>
 </section>
@@ -387,6 +332,9 @@
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/templatemo.js"></script>
 <script src="../assets/js/custom.js"></script>
+
+<script src="../css/stars.js"></script>
+
 <link href="../powe/adidas1.img">
 <link href="../powe/adidas2.img">
 <link href="../powe/adidas3.img">
