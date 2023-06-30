@@ -150,7 +150,7 @@
 							<i class="fa fa-star text-warning">3</i>
 							<i class="fa fa-star text-warning">4</i>
 							<i class="fa fa-star text-secondary">5</i>
-							<span class="list-inline-item text-dark">별점 4.8 | 23</span>
+							<span class="list-inline-item text-dark">별점 4.8 |${review.total}</span>
 						</p>
 								<!-- 상품 간략 정보 -->
 	
@@ -279,7 +279,7 @@
 											
 											<p>상품평</p>
 											
-											<span class="list-inline-item text-dark">별점 4.8 | 36 </span>
+											<span class="list-inline-item text-dark">별점 4.8|${review.total}</span>
   								<table class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
