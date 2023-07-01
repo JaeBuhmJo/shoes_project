@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-
-</body>
-
-</html>
+    <script src="/js/header.js"></script>
 <section>
 	<!-- Skillset Card-->
 	<div>
@@ -136,13 +132,6 @@
 		</div>
 	</div>
 </footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/jquery-1.11.0.min.js"></script>
-    <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/templatemo.js"></script>
-    <script src="/assets/js/custom.js"></script>
 
 </body>
 

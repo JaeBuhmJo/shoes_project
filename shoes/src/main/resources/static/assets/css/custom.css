@@ -69,7 +69,7 @@ td {
 }
 .min-h {
   min-height: 500px;
-}  
+}
 
 .card-img-list {
   position: absolute;
@@ -83,8 +83,12 @@ td {
   position: relative;
 }
 
-.img-carousel{
+.img-carousel {
   height: 100px;
   width: 100px;
   object-fit: cover;
+}
+.message-alert {
+  max-width: 70%;
+  word-wrap: break-word;
 }

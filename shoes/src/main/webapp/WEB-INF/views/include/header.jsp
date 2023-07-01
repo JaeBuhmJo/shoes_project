@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/slick-theme.css">
     <!-- 방문자 집계 -->
 	<script src="/js/visit-counter.js"></script>
+	
 <!--
     
 TemplateMo 559 Zay Shop
@@ -117,12 +118,6 @@ https://templatemo.com/tm-559-zay-shop
 
 						<ul class="dropdown-menu">
 							<li>
-								<a class="dropdown-item" href="/member/memberDetail"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-								</a> <a class="dropdown-item" href="/customer/qna"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> qna
-								</a> <a class="dropdown-item" href="/shop/list"> <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 목록으로
-								</a>
-							</li>
-							<li>
 								<security:authorize access="isAnonymous()">
 									<a class="dropdown-item" href="/member/login"> <i
 										class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Login
@@ -131,9 +126,19 @@ https://templatemo.com/tm-559-zay-shop
 							</li>
 							<li>
 								<security:authorize access="isAuthenticated()">
-									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"> <i
+								<a class="dropdown-item" href="/member/memberDetail"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+								</a> <a class="dropdown-item" href="/customer/qna"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> qna
+								</a> <a class="dropdown-item" href="/chat/list"> <i class="fas fa-solid fa-comments fa-fw mr-2 text-gray-400"></i> 실시간 문의
+								</a> <a class="dropdown-item" href="/shop/list"> <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 목록으로
+								</a>
+								
+								<hr />
+									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" id="logout"> <i
 										class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
 									</a>
+									 <form action="/logout" method="post" id="logoutForm">
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									 </form>
 								</security:authorize>
 							</li>
 						</ul>
