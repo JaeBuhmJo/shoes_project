@@ -68,6 +68,6 @@ productSize.addEventListener("change", (e) => {
       document.querySelector("#inventoryId").value = data;
 
       //수량 입력 요소를 보이게 하기
-      cartAmount.classList.remove("hidden");
+      document.querySelector("#cartAmount").style.display = "block";
     });
 });

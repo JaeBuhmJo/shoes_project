@@ -182,7 +182,7 @@
 									</select>
 								</ul>  						
 								<input class="form-control me-2 hiddenAmount" id="cartAmount" name="cartAmount" 
-									type="search" placeholder="수량 입력" aria-label="Search" >	
+									type="search" placeholder="수량 입력" aria-label="Search" style="display: none;">	
 																
 																								
 						    <input type="hidden" value="${list}" id="reviewList"/>
@@ -201,7 +201,6 @@
 	</div>
 </section>
 <!-- Close Content -->
-
 
 
 <!-- 캐러셀 섹션 러프 -->
