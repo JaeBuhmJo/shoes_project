@@ -15,6 +15,15 @@ function displayRating(rating) {
   }
   return stars;
 }
+
+function calculateAverageRating(ratingsArray) {
+  if (ratingsArray.length === 0) {
+    return "";
+  }
+  const sumRating = ratingsArray.reduce((acc, curr) => acc + curr, 0);
+  return sumRating / ratingsArray.length;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // 각 리뷰의 별점을 맞게 채우기
   const ratings = [];
@@ -58,7 +67,6 @@ shoesForm.addEventListener("submit", (e) => {
   const inventoryId = document.querySelector("#inventoryId").value;
 
   // 폼 submit
-  //  detailForm.submit();
   //사이즈랑 가격,브랜드 보내기
   fetch("/customer/cart", {
     method: "post",
@@ -81,9 +89,6 @@ shoesForm.addEventListener("submit", (e) => {
         throw new Error("카트에 전송 실패");
       }
     })
-    // .then((data) => {
-    //   console.log(data);
-    //   //      shoesForm.submit();
-    // })
+
     .catch((error) => console.log(error));
 });

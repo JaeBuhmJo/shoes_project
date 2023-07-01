@@ -41,9 +41,7 @@ public class CustomerController {
 	@PostMapping("/cart")
 	public String cartInsert(@RequestBody CartDTO cart,RedirectAttributes rttr) {
 		log.info("cart 로 데이터 보내기" + cart);	
-//		InventoryDTO dto = new InventoryDTO();
 //		
-//		cart.setInventoryId(dto.getInventoryId());
 		
 		if(service.cartInsert(cart)) {
 			rttr.addFlashAttribute("successMessage", "장바구니에 상품 추가 성공");

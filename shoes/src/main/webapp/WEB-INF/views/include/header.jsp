@@ -58,12 +58,12 @@ https://templatemo.com/tm-559-zay-shop
                 <div>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="/admin/page">🚢blackpearl.project</a>
 
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">⚓010-020-0340</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">BLACKPEARL(주) 대표 조재범</a>
                 </div>
                 <div>
                     <a class="text-light" href="/member/memberPage" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="/shop/list" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="/customer/qna" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="/member/memberDetail" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
                 </div>
             </div>

@@ -24,9 +24,6 @@
 
 
 
-
-
-
 <!-- Open Content -->
 <section class="bg-light">
 	<div class="container pb-5">
@@ -154,6 +151,14 @@
 	
 							<h5>${product.detail}</h5>
 										
+										
+										
+										
+										
+										
+										
+										
+
 																	
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
@@ -269,47 +274,43 @@
 									</div>
 								</div>
 
-								<div class="accordion-item">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-										data-bs-target="#flush-collapseThree" aria-expanded="false"
-										 aria-controls="flush-collapseThree">구매 후기</button>
-									</h2>
-									<div id="flush-collapseThree" class="accordion-collapse collapse"
-									 data-bs-parent="#accordionFlushExample">
-										<div class="accordion-body">
-					
-											
-								<div class="container">
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">구매 후기</button>
+						</h2>
+						<div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">
+
+
+								<div class="container" style="max-height: 300px; overflow-y:scroll;">
 									<c:forEach var="review" items="${list}">
 										<div class="card my-3">
 											<div class="card-header">
 												<strong>${review.memberId}</strong>
 											</div>
-								 				<div class="rating" data-jumsu="${review.jumsu}">
-											</div>
+											<div class="rating" data-jumsu="${review.jumsu}"></div>
 											<div class="card-body">
 												<p class="card-text">${review.contents}</p>
 												<p class="card-text text-muted">
-												<small>
-													<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.regdate}" />
-												</small>
+													<small> <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.regdate}" />
+													</small>
+													</p>
 											</div>
 										</div>
 									</c:forEach>
 								</div>
 
 							</div>
-									</div>
-								</div>
-										
-								
-							</div>
+						</div>
+					</div>
+
+
+				</div>
 							
 
 							<h2 id="scrollspyHeading5">제품 구매 시 필독</h2>
-							<h3>교환 불가 안내</h3>
-							<p>제품 사이즈 교환은 불가하며, 반품 후 재구매만 가능합니다.</p>
+							<p>BLACKPEARL(주) 대표 조재범</p>
 						</div>
 						
 						
@@ -318,12 +319,8 @@
 
 <!-- 페이지 나누기 종료 -->
 
-		
-
 	</div>
 </section>
-
-
 
 <!-- Start Script -->
 <script src="../assets/js/jquery-1.11.0.min.js"></script>

@@ -20,7 +20,6 @@ import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
 import com.project.domain.ReviewDTO;
-import com.project.domain.ReviewPageDTO;
 import com.project.service.CustomerService;
 import com.project.service.DetailService;
 import com.project.service.ProductService;
@@ -68,7 +67,7 @@ public class ShoesController {
 	}
 // 
 	@GetMapping("/detail")
-	public void detailRead(Model model,String productId,String productColor,String productSize, @ModelAttribute("cri") Criteria cri) {
+	public void detailRead(Model model,String productId,@ModelAttribute("cri") Criteria cri) {
 		log.info("detail 화면");
 
 		// model 은 jsp에서 여기선 product.productId,product.price등의 값들을 주기 위해 사용		
@@ -76,20 +75,15 @@ public class ShoesController {
 		// 색상
 		model.addAttribute("color", service.color(productId));
 		
-//		model.addAttribute("review", customerService.reviewTotal(productId));
 		
 		log.info("신발 색상 선택");
 		List<ReviewDTO> list = service.reviewList(cri);
 
-		model.addAttribute("inventory", service.inventoryIdGet(productId, productColor, productSize));
-//		model.addAttribute("inventory", service.inventoryIdGet(dto));
 		model.addAttribute("list", list);
-//		int total = service.reviewTotal(cri);
 		
 		model.addAttribute("filePathList", getAttachments(model, productId));
 		log.info(productId);
 
-//		model.addAttribute("reviewPage", new ReviewPageDTO(cri, total));
 	}
 
 	@GetMapping("/getInventoryId")

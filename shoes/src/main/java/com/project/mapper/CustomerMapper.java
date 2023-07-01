@@ -9,6 +9,5 @@ public interface CustomerMapper {
 
 	public int reviewInsert(ReviewDTO review);
 	
-//	public int reviewTotal(String productId);
 
 }
