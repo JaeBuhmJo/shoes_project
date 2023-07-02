@@ -275,6 +275,8 @@
 								</div>
 
 					<div class="accordion-item">
+
+
 						<h2 class="accordion-header">
 							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
 								data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">구매 후기</button>
@@ -283,7 +285,7 @@
 							<div class="accordion-body">
 
 
-								<div class="container" style="max-height: 300px; overflow-y:scroll;">
+								<div class="container" id="reviews-list" style="max-height: 300px; overflow-y:scroll;">
 									<c:forEach var="review" items="${list}">
 										<div class="card my-3">
 											<div class="card-header">
@@ -299,18 +301,67 @@
 											</div>
 										</div>
 									</c:forEach>
+									<!-- 페이지 나누기 시작 -->
+									<nav aria-label="...">
+										<ul class="pagination justify-content-center">
+
+											<c:if test="${reviewPage.prev}">
+												<li class="page-item">
+													<a class="page-link" href="${reviewPage.startPage-1} ">Previous</a>
+												</li>
+											</c:if>
+
+											<c:forEach begin="${reviewPage.startPage}" end="${reviewPage.endPage}" var="idx">
+												<li class="page-item ${reviewPage.cri.page==idx?'active':'' }">
+													<a class="page-link" href="" onclick="changePage(event,${idx},${product.productId})">${idx}</a>
+												</li>
+											</c:forEach>
+
+											<c:if test="${reviewPage.next}">
+												<li class="page-item">
+													<a class="page-link" href="${reviewPage.endPage+1} ">Next</a>
+												</li>
+											</c:if>
+										</ul>
+									</nav> 
+									
+<%-- 									<nav aria-label="...">
+										<ul class="pagination justify-content-center">
+
+											<c:if test="${reviewPage.prev}">
+												<li class="page-item">
+													<a class="page-link" href="${reviewPage.startPage-1} ">Previous</a>
+												</li>
+											</c:if>
+
+											<c:forEach begin="${reviewPage.startPage}" end="${reviewPage.endPage}" var="idx">
+												<li class="page-item ${reviewPage.cri.page==idx?'active':'' }">
+																							
+													<input type="hidden" name="productId" value="${product.productId}" id="productId"/>
+													<a class="page-link" href="${idx}">${idx}</a>
+												</li>
+											</c:forEach>
+
+											<c:if test="${reviewPage.next}">
+												<li class="page-item">
+													<a class="page-link" href="${reviewPage.endPage+1} ">Next</a>
+												</li>
+											</c:if>
+										</ul>
+									</nav>  --%>
+									<!-- 페이지 나누기 종료 -->
 								</div>
 
 							</div>
 						</div>
 					</div>
-
+					
 
 				</div>
 							
 
 							<h2 id="scrollspyHeading5">제품 구매 시 필독</h2>
-							<p>BLACKPEARL(주) 대표 조재범</p>
+							<p>제품 사이즈 교환은 불가하며, 반품 후 재구매만 가능합니다.</p>
 						</div>
 						
 						
@@ -328,6 +379,7 @@
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/templatemo.js"></script>
 <script src="../assets/js/custom.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script src="../css/stars.js"></script>
 
@@ -341,7 +393,6 @@
 	<%-- QnaPageDTO.cri.page 가능 --%>
 	<input type="hidden" name="page" value="${cri.page}" />
 	<input type="hidden" name="listAmount" value="${cri.listAmount}" />
-<%-- 	<input type="hidden" name="keyword" value="${cri.keyword}" /> --%>
 </form>
 <!-- End Script -->
  <script>
@@ -357,11 +408,14 @@
 	const pageIsRead=false;
 
 	
+	
+	
 </script>
 
 <!-- <script src="/poweqnajs/qna.js"> </script> -->
 <script src="/js/attachment.js"> </script>
 <script src="/powedetailjs/shoesinfo.js"> </script>
+<script src="/powedetailjs/reviewList.js"> </script>
 <script src="/powedetailjs/detail.js"> </script>
 
   

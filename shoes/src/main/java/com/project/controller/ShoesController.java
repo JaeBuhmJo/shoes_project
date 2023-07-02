@@ -19,7 +19,9 @@ import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
+import com.project.domain.QnaPageDTO;
 import com.project.domain.ReviewDTO;
+import com.project.domain.ReviewPageDTO;
 import com.project.service.CustomerService;
 import com.project.service.DetailService;
 import com.project.service.ProductService;
@@ -80,6 +82,10 @@ public class ShoesController {
 		List<ReviewDTO> list = service.reviewList(cri);
 
 		model.addAttribute("list", list);
+
+		int total = service.reviewTotal(cri);
+	
+		model.addAttribute("reviewPage", new ReviewPageDTO(cri, total));
 		
 		model.addAttribute("filePathList", getAttachments(model, productId));
 		log.info(productId);
@@ -90,7 +96,6 @@ public class ShoesController {
 	@ResponseBody
 	public String product(@RequestParam("productColor") String productColor,@RequestParam("productSize") String productSize,@RequestParam("productId") String productId) {
 		InventoryDTO inventoryDTO = service.inventoryIdGet(productId, productColor, productSize);
-//		InventoryDTO inventoryDTO = service.inventoryIdGet(null);
 		return inventoryDTO!=null?inventoryDTO.getInventoryId():null;
 	}
 

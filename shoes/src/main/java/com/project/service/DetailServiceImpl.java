@@ -38,11 +38,11 @@ public class DetailServiceImpl implements DetailService {
 
 		return detailMapper.reviewList(cri);
 	}
-//	@Override
-//	public int reviewTotal(Criteria cri) {
-//		
-//		return detailMapper.reviewTotal(cri);
-//	}
+	@Override
+	public int reviewTotal(Criteria cri) {
+		
+		return detailMapper.reviewTotal(cri);
+	}
 	@Override
 	public List<InventoryDTO> inventory(InventoryDTO inventory) {
 		return detailMapper.inventory(inventory);
@@ -66,12 +66,5 @@ public class DetailServiceImpl implements DetailService {
 		
 		return detailMapper.inventoryIdGet(productId,productColor,productSize);
 	}
-//	@Override
-//	public InventoryDTO inventoryIdGet(InventoryDTO dto) {
-//		
-//		return detailMapper.inventoryIdGet(dto);
-//	}
-	
-	
 	
 }

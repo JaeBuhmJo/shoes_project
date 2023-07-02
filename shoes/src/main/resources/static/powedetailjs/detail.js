@@ -2,13 +2,10 @@ function displayRating(rating) {
   let stars = "";
 
   const fullstars = Math.floor(rating);
-  const halfStar = rating - fullstars >= 0.5;
 
   for (let i = 1; i <= 5; i++) {
     if (i <= fullstars) {
       stars += "<i class='fas fa-star'></i>";
-    } else if (halfStar && i === fullstars + 1) {
-      stars += "<i class='fas fa-star-half-alt'></i>";
     } else {
       stars += "<i class='far fa-star'></i>";
     }
@@ -42,6 +39,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 페이지 넘어가는 기능
+
+const pagination = document.querySelector(".pagination");
+const operForm = document.querySelector("#operForm");
+
+pagination.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  let href = e.target.getAttribute("href");
+
+  operForm.firstElementChild.value = href;
+
+  operForm.submit();
+});
 
 const shoesForm = document.querySelector("#shoesForm");
 
