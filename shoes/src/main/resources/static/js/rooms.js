@@ -1,6 +1,7 @@
 /**
  *
  */
+
 const createButton = document.querySelector("#createChat");
 
 getChatRoomList();
@@ -16,12 +17,17 @@ function getChatRoomList() {
     .then((data) => {
       let chatRoomList = "";
       data.forEach((chatRoom) => {
+        if (chatRoom.memberId == null) {
+          str = "관리자";
+        } else {
+          str = chatRoom.memberId;
+        }
         chatRoomList += '<a href="' + chatRoom.chatRoomId + '" class="list-group-item list-group-item-action" aria-current="true">';
         chatRoomList += '<div class="d-flex w-100 justify-content-between">';
         chatRoomList += '<h5 class="mb-1">BLACKPEARL</h5>';
         chatRoomList += "<small>" + chatRoom.lastActiveTime + "</small>";
         chatRoomList += "</div>";
-        chatRoomList += "<small>마지막 상담 내용</small>";
+        chatRoomList += "<small>" + str + "</small>";
         chatRoomList += "</a>";
       });
       document.querySelector("#chatroomlist").innerHTML = chatRoomList;

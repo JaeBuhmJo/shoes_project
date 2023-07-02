@@ -12,4 +12,5 @@ public interface ChatRoomMapper {
 	public List<ChatRoomDTO> selectChatRoomListByMemberId(String memberId);
 	public List<ChatRoomDTO> selectChatRoomList();
 	public int updateChatRoom(String chatRoomId);
+	public String getMemberId(String chatRoomId);
 }

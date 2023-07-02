@@ -3,7 +3,12 @@
 <mapper namespace="com.project.mapper.MessageMapper">
 
 	<insert id="insertMessage">
-		insert into messages()
-		values()
+		insert into messages(message_id, chatroom_id, member_id, messageType, content, timestamp)
+		values(messages_seq.nextval,#{chatRoomId},#{memberId},#{messageType},#{content},sysdate)
 	</insert>
+	
+	<select id="selectMessages" resultType="com.project.domain.MessageDTO">
+		select * from messages where chatroom_id = #{chatRoomId}
+	</select>
+	
 </mapper>

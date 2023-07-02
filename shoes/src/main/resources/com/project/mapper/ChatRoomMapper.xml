@@ -7,7 +7,7 @@
 	</insert>
 	
 	<select id="selectChatRoomListByMemberId">
-		select chatroom_id, member_id, 
+		select chatroom_id, 
 		  (case
 		    when last_active_time >= (systimestamp - interval '1' minute) then '방금'
 		    when last_active_time >= (systimestamp - interval '1' hour) then
@@ -36,6 +36,10 @@
 		      to_char(last_active_time, 'yyyy-mm-dd')
 		  end) as last_active_time, last_active_time as order_time
 		from chatrooms order by order_time desc
+	</select>
+	
+	<select id="getMemberId" resultType="String">
+		select member_id from chatrooms where chatroom_id = #{chatRoomId}
 	</select>
 	
 	<update id="updateChatRoom">

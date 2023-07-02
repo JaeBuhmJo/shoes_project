@@ -15,7 +15,7 @@
 			<!-- cards start -->
 			<div class="row">
 				<div class="col-xl-3 col-md-6">
-					<div class="card border-primary mb-4" style="max-width: 20rem;">
+					<div class="card border-primary mb-4 statistics">
 						<div class="card-header text-bg-primary">상품 관리</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between">
@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-6">
-					<div class="card border-warning mb-4" style="max-width: 20rem;">
+					<div class="card border-warning mb-4 statistics">
 						<div class="card-header text-bg-warning">전일 판매 통계</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between">
@@ -44,17 +44,20 @@
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-6">
-					<div class="card border-success mb-4" style="max-width: 20rem;">
+					<div class="card border-success mb-4 statistics">
 						<div class="card-header text-bg-success">고객 센터</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between">
 								<span>답변 미등록 문의 : </span> <span id="notAnsweredCount"></span>
 							</div>
+							<div class="d-flex justify-content-between">
+								<span>신규 실시간 상담 : </span> <span id="notAnsweredChatCount"></span>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-6">
-					<div class="card border-info mb-4" style="max-width: 20rem;">
+					<div class="card border-info mb-4 statistics">
 						<div class="card-header  text-bg-info">회원 통계</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between">
@@ -103,12 +106,12 @@
 		</div>  
 	</main>
 	<!-- dashboard end --> 
-
-	<script src="/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 		crossorigin="anonymous"></script>
 	<script src="/js/dashboard-statistics.js"></script>
 	<script src="/js/dashboard-chart.js"></script>
+	<script src="/js/admin.js"></script>
 
 	<%@ include file="../include/adminfooter.jsp"%>

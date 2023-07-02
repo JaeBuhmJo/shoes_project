@@ -1,5 +1,10 @@
 package com.project.service;
 
-public interface MessageService {
+import java.util.List;
 
+import com.project.domain.MessageDTO;
+
+public interface MessageService {
+	public boolean saveMessage(MessageDTO messageDTO);
+	public List<MessageDTO> getMessages(String chatRoomId);
 }

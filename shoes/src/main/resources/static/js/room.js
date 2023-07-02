@@ -2,50 +2,68 @@
  *
  */
 
+function getTimeStamp(date) {
+  let now = date;
+  if (date == null) {
+    now = new Date();
+  }
+  const hours = now.getHours();
+  const ampm = hours > 12 ? "오후 " : "오전 ";
+  const minutes = now.getMinutes();
+  const minutesStamp = minutes > 9 ? minutes : "0" + minutes;
+  const timeStamp = ampm + hours + ":" + minutesStamp;
+  return timeStamp;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+  const msgArea = document.querySelector("#msgArea");
   const chatRoomId = document.querySelector("#chatRoomId").value;
   var username = document.querySelector("#memberId").value;
-
-  console.log(chatRoomId + ", " + username);
 
   var sockJs = new SockJS("/stomp/chat");
   var stomp = Stomp.over(sockJs);
 
   stomp.connect({}, function () {
     console.log("STOMP Connection");
+    initialize(chatRoomId);
 
     stomp.subscribe("/sub/chat/room/" + chatRoomId, function (chat) {
-      console.log(chat.body);
-      var content = JSON.parse(chat.body);
+      const content = JSON.parse(chat.body);
 
-      var writer = content.memberId;
-      var message = content.content;
+      const writer = content.memberId;
+      const message = content.content;
+      const timeStamp = getTimeStamp(null);
       const type = content.messageType;
-      var str = "";
+      let str = "";
       if (type === "SYSTEM") {
-        str = "<div class='col-6'>";
+        str = "<div class='col-auto d-flex flex-row'>";
         str += "<div class='alert alert-primary text-center message-alert'>";
         str += "<b>" + message + "</b>";
         str += "</div></div>";
       } else {
         if (message != "") {
           if (writer === username) {
-            str = "<div class='col-6'>";
-            str += "<div class='alert alert-secondary text-end message-alert'>";
-            str += "<b>" + message + "</b>";
-            str += "</div></div>";
-          } else {
-            str = "<div class='col-6'>";
+            str = "<div class='col-auto d-flex flex-row-reverse'>";
             str += "<div class='alert alert-warning message-alert'>";
-            str += "<b>" + writer + " : " + message + "</b>";
-            str += "</div></div>";
+            str += "<b>" + message + "</b>";
+            str += "</div>";
+            str += "<span class='mx-2'>" + timeStamp + "</span>";
+            str += "</div>";
+          } else {
+            str = writer;
+            str += "<div class='col-auto d-flex flex-row'>";
+            str += "<div class='alert alert-light message-alert'>";
+            str += "<b>" + message + "</b>";
+            str += "</div>";
+            str += "<span class='mx-2'>" + timeStamp + "</span>";
+            str += "</div>";
           }
         }
       }
-      document.querySelector("#msgArea").insertAdjacentHTML("beforeend", str);
+      msgArea.insertAdjacentHTML("beforeend", str);
+      msgArea.scrollTop = msgArea.scrollHeight;
     });
-
-    // stomp.send("/pub/chat/enter", {}, JSON.stringify({ chatRoomId: chatRoomId, memberId: username }));
+    stomp.send("/pub/chat/enter", {}, JSON.stringify({ chatRoomId: chatRoomId, memberId: username }));
   });
 
   // 실시간 상담 종료
@@ -56,11 +74,67 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  var buttonSend = document.querySelector("#button-send");
-  buttonSend.addEventListener("click", function (e) {
-    var msg = document.querySelector("#msg");
-    console.log(username + ":" + msg.value);
+  const textarea = document.querySelector("#msg");
+  document.querySelector("#button-send").addEventListener("click", () => {
+    sendMessage();
+  });
+
+  textarea.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  function initialize(chatRoomId) {
+    fetch("/chatrooms/chat/" + chatRoomId)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("상담 내역 가져오기 실패");
+        }
+        return response.json();
+      })
+      .then((chat) => {
+        chat.forEach((log) => {
+          const writer = log.memberId;
+          const message = log.content;
+          const timeStamp = getTimeStamp(log.timeStamp);
+          let str = "";
+          if (log.messageType === "SYSTEM") {
+            str = "<div class='col-auto d-flex flex-row'>";
+            str += "<div class='alert alert-primary text-center message-alert'>";
+            str += "<b>" + message + "</b>";
+            str += "</div></div>";
+          } else {
+            if (message != "") {
+              if (writer === username) {
+                str = "<div class='col-auto d-flex flex-row-reverse'>";
+                str += "<div class='alert alert-warning message-alert'>";
+                str += "<b>" + message + "</b>";
+                str += "</div>";
+                str += "<span class='mx-2'>" + timeStamp + "</span>";
+                str += "</div>";
+              } else {
+                str = writer;
+                str += "<div class='col-auto d-flex flex-row'>";
+                str += "<div class='alert alert-light message-alert'>";
+                str += "<b>" + message + "</b>";
+                str += "</div>";
+                str += "<span class='mx-2'>" + timeStamp + "</span>";
+                str += "</div>";
+              }
+            }
+          }
+          msgArea.insertAdjacentHTML("beforeend", str);
+          msgArea.scrollTop = msgArea.scrollHeight;
+        });
+      })
+      .catch((error) => console.log(error));
+  }
+
+  function sendMessage() {
+    var msg = textarea;
     stomp.send("/pub/chat/message", {}, JSON.stringify({ chatRoomId: chatRoomId, content: msg.value, memberId: username }));
     msg.value = "";
-  });
+  }
 });
