@@ -76,7 +76,6 @@
             <result property="uploadPath" column="uploadPath" />
         </collection>
     </resultMap>
- 
 	  
 	     <!-- 카트 확인 -->
 	    <select id="checkCart" resultType="com.project.domain.CartDTO">
