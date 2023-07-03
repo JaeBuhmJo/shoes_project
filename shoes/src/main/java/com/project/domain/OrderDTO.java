@@ -29,13 +29,13 @@ public class OrderDTO {
 	private String orderName;
 	
 	/* 수령자 주소 */
-	private String oredrAddress;
+	private String orderAddress;
 	
 	/* 수령자 연락처 */
 	private String orderPhone;
 	
 	/* 결제 수단 */
-	private String oredrPayment;
+	private String orderPayment;
 	
 	/* 주문 상품 */
 	private List<OrderProductDTO> orders;

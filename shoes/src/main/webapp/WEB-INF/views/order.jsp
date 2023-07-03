@@ -114,15 +114,71 @@ $(function(){
 			//    document.getElementById("addressInput").value = userDetails.address;
 			
 			
-	   	});
+	   	 		// 결제 페이지로 이동할 때 호출되는 함수
+ 				 function goToOrderPage() {
+  				 var selectedProducts = [];
+
+   				 // 체크된 상품 정보를 수집
+   				 var checkboxes = document.querySelectorAll('input[name="cbox"]');
+  	 			 checkboxes.forEach(function(checkbox) {
+    			  if (checkbox.checked) {
+       			 var cartId = checkbox.value;
+       			 var productName = checkbox.parentNode.nextElementSibling.querySelector('.cart__list__smartstore').textContent.trim();
+       			 var price = checkbox.parentNode.nextElementSibling.querySelector('.price').textContent.trim();
+       			 var discountPrice = checkbox.parentNode.nextElementSibling.querySelector('span[style="text-decoration: line-through; color: lightgray;"]').textContent.trim();
+      		 	 var quantity = checkbox.parentNode.nextElementSibling.querySelector('.productCount').textContent.trim();
+        		 var totalPrice = checkbox.parentNode.nextElementSibling.querySelector('.totalPrice').textContent.trim();
+
+       			 var product = {
+         		 cartId: cartId,
+         		 productName: productName,
+         		 price: price,
+        		 discountPrice: discountPrice,
+         		 quantity: quantity,
+         		 totalPrice: totalPrice
+       		 };
+
+       			 selectedProducts.push(product);
+     		 }
+   		 });
+
+  			  // 상품 정보를 결제 페이지로 전달하는 로직 추가
+   			 var form = document.createElement('form');
+   			 form.method = 'POST';
+   			 form.action = 'order.jsp'; // 결제 페이지 URL 설정
+
+   			 selectedProducts.forEach(function(product) {
+    		  var input = document.createElement('input');
+     		 input.type = 'hidden';
+     		 input.name = 'selectedProducts[]'; // 상품 정보 배열을 전달하므로 '[]'를 추가하여 배열로 처리
+      		 input.value = JSON.stringify(product);
+     		 form.appendChild(input);
+    	});
+
+    	document.body.appendChild(form);
+   		 form.submit();
+     }
+	 }); 
 		
-		 	
+		function checkCartItems() {
+		    // 등록된 항목이 있는지 확인
+		    var totalCount = parseInt(document.getElementById("totalCount_span").innerText);
+		    
+		    if (totalCount === 0) {
+		        alert("상품이 없습니다.");
+		    } else {
+		        alert("결제가 완료되었습니다.");
+		        window.location.href = ""; // 주문목록페이지
+		    }
+		}
 });
+
+
+		
 </script>
 
 
 <body>
-	
 	 <table class="cart__list">
 	         <thead>
 	             <tr>
@@ -143,26 +199,26 @@ $(function(){
 	           	 	<tr class="cart__list__detail">								
 	                 	<td>
 	                 		<input type="checkbox" name="cbox" id="checkbox2" value="${cart.cartId}" data-cartId="${clist.cartId}">
-             		        <input type="hidden" class="individual_bookPrice_input" value="${ci.Price}">
-							<input type="hidden" class="individual_salePrice_input" value="${ci.discountPrice}">
-							<input type="hidden" class="individual_bookCount_input" value="${ci.cartamount}">
+             		        <input type="hidden" class="individual_cartPrice_input" value="${ci.Price}">
+							<input type="hidden" class="individual_discountPrice_input" value="${ci.discountPrice}">
+							<input type="hidden" class="individual_cartAmount_input" value="${ci.cartamount}">
 							<input type="hidden" class="individual_totalPrice_input" value="${ci.discountPrice * ci.cartamount}">
-							<input type="hidden" class="individual_bookId_input" value="${ci.productId}">	
+							<input type="hidden" class="individual_productId_input" value="${ci.productId}">	
 		                </td>
 		                <td>
 		                 	<img src="" alt="나이키 슬리퍼">
 	                	</td>
 		                <td>
 		                 	<span class="cart__list__smartstore">${cart.productName}나이키 슬리퍼 </span>
-		                    <p>편하게 신을수 있는 슬리퍼</p>
+		                    <p>${cart.detail}</p>
 		                    <span class="price">${cart.price}원</span>
-		                    <span style="text-decoration: line-through; color: lightgray;">${cart.discountPrice}00,000원</span>
+		                    <span style="text-decoration: line-through; color: lightgray;">${cart.discountPrice}원</span>
 		    			</td>
 					    <td class="cart__list__option">
 					        <p>수량 : <span class="productCount">${cart.cartamount}</span>개</p>                 
 					    </td>
 					    <td>			 
-					    	<span class="totalPrice" data-price="${cart.price}">${cart.totalPrice}30,000원</span>
+					    	<span class="totalPrice" data-price="${cart.price * cart.cartAmount}">${cart.price * cart.cartAmount}원</span>
 					    	<br>
 					    </td>
 			    		<td>무료</td>
@@ -183,22 +239,23 @@ $(function(){
 				            </tr>
 				            <tr>
 				                <td>수령자 이름</td>
-				                <td><input type="text" name="orderer" id="nameInput" value="${userDetails.name }"  readonly></td>
+				                <td><input type="text" name="orderer" id="nameInput" value="${userDetails.name}"  readonly></td>
 				            </tr>
 				            <tr>
 				                <td>연락처</td>
 				                <td>
-				                    <input type="text" name="hp" id="phoneInput"  value="${userDetails.phone }" readonly>
+				                    <input type="text" name="hp" id="phoneInput"  value="${userDetails.phone}" readonly>
 				                    <span>- 포함 입력</span>
 				                </td>
 				            </tr>
 				            <tr>
 				                <td>주소</td>
 				                <td>
-				                    <input type="text" name="addr1" id="addressInput"  value="${userDetails.address }" readonly>
+				                    <input type="text" name="addr1" id="addressInput"  value="${userDetails.address}" readonly>
 				                </td>
 				            </tr>
 				        </table>
+				        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				    </form>
 				</article> 
                     <div class="total">
@@ -206,15 +263,15 @@ $(function(){
             <table>
                 <tr>
                     <td><span id="totalKind_span">상품수</span></td>
-                    <td><span id="totalCount_span">${totalCount}</span></td>
+                    <td><span id="totalCount_span">${totalCount}1</span></td>
                 </tr>
                 <tr>
                     <td><span id="totalKinds_span">상품금액</span></td>
-                    <td><span id="totalamount_span">${price}</span></td>
+                    <td><span id="totalamount_span">${price}원</span></td>
                 </tr>
                 <tr>
                     <td><span id="disCounts_span">할인금액</span></td>
-                    <td><span id="disCount_span">${discountAmount}</span></td>
+                    <td><span id="disCount_span">${discountAmount}원</span></td>
                 </tr>
                 <tr>
                     <td><span id="shipprice_span">배송비</span></td>
@@ -222,11 +279,11 @@ $(function(){
                 </tr>
                 <tr>
                     <td><span id="finalTotalkind_span">전체 주문금액</span></td>
-                    <td><span id="finalTotalPrice_span">${totalPrice}</span></td>
+                    <td><span id="finalTotalPrice_span">${totalPrice}원</span></td>
                 </tr>
                 
             </table> 
-                        <input type="submit" value="결제하기">
+                        <input type="submit" value="결제하기" onclick="checkCartItems()">
                     </div>
 
                     
@@ -256,7 +313,9 @@ $(function(){
             </section>
         </main>
 	       
-	
+	    <script>
+		const csrfToken='${_csrf.token}';
+		</script> 
 	<c:import url="/WEB-INF/views/include/footer.jsp"/>
 </body>
 </html>
