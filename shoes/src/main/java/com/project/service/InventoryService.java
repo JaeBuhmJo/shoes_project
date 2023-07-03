@@ -15,4 +15,5 @@ public interface InventoryService {
 	public boolean isStocked(InventoryDTO inventoryDTO);
 	public List<ProductDTO> getAllInventories(Criteria cri);
 	public boolean decreaseInventory(CartDTO cartDTO);
+	public int getInventoryQuantity(String inventoryId);
 }

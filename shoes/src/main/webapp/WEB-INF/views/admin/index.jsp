@@ -28,30 +28,33 @@
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-6">
+					<div class="card border-success mb-4 statistics">
+						<div class="card-header text-bg-success">당일 판매 통계</div>
+						<div class="card-body ">
+							<div class="d-flex justify-content-between">
+								<span>주문 수량 : </span> <span id="todayPurchaseAmount"></span>
+							</div>
+							<div class="d-flex justify-content-between">
+								<span>주문액 : </span> <span id="todaySalesAmount"></span>
+							</div>  
+							<div class="d-flex justify-content-between">
+								<span>주문 고객 수 : </span> <span id="todayCustomerCount"></span>
+							</div>
+						</div>  
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6">
 					<div class="card border-warning mb-4 statistics">
 						<div class="card-header text-bg-warning">전일 판매 통계</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between">
-								<span>주문건수 : </span> <span id="dayPurchaseCount"></span>
+								<span>주문 수량 : </span> <span id="dayPurchaseAmount"></span>
 							</div>
 							<div class="d-flex justify-content-between">
 								<span>주문액 : </span> <span id="daySalesAmount"></span>
-							</div>
+							</div>  
 							<div class="d-flex justify-content-between">
 								<span>주문 고객 수 : </span> <span id="dayCustomerCount"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-3 col-md-6">
-					<div class="card border-success mb-4 statistics">
-						<div class="card-header text-bg-success">고객 센터</div>
-						<div class="card-body">
-							<div class="d-flex justify-content-between">
-								<span>답변 미등록 문의 : </span> <span id="notAnsweredCount"></span>
-							</div>
-							<div class="d-flex justify-content-between">
-								<span>신규 실시간 상담 : </span> <span id="notAnsweredChatCount"></span>
 							</div>
 						</div>
 					</div>
@@ -74,7 +77,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>     
 			</div>
 			<!-- cards end -->
 			<hr class="mt-4 mb-5" />

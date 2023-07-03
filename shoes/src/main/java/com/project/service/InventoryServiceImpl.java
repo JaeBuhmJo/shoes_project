@@ -66,4 +66,9 @@ public class InventoryServiceImpl implements InventoryService {
 	public boolean decreaseInventory(CartDTO cartDTO) {
 		return inventoryMapper.decreaseInventory(cartDTO)==1?true:false;
 	}
+
+	@Override
+	public int getInventoryQuantity(String inventoryId) {
+		return inventoryMapper.getInventoryAmount(inventoryId);
+	}
 }

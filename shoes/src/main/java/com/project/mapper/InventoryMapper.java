@@ -18,4 +18,5 @@ public interface InventoryMapper {
 	public int checkInventory(InventoryDTO inventoryDTO);
 	public List<ProductDTO> getTotalInventories(Criteria cri);
 	public int decreaseInventory(CartDTO cartDTO);
+	public int getInventoryAmount(String inventoryId);
 }

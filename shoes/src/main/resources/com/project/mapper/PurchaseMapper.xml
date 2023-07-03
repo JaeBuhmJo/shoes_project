@@ -2,31 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.PurchaseMapper">
 
-    <!-- 주문 상품 정보 -->
-	<resultMap type="com.project.domain.PurchaseDTO" id="PurchaseMap">
-		<result column="productId" property="productId" />
-		<result column="orderId" property="orderId" />
-		<result column="inventoryId" property="inventoryId" />
-		<result column="purchaseAmount" property="purchaseAmount" />
-		<result column="purchaseDate" property="purchaseDate" />
-		<collection property="orderproduct" resultMap="PurchaseMap"/>
-	</resultMap>
-	
-     <select id="getOrderlist" resultMap="PurchaseMap">
-		select a.memberId, 
-		       a.productId, 
-		       a.inventoryId, 
-		       a.purchaseAmount, 
-		       a.purchaseDate,
-        	   b.productName, 
-        	   b.Price, 
-        	   b.discountPrice, 
-        	   b.totalprice, 
-        	   b.attachmentList
-        from purchases a left join products b on a.procuctId = b.procuctId
-         where memberId = #{memberId}
-	 </select>
-
 	<insert id="insertPurchase">
 		insert into purchases(purchase_amount, purchase_date, member_id, product_id, inventory_id)
 			values(#{cartAmount}, sysdate, #{memberId}, #{productId}, #{inventoryId})

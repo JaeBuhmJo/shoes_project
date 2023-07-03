@@ -60,6 +60,10 @@
 		select count(*) from inventories where product_size = #{productSize} and product_id = #{productId}
 	</select>
 	
+	<select id="getInventoryAmount" resultType="Integer">
+		select quantity from inventories where inventory_id = #{inventoryId}
+	</select>
+	
 	<update id="updateInventory">
 	    <foreach collection="list" item="inventory" separator=";" open="DECLARE BEGIN" close="; END;">
           update inventories

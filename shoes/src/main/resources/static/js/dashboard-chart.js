@@ -1,6 +1,5 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily =
-  '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = "#292b2c";
 
 callAreaChart();
@@ -102,15 +101,25 @@ function createAreaChart(data) {
 }
 
 function createPieChart(data) {
+  // 기타를 제외하고 판매액 순 정렬
   let productIds = [];
   let keys = [];
   let values = [];
-  data.forEach((item) => {
+  let elseidx = 0;
+  data.forEach((item, idx) => {
     const dataArr = item.split(",");
-    productIds.push(dataArr[0]);
-    keys.push(dataArr[1]);
-    values.push(dataArr[2]);
+    if (dataArr[1] === "기타") {
+      elseidx = idx;
+    } else {
+      productIds.push(dataArr[0]);
+      keys.push(dataArr[1]);
+      values.push(dataArr[2]);
+    }
   });
+  const dataArr = data[elseidx].split(",");
+  productIds.push(dataArr[0]);
+  keys.push(dataArr[1]);
+  values.push(dataArr[2]);
 
   // Pie Chart Example
   var ctx = document.getElementById("myPieChart");

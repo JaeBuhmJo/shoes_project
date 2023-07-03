@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.CartDTO;
+import com.project.domain.InventoryDTO;
 import com.project.domain.MemberDTO;
 import com.project.domain.OrderPageDTO;
 import com.project.domain.OrderProductDTO;
@@ -65,14 +67,19 @@ public class PurchaseController {
 	@GetMapping("/confirm")
 	@Transactional
 	@PreAuthorize("isAuthenticated()")
-	public String purchaseGet(Principal principal) {
+	public String purchaseGet(Principal principal, RedirectAttributes rttr) {
 		try {
 		String memberId = principal.getName();
 		List<CartDTO> cartList = cartService.getCartList(memberId);
 		
 		for (CartDTO cartDTO : cartList) {
 			// 산것들은 재고 감소치고
-			inventoryService.decreaseInventory(cartDTO);
+			if(inventoryService.getInventoryQuantity(cartDTO.getInventoryId())>=cartDTO.getCartAmount()) {
+				inventoryService.decreaseInventory(cartDTO);
+			}else {
+				rttr.addFlashAttribute("productSoldOut",cartDTO.getProductName());
+				return "redirect:/cart/";
+			}
 			// 구매 목록에 전부 담고
 			purchaseService.savePurchaseLog(cartDTO);
 		}
