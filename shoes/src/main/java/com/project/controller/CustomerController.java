@@ -15,8 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
+import com.project.domain.InventoryDTO;
+import com.project.domain.MemberDTO;
 import com.project.domain.QnaDTO;
 import com.project.domain.QnaPageDTO;
+import com.project.service.CustomerService;
 import com.project.service.DetailService;
 import com.project.service.QnaService;
 
@@ -29,42 +32,32 @@ public class CustomerController {
 
 	@Autowired
 	private DetailService service;
-	
 	@Autowired
 	private QnaService qnaService;
 	
 
-	//Optional<Integer> productId,
-	
-	@GetMapping("/info")
-	public void info() {
-		
-	}
-	
-	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 
+	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 @RequestBody
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/cart")
-	public String cartInsert(@RequestBody  CartDTO cart,RedirectAttributes rttr) {
-		log.info("cart 로 데이터 보내기" + cart);		
+	public String cartInsert(@RequestBody CartDTO cart,RedirectAttributes rttr) {
+		log.info("cart 로 데이터 보내기" + cart);	
+//		InventoryDTO dto = new InventoryDTO();
+//		
+//		cart.setInventoryId(dto.getInventoryId());
 		
 		if(service.cartInsert(cart)) {
-			rttr.addAttribute("productId", cart.getProductId());
-			rttr.addAttribute("memberId", cart.getMemberId());
-
-			
-			
+			rttr.addFlashAttribute("successMessage", "장바구니에 상품 추가 성공");
+		}else {
+			rttr.addFlashAttribute("errorMessage", "장바구니에 상품 추가 실패");
 		}
 		return "redirect:/shoes/detail";
-		
 	}
 	
-	
 	@GetMapping("/qna")
+	@PreAuthorize("isAuthenticated()")
 	public void qnaList(@ModelAttribute("cri") Criteria cri,Model model) {
 		log.info("qna 페이지 get");
-		
-	
-		
-		
+
 		List<QnaDTO> list = qnaService.qnaList(cri);
 		
 		model.addAttribute("list", list);
@@ -77,12 +70,13 @@ public class CustomerController {
 	@GetMapping("/question")
 	@PreAuthorize("isAuthenticated()")
 	public void qnaInsert() {
+
 		log.info("질문 작성 창 띄우기");
 	}
 	@PostMapping("/question")
 	public String qnaPost(QnaDTO qna, RedirectAttributes rttr,Criteria cri) {
 		
-		log.info("qna Post");
+		log.info("qna Post",qna);
 		
 		if(qnaService.qnaInsert(qna)) {
 			rttr.addFlashAttribute("result", qna.getMemberId());
@@ -90,12 +84,14 @@ public class CustomerController {
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("amount", cri.getListAmount());
 			log.info("insert"+qna);
-			return "redirect:/member/qna";
+			return "redirect:/customer/qna";
 		}
 
-		return "/member/question";
+		return "/customer/question";
 
 	}
+	//@PreAuthorize("principal.username == #dto.writer") //로그인 사용자 == 작성자
+	
 	@GetMapping("/qnaread")
 	public void qnaRead(int qnaId,Model model, Criteria cri) {
 		log.info("질문 폼 읽기");

@@ -19,6 +19,12 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+		<!-- spring boot 웹소켓 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
 		<!-- 이메일 인증 라이브러리 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

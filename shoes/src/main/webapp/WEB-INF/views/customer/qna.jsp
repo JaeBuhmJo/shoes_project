@@ -18,7 +18,7 @@
 					<i class="fa fa-fw fa-search text-white"></i>
 				</button>
 			</div>
-		</form>
+		</form> 
 	</div>
 </div>
 
@@ -152,7 +152,8 @@
 
 				<td>${qna.memberId}</td>
 				<td><a href="${qna.qnaId}" class="qna">${qna.title}</a></td>
-				<td>${qna.questionDate} </td>
+				
+				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${qna.questionDate}" /> </td>
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -276,7 +277,7 @@
 <!--End Brands-->
 
 <%--페이지 나누기 링크 처리를 위한 폼 --%>
-<form action="/member/qna" id="operForm">
+<form action="/customer/qna" id="operForm">
 	<%-- QnaPageDTO.cri.page 가능 --%>
 	<input type="hidden" name="page" value="${cri.page}" />
 	<input type="hidden" name="listAmount" value="${cri.listAmount}" />

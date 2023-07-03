@@ -55,7 +55,7 @@
 			  	<c:forEach items="${list}" var="item"> 
 				    <tr>
 				      <th scope="row"><a href="/admin/product/read/${item.productId}" class="text-decoration-none"> ${item.productId }</a></th>
-				      <th ><a href="/admin/product/read/${item.productId}" class="text-decoration-none"> ${item.productName }</a></td>
+				      <th ><a href="/admin/product/read/${item.productId}" class="text-decoration-none"> ${item.productName }</a></th>
 				      <td class="text-end">${item.category }</td>
 				      <td class="text-end">${item.brand }</td>
 				      <td class="text-end">${item.price}</td>
@@ -75,5 +75,7 @@
 	<input type="hidden" name="searchType" value="${productCri.searchType}" /> 
 	<input type="hidden" name="keyword" value="${productCri.searchType}" />
 </form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/js/admin.js"></script>
 <script src="/js/admin-product-list.js"></script>
 <%@ include file="../../include/adminfooter.jsp" %>

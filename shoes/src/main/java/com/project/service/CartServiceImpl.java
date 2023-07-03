@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.project.domain.AttachmentDTO;
 import com.project.domain.CartDTO;
 import com.project.mapper.AttachmentMapper;
+import com.project.domain.ProductImageDTO;
 import com.project.mapper.CartMapper;
+import com.project.mapper.ProductImageMapper;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -20,6 +22,7 @@ public class CartServiceImpl implements CartService {
 	
 	@Autowired
 	private AttachmentMapper attachmentMapper;
+	private ProductImageMapper imageMapper;
 	
 	
 	
@@ -52,6 +55,7 @@ public class CartServiceImpl implements CartService {
 			String productId = dto.getProductId();
 			
 			List<AttachmentDTO> attachmentDTOList = attachmentMapper.getAttachments(productId);
+			List<ProductImageDTO> imagelist = imageMapper.getProduct_ImageDTOList(productId);
 			
 			dto.setAttachmentList(attachmentDTOList);
 		}

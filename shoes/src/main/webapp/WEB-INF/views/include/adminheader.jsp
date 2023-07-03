@@ -10,7 +10,6 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>BLACKPEARL - 관리자 페이지</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="/css/styles.css" rel="stylesheet" />
         <link href="/assets/css/custom.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -23,16 +22,6 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
            
-           <!-- 
-            Navbar Search
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-             -->
-            
             <!-- Navbar start -->
             <ul class="navbar-nav ms-0 ms-lg-auto">
                 <li class="nav-item dropdown">
@@ -59,15 +48,26 @@
                     <!-- interface start -->
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link" href="/admin/product/list?searchType=&keyword=">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-shop"></i></div>
                         상품 관리
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-right"></i></div>
                     </a>
                     <a class="nav-link" href="/admin/inventory/list?searchType=&keyword=">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-warehouse"></i></div>
                         재고 관리
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-right"></i></div>
                     </a>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                        고객센터
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+	                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+	                        <nav class="sb-sidenav-menu-nested nav">
+	                            <a class="nav-link" href="layout-static.html"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 문의 사항</a>
+	                            <a class="nav-link" href="/chat/list"><i class="fa-solid fa-comments"></i> 실시간 상담</a>
+	                        </nav>
+	                    </div>
                     </div>
               </div>
             <div class="sb-sidenav-footer">

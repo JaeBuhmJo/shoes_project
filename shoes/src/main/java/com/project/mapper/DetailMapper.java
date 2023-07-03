@@ -30,4 +30,8 @@ public interface DetailMapper {
 		
 		public List<ColorSize> color(String productId);
 		public List<ColorSize> size(String productId,String productColor);
+		
+		public InventoryDTO inventoryIdGet(String productId, String productColor,String productSize);
+//		public InventoryDTO inventoryIdGet(InventoryDTO dto);
+		public CartDTO cartIdGet(String memberId);
 }

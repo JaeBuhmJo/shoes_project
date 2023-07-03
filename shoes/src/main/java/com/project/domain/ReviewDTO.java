@@ -16,4 +16,5 @@ public class ReviewDTO {
 	public String contents;
 	public String productId;
 	public String memberId;
+	public int jumsu;
 }
