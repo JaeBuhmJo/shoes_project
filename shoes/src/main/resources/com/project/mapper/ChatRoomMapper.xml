@@ -6,8 +6,8 @@
 		values(#{chatRoomId},#{memberId},sysdate)
 	</insert>
 	
-	<select id="selectChatRoomListByMemberId">
-		select chatroom_id, 
+	<select id="selectChatRoomListByMemberId" resultType="com.project.domain.ChatRoomDTO">
+		select chatroom_id, recent_message, last_active_time as order_time,
 		  (case
 		    when last_active_time >= (systimestamp - interval '1' minute) then '방금'
 		    when last_active_time >= (systimestamp - interval '1' hour) then
@@ -18,12 +18,12 @@
 		      extract(day from (systimestamp - last_active_time)) || '일 전'
 		    else
 		      to_char(last_active_time, 'yyyy-mm-dd')
-		  end) as last_active_time, last_active_time as order_time
+		  end) as last_active_time
 	    from chatrooms where member_id = #{memberId} order by order_time desc
 	</select>
-	 
-	<select id="selectChatRoomList">
-		select chatroom_id, member_id,
+
+	<select id="selectChatRoomList" resultType="com.project.domain.ChatRoomDTO">
+		select chatroom_id, member_id, recent_message, last_active_time as order_time,
 		  (case
 		    when last_active_time >= (systimestamp - interval '1' minute) then '방금'
 		    when last_active_time >= (systimestamp - interval '1' hour) then
@@ -34,7 +34,7 @@
 		      extract(day from (systimestamp - last_active_time)) || '일 전'
 		    else
 		      to_char(last_active_time, 'yyyy-mm-dd')
-		  end) as last_active_time, last_active_time as order_time
+		  end) as last_active_time
 		from chatrooms order by order_time desc
 	</select>
 	
@@ -43,7 +43,7 @@
 	</select>
 	
 	<update id="updateChatRoom">
-		update chatrooms set last_active_time = sysdate where chatroom_id = #{chatroomId}
+		update chatrooms set last_active_time = sysdate, recent_message = #{recentMessage} where chatroom_id = #{chatRoomId}
 	</update>
 	
 </mapper> 

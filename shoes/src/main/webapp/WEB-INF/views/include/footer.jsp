@@ -1,130 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <script src="/js/header.js"></script>
 <section>
-	<!-- Skillset Card-->
+	<!-- Skillset Card--> 
 	<div>
+	<div> 
 	<div>
-	<div>
-	<div class="card shadow border-0 rounded-4 mb-5">
-		<div class="card-body p-5">
-			<!-- Professional skills list-->
-			<div class="mb-5">
-				<div class="d-flex align-items-center mb-4">
-					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
-						<i class="bi bi-tools"></i>
-					</div>
-					<h3 class="fw-bolder mb-0">
-						<span class="text-gradient d-inline">Professional Skills</span>
-					</h3>
-				</div>
-				<div class="row row-cols-1 row-cols-md-3 mb-4">
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">github</div>
-					</div>
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">mybatis</div>
-					</div>
-					<div class="col">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">spring-boot</div>
-					</div>
-				</div>
-				<div class="row row-cols-1 row-cols-md-3">
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">-----</div>
-					</div>
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">-----</div>
-					</div>
-					<div class="col">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">-----</div>
-					</div>
-				</div>
-			</div>
-			<!-- Languages list-->
-			<div class="mb-0">
-				<div class="d-flex align-items-center mb-4">
-					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
-						<i class="bi bi-code-slash"></i>
-					</div>
-					<h3 class="fw-bolder mb-0">
-						<span class="text-gradient d-inline">Languages</span>
-					</h3>
-				</div>
-				<div class="row row-cols-1 row-cols-md-3 mb-4">
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">HTML</div>
-					</div>
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">java</div>
-					</div>
-					<div class="col">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">JavaScript</div>
-					</div>
-				</div>
-			</div>
-			<div class="mb-0">
-				<div class="d-flex align-items-center mb-4">
-					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
-						<i class="bi bi-code-slash"></i>
-					</div>
-					<h3 class="fw-bolder mb-0">
-						<span class="text-gradient d-inline">함선</span>
-					</h3>
-				</div>
-				<div class="row row-cols-1 row-cols-md-3 mb-4">
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">블랙펄</div>
-					</div>
-				</div>
-			</div>
-			<div class="mb-0">
-				<div class="d-flex align-items-center mb-4">
-					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
-						<i class="bi bi-code-slash"></i>
-					</div>
-					<h3 class="fw-bolder mb-0">
-						<span class="text-gradient d-inline">선장</span>
-					</h3>
-				</div>
-				<div class="row row-cols-1 row-cols-md-3 mb-4">
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">조재범</div>
-					</div>
-				</div>
-			</div>
-			<div class="mb-0">
-				<div class="d-flex align-items-center mb-4">
-					<div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3">
-						<i class="bi bi-code-slash"></i>
-					</div>
-					<h3 class="fw-bolder mb-0">
-						<span class="text-gradient d-inline">선원</span>
-					</h3>
-				</div>
-				<div class="row row-cols-1 row-cols-md-3 mb-4">
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">박경태</div>
-					</div>
-					<div class="col mb-4 mb-md-0">
-						<div class="d-flex  bg-light rounded-4 p-3">하성훈</div>
-					</div>
-					<div class="col">
-						<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">이광열</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Team BLACKPEARL</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fa-regular fa-user"></i> 조재범
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-user"></i> 하성훈
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-user"></i> 박경태
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-user"></i> 이광열
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">사용 언어</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li class="text-decoration-none" >Java</li>
+                        <li class="text-decoration-none" >JavaScript</li>
+                        <li class="text-decoration-none" >HTML</li>
+                        <li class="text-decoration-none" >CSS</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">사용 기술</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li class="text-decoration-none" >Oracle SQL</li>
+                        <li class="text-decoration-none" >Mybatis</li>
+                        <li class="text-decoration-none" >Maven</li>
+                        <li class="text-decoration-none" >Spring Boot</li>
+                        <li class="text-decoration-none" >Spring Security</li>
+                        <li class="text-decoration-none" >jsp</li>
+                        <li class="text-decoration-none" >WebSocket</li>
+                        <li class="text-decoration-none" >Stomp</li>
+                    </ul>
+                </div>
+
+            </div>
 	</div>
-	</div>
-	</div>
-	</div>
-</section>
 <!-- Footer-->
-<footer class="bg-white py-4 mt-auto">
 	<div class="container px-5">
 		<div class="row align-items-center justify-content-between flex-column flex-sm-row">
 			<div class="col-auto">
-				<div class="small m-0">Copyright &copy; Your Website 2023</div>
+				<div class="small m-0 text-light">Copyright &copy; 2023 BLACKPEARL</div>
 			</div>
 			<div class="col-auto">
 				<a class="small" href="#">Privacy</a> <span class="mx-1">&middot;</span> <a class="small" href="#">Terms</a> <span class="mx-1">&middot;</span> <a class="small" href="#">Contact</a>
@@ -132,6 +65,9 @@
 		</div>
 	</div>
 </footer>
+	</div>
+	</div>
+</section>
 
 </body>
 

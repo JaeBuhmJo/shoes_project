@@ -8,6 +8,7 @@ let criteria = {
   listAmount: 15,
   searchType: "",
   keyword: "",
+  innerKeyword: "",
   order: "registered-date-desc",
   category: "",
   gender: "",
@@ -87,20 +88,9 @@ document.querySelector("#category").addEventListener("click", (e) => {
   }
 });
 
-//검색 누를 시
-document.querySelector("#searchForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  criteria.page = 1;
-  criteria["keyword"] = document.querySelector("#searchKeyword").value;
-  const queryString = new URLSearchParams();
-  for (const key in criteria) {
-    if (criteria[key] !== "") {
-      queryString.append(key, criteria[key]);
-    }
-  }
-  // 검색은 히스토리 남김
-  window.history.pushState(criteria, document.title, `?${queryString.toString()}`);
-  getList(criteria);
+//결과 내 재검색
+document.querySelector("#innerSearchForm").addEventListener("submit", (e) => {
+  updateFilters(e, "innerKeyword", document.querySelector("#innerSearchKeyword").value);
 });
 
 //상품 카드 클릭 시 상세정보 페이지로 이동
@@ -250,4 +240,5 @@ function setFilter(cri) {
     }
   });
   document.querySelector("#searchKeyword").value = cri.keyword;
+  document.querySelector("#innerSearchKeyword").value = cri.innerKeyword;
 }

@@ -11,8 +11,8 @@
 	
 	<button class="btn btn-primary mt-2" id="createChat">신규 문의하기</button>
 </div>
- 
-<script>  
+
+<script>
 	const csrfToken = '${_csrf.token}';
 </script> 
 <!-- Bootstrap core JS-->

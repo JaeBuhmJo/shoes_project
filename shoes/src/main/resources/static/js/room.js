@@ -8,7 +8,13 @@ function getTimeStamp(date) {
     now = new Date();
   }
   const hours = now.getHours();
-  const ampm = hours > 12 ? "오후 " : "오전 ";
+  const ampm = "";
+  if (hour < 12) {
+    ampm = "오전";
+  } else {
+    ampm = "오후";
+    hour = hour - 12;
+  }
   const minutes = now.getMinutes();
   const minutesStamp = minutes > 9 ? minutes : "0" + minutes;
   const timeStamp = ampm + hours + ":" + minutesStamp;
@@ -134,7 +140,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function sendMessage() {
     var msg = textarea;
-    stomp.send("/pub/chat/message", {}, JSON.stringify({ chatRoomId: chatRoomId, content: msg.value, memberId: username }));
+    stomp.send(
+      "/pub/chat/message",
+      {},
+      JSON.stringify({ chatRoomId: chatRoomId, content: msg.value, memberId: username })
+    );
     msg.value = "";
   }
 });

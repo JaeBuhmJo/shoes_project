@@ -22,12 +22,13 @@ function getChatRoomList() {
         } else {
           str = chatRoom.memberId;
         }
-        chatRoomList += '<a href="' + chatRoom.chatRoomId + '" class="list-group-item list-group-item-action" aria-current="true">';
+        chatRoomList +=
+          '<a href="' + chatRoom.chatRoomId + '" class="list-group-item list-group-item-action" aria-current="true">';
         chatRoomList += '<div class="d-flex w-100 justify-content-between">';
-        chatRoomList += '<h5 class="mb-1">BLACKPEARL</h5>';
+        chatRoomList += '<h5 class="mb-1"><b>' + str + "</b></h5>";
         chatRoomList += "<small>" + chatRoom.lastActiveTime + "</small>";
         chatRoomList += "</div>";
-        chatRoomList += "<small>" + str + "</small>";
+        chatRoomList += "<small>" + chatRoom.recentMessage + "</small>";
         chatRoomList += "</a>";
       });
       document.querySelector("#chatroomlist").innerHTML = chatRoomList;

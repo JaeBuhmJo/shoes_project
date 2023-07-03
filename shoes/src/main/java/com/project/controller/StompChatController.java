@@ -6,6 +6,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.domain.ChatRoomDTO;
 import com.project.domain.MessageDTO;
 import com.project.service.ChatRoomService;
 import com.project.service.MessageService;
@@ -34,7 +35,7 @@ public class StompChatController {
 	@Transactional
 	@MessageMapping("/chat/message")
 	public void message(MessageDTO messageDTO) {
-		chatRoomService.updateLastActiveTime(messageDTO.getChatRoomId());
+		chatRoomService.updateChatRoom(messageDTO);
 		messageDTO.setMessageType("NORMAL");
 		saveAndSend(messageDTO);
 	}

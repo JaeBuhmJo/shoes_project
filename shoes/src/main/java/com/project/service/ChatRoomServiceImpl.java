@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.ChatRoomDTO;
+import com.project.domain.MessageDTO;
 import com.project.mapper.ChatRoomMapper;
 
 @Service
@@ -30,8 +31,11 @@ public class ChatRoomServiceImpl implements ChatRoomService {
 	}
 
 	@Override
-	public boolean updateLastActiveTime(String chatRoomId) {
-		return chatRoomMapper.updateChatRoom(chatRoomId) == 1 ? true : false;
+	public boolean updateChatRoom(MessageDTO messageDTO) {
+		ChatRoomDTO chatRoomDTO = new ChatRoomDTO();
+		chatRoomDTO.setChatRoomId(messageDTO.getChatRoomId());
+		chatRoomDTO.setRecentMessage(messageDTO.getContent());
+		return chatRoomMapper.updateChatRoom(chatRoomDTO) == 1 ? true : false;
 	}
 
 	@Override
