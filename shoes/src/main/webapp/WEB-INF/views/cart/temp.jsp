@@ -33,7 +33,7 @@ $(function(){
 	const form = {
 		memberId : '${member.memberId}',
 		productId :  '${Order_list.productId}',
-		cartamount : ''
+		cartAmount : ''
 	}
 	
 		// 전체 선택 및 해제
@@ -126,11 +126,10 @@ $(function(){
 	                <th>
                  	 	<input type="checkbox" id="cboxAll" name="cboxAll">
                		</th>
-              	    <th class="td_width_3">상품정보</th>
-					<th class="td_width_4">판매가</th>
-					<th class="td_width_5">수량</th>
-					<th class="td_width_6">합계</th>
-					<th class="td_width_7">배송비</th>         
+              	    <th class="td_width_3">${cartList.productName }</th>
+					<th class="td_width_4">${cartList.price }</th>
+					<th class="td_width_5">${cartList.cartAmount }</th>
+					<th class="td_width_6">${cartList.price * cartList.cartAmount }</th>
 	             </tr>
 	         </thead>             			
            	 <tbody>

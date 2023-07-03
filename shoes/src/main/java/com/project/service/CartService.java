@@ -16,7 +16,7 @@ public interface CartService {
 	public int modifyamount(CartDTO cart);
 	
 	// 카트 삭제
-	public int deleteCart(int cartId);
+	public int deleteCart(String memberId);
 }
 
 

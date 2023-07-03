@@ -71,4 +71,8 @@
 	<delete id="closeInventory">
 		update inventories set quantity=0, discontinued = 1 where product_id = #{productId} 
 	</delete>
+	
+	<update id="decreaseInventory">
+		update inventories set quantity = quantity-#{cartAmount} where inventory_id = #{inventoryId}
+	</update>
 </mapper>

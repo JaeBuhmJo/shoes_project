@@ -2,10 +2,10 @@
  *
  */
 
-const operForm = document.querySelector("#operForm");
+document.querySelector(".cart__bigorderbtn.left").addEventListener("click", () => {
+  location.href = "/shop/list";
+});
 
-document.querySelector(".cart__bigorderbtn.left").addEventListener("click", (e) => {
-  e.preventDefault();
-  operForm.action = "/shop/list";
-  operForm.submit();
+document.querySelector("#orderBtn").addEventListener("click", () => {
+  location.href = "/purchase/confirm";
 });

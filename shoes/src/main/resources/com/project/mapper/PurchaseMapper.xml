@@ -3,9 +3,17 @@
 <mapper namespace="com.project.mapper.PurchaseMapper">
 
     <!-- 주문 상품 정보 -->
+	<resultMap type="com.project.domain.PurchaseDTO" id="PurchaseMap">
+		<result column="productId" property="productId" />
+		<result column="orderId" property="orderId" />
+		<result column="inventoryId" property="inventoryId" />
+		<result column="purchaseAmount" property="purchaseAmount" />
+		<result column="purchaseDate" property="purchaseDate" />
+		<collection property="orderproduct" resultMap="PurchaseMap"/>
+	</resultMap>
+	
      <select id="getOrderlist" resultMap="PurchaseMap">
-		select a.orderId, 
-		       a.memberId, 
+		select a.memberId, 
 		       a.productId, 
 		       a.inventoryId, 
 		       a.purchaseAmount, 
@@ -19,29 +27,9 @@
          where memberId = #{memberId}
 	 </select>
 
-	<resultMap type="com.project.domain.PurchaseDTO" id="PurchaseMap">
-		<result column="productId" property="productId" />
-		<result column="orderId" property="orderId" />
-		<result column="inventoryId" property="inventoryId" />
-		<result column="purchaseAmount" property="purchaseAmount" />
-		<result column="purchaseDate" property="purchaseDate" />
-		<collection property="orderproduct" resultMap="PurchaseMap"/>
-	</resultMap>
-	
-
-
-
-
-
-
-   	<!-- 주문 목록 리스트 -->
-		<select id="orderList" resultType="com.project.domain.OrderDTO">
-			select orderId, memberId, Name, address, purchaseDate, totalPrice, 
-			from orders where memberId = #{memberId};
-	    </select>
-     
-    
-	
-
+	<insert id="insertPurchase">
+		insert into purchases(purchase_amount, purchase_date, member_id, product_id, inventory_id)
+			values(#{cartAmount}, sysdate, #{memberId}, #{productId}, #{inventoryId})
+	</insert>
 
 </mapper>

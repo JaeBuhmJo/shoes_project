@@ -85,8 +85,13 @@ public class ShopController {
 	} 
 
 	@GetMapping("/list")
-	public void listGet(@ModelAttribute("cri") Criteria cri, Model model) {
+	public void listGet() {
 		log.info("list 폼 요청");
+	}
+	
+	@GetMapping("/success")
+	public void successGet() {
+		log.info("구매 성공 폼 요청");
 	}
 	 
 	@PostMapping("/list")

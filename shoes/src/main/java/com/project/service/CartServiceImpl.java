@@ -24,9 +24,6 @@ public class CartServiceImpl implements CartService {
 	private AttachmentMapper attachmentMapper;
 	private ProductImageMapper imageMapper;
 	
-	
-	
-	
 	@Override
 	public int addCart(CartDTO cart) {
 		// 장바구니 데이터 체크
@@ -46,34 +43,37 @@ public class CartServiceImpl implements CartService {
 	// 장바구니 정보 리스트 
 	@Override
 	public List<CartDTO> getCartList(String memberId) {
-		
 		List<CartDTO> cart = cartMapper.getCart(memberId);
 		
-		for(CartDTO dto : cart) {
-			
-			// 이미지 정보 얻기(Attachments)
-			String productId = dto.getProductId();
-			
-			List<AttachmentDTO> attachmentDTOList = attachmentMapper.getAttachments(productId);
-			List<ProductImageDTO> imagelist = imageMapper.getProduct_ImageDTOList(productId);
-			
-			dto.setAttachmentList(attachmentDTOList);
-		}
+//		for(CartDTO dto : cart) {
+//			
+//			// 이미지 정보 얻기(Attachments)
+//			String productId = dto.getProductId();
+//			
+//			List<AttachmentDTO> attachmentDTOList = attachmentMapper.getAttachments(productId);
+//			List<ProductImageDTO> imagelist = imageMapper.getProduct_ImageDTOList(productId);
+//			
+//			dto.setAttachmentList(attachmentDTOList);
+//		}
 		
 		return cart;
+	}
+
+	public CartDTO getCartTotal(String memberId) {
+		CartDTO cartTotal = cartMapper.getCartTotal(memberId);
+		System.out.println(cartTotal);
+		return cartTotal;
 	}
 	
 
 	@Override
 	public int modifyamount(CartDTO cart) {
-		
 		return cartMapper.modifyamount(cart);
 	}
 
 	@Override
-	public int deleteCart(int cart_id) {
-		
-		return cartMapper.deleteCart(cart_id);
+	public int deleteCart(String memberId) {
+		return cartMapper.deleteCart(memberId);
 	}
 
 }
