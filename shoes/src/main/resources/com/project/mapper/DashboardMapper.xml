@@ -6,7 +6,6 @@
 	select
 		(select nvl(count(product_id),0) from products where on_sale = 1 and discontinued = 0) as onSaleProductsCount,
 		(select nvl(count(product_id),0) from products where on_sale = 0 and discontinued = 0) as offSaleProductsCount,
-		(select nvl(count(distinct order_id),0) from purchases where trunc(purchase_date) = trunc(sysdate-1)) as dayPurchaseCount,
 		(select nvl(sum(pu.purchase_amount*pr.price),0) from purchases pu join products pr on pu.product_id = pr.product_id where trunc(pu.purchase_date) = trunc(sysdate-1)) as daySalesAmount,
 		(select nvl(count(distinct member_id),0) from purchases where trunc(purchase_date) = trunc(sysdate-1)) as dayCustomerCount,
 		(select nvl(count(*),0) from qnas where answer is null) as notAnsweredCount,

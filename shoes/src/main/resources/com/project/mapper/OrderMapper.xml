@@ -2,61 +2,69 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.OrderMapper">
 
- 
 	
-	<select id="getOrderInfo" resultType="com.project.domain.OrderProductDTO">
-	
-	select productId, Price, discountPrice
-	from shoes where productId = #{productId}	
-	
-	</select>
-<<<<<<< HEAD
+	<!-- 주문 내역 리스트 조회 -->
+<resultMap type="com.project.domain.OrderListDTO" id="ordersList"> 
+    <result property="productId" column="product_id"/>
+    <result property="purchaseAmount" column="purchase_amount"/>
+    <result property="purchaseDate" column="purchase_date"/>
+    <result property="brand" column="brand"/>
+    <result property="price" column="price"/>   
+    <result property="productName" column="product_name"/>
+    <result property="footSize" column="foot_size"/>
+    <result property="productColor" column="product_color"/>
+</resultMap>
 
+<select id="orderList" resultMap="ordersList" >
 
-	<!-- 주문내역조회  -->
-	<resultMap type="com.project.domain.OrderListDTO" id="ordersList">
-		<result property="orderId" column="order_id"/>
-		<result property="productId" column="product_id"/>
-		<result property="purchaseAmount" column="purchase_amount"/>
-		<result property="purchaseDate" column="purchase_date"/>
-		<result property="brand" column="brand"/>
-		<result property="price" column="price"/>
-		<result property="colors" column="colors"/>
-		<result property="orderName" column="order_name"/>
-		<result property="orderPayment" column="order_payment"/>
-	</resultMap>
+<![CDATA[
+    SELECT * FROM ( 
+        SELECT /*+FIRST_ROWS(10) */ rownum AS rnum, t.* FROM (
+            SELECT pc.product_id, pc.purchase_amount, pc.purchase_date,
+                   pd.brand, pd.price, pd.product_name,
+                   mb.foot_size,
+                   it.product_color
+            FROM purchases pc
+            JOIN products pd ON pc.product_id = pd.product_id
+            JOIN members mb ON pc.member_id = mb.member_id
+            JOIN inventories it ON pc.inventory_id = it.inventory_id
+            WHERE pc.member_id = #{memberId}
+    ]]>        
+     <include refid="criteria"></include>       
+            
+   <![CDATA[        
+            ORDER BY pc.purchase_date DESC
+        ) t
+        WHERE rownum <= (#{cry.page}*#{cry.listAmount})
+    ) 
+    WHERE rnum > (#{cry.page}-1)*#{cry.listAmount}
+]]>
+</select>
 	
-	<select id="orderList" resultMap="ordersList">
-		select pc.order_id, pc.product_id, pc.purchase_amount, pc.purchase_date,
-		       pd.brand, pd.price, pd.colors,
-		       order_name,order_payment
-		from purchases pc
-		join products pd on pc.product_id = pd.product_id
-	    join orders od on pc.order_id = od.order_id 
-		where pc.member_id = #{memberId}
-	</select>
+	<!-- 페이지 나누기 위한 게시글 총 갯수  -->
+<select id="getTotalOrderCount" resultType="int" >
+    <![CDATA[
+        SELECT COUNT(*) AS total_count
+        FROM purchases pc
+        JOIN products pd ON pc.product_id = pd.product_id
+        JOIN members mb ON pc.member_id = mb.member_id
+        JOIN inventories it ON pc.inventory_id = it.inventory_id
+        WHERE pc.member_id = #{memberId}  
+        ]]>
+         <include refid="criteria"></include>       
+                
+</select>
 
-
-
-
-
-=======
+<!-- 검색단어 조회하는 동적쿼리문 -->
+<sql id="criteria">			
+	<choose>
+		<when test="cry.searchType == 'P'.toString()">
+			and pd.product_name like '%'||#{cry.keyword}||'%'
+		</when>
+		<when test="cry.searchType == 'D'.toString()">							
+			and to_char(pc.purchase_date,'yyyy-mm-dd') = #{cry.keyword}
+		</when>						
+	</choose>
+</sql>
 	
-	<!-- 주문 테이블 등록 -->
-	<insert id="Order">
-	
-		insert into Orders(orderId, oredrAddress, memberId)
-    	values(#{orderId},#{addressee}, #{memberId})
-	
-	</insert>	
-	
-	<!-- 주문 아이템 테이블 등록 -->
-	<insert id="OrderProduct">
-	
-		insert into Orders(orderId, productId, cartAmount, Price, discountPrice, detail)
-		values(#{orderId}, #{productId}, #{cartAmount}, #{Price}, #{discountPrice}, #{detail})
-	
-	</insert>	
->>>>>>> refs/remotes/origin/master
-
 </mapper>

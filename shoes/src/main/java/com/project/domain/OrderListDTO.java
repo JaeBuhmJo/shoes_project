@@ -11,14 +11,16 @@ import lombok.NoArgsConstructor;
 @Data
 //주문내역 불러오는 DTO
 public class OrderListDTO {
-	private String orderId;
 	private String productId;
 	private int purchaseAmount;
 	private Date purchaseDate;
 	private String brand;
 	private int price;
-	private String colors;
-	private String orderName;
-	private String orderPayment;
+	private int footSize;
+	private String productName;
+	private String productColor;
+	
+	
+	private String filePath;
 	
 }

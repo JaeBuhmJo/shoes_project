@@ -163,7 +163,7 @@ https://templatemo.com/tm-559-zay-shop
 	<!-- Start Contact -->
 	<div class="container py-5">
 		<div class="row">
-			<div class="col-lg-9">
+			<div class="col-lg-12">
 				<form class="col-md-9 m-auto" method="post" role="form" action="/nonloginmodify">
 					<div class="form-group mb-3">
 						<label for="memberId">아이디</label> <input type="text"

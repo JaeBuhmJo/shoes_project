@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.AttachmentDTO;
+import com.project.domain.Criteria;
 import com.project.domain.MemberDTO;
 import com.project.domain.OrderDTO;
 import com.project.domain.OrderListDTO;
@@ -94,9 +95,32 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 
+	// 주문목록 리스트 가져오기
 	@Override
-	public List<OrderListDTO> list(String memberId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OrderListDTO> list(String memberId, Criteria criteria) {
+		List<OrderListDTO> list = orderMapper.orderList(memberId,criteria);
+		for (OrderListDTO orderListDTO : list) {
+			//if(attachmentMapper.getAttachments(orderListDTO.getProductId()).size()!=0) {				
+			
+				AttachmentDTO attachmentDTO = attachmentMapper.getAttachments(orderListDTO.getProductId()).get(0);
+				StringBuffer sb = new StringBuffer();
+				sb.append(attachmentDTO.getUploadPath());
+				sb.append("\\");
+				sb.append("thumb_");
+				sb.append(attachmentDTO.getUuid());
+				sb.append("_");
+				sb.append(attachmentDTO.getFileName());
+				String filePath = sb.toString().replace("\\", "/");
+				orderListDTO.setFilePath(filePath);
+			//}
+		}
+		
+		return list;
+	}
+
+// 주문목록 총 갯수(페이지 나누기)
+	@Override
+	public int getTotalCnt(String memberId,Criteria cry) {
+		return orderMapper.getTotalOrderCount(memberId, cry);
 	}
 }

@@ -33,21 +33,6 @@ public class ShopController {
 	@Autowired
 	private ProductService productService;
 
-<<<<<<< HEAD
-		@GetMapping("/list")
-		public void listGet(@ModelAttribute("cri") Criteria cri, Model model, @RequestHeader("User-agent") String userAgent) {
-			log.info("list 요청");
-			int total = productService.getSaleCount(cri);
-			List<ProductDTO> list = productService.getSaleProducts(cri);
-			log.info("크라이"+cri);
-			for (ProductDTO productDTO : list) {
-				String filePath = "/default/txt-file.png";
-				if (productDTO.getAttachmentList().get(0).getUuid() != null) {
-					AttachmentDTO dto = productDTO.getAttachmentList().get(0);
-					filePath = dto.getUploadPath() + "\\" + dto.getUuid() + "_" + dto.getFileName();
-				}
-				productDTO.setFilePath(filePath.replace("\\", "/"));
-=======
 	@Autowired
 	private VisitCounterMapper visitCounterMapper;
 
@@ -64,16 +49,8 @@ public class ShopController {
 						&& cookie.getValue().equals(clientIpAddress)) {
 					return;
 				}
->>>>>>> refs/remotes/origin/master
 			}
-<<<<<<< HEAD
-			model.addAttribute("productListPage", new ListPageDTO(cri, total));
-			model.addAttribute("list", list);
-=======
->>>>>>> refs/remotes/origin/master
 		}
-<<<<<<< HEAD
-=======
 
 		// 해당 IP의 쿠키를 가지고 있지 않은 경우
 		VisitDTO visitDTO = new VisitDTO(currentDate, clientIpAddress);
@@ -90,7 +67,6 @@ public class ShopController {
 		visitCookie.setPath("/");
 		response.addCookie(visitCookie);
 	}
->>>>>>> refs/remotes/origin/master
 
 	@GetMapping("/list")
 	public void listGet(@ModelAttribute("cri") Criteria cri, Model model) {

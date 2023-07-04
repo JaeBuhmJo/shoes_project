@@ -33,5 +33,5 @@ public class Criteria {
 		super();
 		this.page= page;
 		this.listAmount = listAmount;
-	}
+	}    
 }
