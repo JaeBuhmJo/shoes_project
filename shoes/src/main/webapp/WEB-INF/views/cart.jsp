@@ -62,7 +62,8 @@
 					</tr>
            	 	</c:forEach>
 	      	</tbody>
-		</table>
+		</table> 
+		<a href="/cart/dump" id="cartdump"><button type="button" >장바구니 비우기</button></a>
 		
 		<form action="/cart/order" method="get" id="orderForm">
 		

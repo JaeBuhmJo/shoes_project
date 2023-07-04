@@ -62,11 +62,15 @@ public class ShoesController {
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("amount", cri.getListAmount());
 			log.info("review write",review);
-			return "/member/memberPage?page=1&listAmount=10&searchType=&keyword=";
+
+			return "redirect:/member/memberPage?page=1&listAmount=10&searchType=&keyword=";
+
 		}
 		
 		return "redirect:/shoes/detail";
 	}
+	
+	
 	
 	
 	@PreAuthorize("principal.username == #dto.memberId")
@@ -78,7 +82,7 @@ public class ShoesController {
 					new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@GetMapping("/sale")
+	@GetMapping("/review")
 	public void saleGet() {
 		log.info("sale 화면");
 
@@ -149,9 +153,6 @@ public class ShoesController {
 	  
 	  
 	  
-	  
-	  
-	  
 	  @GetMapping("/review/{reviewId}")	
 	public ResponseEntity<ReviewDTO> getReview(@PathVariable String reviewId){
 		log.info("review 가져오기 "+ reviewId);
@@ -167,11 +168,6 @@ public class ShoesController {
 		return customerService.updateReview(dto)?
 				new ResponseEntity<String>("success",HttpStatus.OK):
 					new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	  
-	@GetMapping("/review")
-	public void getReview() {
-		
 	}
 	  
 	  

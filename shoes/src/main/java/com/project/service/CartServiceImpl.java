@@ -74,8 +74,8 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public int deleteCart(String memberId) {
-		return cartMapper.deleteCart(memberId);
+	public boolean deleteCart(String memberId) {
+		return cartMapper.deleteCart(memberId)>0?true:false;
 	}
 
 }

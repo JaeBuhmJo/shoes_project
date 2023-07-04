@@ -114,5 +114,9 @@
 		 					 modified_date=sysdate, for_men=#{forMen}, for_women=#{forWomen}, discontinued=#{discontinued}
 		 where product_id = #{productId}
 	</update>
+	
+	<update id="updateSoldCount">
+		update products set sold_count = sold_count + #{cartAmount} where product_id = #{productId}
+	</update>
 
 </mapper>

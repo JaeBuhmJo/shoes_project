@@ -2,6 +2,7 @@ package com.project.service;
 
 import java.util.List;
 
+import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
 import com.project.domain.ListPageDTO;
 import com.project.domain.ProductDTO;
@@ -14,4 +15,5 @@ public interface ProductService {
 	public int getCurrentProductId();
 	public ProductDTO getSingleProduct(String productId);
 	public boolean modifyProduct(ProductDTO productDTO);
+	public boolean increaseSoldCount(CartDTO cartDTO);
 }

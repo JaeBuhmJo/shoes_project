@@ -47,4 +47,11 @@ public class CartController {
 		model.addAttribute("cartTotal", cartTotal);
 		model.addAttribute("cartList", cartList);
 	}
+	
+	@GetMapping("/dump")
+	@PreAuthorize("isAuthenticated()")
+	public String cartDump(Principal principal) {
+		cartServiceImpl.deleteCart(principal.getName());
+		return "redirect:/cart/";
+	}
 }
