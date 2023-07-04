@@ -77,7 +77,7 @@
 	</select>
 
 	<select id="getTotalList">
-		select product_id, product_name, category, brand, price, product_country, product_year
+		select product_id, product_name, category, brand, price, product_country, product_year,
 			   on_sale, sold_count, to_char(registered_date,'yyyy-MM-dd/HH:mm:ss') as registered_date,
 			   to_char(modified_date,'yyyy-MM-dd/HH:mm:ss') as modified_date from products where
 			<choose>
@@ -113,6 +113,10 @@
 		 					 product_year=#{productYear}, product_name=#{productName}, on_sale=#{onSale},
 		 					 modified_date=sysdate, for_men=#{forMen}, for_women=#{forWomen}, discontinued=#{discontinued}
 		 where product_id = #{productId}
+	</update>
+	
+	<update id="updateSoldCount">
+		update products set sold_count = sold_count + #{cartAmount} where product_id = #{productId}
 	</update>
 
 </mapper>

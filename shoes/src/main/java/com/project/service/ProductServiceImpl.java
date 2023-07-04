@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
 import com.project.domain.ListPageDTO;
 import com.project.domain.ProductDTO;
@@ -72,6 +73,11 @@ public class ProductServiceImpl implements ProductService {
 			productDTO.setDetail(" ");
 		}
 		return productMapper.updateProduct(productDTO) == 1 ? true : false;
+	}
+
+	@Override
+	public boolean increaseSoldCount(CartDTO cartDTO) {
+		return productMapper.updateSoldCount(cartDTO)==1 ? true:false;
 	}
 
 }

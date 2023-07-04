@@ -15,12 +15,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.project.domain.CartDTO;
 import com.project.service.CartService;
 import com.project.service.InventoryService;
+import com.project.service.ProductService;
 import com.project.service.PurchaseService;
 
 @Controller
 @RequestMapping("/purchase")
 public class PurchaseController {
 
+	@Autowired
+	private ProductService productService;
+	
 	@Autowired
 	private PurchaseService purchaseService;
 
@@ -42,6 +46,7 @@ public class PurchaseController {
 			// 산것들은 재고 감소치고
 			if(inventoryService.getInventoryQuantity(cartDTO.getInventoryId())>=cartDTO.getCartAmount()) {
 				inventoryService.decreaseInventory(cartDTO);
+				productService.increaseSoldCount(cartDTO);
 			}else {
 				rttr.addFlashAttribute("productSoldOut",cartDTO.getProductName());
 				return "redirect:/cart/";

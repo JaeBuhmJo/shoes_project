@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
 import com.project.domain.ProductDTO;
 
@@ -16,4 +17,5 @@ public interface ProductMapper {
 	public int getCurrentProductSequence();
 	public ProductDTO getProduct(String productId);
 	public int updateProduct(ProductDTO productDTO);
+	public int updateSoldCount(CartDTO cartDTO);
 }
