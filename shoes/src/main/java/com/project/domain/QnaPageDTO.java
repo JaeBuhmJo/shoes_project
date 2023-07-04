@@ -26,14 +26,14 @@ public class QnaPageDTO {
 		this.endPage=(int)(Math.ceil(cri.getPage()/10.0))*10;
 		this.startPage=this.endPage-9;
 		
-		int realEnd =(int)(Math.ceil((total/1.0)/cri.getListAmount()));
+		// 페이지 나누기 
+		int realEnd = (int) Math.ceil((double) total / cri.getListAmount());
 		if(realEnd < this.endPage) {
 			this.endPage=realEnd;
 		}
 		this.prev = this.startPage>1;
 		this.next = this.endPage < realEnd;
 	}
-
 
 	
 

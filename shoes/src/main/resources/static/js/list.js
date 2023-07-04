@@ -61,11 +61,12 @@ document.querySelector("#shopPagination").addEventListener("click", (e) => {
 // n개씩 보기
 const listAmount = document.querySelector("#listAmount");
 listAmount.addEventListener("change", (e) => {
-  if (listAmount.value == 15) {
-    updateFilters(e, "listAmount", listAmount.value, criteria.page * 2 - 1);
-  } else if (listAmount.value == 30) {
-    updateFilters(e, "listAmount", listAmount.value, Math.floor((criteria.page - 1) / 2) + 1);
-  }
+  updateFilters(e, "listAmount", listAmount.value, 1);
+  // if (listAmount.value == 15) {
+  //   updateFilters(e, "listAmount", listAmount.value, criteria.page * 2 - 1);
+  // } else if (listAmount.value == 30) {
+  //   updateFilters(e, "listAmount", listAmount.value, Math.floor((criteria.page - 1) / 2) + 1);
+  // }
 });
 
 // 정렬 순서

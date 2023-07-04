@@ -1,18 +1,29 @@
 package com.project.controller;
 
+import java.security.Principal;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.javassist.expr.NewArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.domain.Criteria;
 import com.project.domain.MemberDTO;
+import com.project.domain.OrderListDTO;
+import com.project.domain.QnaDTO;
+import com.project.domain.QnaPageDTO;
 import com.project.service.MemberService;
+import com.project.service.OrderService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +34,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private OrderService orderService;
 
 	@GetMapping("/register")
 	public void registerGet() {
@@ -67,8 +81,8 @@ public class MemberController {
 	@PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')")
 	@GetMapping("/modify")
 	public void modifyGET() {
-		log.info("수정페이지 요청");
-	
+		log.info("수정페이지 요청" );
+		
 	}
 
 	@PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')")
@@ -113,13 +127,30 @@ public class MemberController {
 	@GetMapping("/memberDetail")  
 	public void memberDetailGet() {
 		log.info("유저 상세페이지");
+		 
 	}
 	
-	
+	// 주문 내역 불러오기
 	@PreAuthorize("hasAnyAuthority('ROLE_USER')")
 	@GetMapping("/memberPage")  
-	public void memberPageGet() {
-		log.info("회원 페이지 요청");
+	public void memberPageGet(Principal principal,Model model, @ModelAttribute("cri") Criteria cri) {
+		
+		log.info("페이지 나누기 요청"+cri);
+		
+		// 로그인한 아이디 
+		String memberId = principal.getName();
+		// 아이디 참고하여 주문목록 가져오기
+		List<OrderListDTO> list = orderService.list(memberId,cri);
+		// 주문내역 총 갯수
+		int total = orderService.getTotalCnt(memberId,cri);
+		//log.info("searchType " + Arrays.toString(cri.getTypeArr())); // P
+
+		log.info("리스트 " + list);		
+		log.info("총 갯수" + total);
+		// 주문 내역 저장
+		model.addAttribute("orderList", list);
+		model.addAttribute("pageDTO", new QnaPageDTO(cri,total));
+	
 	}
 	
 	@GetMapping("/findPassword")

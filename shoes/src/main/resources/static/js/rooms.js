@@ -2,7 +2,11 @@
  *
  */
 
-const createButton = document.querySelector("#createChat");
+if (document.querySelector("#createChat")) {
+  document.querySelector("#createChat").addEventListener("click", () => {
+    createChatRoom(csrfToken);
+  });
+}
 
 getChatRoomList();
 
@@ -35,10 +39,6 @@ function getChatRoomList() {
     })
     .catch((error) => console.log(error));
 }
-
-createButton.addEventListener("click", () => {
-  createChatRoom(csrfToken);
-});
 
 function createChatRoom(csrfToken) {
   fetch("/chatrooms/room", {

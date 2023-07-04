@@ -64,7 +64,6 @@
                     </a>
 	                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 	                        <nav class="sb-sidenav-menu-nested nav">
-	                            <a class="nav-link" href="layout-static.html"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> 문의 사항</a>
 	                            <a class="nav-link" href="/chat/list"><i class="fa-solid fa-comments"></i> 실시간 상담</a>
 	                        </nav>
 	                    </div>

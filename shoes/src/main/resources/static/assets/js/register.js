@@ -15,7 +15,7 @@ form.addEventListener("submit", (e) => {
   form.classList.add("was-validated");
 });
 
-document.querySelector(".btn-danger").addEventListener("click", () => {
+document.querySelector("#dupcheck").addEventListener("click", () => {
   // 사용자가 입력한 userid 가져오기
   const memberId = document.querySelector("#memberId").value;
 
@@ -36,7 +36,8 @@ document.querySelector(".btn-danger").addEventListener("click", () => {
         alert("아이디를 사용할 수 있습니다.");
         submitButton.disabled = false; // submit 버튼 활성화
       }
-    });
+    })
+    .catch((error) => console.log(error));
 });
 
 // 아이디 입력하면 중복 아이디 체크 알람 띄우기

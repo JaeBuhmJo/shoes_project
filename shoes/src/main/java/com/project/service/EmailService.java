@@ -7,6 +7,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.MailException;
@@ -21,8 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor // @RequiredArgsConstructor은 클래스의 final 필드를 기반으로 파라미터를 갖는 생성자를 자동으로 생성
 @Service
 public class EmailService {
-
-    private final JavaMailSender javaMailSender;
+	
+    private final JavaMailSender javaMailSender; // @Autowired 대신  @RequiredArgsConstructor 대체
     
   	//인증번호 생성
     private final String ePw = createKey();

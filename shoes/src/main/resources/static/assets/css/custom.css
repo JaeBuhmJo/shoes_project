@@ -116,3 +116,12 @@ td {
   width: 100%;
   height: 70%;
 }
+
+.chatroom-list-div {
+  max-height: 650px;
+  overflow-y: auto;
+}
+.chatroom-list-div-customer {
+  max-height: 350px;
+  overflow-y: auto;
+}

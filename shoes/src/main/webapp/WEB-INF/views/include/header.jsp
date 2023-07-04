@@ -123,11 +123,9 @@ https://templatemo.com/tm-559-zay-shop
 							</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a class="dropdown-item" href="/member/memberDetail"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-								</a> <a class="dropdown-item" href="/customer/qna"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> qna
+								<a class="dropdown-item" href="/member/memberPage"> <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
 								</a> <a class="dropdown-item" href="/chat/list"> <i class="fas fa-solid fa-comments fa-fw mr-2 text-gray-400"></i> 실시간 문의
-								</a> <a class="dropdown-item" href="/shop/list"> <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 목록으로
-								</a>
+								</a> 
 								
 								<hr />
 									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" id="logout"> <i

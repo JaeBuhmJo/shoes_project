@@ -7,13 +7,13 @@ function getTimeStamp(date) {
   if (date == null) {
     now = new Date();
   }
-  const hours = now.getHours();
-  const ampm = "";
-  if (hour < 12) {
+  let hours = now.getHours();
+  let ampm = "";
+  if (hours < 12) {
     ampm = "오전";
   } else {
     ampm = "오후";
-    hour = hour - 12;
+    hours = hours - 12;
   }
   const minutes = now.getMinutes();
   const minutesStamp = minutes > 9 ? minutes : "0" + minutes;

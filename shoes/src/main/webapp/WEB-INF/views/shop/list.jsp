@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../include/header.jsp"%>
 
-<title>Zay Shop - Listing Page</title>
-
 <!-- Start Content -->
 <div class="container py-5">
 	<div class="row">
@@ -46,6 +44,7 @@
 					<select class="form-control text-center border border-secondary" id="listAmount" name="listAmount">
 						<option value="15" >15개씩 보기</option>
 						<option value="30" >30개씩 보기</option>
+						<option value="3" >3개씩 보기</option> 
 					</select>  
 				</div>
 				<form class="d-inline-flex justify-content-end mb-3" id="innerSearchForm">      

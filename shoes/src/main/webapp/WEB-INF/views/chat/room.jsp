@@ -4,7 +4,11 @@
             <link rel="stylesheet" href="/assets/css/custom.css">  
 <div id="layoutSidenav_content"> 
 	<main>
-		<div class="container my-5 py-3 chatroom border border-dark bg-primary bg-opacity-10"> 
+	<div class="container py-5">
+	<div class="row">
+	<%@ include file="../include/membersidebar.jsp"%>
+	<div class="col-lg-9">
+		<div class="container py-3 chatroom border border-dark bg-primary bg-opacity-10"> 
 			<div class="row align-items-center justify-content-between">  
 				<h3 class="col-auto mb-0">실시간 상담</h3>
 				<button type="button" class="col-auto btn btn-secondary me-3" id="disconnect-btn">상담 종료</button>
@@ -21,6 +25,9 @@
 		</div>   
         <input type="hidden" value="${chatRoomId}" id="chatRoomId"/>
         <input type="hidden" value="${memberId}" id="memberId"/> 
+        </div>
+        </div>
+        </div>
 <script>  
 	const csrfToken = '${_csrf.token}';
 </script> 
