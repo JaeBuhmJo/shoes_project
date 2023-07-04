@@ -7,5 +7,8 @@ public interface CustomerService {
 	public boolean reviewInsert(ReviewDTO review);
 
 
+	public boolean deleteRid(int review);
+	
+	public boolean updateReview(ReviewDTO dto);
 	
 }

@@ -40,18 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 페이지 넘어가는 기능
 
-const pagination = document.querySelector(".pagination");
-const operForm = document.querySelector("#operForm");
+// const pagination = document.querySelector(".pagination");
+// const operForm = document.querySelector("#operForm");
 
-pagination.addEventListener("click", (e) => {
-  e.preventDefault();
+// pagination.addEventListener("click", (e) => {
+//   e.preventDefault();
 
-  let href = e.target.getAttribute("href");
+//   let href = e.target.getAttribute("href");
 
-  operForm.firstElementChild.value = href;
+//   operForm.firstElementChild.value = href;
 
-  operForm.submit();
-});
+//   operForm.submit();
+// });
 
 const shoesForm = document.querySelector("#shoesForm");
 

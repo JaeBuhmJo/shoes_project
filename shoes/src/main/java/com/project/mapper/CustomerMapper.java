@@ -9,5 +9,8 @@ public interface CustomerMapper {
 
 	public int reviewInsert(ReviewDTO review);
 	
+	public int deleteRid(int reviewId);
+	
+	public int updateReview(ReviewDTO dto);
 
 }

@@ -57,16 +57,18 @@
 	<![CDATA[
 		select review_id,regdate,contents,product_id,member_id,jumsu
 		from (
-			select /*+INDEX_DESC(reviews review_id)*/ rownum rn,review_id,
-			regdate,contents,product_id,member_id,jumsu
-			from reviews
-			where rownum <= (#{page}*#{listAmount}))
-			where rn > (#{page}-1)*#{listAmount} order by review_id desc
+				select /*+INDEX_DESC(reviews review_id)*/ rownum rn,review_id,
+				regdate,contents,product_id,member_id,jumsu
+				from reviews
+				where rownum <= (#{cri.page}*#{cri.listAmount}) and product_id = #{productId}
+			
+			)
+		where rn > (#{cri.page}-1)*#{cri.listAmount} order by review_id desc
 	]]>
 	</select>
 	
 	<select id="reviewTotal" resultType="java.lang.Integer">
-		select count(*) from reviews where review_id > 0
+		select count(*) from reviews where review_id > 0 and product_id = #{productId}
 	</select>
 	
 	<select id="inventory" resultType="com.project.domain.InventoryDTO">

@@ -18,4 +18,16 @@ public class CustomerServiceImpl implements CustomerService {
 		return mapper.reviewInsert(review)==1?true:false;
 	}
 
+	@Override
+	public boolean deleteRid(int review) {
+		
+		return mapper.deleteRid(review)==1?true:false;
+	}
+
+	@Override
+	public boolean updateReview(ReviewDTO dto) {
+		
+		return mapper.updateReview(dto)==1?false:true;
+	}
+
 }

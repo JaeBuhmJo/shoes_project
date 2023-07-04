@@ -129,6 +129,8 @@
 					<!--End Carousel Wrapper-->
 				</div>
 			</div>			
+			
+			
 			<security:authorize access="isAuthenticated()">
 				<security:authentication property="principal.memberDTO" 	var="userDetails" />
 			</security:authorize>
@@ -150,15 +152,6 @@
 								<!-- 상품 간략 정보 -->
 	
 							<h5>${product.detail}</h5>
-										
-										
-										
-										
-										
-										
-										
-										
-
 																	
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
@@ -208,170 +201,127 @@
 <!-- Close Content -->
 
 
+
+
 <!-- 캐러셀 섹션 러프 -->
 <section class="py-5">
 	<div class="container">							
-					<div class="detail-list">
-						<!--  상세 설명 및 주의 사항 등등 detail -->
+		<div class="detail-list">
+			<!--  상세 설명 및 주의 사항 등등 detail -->
 
 
-						<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+			<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
 
 
-				<p class="fw-bold">상품 정보</p>
-				<div class="row">
-				<div class="col-auto" id="read-detail">
-				</div>
-				</div>
+			<p class="fw-bold">상품 정보</p>
+			<div class="row">
+			<div class="col-auto" id="read-detail">
+			</div>
+			</div>
 
-				<h2 id="scrollspyHeading3">상품 제조 연월</h2>
-							<h4>2023-06-17</h4>
-							<h2 id="scrollspyHeading4">세탁 시 주의 사항</h2>
-							
+			<h2 id="scrollspyHeading3">상품 제조 연월</h2>
+			<h4>2023-06-17</h4>
+			<h2 id="scrollspyHeading4">세탁 시 주의 사항</h2>
+			
 
-							
-							<div class="accordion accordion-flush" id="accordionFlushExample">
-								<div class="accordion-item">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-										data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">천연가죽</button>
-									</h2>
-									<div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-										<div class="accordion-body">
-											<p>1. 건조시킬 때에는 응달에서 말려주십시오.</p>
-											<p>2. 젖었을 때에는 직사일광이나 불로 건조 시키지 마십시오.</p>
-											<p>3. 오염시 부드러운 솔로 닦고, 슈크리너를 사용하십시오.</p>
-											<p>4. 보존시에는 적정한 온도와 습도에서 보관하십이오.</p>
-											<p>5. 본제품은 세탁이 불가합니다. </p>
-											<p>6. 불꽃 접근시 불길이 옮겨 붙을 가능성이 있으니 주의해 주십시오.</p>
-											<p>7. 신발 뒷꿈치를 꺾어 신지 마십시오.</p>
-											<p>8. 제품의 수명 연장을 위해 사용 용도를 주의해 주십시오.</p>
-										
-										
-											
-											
-											
-										</div>
-									</div>
-								</div>
-								<div class="accordion-item">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-										data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">섬유제품 또는 합성제품</button>
-									</h2>
-									<div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-										<div class="accordion-body">
-											<p>1. 건조시킬 때에는 응달에서 말려주십시오.</p>
-											<p>2. 기름기가 있는 장소에서의 사용은 피하십시오.</p>
-											<p>3. 불옆에 놓으면 변화하거나 변형이 발생할 수 있으니 주의 하십시오.</p>
-											<p>4. 표면의 오염 발생시 비눗물을 적신 천을 사용하고, 구두약등의 보혁유를 사용할 필요는 없습니다. </p>
-											<p>5. 본제품은 세탁이 불가합니다. </p>
-											<p>6. 불꽃 접근시 불길이 옮겨 붙을 가능성이 있으니 주의해 주십시오.</p>
-											<p>7. 신발 뒷꿈치를 꺾어 신지 마십시오.</p>
-											<p>8. 제품의 수명 연장을 위해 사용 용도를 주의해 주십시오.</p>
-
-										</div>
-									</div>
-								</div>
-
-					<div class="accordion-item">
-
-
-						<h2 class="accordion-header">
-							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-								data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">구매 후기</button>
-						</h2>
-						<div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-							<div class="accordion-body">
-
-
-								<div class="container" id="reviews-list" style="max-height: 300px; overflow-y:scroll;">
-									<c:forEach var="review" items="${list}">
-										<div class="card my-3">
-											<div class="card-header">
-												<strong>${review.memberId}</strong>
-											</div>
-											<div class="rating" data-jumsu="${review.jumsu}"></div>
-											<div class="card-body">
-												<p class="card-text">${review.contents}</p>
-												<p class="card-text text-muted">
-													<small> <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.regdate}" />
-													</small>
-													</p>
-											</div>
-										</div>
-									</c:forEach>
-									<!-- 페이지 나누기 시작 -->
-									<nav aria-label="...">
-										<ul class="pagination justify-content-center">
-
-											<c:if test="${reviewPage.prev}">
-												<li class="page-item">
-													<a class="page-link" href="${reviewPage.startPage-1} ">Previous</a>
-												</li>
-											</c:if>
-
-											<c:forEach begin="${reviewPage.startPage}" end="${reviewPage.endPage}" var="idx">
-												<li class="page-item ${reviewPage.cri.page==idx?'active':'' }">
-													<a class="page-link" href="" onclick="changePage(event,${idx},${product.productId})">${idx}</a>
-												</li>
-											</c:forEach>
-
-											<c:if test="${reviewPage.next}">
-												<li class="page-item">
-													<a class="page-link" href="${reviewPage.endPage+1} ">Next</a>
-												</li>
-											</c:if>
-										</ul>
-									</nav> 
-									
-<%-- 									<nav aria-label="...">
-										<ul class="pagination justify-content-center">
-
-											<c:if test="${reviewPage.prev}">
-												<li class="page-item">
-													<a class="page-link" href="${reviewPage.startPage-1} ">Previous</a>
-												</li>
-											</c:if>
-
-											<c:forEach begin="${reviewPage.startPage}" end="${reviewPage.endPage}" var="idx">
-												<li class="page-item ${reviewPage.cri.page==idx?'active':'' }">
-																							
-													<input type="hidden" name="productId" value="${product.productId}" id="productId"/>
-													<a class="page-link" href="${idx}">${idx}</a>
-												</li>
-											</c:forEach>
-
-											<c:if test="${reviewPage.next}">
-												<li class="page-item">
-													<a class="page-link" href="${reviewPage.endPage+1} ">Next</a>
-												</li>
-											</c:if>
-										</ul>
-									</nav>  --%>
-									<!-- 페이지 나누기 종료 -->
-								</div>
-
-							</div>
-						</div>
+				
+			<div class="accordion accordion-flush" id="accordionFlushExample">
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+						data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">천연가죽</button>
+					</h2>
+					<div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">						
+						<p>1. 건조시킬 때에는 응달에서 말려주십시오.</p>
+						<p>2. 젖었을 때에는 직사일광이나 불로 건조 시키지 마십시오.</p>
+						<p>3. 오염시 부드러운 솔로 닦고, 슈크리너를 사용하십시오.</p>
+						<p>4. 보존시에는 적정한 온도와 습도에서 보관하십이오.</p>
+						<p>5. 본제품은 세탁이 불가합니다. </p>
+						<p>6. 불꽃 접근시 불길이 옮겨 붙을 가능성이 있으니 주의해 주십시오.</p>
+						<p>7. 신발 뒷꿈치를 꺾어 신지 마십시오.</p>
+						<p>8. 제품의 수명 연장을 위해 사용 용도를 주의해 주십시오.</p>						
 					</div>
-					
-
 				</div>
-							
-
-							<h2 id="scrollspyHeading5">제품 구매 시 필독</h2>
-							<p>제품 사이즈 교환은 불가하며, 반품 후 재구매만 가능합니다.</p>
-						</div>
-						
-						
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+						data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">섬유제품 또는 합성제품</button>
+					</h2>
+					<div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">						
+						<p>1. 건조시킬 때에는 응달에서 말려주십시오.</p>
+						<p>2. 기름기가 있는 장소에서의 사용은 피하십시오.</p>
+						<p>3. 불옆에 놓으면 변화하거나 변형이 발생할 수 있으니 주의 하십시오.</p>
+						<p>4. 표면의 오염 발생시 비눗물을 적신 천을 사용하고, 구두약등의 보혁유를 사용할 필요는 없습니다. </p>
+						<p>5. 본제품은 세탁이 불가합니다. </p>
+						<p>6. 불꽃 접근시 불길이 옮겨 붙을 가능성이 있으니 주의해 주십시오.</p>
+						<p>7. 신발 뒷꿈치를 꺾어 신지 마십시오.</p>
+						<p>8. 제품의 수명 연장을 위해 사용 용도를 주의해 주십시오.</p>
 					</div>
-		
+				</div>
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+							data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">구매 후기</button>
+					</h2>
+					<div id="flush-collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
+						<div class="container" id="reviews-list" style="max-height: 300px; overflow-y:scroll;">
+												
+						</div>	
+						<!-- 페이지 나누기 시작 -->						
+						<ul class="pagination justify-content-end" id="reviewPagination">						
+						</ul>												
+						<!-- 페이지 나누기 종료 -->
+					</div>
+				</div>
+			</div>
+			<!-- 아코디언 종료 -->
+	</div>	
+</div>
+
+
+
+
+	<h2 id="scrollspyHeading5">제품 구매 시 필독</h2>
+	<p>제품 사이즈 교환은 불가하며, 반품 후 재구매만 가능합니다.</p>
+</div>		
+
+
+
+
 
 <!-- 페이지 나누기 종료 -->
+</section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">리뷰 수정</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+
+					<textarea name="contents" id="contents" class="form-control" rows="5"></textarea>
+				</div>
+				<div class="form-group">
+				<input type="text" name="memberId" class="form-control" value="${userDetails.memberId}" readonly
+					placeholder="${userDetails.memberId}" />
+				</div>
+				<input type="hidden" name="reviewId" id="reviewId" value="${review.reviewId}" />
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="reviewUpdate" class="btn btn-primary">수정</button>
+			</div>
+		</div>
 
 	</div>
-</section>
+</div>
+
+
+
+
+
 
 <!-- Start Script -->
 <script src="../assets/js/jquery-1.11.0.min.js"></script>
@@ -388,40 +338,41 @@
 <link href="../powe/adidas3.img">
 <link href="../powe/adidas4.img">
 
-
 <form action="/shoes/detail" id="operForm">
 	<%-- QnaPageDTO.cri.page 가능 --%>
 	<input type="hidden" name="page" value="${cri.page}" />
 	<input type="hidden" name="listAmount" value="${cri.listAmount}" />
 </form>
 <!-- End Script -->
+
+
  <script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 	// 스크립트 실행순서: 첫번째 실행
 	// js에서 가져다 쓰기 위한 작업
  
 	const path= '${pageContext.request.requestURI}';
 	
 	const productId = ${product.productId};
+	const memberId = '${userDetails.memberId}';
 	const result = '${result}';
 
 	const csrfToken='${_csrf.token}';
 	const pageIsRead=false;
-
-	
-	
 	
 </script>
 
 <!-- <script src="/poweqnajs/qna.js"> </script> -->
 <script src="/js/attachment.js"> </script>
 <script src="/powedetailjs/shoesinfo.js"> </script>
-<script src="/powedetailjs/reviewList.js"> </script>
 <script src="/powedetailjs/detail.js"> </script>
+<script src="/powedetailjs/reviewList.js"> </script>
 
   
 <%@include file="../include/footer.jsp"%>
-
-
-
-
-

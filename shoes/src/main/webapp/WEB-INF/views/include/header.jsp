@@ -11,8 +11,7 @@
 		margin: 0 1em;
 	}
 </style>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"><head>
 
 
     <title>Welcome!!! ship BLACKPEARL</title>
@@ -96,9 +95,8 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="/shop/list" id="recentProductList">신상품</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/customer/qna">qna</a>
-                        </li>
+                        
+                        
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -145,7 +143,7 @@ https://templatemo.com/tm-559-zay-shop
 						</ul>
 					</div>
 				
-                
+              </div>  
             </div>
 
         </div>
