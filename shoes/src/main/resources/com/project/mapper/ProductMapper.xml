@@ -77,7 +77,7 @@
 	</select>
 
 	<select id="getTotalList">
-		select product_id, product_name, category, brand, price, product_country, product_year
+		select product_id, product_name, category, brand, price, product_country, product_year,
 			   on_sale, sold_count, to_char(registered_date,'yyyy-MM-dd/HH:mm:ss') as registered_date,
 			   to_char(modified_date,'yyyy-MM-dd/HH:mm:ss') as modified_date from products where
 			<choose>

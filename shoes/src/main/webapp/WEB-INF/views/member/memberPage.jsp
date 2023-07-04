@@ -99,7 +99,7 @@
 							<tbody>
 								<c:forEach var="dto" items="${orderList}">
 									<tr>
-										<th scope="row"><img src="/attachment/file?fileName=${dto.filePath}" /></th>
+										<th scope="row"><img src="/attachment/file?fileName=${dto.filePath}"  width="100" height="100" /></th>
 										<td>브랜드 : ${dto.brand}<br>상품명 : ${dto.productName}<br>색상 : ${dto.productColor}</td>
 										<td><br><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.purchaseDate}" /></td>
 										<td><br>${dto.price}원</td>

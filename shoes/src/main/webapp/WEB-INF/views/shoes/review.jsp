@@ -5,7 +5,7 @@
  			<security:authentication property="principal.memberDTO" 	var="userDetails" />
     <div class="container py-5">
         <div class="row py-5" id="reviewFildes">
-            <form class="col-md-9 m-auto" action="" name="review" id="reviewForm" role="form" method="post">
+            <form class="col-md-9 m-auto" action="/shoes/review" name="review" id="reviewForm" role="form" method="post">
 
 				<fieldset>
 					<span class="text-bold" id="reviewJumsu">별점을 선택해주세요</span>

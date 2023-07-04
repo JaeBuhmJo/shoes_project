@@ -62,7 +62,7 @@ public class ShoesController {
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("amount", cri.getListAmount());
 			log.info("review write",review);
-			return "redirect:/member/memberdetail";
+			return "/member/memberPage?page=1&listAmount=10&searchType=&keyword=";
 		}
 		
 		return "redirect:/shoes/detail";
@@ -169,6 +169,10 @@ public class ShoesController {
 					new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	  
+	@GetMapping("/review")
+	public void getReview() {
+		
+	}
 	  
 	  
 	  
