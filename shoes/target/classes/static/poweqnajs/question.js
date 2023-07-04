@@ -9,7 +9,7 @@ qnaForm.addEventListener("submit", (e) => {
 document.querySelector(".btn btn-danger").addEventListener("click", () => {
   form.firstElementChild.remove();
   form.action = "/customer/qna";
-  from.submit();
+  form.submit();
 });
 
 // if ((document.querySelector("#memberId").value = "")) {

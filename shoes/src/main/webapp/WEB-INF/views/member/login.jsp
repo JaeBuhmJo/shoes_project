@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../include/header.jsp"%>
 
+
 	<!-- Start Content Page -->
 	<div class="container-fluid bg-light py-5">
 		<div class="col-md-6 m-auto text-center">

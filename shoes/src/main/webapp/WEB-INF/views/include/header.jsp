@@ -11,15 +11,20 @@
 		margin: 0 1em;
 	}
 </style>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"><head>
 
     <title>Welcome!!! ship BLACKPEARL</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="/css/stars.css">
+
+
+
     <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/templatemo.css">
@@ -52,13 +57,13 @@ https://templatemo.com/tm-559-zay-shop
                 <div>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="/admin/page">🚢blackpearl.project</a>
 
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">⚓010-020-0340</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">BLACKPEARL(주) 대표 조재범</a>
                 </div>
                 <div>
-                    <a class="text-light" href="/member/info" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="/member/info" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                    <a class="text-light" href="/member/memberPage" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="/shop/list" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="/customer/qna" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="/member/memberDetail" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
                 </div>
             </div>
         </div>
@@ -85,14 +90,13 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="/">home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/member/qna">문의사항</a>
+                            <a class="nav-link" href="/customer/qna">문의사항</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/shop/list" id="recentProductList">신상품</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/member/qna">qna</a>
-                        </li>
+                        
+                        
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -138,7 +142,6 @@ https://templatemo.com/tm-559-zay-shop
 						</ul>
 								</security:authorize>
 					</div>
-                
             </div>
 
         </div>

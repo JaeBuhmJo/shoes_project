@@ -22,6 +22,8 @@ public class CartServiceImpl implements CartService {
 	
 	@Autowired
 	private AttachmentMapper attachmentMapper;
+	
+	@Autowired
 	private ProductImageMapper imageMapper;
 	
 	@Override

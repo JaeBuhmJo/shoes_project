@@ -22,8 +22,8 @@ public interface DetailMapper {
 	// 장바구니에 담기 누를 시 장바구니에 제품 정보 보내기
 		public int cartInsert(CartDTO cart);
 
-		public List<ReviewDTO> reviewList(Criteria cri);
-		public int reviewTotal(Criteria cri);
+		public List<ReviewDTO> reviewList(Criteria cri,String productId);
+		public int reviewTotal(Criteria cri,String productId);
 		
 		public List<InventoryDTO> inventory(InventoryDTO inventory);
 
@@ -32,6 +32,5 @@ public interface DetailMapper {
 		public List<ColorSize> size(String productId,String productColor);
 		
 		public InventoryDTO inventoryIdGet(String productId, String productColor,String productSize);
-//		public InventoryDTO inventoryIdGet(InventoryDTO dto);
 		public CartDTO cartIdGet(String memberId);
 }

@@ -67,8 +67,6 @@
 </div>       
 <!-- End Content -->
 
-
-
 <script>
 	const csrfToken = '${_csrf.token}';
 </script>

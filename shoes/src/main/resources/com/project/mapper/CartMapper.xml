@@ -4,8 +4,8 @@
 		
       <!-- 장바구니 추가 -->
 	  <insert id="addCart">
-		insert into carts(memberId, productId, cartAmount, inventoryId)
-		values(#{memberId}, #{productId}, #{cartAmount}, #{inventoryId}) 
+		insert into carts(cart_id, member_id, product_id, cart_amount, inventory_id)
+		values(carts_seq.nextval, #{memberId}, #{productId}, #{cartAmount}, #{inventoryId}) 
 	  </insert>
 	  
 	  <!-- 장바구니 삭제 -->
