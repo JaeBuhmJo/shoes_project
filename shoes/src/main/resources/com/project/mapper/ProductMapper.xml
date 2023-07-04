@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.ProductMapper">
 
+
  	<select id="getOnSaleList" resultType="com.project.domain.ProductDTO">
  		select p.product_id, p.product_name, p.price, p.colors, p.registered_date, p.sold_count, p.rnum, at.filePath,
  			   re.rating, re.reviewCount
@@ -12,12 +13,17 @@
 		      <when test="order== 'sold-count-desc'">sold_count desc</when>
 		      <when test="order== 'price-desc'">price desc</when>
 		      <when test="order== 'price-asc'">price asc</when>
-		      <when test="order== 'rating-desc'">re.rating desc</when>
 		      <otherwise></otherwise>
 		    </choose>
 		) rnum
 	    from products
-	    where on_sale = 1 and discontinued = 0
+	    where on_sale = 1 and discontinued = 0 
+	    	<if test="keyword!= ''">
+	    		and (product_name like '%'||#{keyword}||'%' or brand like '%'||#{keyword}||'%' or category like '%'||#{keyword}||'%')
+	    	</if>
+	    	<if test="innerKeyword!= ''">
+	    		and (product_name like '%'||#{innerKeyword}||'%' or brand like '%'||#{innerKeyword}||'%' or category like '%'||#{innerKeyword}||'%')
+	    	</if>
 		    <choose>
 		      <when test="gender== 'for-men'">and for_men=1 </when>
 		      <when test="gender== 'for-women'">and for_women=1 </when>
@@ -51,11 +57,10 @@
 		      <when test="order== 'sold-count-desc'">sold_count desc</when>
 		      <when test="order== 'price-desc'">price desc</when>
 		      <when test="order== 'price-asc'">price asc</when>
-		      <when test="order== 'rating-desc'">re.rating desc</when>
 		      <otherwise></otherwise>
 		   </choose>
 	</select>
-	
+	 
 	<select id="getOnSaleCount">
 		select count(*) from products where on_sale = 1 and discontinued = 0
 			<choose>
@@ -84,7 +89,7 @@
 		      <when test="searchType == 'productName'"> and product_name like CONCAT('%',CONCAT(#{keyword},'%')) </when>
 		      <otherwise></otherwise>
 		    </choose>
-		order by registered_date desc
+		order by product_id desc
 	</select>
 	
 	<insert id="insertProduct">

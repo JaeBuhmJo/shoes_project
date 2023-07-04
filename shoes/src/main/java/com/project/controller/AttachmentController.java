@@ -6,7 +6,6 @@ import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -51,7 +50,7 @@ public class AttachmentController {
 		return list.isEmpty()? new ResponseEntity<List<AttachmentDTO>>(HttpStatus.INTERNAL_SERVER_ERROR):
 								new ResponseEntity<List<AttachmentDTO>>(list, HttpStatus.OK);
 	}
- 
+
 	@GetMapping("/file")
 	public ResponseEntity<byte[]> getAttachment(String fileName) {
 		File file = new File(uploadPath+fileName);

@@ -75,5 +75,7 @@
 	<input type="hidden" name="searchType" value="${productCri.searchType}" /> 
 	<input type="hidden" name="keyword" value="${productCri.searchType}" />
 </form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/js/admin.js"></script>
 <script src="/js/admin-product-list.js"></script>
 <%@ include file="../../include/adminfooter.jsp" %>
