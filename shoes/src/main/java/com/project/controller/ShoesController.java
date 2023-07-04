@@ -86,7 +86,8 @@ public class ShoesController {
 	
 	@PutMapping("/get/{reviewId}")
 	@PreAuthorize("principal.username == #dto.memberId")
-	public ResponseEntity<String> updateReview(@RequestBody ReviewDTO dto,@PathVariable("reviewId") int reviewId){
+	public ResponseEntity<String> updateReview(@RequestBody ReviewDTO dto){
+		log.info("review 수정");
 		return customerService.updateReview(dto)?
 				new ResponseEntity<String>("success",HttpStatus.OK):
 					new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -38,21 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   averageRatingElement.innerHTML = displayRating(averageRating.toFixed(1)); // 소수점 1자리까지 나타냅니다.
 });
 
-// 페이지 넘어가는 기능
-
-// const pagination = document.querySelector(".pagination");
-// const operForm = document.querySelector("#operForm");
-
-// pagination.addEventListener("click", (e) => {
-//   e.preventDefault();
-
-//   let href = e.target.getAttribute("href");
-
-//   operForm.firstElementChild.value = href;
-
-//   operForm.submit();
-// });
-
 const shoesForm = document.querySelector("#shoesForm");
 
 shoesForm.addEventListener("submit", (e) => {

@@ -144,7 +144,8 @@ document.querySelector("#reviews-list").addEventListener("click", (e) => {
       })
       .catch((error) => console.log(error));
   } else {
-    const contents = document.querySelector("#contents").value;
+    const reviewId = e.target.closest("div").dataset.rid;
+
     fetch("/shoes/get/" + reviewId)
       .then((response) => {
         if (!response.ok) {
@@ -167,9 +168,10 @@ function showModal(data) {
   if (exampleModal) {
     exampleModal.addEventListener("show.bs.modal", (event) => {
       // Update the modal's content.
-      const contents = exampleModal.querySelector(".modal-body input");
+      const modalBodyInput = exampleModal.querySelector(".modal-body input");
 
       modalBodyInput.value = data.contents;
+
       const memberId = data.memberId;
       const reviewId = data.reviewId;
     });
@@ -178,17 +180,17 @@ function showModal(data) {
       .addEventListener("click", (e) => {
         e.preventDefault();
 
-        const contents = document.querySelector("#contents").value;
+        const contents = document.querySelector(".modal-body input").value;
         const memberId = data.memberId;
         const reviewId = data.reviewId;
-        fetch("/shoes/get/" + reviewId, {
+        fetch("/shoes/detail?productId=" + productId, {
           headers: {
             "X-CSRF-TOKEN": csrfToken,
             "Content-Type": "application/json",
           },
           method: "put",
           body: JSON.stringify({
-            memberId: memberId,
+            //            memberId: memberId,
             contents: contents,
             reviewId: reviewId,
           }),
