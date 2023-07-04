@@ -141,10 +141,9 @@
 																	
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
-								<div class="col d-grid">
-									<button type="button" class="btn btn-success btn-lg"
-									  onclick="location.href='/customer/question?productId=${product.productId}'">문의 하기</button>
-								</div>
+							
+							
+							
 								<div class="col d-grid">
 									<button type="submit" class="btn btn-success btn-lg" id="goCart"value="addtocard">Add To Cart</button>
 								</div>
