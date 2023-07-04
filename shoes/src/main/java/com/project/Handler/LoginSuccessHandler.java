@@ -22,15 +22,15 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		
+			
+			
 			// 로그인 사용자의 권한 확인
-			// ROLE_ADMIN 이라면 ADMINPAGE 이동, ROLE_USER 라면 INDEX 이동		
-			
-			
 			CustomUser user = (CustomUser)authentication.getPrincipal();
 			MemberDTO memberDTO = user.getMemberDTO();
 			System.out.println("user "+memberDTO.getAuthority());
 			
 			
+			// ROLE_ADMIN 이라면 ADMINPAGE 이동, ROLE_USER 라면 INDEX 이동		
 			if (memberDTO.getAuthority().contains("ROLE_ADMIN")) {
 				response.sendRedirect("/admin/index");					
 				return;

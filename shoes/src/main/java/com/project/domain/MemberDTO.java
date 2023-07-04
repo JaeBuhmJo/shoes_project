@@ -24,7 +24,7 @@ public class MemberDTO {
 	private int footSize;
 	private Date registerDate;	
 	
-	public boolean passwordEquals() {
+	public boolean passwordEquals() { // 새로운 비밀번호와 확인 비밀번호가 일치하는지 확인하는 메소드
 		return newPassword.equals(confirmPassword);
 	}
 

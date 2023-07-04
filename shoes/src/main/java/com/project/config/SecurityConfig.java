@@ -41,18 +41,18 @@ public class SecurityConfig {
 	}
 	
 	@Bean
-	public AuthenticationSuccessHandler loginSuccessHandler() {
+	public AuthenticationSuccessHandler loginSuccessHandler() { // 로그인 성공 했을 때 LoginSuccessHandler 객체 생성
 		return new LoginSuccessHandler();
 	}
 	
 	@Bean
 	public UserDetailsService customUsersService() {
-		return new CustomUserDetailService();
+		return new CustomUserDetailService(); // new CustomUserDetailService() 객체 생성
 	}
 	
 	 // security-context 시큐리티설정
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(customUsersService()).passwordEncoder(passwordEncoder());
+		auth.userDetailsService(customUsersService()).passwordEncoder(passwordEncoder()); // 비밀번호 암호화
 	}
 	
 	@Bean
