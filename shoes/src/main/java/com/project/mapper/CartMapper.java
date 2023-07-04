@@ -25,7 +25,7 @@ public interface CartMapper {
 	public int addCart(CartDTO cart) throws Exception; // add/cart 에서 발생한 예외 던져주기 위해 throws..씀
 	
 	// 장바구니 삭제
-	public int deleteCart(int cartId);
+	public int deleteCart(String memberId);
 	
 	// 장바구니 수량 수정
 	public int modifyamount(CartDTO cart);
@@ -35,5 +35,7 @@ public interface CartMapper {
 	
 	// 장바구니 확인
 	public CartDTO checkCart(CartDTO cart);
+	
+	public CartDTO getCartTotal(String memberId);
 
 }

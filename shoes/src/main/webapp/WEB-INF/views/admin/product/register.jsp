@@ -8,7 +8,7 @@
      <form action="" method="post" id="registerForm">
      <hr/>
         <div class="mb-3 row">
-		<label for="listGroup1" class="col-sm-2"><b>카테고리</b></label>
+		<label for="listGroup1" class="col-sm-2"><b>카테고리</b></label>  
 			<div class="col-sm-2">
 		        <ul class="list-group" id="listGroup1" >
 				  <li class="list-group-item ">
@@ -138,7 +138,7 @@
 		  <input type="file" class="form-control" id="attachment" name="attachment" multiple>
 		</div>
 		<hr> 
-		<b>대표 이미지 ▽</b>     
+		<b>이미지는 파일이름 오름차순으로 등록/노출됩니다</b>
 		   
 		<div class="row row-cols-1 row-cols-md-6 g-6 mb-3 attachmentResult">
 			  
@@ -155,6 +155,8 @@
 	const pageIsRead = false;
 	const csrfToken = '${_csrf.token}';
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/js/admin.js"></script>
 <script src="/js/color-size-tool.js"></script>
 <script src="/js/attachment.js"></script>
 <script src="/js/admin-product-register.js"></script>

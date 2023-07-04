@@ -27,27 +27,29 @@ public class CartDTO {
 	
 	private int cartAmount; // 담은 수량
 	
-	private int inventoryId; // 재고 코드
-	
 	private List<InventoryDTO> inventories;
 	private List<ProductDTO> products;
 	
-
+	private String inventoryId; // 재고 코드
 	// product
 	
-	private int productName; // 상품명
+	private String productName; // 상품명
 	
 	private int price; // 가격
 	
 	private int discountPrice; // 할인 가격
 	
-	private int detail; // 상품 상세정보
-	
+	private String detail; // 상품 상세정보
+	private String productColor;
+	private String productSize;
 	// 추가 할것
+	private int totalKind;
+	private int totalCount;
 	private int totalPrice;
-	
+	private String filePath;
 	// 상품 이미지
 	private List<AttachmentDTO> attachmentList;
+	private List<ProductImageDTO> imagelist;
 
 }
 

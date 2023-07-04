@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
@@ -16,4 +17,6 @@ public interface InventoryMapper {
 	public int closeInventory(String productId);
 	public int checkInventory(InventoryDTO inventoryDTO);
 	public List<ProductDTO> getTotalInventories(Criteria cri);
+	public int decreaseInventory(CartDTO cartDTO);
+	public int getInventoryAmount(String inventoryId);
 }

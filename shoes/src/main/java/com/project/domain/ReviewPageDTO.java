@@ -1,43 +1,19 @@
 package com.project.domain;
 
+import java.util.List;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class ReviewPageDTO {
-	private int startPage;
-	private int endPage;
-	
-	private boolean prev;
-	private boolean next;
-	
 	private int total;
-	
-	private Criteria cri;
-	
-
-	public ReviewPageDTO(Criteria cri, int total) {
-		
-		this.total = total;
-		this.cri = cri;
-		this.endPage=(int)(Math.ceil(cri.getPage()/10.0))*5;
-		this.startPage=this.endPage-4;
-		
-		int realEnd =(int)((Math.ceil(total)/1.0)/cri.getListAmount());
-		if(realEnd < this.endPage) {
-			this.endPage=realEnd;
-		}
-		this.prev = this.startPage>1;
-		this.next = this.endPage < realEnd;
-	}
-
-
-	
-
-
-		
-	
+	private List<ReviewDTO> list;	
 }

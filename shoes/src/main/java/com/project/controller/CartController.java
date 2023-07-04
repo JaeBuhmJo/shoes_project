@@ -1,96 +1,50 @@
 package com.project.controller;
 
+import java.security.Principal;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.domain.AttachmentDTO;
 import com.project.domain.CartDTO;
-import com.project.domain.MemberDTO;
-import com.project.service.CartService;
+import com.project.service.AttachmentService;
+import com.project.service.CartServiceImpl;
 
-@RequestMapping("/cart")
 @Controller
+@RequestMapping("/cart")
 public class CartController {
-	
-	
-	
+
 	@Autowired
-	private CartService cartService;
-	
-	// 장바구니 추가 기능
-	
-	// (1)등록실패
-	// (2)등록성공
-	// (3)등록된 데이터 존재
-	// (4)로그인필요
-	
-	/*
-	 * @PostMapping("/cart/add")
-	 * 
-	 * @ResponseBody public String addCartPost(CartDTO cart, HttpServletRequest
-	 * request) { // 먼저 로그인 여부를 체크하고 로그인되지 않았을 경우 5를 반환하도록 코드를 추가 HttpSession
-	 * session = request.getSession(); MemberDTO memberDto =
-	 * (MemberDTO)session.getAttribute("member"); if(memberDto == null) { return
-	 * "5"; } // 장바구니 등록 int result = cartService.addCart(cart); return result + "";
-	 * 
-	 * }
-	 */
-	
-	    // 장바구니 페이지를 조회하는 메소드
-        @GetMapping("/cart/{memberId}")
-        public String getCartList(@PathVariable String memberId, Model model) {
-        // 장바구니 목록 조회 로직
-        List<CartDTO> cartList = cartService.getCartList(memberId);
-        
-        // 모델에 장바구니 목록 추가
-        model.addAttribute("cartList", cartList);
-        
-        // 뷰 페이지 반환
-        return "/cart";
-    }
-	
-     // 장바구니 페이지 이동
+	private CartServiceImpl cartServiceImpl;
+	@Autowired
+	private AttachmentService attachmentService;
 
-     @GetMapping("/cart")
-     public String cartPageGet(HttpServletRequest request,String cart) {
-    	 System.out.println(request.getSession().getAttribute("member"));
-    	 
-      return "/cart";
-      
-     }
-    	 
-     // 장바구니 담은 수량 수정
-    	 
-     @PostMapping("/cart/update") 	 
-     public String updateCartPost(CartDTO cart) {
-    	 cartService.modifyamount(cart);
-    	 return "redirect:/cart/" + cart.getMemberId();
-     }
-     
-     // 장바구니 삭제
-     @PostMapping("/cart/delete")
-     public String deleteCartPost(CartDTO cart) {
-    	 cartService.deleteCart(cart.getCartId());
-    	 return "redirect:/cart/";
-     }
-     
-     // 결제페이지 이동
-
-     @GetMapping("/order")
-     public String orderPageGet(HttpServletRequest request,String cart) {
-    	 System.out.println(request.getSession().getAttribute("member"));
-    	 
-      return "/order";
-     }
- }
-
+	// 장바구니 페이지 이동
+	@GetMapping("/")
+	@PreAuthorize("isAuthenticated()")
+	public void cartPageGet(Principal principal, Model model) {
+		String memberId = principal.getName();
+		List<CartDTO> cartList = cartServiceImpl.getCartList(memberId);
+		CartDTO cartTotal = cartServiceImpl.getCartTotal(memberId);
+		
+		for (CartDTO cartDTO : cartList) {
+			List<AttachmentDTO> attachmentDTOs = attachmentService.getAttachmentList(cartDTO.getProductId());
+			AttachmentDTO attachmentDTO = attachmentDTOs.get(0);
+			StringBuffer sb = new StringBuffer();
+			sb.append(attachmentDTO.getUploadPath());
+			sb.append("/");
+			sb.append("thumb_");
+			sb.append(attachmentDTO.getUuid());
+			sb.append("_");
+			sb.append(attachmentDTO.getFileName());
+			cartDTO.setFilePath(sb.toString().replace("\\", "/"));
+		}
+		model.addAttribute("cartTotal", cartTotal);
+		model.addAttribute("cartList", cartList);
+	}
+}

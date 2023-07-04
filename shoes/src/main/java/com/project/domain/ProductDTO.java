@@ -25,7 +25,7 @@ public class ProductDTO {
 	private boolean forMen;
 	private boolean forWomen;
 	private String colors;
-	private int rating;
+	private float rating;
 	private int reviewCount;
 	private boolean discontinued;
 	

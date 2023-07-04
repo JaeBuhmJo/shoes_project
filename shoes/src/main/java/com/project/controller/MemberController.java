@@ -157,7 +157,7 @@ public class MemberController {
 	public void changePasswordGet() {
 		log.info("비밀번호 찾기 페이지 요청");
 	}
-	
+
 	@PostMapping("/findPassword")
 	public String changePasswordPost(MemberDTO memberDTO,Model model) {
 		log.info("정보요청 "+memberDTO);

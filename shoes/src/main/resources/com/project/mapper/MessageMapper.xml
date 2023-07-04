@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.MessageMapper">
+
+	<insert id="insertMessage">
+		insert into messages(message_id, chatroom_id, member_id, message_type, content, timestamp)
+		values(messages_seq.nextval,#{chatRoomId},#{memberId},#{messageType},#{content},sysdate)
+	</insert>
+	
+	<select id="selectMessages" resultType="com.project.domain.MessageDTO">
+		select * from messages where chatroom_id = #{chatRoomId}
+	</select>
+	
+</mapper>

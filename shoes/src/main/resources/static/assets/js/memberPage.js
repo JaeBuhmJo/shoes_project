@@ -9,16 +9,18 @@ const pagination = document.querySelector(".pagination");
 const operForm = document.querySelector("#operForm");
 
 pagination.addEventListener("click", (e) => {
-  e.preventDefault();
+  if (e.target.tagName === "A") {
+    e.preventDefault();
 
-  //href 값 가져오기
-  let href = e.target.getAttribute("href");
+    //href 값 가져오기
+    let href = e.target.getAttribute("href");
 
-  //operForm 안의 page value 수정
-  operForm.firstElementChild.value = href;
-  console.log(operForm);
+    //operForm 안의 page value 수정
+    operForm.firstElementChild.value = href;
+    console.log(operForm);
 
-  operForm.submit();
+    operForm.submit();
+  }
 });
 
 // 상단의 amount 수정 시 operForm의 amount 요소의 value 값으로 세팅
@@ -58,5 +60,3 @@ searchForm.addEventListener("submit", (e) => {
 
   searchForm.submit();
 });
-
-    

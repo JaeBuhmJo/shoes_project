@@ -50,7 +50,7 @@ public class AttachmentController {
 		return list.isEmpty()? new ResponseEntity<List<AttachmentDTO>>(HttpStatus.INTERNAL_SERVER_ERROR):
 								new ResponseEntity<List<AttachmentDTO>>(list, HttpStatus.OK);
 	}
- 
+
 	@GetMapping("/file")
 	public ResponseEntity<byte[]> getAttachment(String fileName) {
 		File file = new File(uploadPath+fileName);
@@ -97,7 +97,8 @@ public class AttachmentController {
 				int width = origin.getWidth() / ratio;
 				int height = origin.getHeight() / ratio;
 				File thumbnail = new File(uploadFullPath, "thumb_" + fileName);
-				Thumbnails.of(origin).size(width, height).toFile(thumbnail);
+				Thumbnails.of(origin).size(width, height).toFile(thumbnail);				
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

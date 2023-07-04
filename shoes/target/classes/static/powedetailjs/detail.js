@@ -1,80 +1,90 @@
-const detailForm = document.getElementById("detailForm");
+function displayRating(rating) {
+  let stars = "";
 
-detailForm.addEventListener("submit", (e) => {
+  const fullstars = Math.floor(rating);
+
+  for (let i = 1; i <= 5; i++) {
+    if (i <= fullstars) {
+      stars += "<i class='fas fa-star'></i>";
+    } else {
+      stars += "<i class='far fa-star'></i>";
+    }
+  }
+  return stars;
+}
+
+function calculateAverageRating(ratingsArray) {
+  if (ratingsArray.length === 0) {
+    return "";
+  }
+  const sumRating = ratingsArray.reduce((acc, curr) => acc + curr, 0);
+  return sumRating / ratingsArray.length;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 각 리뷰의 별점을 맞게 채우기
+  const ratings = [];
+  document.querySelectorAll(".rating").forEach((ratingElement) => {
+    const jumsu = parseInt(ratingElement.getAttribute("data-jumsu"), 10);
+    ratings.push(jumsu);
+    ratingElement.innerHTML = displayRating(jumsu);
+  });
+
+  // 평균 점수 계산
+  const averageRating = parseFloat(calculateAverageRating(ratings));
+
+  // 평균 별점 표시
+  const averageRatingElement = document.getElementById("averageRating");
+  console.log(averageRating);
+  averageRatingElement.innerHTML = displayRating(averageRating.toFixed(1)); // 소수점 1자리까지 나타냅니다.
+});
+
+const shoesForm = document.querySelector("#shoesForm");
+shoesForm.addEventListener("submit", (e) => {
   e.preventDefault();
   //선택한 사이즈 가져오기
-  var sizeSelect = document.getElementById("productSize");
-  var selectedSize = sizeSelect.value;
-
-  if ((selectedSize.value = "")) {
-    alert("사이즈를 선택해주세요");
-  }
-
-  //수량 가져오기
-  var amountInput = document.getElementById("cartAmount");
-  var selectedAmount = amountInput.value;
-
-  if (isNaN.selectedAmount) {
-    alert("숫자만 입력해주세요");
+  var size = document.getElementById("productSize").value;
+  var color = document.getElementById("productColor").value;
+  if (size.value === "" || color.value === "") {
+    alert("사이즈와 색상을 선택해주세요");
     return;
   }
 
-  const category = document.querySelector("#category").innerHTML;
-  const price = document.querySelector("#price").innerHTML;
-  const brand = document.querySelector("#brand").innerHTML;
-  //선택한 정보 출력
-  console.log("Category : " + category);
-  console.log("Price: " + price);
-  console.log("Brand: " + brand);
-  console.log("selected Size: " + selectedSize);
-  console.log("selected Amount: " + selectedAmount);
+  //수량 가져오기
+  var amount = document.getElementById("cartAmount").value;
+
+  if (amount === "" || isNaN(amount)) {
+    alert("수량을 입력해 주세요", "숫자만 입력해 주세요");
+    return;
+  }
+
+  const memberId = document.querySelector("#memberId").value;
+  const inventoryId = document.querySelector("#inventoryId").value;
 
   // 폼 submit
-  //  detailForm.submit();
-  //사이즈랑 가격,브랜드,카테고리 보내기
-  fetch("/member/cart", {
+  //사이즈랑 가격,브랜드 보내기
+  fetch("/customer/cart", {
     method: "post",
-    body: JSON.stringify({
-      size: selectedSize,
-      amount: selectedAmount,
-      category: category,
-      price: price,
-      brand: brand,
-    }),
     headers: {
       "X-CSRF-TOKEN": csrfToken,
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      //db에 넘어가는 값들을 넘겨주기
+      cartAmount: amount,
+      productId,
+      memberId: memberId,
+      inventoryId: inventoryId,
+    }),
   })
     .then((response) => {
-      if (!response.ok) {
+      if (response.ok) {
+        window.location, (href = "/shoes/detail");
+        alert("선택하신 상품을 카트에 담았습니다.");
+      } else {
         throw new Error("카트에 전송 실패");
       }
-      return response.json();
     })
-    .then((data) => {
-      console.log(data);
-      detailForm.submit();
-    })
+
     .catch((error) => console.log(error));
 });
-
-{
-  /* <ul class="list-inline pb-3" id="detailsize">
-										<li class="list-inline-item">Size : </li>
-										<select class="form-select" aria-label="" name="productSize" id="productSize">
-										  <option selected>사이즈 선택</option>
-										  <option value="200">200</option>
-										  <option value="210">210</option>
-										  <option value="220">220</option>
-										  <option value="230">230</option>
-										  <option value="240">240</option>
-										  <option value="250">250</option>
-										  <option value="260">260</option>
-										  <option value="270">270</option>
-										  <option value="280">280</option>
-										</select>										
-									<input class="form-control me-2" id="cartAmount" name="cartAmount" 
-									type="search" placeholder="수량 입력" aria-label="Search">																
-							</ul> */
-}

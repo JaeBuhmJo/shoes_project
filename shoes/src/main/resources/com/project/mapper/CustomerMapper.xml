@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.CustomerMapper">
+
+	
+	<insert id="reviewInsert">
+		insert into reviews (review_id,regdate,contents, product_id,member_id,jumsu)
+		 VALUES (reviews_seq.nextval, sysdate ,#{contents},#{productId},#{memberId},#{jumsu})
+	</insert>
+	
+	<delete id="deleteRid">
+		delete from reviews where review_id=#{reviewId}
+	</delete>
+
+	<update id="updateReview">
+		update reviews set regdate=sysdate,contents=#{contents} where review_id=#{reviewId}
+	</update>
+	
+	<select id="reviewGet" resultType="com.project.domain.ReviewDTO">
+	
+		select * from reviews where review_id = #{reviewId}
+	</select>
+
+</mapper>

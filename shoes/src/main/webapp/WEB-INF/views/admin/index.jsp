@@ -15,7 +15,7 @@
 			<!-- cards start -->
 			<div class="row">
 				<div class="col-xl-3 col-md-6">
-					<div class="card border-primary mb-4" style="max-width: 20rem;">
+					<div class="card border-primary mb-4 statistics">
 						<div class="card-header text-bg-primary">상품 관리</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between">
@@ -28,15 +28,31 @@
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-6">
-					<div class="card border-warning mb-4" style="max-width: 20rem;">
+					<div class="card border-success mb-4 statistics">
+						<div class="card-header text-bg-success">당일 판매 통계</div>
+						<div class="card-body ">
+							<div class="d-flex justify-content-between">
+								<span>주문 수량 : </span> <span id="todayPurchaseAmount"></span>
+							</div>
+							<div class="d-flex justify-content-between">
+								<span>주문액 : </span> <span id="todaySalesAmount"></span>
+							</div>  
+							<div class="d-flex justify-content-between">
+								<span>주문 고객 수 : </span> <span id="todayCustomerCount"></span>
+							</div>
+						</div>  
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6">
+					<div class="card border-warning mb-4 statistics">
 						<div class="card-header text-bg-warning">전일 판매 통계</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between">
-								<span>주문건수 : </span> <span id="dayPurchaseCount"></span>
+								<span>주문 수량 : </span> <span id="dayPurchaseAmount"></span>
 							</div>
 							<div class="d-flex justify-content-between">
 								<span>주문액 : </span> <span id="daySalesAmount"></span>
-							</div>
+							</div>  
 							<div class="d-flex justify-content-between">
 								<span>주문 고객 수 : </span> <span id="dayCustomerCount"></span>
 							</div>
@@ -44,17 +60,7 @@
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-6">
-					<div class="card border-success mb-4" style="max-width: 20rem;">
-						<div class="card-header text-bg-success">고객 센터</div>
-						<div class="card-body">
-							<div class="d-flex justify-content-between">
-								<span>답변 미등록 문의 : </span> <span id="notAnsweredCount"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-3 col-md-6">
-					<div class="card border-info mb-4" style="max-width: 20rem;">
+					<div class="card border-info mb-4 statistics">
 						<div class="card-header  text-bg-info">회원 통계</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between">
@@ -71,7 +77,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>     
 			</div>
 			<!-- cards end -->
 			<hr class="mt-4 mb-5" />
@@ -103,12 +109,12 @@
 		</div>  
 	</main>
 	<!-- dashboard end --> 
-
-	<script src="/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 		crossorigin="anonymous"></script>
 	<script src="/js/dashboard-statistics.js"></script>
 	<script src="/js/dashboard-chart.js"></script>
+	<script src="/js/admin.js"></script>
 
 	<%@ include file="../include/adminfooter.jsp"%>

@@ -18,13 +18,17 @@ public interface DetailService {
 	// 상품 상제 정보 페이지에서 cart에 데이터 보내기
 	public boolean cartInsert(CartDTO cart);
 	
-	public List<ReviewDTO> reviewList(Criteria cri);
-	public int reviewTotal(Criteria cri);
+	// 리뷰 페이지 나누기
+	public List<ReviewDTO> reviewList(Criteria cri,String productId);
+	public int reviewTotal(Criteria cri,String productId);
 	
 	public List<InventoryDTO> inventory(InventoryDTO inventory);
 	
 	public List<ColorSize> color(String productId);
 	public List<ColorSize> size(String productId,String productColor);
 
+	public InventoryDTO inventoryIdGet(String productId, String productColor,String productSize);
+	public CartDTO cartIdGet(String memberId);
+	
 }
 

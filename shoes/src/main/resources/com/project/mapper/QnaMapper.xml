@@ -25,7 +25,7 @@
 		from qnas where qna_id=#{qnaId}
 	</select>
 	
-		<insert id="qnaInsert">
+	<insert id="qnaInsert">
 		<selectKey keyProperty="qnaId" order="BEFORE" resultType="int">
 			select qnas_seq.nextval from dual
 		</selectKey>

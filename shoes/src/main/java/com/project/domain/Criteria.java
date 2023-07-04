@@ -10,6 +10,7 @@ public class Criteria {
 	private int listAmount;
 	private String searchType;
 	private String keyword;
+	private String innerKeyword;
 	private String order;
 	private String category;
 	private String gender;

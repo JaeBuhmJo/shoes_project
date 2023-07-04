@@ -6,9 +6,12 @@
 	select
 		(select nvl(count(product_id),0) from products where on_sale = 1 and discontinued = 0) as onSaleProductsCount,
 		(select nvl(count(product_id),0) from products where on_sale = 0 and discontinued = 0) as offSaleProductsCount,
+		(select nvl(sum(purchase_amount),0) from purchases where trunc(purchase_date) = trunc(sysdate-1)) as dayPurchaseAmount,
 		(select nvl(sum(pu.purchase_amount*pr.price),0) from purchases pu join products pr on pu.product_id = pr.product_id where trunc(pu.purchase_date) = trunc(sysdate-1)) as daySalesAmount,
 		(select nvl(count(distinct member_id),0) from purchases where trunc(purchase_date) = trunc(sysdate-1)) as dayCustomerCount,
-		(select nvl(count(*),0) from qnas where answer is null) as notAnsweredCount,
+		(select nvl(sum(purchase_amount),0) from purchases where trunc(purchase_date) = trunc(sysdate)) as todayPurchaseAmount,
+		(select nvl(sum(pu.purchase_amount*pr.price),0) from purchases pu join products pr on pu.product_id = pr.product_id where trunc(pu.purchase_date) = trunc(sysdate)) as todaySalesAmount,
+		(select nvl(count(distinct member_id),0) from purchases where trunc(purchase_date) = trunc(sysdate)) as todayCustomerCount,
 		(select nvl(count(member_id),0) from members) as totalMemberCount,
 		(select nvl(count(client_ip_address),0) from visit_counter where trunc(visit_date) = trunc(sysdate)) as todayVisitCount,
 		(select nvl(count(client_ip_address),0) from visit_counter where trunc(visit_date) = trunc(sysdate-1)) as dailyVisitCount,
@@ -21,13 +24,13 @@
 			select nvl(sum(pu.purchase_amount * pr.price), 0) as salesAmount, 
 			       d.dt as salesDate
 			from (
-				  select to_date(to_char(trunc(sysdate - level), 'YYYY-MM-DD')) as dt
+				  select to_date(to_char(trunc(sysdate - level + 1), 'YYYY-MM-DD')) as dt
 				  from dual
 				  connect by level <= 7
 			     ) d
 			left outer join purchases pu on trunc(pu.purchase_date) = d.dt
 			left outer join products pr ON pu.product_id = pr.product_id
-			where d.dt between trunc(sysdate - 7) and trunc(sysdate - 1)
+			where d.dt between trunc(sysdate - 6) and trunc(sysdate)
 			group by d.dt
 			order by d.dt
 		]]>
@@ -39,8 +42,9 @@
 			  select row_number() over (order by sum(pu.purchase_amount * pr.price) DESC) as row_num, 
 			  		 pr.product_id, pr.product_name, SUM(pu.purchase_amount * pr.price) as product_sales_amount
 			  from purchases pu join products pr on pu.product_id = pr.product_id
-			  where trunc(pu.purchase_date) between trunc(sysdate - 7) and trunc(sysdate - 1)
+			  where trunc(pu.purchase_date) between trunc(sysdate - 6) and trunc(sysdate)
 			  group by pr.product_id, pr.product_name
+			  order by product_sales_amount desc
 			)
 			select product_id, product_name, product_sales_amount
 			from top_products

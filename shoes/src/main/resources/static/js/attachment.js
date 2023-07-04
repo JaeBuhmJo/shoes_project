@@ -56,12 +56,22 @@ function showAttachments(attachmentList) {
   let str = "";
   attachmentList.forEach((item, idx) => {
     let fileCallPath = encodeURIComponent(item.uploadPath + "\\thumb_" + item.uuid + "_" + item.fileName);
-    str += '<div class="col cards" data-path="' + item.uploadPath + '" data-uuid="' + item.uuid + '" data-filename="' + item.fileName + '">';
+    str +=
+      '<div class="col cards" data-path="' +
+      item.uploadPath +
+      '" data-uuid="' +
+      item.uuid +
+      '" data-filename="' +
+      item.fileName +
+      '">';
     str += '<div class="card col" style="width: 10rem;">';
     str += '<img src="/attachment/file?fileName=' + fileCallPath + '" class="card-img-top">';
     str += '<div class="card-body">';
     str += '<p class="card-text">' + item.fileName + "</p>";
-    str += '<button type="button" class="btn btn-sm btn-circle btn-outline-danger delete-button" data-file="' + fileCallPath + '"data-type="file"><i class="fa-solid fa-xmark"></i></button>';
+    str +=
+      '<button type="button" class="btn btn-sm btn-circle btn-secondary delete-button" data-file="' +
+      fileCallPath +
+      '"data-type="file"><i class="fa-solid fa-xmark"></i></button>';
     str += "</div>";
     str += "</div>";
     str += "</div>";

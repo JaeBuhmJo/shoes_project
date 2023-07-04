@@ -73,5 +73,7 @@
 			</table>
 		</div>
         </main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/js/admin.js"></script>
 <script src="/js/admin-inventory-list.js"></script>
 <%@ include file="../../include/adminfooter.jsp" %>

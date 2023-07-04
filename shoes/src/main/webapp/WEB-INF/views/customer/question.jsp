@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="mb-3" >
                         <label for="memberid">아이디</label>
-                        <input type="text" class="form-control mt-1" id="memberid" name="memberId">
+                        <input type="text" class="form-control mt-1" id="memberid" value="${review.memberId}" name="memberId">
                     </div>
                     <div class="mb-3">
                         <label for="title">title</label>
@@ -23,16 +23,19 @@
                 <div class="row">
                     <div class="col text-end mt-2">
                         <button type="submit" class="btn btn-success btn-lg px-3" id="qnaRegister" >등록</button>
-                        <button type="reset" class="btn btn-danger btn-lg px-3">취소</button>
+                        <button type="button" class="btn btn-danger btn-lg px-3">취소</button>
                     </div>
                 </div>
-                <!-- productId -->
-                <input type="hidden" name="productId"  value='<%=request.getParameter("productId")%>'/>
+                
+                
+                
+                
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                
             </form>
         </div>
     </div>
+
 <script>
 const csrfToken='${_csrf.token}';
 </script>

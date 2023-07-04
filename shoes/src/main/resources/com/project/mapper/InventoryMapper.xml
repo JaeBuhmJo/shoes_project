@@ -60,6 +60,10 @@
 		select count(*) from inventories where product_size = #{productSize} and product_id = #{productId}
 	</select>
 	
+	<select id="getInventoryAmount" resultType="Integer">
+		select quantity from inventories where inventory_id = #{inventoryId}
+	</select>
+	
 	<update id="updateInventory">
 	    <foreach collection="list" item="inventory" separator=";" open="DECLARE BEGIN" close="; END;">
           update inventories
@@ -71,4 +75,8 @@
 	<delete id="closeInventory">
 		update inventories set quantity=0, discontinued = 1 where product_id = #{productId} 
 	</delete>
+	
+	<update id="decreaseInventory">
+		update inventories set quantity = quantity-#{cartAmount} where inventory_id = #{inventoryId}
+	</update>
 </mapper>

@@ -34,14 +34,14 @@ public class DetailServiceImpl implements DetailService {
 		return detailMapper.cartInsert(cart)==1?true:false;
 	}
 	@Override
-	public List<ReviewDTO> reviewList(Criteria cri) {
+	public List<ReviewDTO> reviewList(Criteria cri,String productId) {
 
-		return detailMapper.reviewList(cri);
+		return detailMapper.reviewList(cri,productId);
 	}
 	@Override
-	public int reviewTotal(Criteria cri) {
+	public int reviewTotal(Criteria cri,String productId) {
 		
-		return detailMapper.reviewTotal(cri);
+		return detailMapper.reviewTotal(cri,productId);
 	}
 	@Override
 	public List<InventoryDTO> inventory(InventoryDTO inventory) {
@@ -57,5 +57,14 @@ public class DetailServiceImpl implements DetailService {
 		return detailMapper.size(productId,productColor);
 	}
 	
+	@Override
+	public CartDTO cartIdGet(String memberId) {
+		return detailMapper.cartIdGet(memberId);
+	}
+	@Override
+	public InventoryDTO inventoryIdGet(String productId, String productColor,String productSize) {
+		
+		return detailMapper.inventoryIdGet(productId,productColor,productSize);
+	}
 	
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.project.domain.Criteria;
 import com.project.domain.ListPageDTO;
 import com.project.domain.ProductDTO;
+import com.project.mapper.AttachmentMapper;
 import com.project.mapper.ProductMapper;
 
 @Service
@@ -21,10 +22,7 @@ public class ProductServiceImpl implements ProductService {
 	public ListPageDTO getProductsList(Criteria cri) {
 		List<ProductDTO> list = productMapper.getOnSaleList(cri);
 		//리스트 순환하면서 별점이랑 리뷰개수 들고오기
-		for (ProductDTO productDTO : list) {
-		}
 		int productsCount = productMapper.getOnSaleCount(cri);
-		
 		return new ListPageDTO(productsCount, list);
 	}
 

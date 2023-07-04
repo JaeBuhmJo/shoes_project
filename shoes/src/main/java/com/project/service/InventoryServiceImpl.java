@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
@@ -59,5 +60,15 @@ public class InventoryServiceImpl implements InventoryService {
 	@Override
 	public List<ProductDTO> getAllInventories(Criteria cri) {
 		return inventoryMapper.getTotalInventories(cri);
+	}
+
+	@Override
+	public boolean decreaseInventory(CartDTO cartDTO) {
+		return inventoryMapper.decreaseInventory(cartDTO)==1?true:false;
+	}
+
+	@Override
+	public int getInventoryQuantity(String inventoryId) {
+		return inventoryMapper.getInventoryAmount(inventoryId);
 	}
 }
