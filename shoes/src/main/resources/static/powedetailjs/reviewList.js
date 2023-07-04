@@ -16,14 +16,20 @@ function showReviews(productId, page) {
       data.list.forEach((item) => {
         reviewHTML += "<div class='card my-3'>";
         reviewHTML += "<div class='card-header'>";
-        reviewHTML += "<div class='btn-group btn-group-sm' data-rid='" + item.reviewId + "'>";
-        reviewHTML += "<button type='button' class='btn btn-danger'>삭제</button>";
-        reviewHTML += "<button type='button' class='btn btn-warning'>수정</button>";
+        reviewHTML +=
+          "<div class='btn-group btn-group-sm' data-rid='" +
+          item.reviewId +
+          "'>";
+        reviewHTML +=
+          "<button type='button' class='btn btn-danger'>삭제</button>";
+        reviewHTML +=
+          "<button type='button' class='btn btn-warning'>수정</button>";
         reviewHTML += "</div>";
         reviewHTML += "<strong>" + item.memberId + "</strong>";
         reviewHTML += "</div>";
 
-        reviewHTML += '<div class="rating" data-jumsu=' + item.jumsu + "></div>";
+        reviewHTML +=
+          '<div class="rating" data-jumsu=' + item.jumsu + "></div>";
         reviewHTML += "<div class='card-body'>";
 
         reviewHTML += "<p class='card-text'>" + item.contents + "</p>";
@@ -87,6 +93,8 @@ function reviewPage(total) {
     let disabled = page == i ? "disabled" : "";
     let active = page == i ? "active" : "";
     let textDark = page == i ? "text-dark" : "";
+    let backgroundColor = page == i ? "bg-info" : "";
+    let borderRadius = "rounded-pill";
     str +=
       '<li class="page-item' +
       disabled +
@@ -157,9 +165,15 @@ document.querySelector("#reviews-list").addEventListener("click", (e) => {
           const exampleModal = document.querySelector("#exampleModal");
           exampleModal.addEventListener("show.bs.modal", (event) => {
             // 모달 창에 내용 보여주기 요소 가져오기
-            const contents = exampleModal.querySelector(".modal-body #contents");
-            const memberId = exampleModal.querySelector(".modal-body #memberId");
-            const reviewId = exampleModal.querySelector(".modal-body #reviewId");
+            const contents = exampleModal.querySelector(
+              ".modal-body #contents"
+            );
+            const memberId = exampleModal.querySelector(
+              ".modal-body #memberId"
+            );
+            const reviewId = exampleModal.querySelector(
+              ".modal-body #reviewId"
+            );
             contents.value = data.contents;
             memberId.value = data.memberId;
             reviewId.value = data.reviewId;

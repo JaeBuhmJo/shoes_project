@@ -62,11 +62,13 @@ public class ShoesController {
 			rttr.addAttribute("page", cri.getPage());
 			rttr.addAttribute("amount", cri.getListAmount());
 			log.info("review write",review);
-			return "redirect:/member/memberdetail";
+			return "redirect:/member/memberPage?page=1&listAmount=10&searchType=&keyword=";
 		}
 		
 		return "redirect:/shoes/detail";
 	}
+	
+	
 	
 	
 	@PreAuthorize("principal.username == #dto.memberId")
@@ -78,7 +80,7 @@ public class ShoesController {
 					new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@GetMapping("/sale")
+	@GetMapping("/review")
 	public void saleGet() {
 		log.info("sale 화면");
 
@@ -146,9 +148,6 @@ public class ShoesController {
 			
 		  return new ResponseEntity<ReviewPageDTO>(pageDTO, HttpStatus.OK);
 	  }	  
-	  
-	  
-	  
 	  
 	  
 	  
