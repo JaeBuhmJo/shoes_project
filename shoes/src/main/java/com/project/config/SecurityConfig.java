@@ -76,12 +76,12 @@ public class SecurityConfig {
 		  				//.defaultSuccessUrl("/") // 로그인 성공 후 어디로 갈지 나타내는 코드
 						.failureUrl("/member/login-error"); // 로그인 실패 시 이동할 URL을 설정하는 역할
 		
-		http.logout()
-			.logoutSuccessUrl("/");
-	
-		http.rememberMe()
-			.tokenRepository(perTokenRepository())
-			.tokenValiditySeconds(604800);
+		http.logout() // 로그아웃 처리하는 곳
+			.logoutSuccessUrl("/"); // 로그아웃 성공했을 때 "/" 이동
+		
+		http.rememberMe() // 리멤버 미 
+			.tokenRepository(perTokenRepository()) // 사용자의 인증 토큰을 저장하고 검색하는 데 사용되는 Repository를 지정
+			.tokenValiditySeconds(604800); // 토큰 유효기간
 		
 		return http.getOrBuild();
 	}

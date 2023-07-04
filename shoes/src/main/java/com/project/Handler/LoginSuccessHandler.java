@@ -25,8 +25,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 			
 			
 			// 로그인 사용자의 권한 확인
-			CustomUser user = (CustomUser)authentication.getPrincipal();
-			MemberDTO memberDTO = user.getMemberDTO();
+			CustomUser user = (CustomUser)authentication.getPrincipal(); // 현재 인증된 사용자를 나타내는 Principal 객체를 반환합니다. 
+			MemberDTO memberDTO = user.getMemberDTO(); // user. 
 			System.out.println("user "+memberDTO.getAuthority());
 			
 			
