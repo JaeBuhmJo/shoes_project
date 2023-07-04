@@ -84,14 +84,9 @@ public class ShoesController {
 					new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@PutMapping("/get/{reviewId}")
-	@PreAuthorize("principal.username == #dto.memberId")
-	public ResponseEntity<String> updateReview(@RequestBody ReviewDTO dto){
-		log.info("review 수정");
-		return customerService.updateReview(dto)?
-				new ResponseEntity<String>("success",HttpStatus.OK):
-					new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+	
+	
+	
 	
 	
 	
@@ -146,6 +141,28 @@ public class ShoesController {
 			
 		  return new ResponseEntity<ReviewPageDTO>(pageDTO, HttpStatus.OK);
 	  }	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  @GetMapping("/review/{reviewId}")	
+	public ResponseEntity<ReviewDTO> getReview(@PathVariable String reviewId){
+		log.info("review 가져오기 "+ reviewId);
+		return  new ResponseEntity<ReviewDTO>(customerService.reviewGet(reviewId), HttpStatus.OK);
+	}
+	  
+	  
+	  
+	@PutMapping("/review/{reviewId}")
+//	@PreAuthorize("principal.username == #dto.memberId")
+	public ResponseEntity<String> updateReview(@RequestBody ReviewDTO dto){
+		log.info("review 수정 "+dto);
+		return customerService.updateReview(dto)?
+				new ResponseEntity<String>("success",HttpStatus.OK):
+					new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 	  
 	  
 	  

@@ -15,5 +15,10 @@
 	<update id="updateReview">
 		update reviews set regdate=sysdate,contents=#{contents} where review_id=#{reviewId}
 	</update>
+	
+	<select id="reviewGet" resultType="com.project.domain.ReviewDTO">
+	
+		select * from reviews where review_id = #{reviewId}
+	</select>
 
 </mapper>

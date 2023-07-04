@@ -80,6 +80,7 @@ shoesForm.addEventListener("submit", (e) => {
     .then((response) => {
       if (response.ok) {
         window.location, (href = "/shoes/detail");
+        alert("선택하신 상품을 카트에 담았습니다.");
       } else {
         throw new Error("카트에 전송 실패");
       }

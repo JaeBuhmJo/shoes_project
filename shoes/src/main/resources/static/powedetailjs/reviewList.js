@@ -21,9 +21,9 @@ function showReviews(productId, page) {
           item.reviewId +
           "'>";
         reviewHTML +=
-          "<button type='button' class='btn btn-danger' >삭제</button>";
+          "<button type='button' class='btn btn-danger'>삭제</button>";
         reviewHTML +=
-          "<button type='button' class='btn btn-info'  data-bs-toggle='modal' data-bs-target='#exampleModal'>수정</button>";
+          "<button type='button' class='btn btn-warning'>수정</button>";
         reviewHTML += "</div>";
         reviewHTML += "<strong>" + item.memberId + "</strong>";
         reviewHTML += "</div>";
@@ -120,6 +120,8 @@ document.querySelector("#reviews-list").addEventListener("click", (e) => {
   //버튼의 속해 있는 댓글 rid 가져오기
   const reviewId = e.target.closest("div").dataset.rid;
 
+  buttonclick();
+
   //삭제 or 수정인지 구분
   if (e.target.classList.contains("btn-danger")) {
     fetch("/shoes/" + reviewId, {
@@ -136,17 +138,20 @@ document.querySelector("#reviews-list").addEventListener("click", (e) => {
         if (!response.ok) {
           throw new Error("삭제 실패");
         }
-        return response.json();
+        return response.text();
       })
       .then((data) => {
         console.log(data);
+
+        if (data == "success") {
+          alert("삭제가 되었습니다.");
+        }
+
         showReviews(productId, page);
       })
       .catch((error) => console.log(error));
   } else {
-    const reviewId = e.target.closest("div").dataset.rid;
-
-    fetch("/shoes/get/" + reviewId)
+    fetch("/shoes/review/" + reviewId)
       .then((response) => {
         if (!response.ok) {
           throw new Error("수정 페이지 가기 실패");
@@ -156,64 +161,70 @@ document.querySelector("#reviews-list").addEventListener("click", (e) => {
       .then((data) => {
         console.log(data);
 
-        //수정폼에 보여주기
-        showModal(data);
+        if (data != null) {
+          exampleModal.addEventListener("show.bs.modal", (event) => {
+            // 모달 창에 내용 보여주기 요소 가져오기
+            const contents = exampleModal.querySelector(
+              ".modal-body #contents"
+            );
+            const memberId = exampleModal.querySelector(
+              ".modal-body #memberId"
+            );
+            const reviewId = exampleModal.querySelector(
+              ".modal-body #reviewId"
+            );
+            contents.value = data.contents;
+            memberId.value = data.memberId;
+            reviewId.value = data.reviewId;
+          });
+        }
       })
       .catch((error) => console.log(error));
   }
 });
 
-function showModal(data) {
-  const exampleModal = document.getElementById("exampleModal");
-  if (exampleModal) {
-    exampleModal.addEventListener("show.bs.modal", (event) => {
-      // Update the modal's content.
-      const modalBodyInput = exampleModal.querySelector(".modal-body input");
+// 리뷰 수정 버튼이 클릭되면
+exampleModal.querySelector("#reviewUpdate").addEventListener("click", () => {
+  // 내용 수정
+  // 모달 내용 가져오기
+  const contents = document.querySelector(".modal-body #contents").value;
+  const reviewId = document.querySelector(".modal-body #reviewId").value;
+  const memberId = document.querySelector(".modal-body #memberId").value;
 
-      modalBodyInput.value = data.contents;
+  //리뷰 수정
+  fetch("/shoes/review/" + reviewId, {
+    headers: {
+      "X-CSRF-TOKEN": csrfToken,
+      "Content-Type": "application/json",
+    },
+    method: "put",
+    body: JSON.stringify({
+      contents: contents,
+      reviewId: reviewId,
+      memberId: memberId,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("리뷰 수정 실패");
+      }
+      return response.text();
+    })
+    .then((data) => {
+      console.log(data);
 
-      const memberId = data.memberId;
-      const reviewId = data.reviewId;
-    });
-    exampleModal
-      .querySelector("#reviewUpdate")
-      .addEventListener("click", (e) => {
-        e.preventDefault();
+      if (data == "success") {
+        //alert("수정 되었습니다.");
 
-        const contents = document.querySelector(".modal-body input").value;
-        const memberId = data.memberId;
-        const reviewId = data.reviewId;
-        fetch("/shoes/detail?productId=" + productId, {
-          headers: {
-            "X-CSRF-TOKEN": csrfToken,
-            "Content-Type": "application/json",
-          },
-          method: "put",
-          body: JSON.stringify({
-            //            memberId: memberId,
-            contents: contents,
-            reviewId: reviewId,
-          }),
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("리뷰 수정 실패");
-            }
-            return response.json();
-          })
-          .then((data) => {
-            console.log(data);
-            showReviews(productId, page); //수정 후 리뷰 목록 새로 고침
-          })
-          .catch((error) => console.log(error));
-      });
-  }
-}
-// // 리뷰 수정 버튼이 클릭되면
-// document.querySelector("").addEventListener((e) => {
-//   // 내용 수정
-//   // fetch + put mapping
+        document.querySelector(".modal-header .btn-close").click();
+      }
 
-//   // 수정 성공 시
-//   showReviews(productId, page);
-// });
+      showReviews(productId, page); //수정 후 리뷰 목록 새로 고침
+    })
+    .catch((error) => console.log(error));
+
+  // fetch + put mapping
+
+  // 수정 성공 시
+  showReviews(productId, page);
+});

@@ -24,10 +24,17 @@ public class CustomerServiceImpl implements CustomerService {
 		return mapper.deleteRid(review)==1?true:false;
 	}
 
+	
+	
 	@Override
 	public boolean updateReview(ReviewDTO dto) {
 		
-		return mapper.updateReview(dto)==1?false:true;
-	}
-
+		return mapper.updateReview(dto)==1?true:false;
+	}	
+	
+	
+	@Override
+	public ReviewDTO reviewGet(String reviewId) {		
+		return mapper.reviewGet(reviewId);
+	}	
 }

@@ -281,10 +281,13 @@
 
 	<h2 id="scrollspyHeading5">제품 구매 시 필독</h2>
 	<p>제품 사이즈 교환은 불가하며, 반품 후 재구매만 가능합니다.</p>
-</div>		
-
+</div>	
 <!-- 페이지 나누기 종료 -->
 </section>
+
+
+
+<button type="button" data-bs-toggle='modal' data-bs-target='#exampleModal'>모달 띄우기</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -295,14 +298,12 @@
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
-
 					<textarea name="contents" id="contents" class="form-control" rows="5"></textarea>
 				</div>
 				<div class="form-group">
-				<input type="text" name="memberId" class="form-control" value="${userDetails.memberId}" readonly
-					placeholder="${userDetails.memberId}" />
+				<input type="text" name="memberId" id="memberId"  class="form-control" value="" readonly/>
 				</div>
-				<input type="hidden" name="reviewId" id="reviewId" value="${review.reviewId}" />
+				<input type="hidden" name="reviewId" id="reviewId" value="" />
 			</div>
 			<div class="modal-footer">
 				<button type="button" id="reviewUpdate" class="btn btn-primary">수정</button>
@@ -311,9 +312,6 @@
 
 	</div>
 </div>
-
-
-
 
 
 
@@ -341,11 +339,6 @@
 
 
  <script>
- 
- 
- 
- 
- 
  
  
 	// 스크립트 실행순서: 첫번째 실행

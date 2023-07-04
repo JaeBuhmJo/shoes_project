@@ -12,5 +12,6 @@ public interface CustomerMapper {
 	public int deleteRid(int reviewId);
 	
 	public int updateReview(ReviewDTO dto);
-
+	
+	public ReviewDTO reviewGet(String reviewId);
 }
