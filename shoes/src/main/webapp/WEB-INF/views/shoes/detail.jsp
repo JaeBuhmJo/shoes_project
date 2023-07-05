@@ -132,17 +132,16 @@
 						<p class="h3 py-2" id="price" >
 							가격: <span>${product.price}</span>  
 						</p>
-<!-- 								<div class="list-unstyled d-flex mb-1" id="rating-container"></div>
- -->								<!-- 상품 간략 정보 -->
+<!--  								<div class="list-unstyled d-flex mb-1" id="rating-container"></div>
+ --> 								<!-- 상품 간략 정보 -->
+ 
 								<h5>${product.detail}</h5>											
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
 										<div class="col d-grid">
 									<button type="submit" class="btn btn-success btn-lg" id="goCart"value="addtocard">Add To Cart</button>
 								</div>
-							</div>
-							
-							
+							</div>							
 						<ul class="list-inline pb-3" id="detailColor">
 							<li class="list-inline-item">color :</li>
 								 <select class="form-select" aria-label="" name="productColor" id="productColor">							
@@ -238,10 +237,10 @@
 				<div class="accordion-item">
 					<h2 class="accordion-header">
 						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-							data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">구매 후기</button>
+							data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">구매 후기(${stars.reviewCount})</button>
 					</h2>
 					<div id="flush-collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
-						<div class="container" id="reviews-list" style="max-height: 300px; overflow-y:scroll;">
+						<div class="container" id="reviews-list" style="max-height: 500px; overflow-y:scroll;">
 												
 						</div>	
 						<!-- 페이지 나누기 시작 -->						

@@ -1,8 +1,9 @@
-// // 평균 별점 보이기
+// 평균 별점 보이기
 
 // let serverData = {};
 
-// function updateRating(rating, reviewCount) {
+// function updateRating(rating) {
+//   console.log(rating);
 //   let stars = Math.floor(rating * 10.0) / 10.0;
 //   let coloredStars = Math.floor(stars);
 //   let starIcons = "";
@@ -12,22 +13,24 @@
 //   for (let i = 0; i < 5 - coloredStars; i++) {
 //     starIcons += '<i class="text-muted fa fa-star"></i>';
 //   }
-//   document.getElementById("ratingOutput").innerHTML =
-//     starIcons + "(" + reviewCount + "reviews)";
+//   document.getElementById("ratingOutput").innerHTML = starIcons;
 // }
 // //서버 데이터를 사용하여 별점과 리뷰 개수 업데이트
-// updateRating(serverData.stars || 0, serverData.reviewCount || 0);
+// updateRating(serverData.stars || 0);
 
-// function showRatingData(rating, reviewCount) {
+// function showRatingData(rating) {
 //   const ratingContainer = document.getElementById("rating-container");
-//   ratingContainer.innerHTML = `<p>평점:${rating}</p><p>리뷰 수:${reviewCount}</p>`;
+//   ratingContainer.innerHTML = `<p>평점:${rating}</p>`;
 // }
+// // 임시 평점 데이터 사용
+// // updateRating(3.5);
+// // showRatingData(3.5);
 
 // fetch("/shoes/size?productId=" + productId)
 //   .then((response) => response.json())
 //   .then((data) => {
-//     updateRating(data.rating, data.reviewCount);
-//     showRatingData(data.rating, data.reviewCount);
+//     updateRating(data.rating);
+//     showRatingData(data.rating);
 //   })
 //   .catch((error) => {
 //     console.log("update 별점", error);
@@ -61,6 +64,10 @@ function showReviews(productId, page) {
         reviewHTML += "<div class='card my-3'>";
         reviewHTML += "<div class='card-header'>";
         reviewHTML +=
+          "<div class='d-flex justify-content-between align-items-center'>"; // 이 부분 추가
+        reviewHTML += "<strong>" + item.memberId + "</strong>";
+
+        reviewHTML +=
           "<div class='btn-group btn-group-sm' data-rid='" +
           item.reviewId +
           "'>";
@@ -69,7 +76,7 @@ function showReviews(productId, page) {
         reviewHTML +=
           "<button type='button' class='btn btn-warning'>수정</button>";
         reviewHTML += "</div>";
-        reviewHTML += "<strong>" + item.memberId + "</strong>";
+        reviewHTML += "</div>"; // 이 부분 추가
         reviewHTML += "</div>";
 
         reviewHTML +=
