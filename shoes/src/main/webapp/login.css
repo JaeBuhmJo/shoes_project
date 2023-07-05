@@ -1,0 +1,9 @@
+.py-5{
+	padding-left: 0px; 
+	padding-right: 0px; 
+	margin: 0px 20%;
+}
+ .custom-container {
+    padding-top: 50px; /* 상단 패딩 조정 */
+    padding-bottom: 90px; /* 하단 패딩 조정 */
+  }

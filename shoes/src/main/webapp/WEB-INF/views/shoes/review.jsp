@@ -34,8 +34,8 @@
                 </div>
 
 			<input type="hidden" name="memberId" value="${userDetails.memberId}" id="memberId" />
-<%-- 			<input type="hidden" name="productId" value="${product.productId}" id="productId" />
- --%>			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="hidden" name="productId" value='<%=request.getParameter("productId") %>' id="productId" />			
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                
             </form>
         </div>

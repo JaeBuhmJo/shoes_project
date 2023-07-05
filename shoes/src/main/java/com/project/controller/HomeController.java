@@ -65,5 +65,9 @@ public class HomeController {
 		return "redirect:/nonloginmodify";
 	}
 
+	@GetMapping("/test")
+	public void testGet() {
+		
+	}
 
 }
