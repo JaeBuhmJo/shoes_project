@@ -1,3 +1,38 @@
+// // 평균 별점 보이기
+
+// let serverData = {};
+
+// function updateRating(rating, reviewCount) {
+//   let stars = Math.floor(rating * 10.0) / 10.0;
+//   let coloredStars = Math.floor(stars);
+//   let starIcons = "";
+//   for (let i = 0; i < coloredStars; i++) {
+//     starIcons += '<i class="text-warning fa fa-star"></i>';
+//   }
+//   for (let i = 0; i < 5 - coloredStars; i++) {
+//     starIcons += '<i class="text-muted fa fa-star"></i>';
+//   }
+//   document.getElementById("ratingOutput").innerHTML =
+//     starIcons + "(" + reviewCount + "reviews)";
+// }
+// //서버 데이터를 사용하여 별점과 리뷰 개수 업데이트
+// updateRating(serverData.stars || 0, serverData.reviewCount || 0);
+
+// function showRatingData(rating, reviewCount) {
+//   const ratingContainer = document.getElementById("rating-container");
+//   ratingContainer.innerHTML = `<p>평점:${rating}</p><p>리뷰 수:${reviewCount}</p>`;
+// }
+
+// fetch("/shoes/size?productId=" + productId)
+//   .then((response) => response.json())
+//   .then((data) => {
+//     updateRating(data.rating, data.reviewCount);
+//     showRatingData(data.rating, data.reviewCount);
+//   })
+//   .catch((error) => {
+//     console.log("update 별점", error);
+//   });
+
 function showReviews(productId, page) {
   fetch("/shoes/review/" + productId + "/pages/" + page)
     .then((response) => {
@@ -14,6 +49,15 @@ function showReviews(productId, page) {
       var reviewHTML = "";
 
       data.list.forEach((item) => {
+        let jumsu = Math.floor(item.jumsu * 10.0) / 10.0;
+        let coloredStars = Math.floor(jumsu);
+        let stars = "";
+        for (let i = 0; i < coloredStars; i++) {
+          stars += '<i class="text-warning fa fa-star"></i>';
+        }
+        for (let i = 0; i < 5 - coloredStars; i++) {
+          stars += '<i class="text-muted fa fa-star"></i>';
+        }
         reviewHTML += "<div class='card my-3'>";
         reviewHTML += "<div class='card-header'>";
         reviewHTML +=
@@ -29,7 +73,11 @@ function showReviews(productId, page) {
         reviewHTML += "</div>";
 
         reviewHTML +=
-          '<div class="rating" data-jumsu=' + item.jumsu + "></div>";
+          '<div class="rating" data-jumsu=' +
+          item.jumsu +
+          ">" +
+          stars +
+          "</div>";
         reviewHTML += "<div class='card-body'>";
 
         reviewHTML += "<p class='card-text'>" + item.contents + "</p>";
@@ -85,7 +133,7 @@ function reviewPage(total) {
   let str = "";
   if (prev) {
     str +=
-      '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dart" href="' +
+      '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="' +
       (startPage - 1) +
       '">prev</a></li>';
   }
@@ -93,16 +141,14 @@ function reviewPage(total) {
     let disabled = page == i ? "disabled" : "";
     let active = page == i ? "active" : "";
     let textDark = page == i ? "text-dark" : "";
-    let backgroundColor = page == i ? "bg-info" : "";
-    let borderRadius = "rounded-pill";
     str +=
-      '<li class="page-item' +
+      '<li class="page-item ' +
       disabled +
-      '"><a class="page-link' +
+      '"><a class="page-link ' +
       active +
-      "rounded-0 shadow-sm border-top-0 border-left-0" +
+      " rounded-0 shadow-sm border-top-0 border-left-0 " +
       textDark +
-      '"href=' +
+      '" href=' +
       i +
       ">" +
       i +

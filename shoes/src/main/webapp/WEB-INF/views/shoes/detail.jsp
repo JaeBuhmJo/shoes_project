@@ -116,7 +116,8 @@
                     </div>
 					<!--End Carousel Wrapper-->
 				</div>
-			</div>			
+			</div>
+				
 			<security:authorize access="isAuthenticated()">
 				<security:authentication property="principal.memberDTO" 	var="userDetails" />
 			</security:authorize>
@@ -126,33 +127,26 @@
 					<div class="card-body">
 					<div id="productdetail">
 					<form action="/shoes/detail" method="post" id="shoesForm">
-					
 						<h1 class="h2" id="productName" >${product.productName}</h1>
 						<h3>${product.brand}</h3>
 						<p class="h3 py-2" id="price" >
 							가격: <span>${product.price}</span>  
 						</p>
-								<div id="averageRating">
-									<span>${review.total}</span>
-								</div>
-								<!-- 상품 간략 정보 -->
-	
-							<h5>${product.detail}</h5>
-																	
+<!-- 								<div class="list-unstyled d-flex mb-1" id="rating-container"></div>
+ -->								<!-- 상품 간략 정보 -->
+								<h5>${product.detail}</h5>											
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
-							
-							
-							
-								<div class="col d-grid">
+										<div class="col d-grid">
 									<button type="submit" class="btn btn-success btn-lg" id="goCart"value="addtocard">Add To Cart</button>
 								</div>
 							</div>
+							
+							
 						<ul class="list-inline pb-3" id="detailColor">
 							<li class="list-inline-item">color :</li>
 								 <select class="form-select" aria-label="" name="productColor" id="productColor">							
 								<option selected>색상선택</option>
-								
 								<c:forEach var="cs" items="${color}">
 									<option value="${cs.productColor}">${cs.productColor}</option>					
 								</c:forEach>
@@ -160,8 +154,7 @@
 							</ul>
 							  <ul class="list-inline pb-3" id="detailSize" style="display: none;">
 									<li class="list-inline-item">size :</li>
-									<select class="form-select" aria-label="" name="productSize" id="productSize">
-										
+									<select class="form-select" aria-label="" name="productSize" id="productSize">		
 									</select>
 								</ul>  						
 								<input class="form-control me-2 hiddenAmount" id="cartAmount" name="cartAmount" 
@@ -184,7 +177,6 @@
 	</div>
 </section>
 <!-- Close Content -->
-
 
 
 
@@ -269,8 +261,6 @@
 </div>	
 <!-- 페이지 나누기 종료 -->
 </section>
-
-
 
 <button type="button" data-bs-toggle='modal' data-bs-target='#exampleModal' id="modalshow" style="visibility:hidden">모달 띄우기</button>
 

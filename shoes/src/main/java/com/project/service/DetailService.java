@@ -30,5 +30,7 @@ public interface DetailService {
 	public InventoryDTO inventoryIdGet(String productId, String productColor,String productSize);
 	public CartDTO cartIdGet(String memberId);
 	
+	public ReviewDTO stars(String productId);
+
 }
 

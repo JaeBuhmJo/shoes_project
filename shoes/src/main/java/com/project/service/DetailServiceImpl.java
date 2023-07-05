@@ -66,5 +66,9 @@ public class DetailServiceImpl implements DetailService {
 		
 		return detailMapper.inventoryIdGet(productId,productColor,productSize);
 	}
+	@Override
+	public ReviewDTO stars(String productId) {
+		return detailMapper.stars(productId);
+	}
 	
 }
