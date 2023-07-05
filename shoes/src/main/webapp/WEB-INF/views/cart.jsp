@@ -71,7 +71,7 @@
         <div class="total">
             <h2>전체합계</h2>
             <table>
-                <tr>
+                <tr> 
                     <td><span id="totalKind_span">구매 상품 종류</span></td>
                     <td><span id="totalCount_span">${cartTotal.totalKind}</span></td>
                 </tr>
@@ -88,29 +88,29 @@
 	          <button class="cart__bigorderbtn left" >쇼핑 계속하기</button>
 	          <button class="cart__bigorderbtn right" id="orderBtn" onclick="" >주문하기</button>
          	</div>
-       	</div>
+       	</div>             
 		<!-- 주문 form -->
 		<form action="location.href='/cart/order?order=1'" method="get" class="order_form">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>	
-		<form action="" id="operForm">
+		<form action="" id="operForm">    
 			<input type="hidden" name="page" value="1"/>
 			<input type="hidden" name="listAmount" value="15"/>
-			<input type="hidden" name="searchType" value=""/>
+			<input type="hidden" name="searchType" value=""/>     
 			<input type="hidden" name="keyword" value=""/>
 			<input type="hidden" name="order" value="registered-date-desc"/>
 		</form> 
 		</div>
-		<c:if test="${productSoldOut!=null}">
-			<input type="hidden" id="soldOut" value="${productSoldOut}"/>
-		</c:if>
-		<script> 
+		<script>  
 		const csrfToken='${_csrf.token}';
 		</script>
-
+  
     <script src="/assets/js/jquery-1.11.0.min.js"></script>
     <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/templatemo.js"></script>
-<script src="/js/cart.js"></script>
+	<script src="/js/cart.js"></script> 
+	<!-- 아임포트 결제 라이브러리 -->
+	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+	<script src="/js/iamport.js"></script>    
 <%@ include file="include/footer.jsp" %>

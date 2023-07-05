@@ -17,6 +17,9 @@ public interface CartService {
 	
 	// 카트 삭제
 	public boolean deleteCart(String memberId);
+	
+	// 카트 총정보
+	public CartDTO getCartTotal(String memberId);
 }
 
 

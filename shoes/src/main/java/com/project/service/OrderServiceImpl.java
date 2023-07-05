@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.project.domain.AttachmentDTO;
 import com.project.domain.Criteria;
 import com.project.domain.OrderListDTO;
+import com.project.domain.PaymentDTO;
 import com.project.mapper.AttachmentMapper;
 import com.project.mapper.OrderMapper;
 
@@ -47,5 +48,16 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public int getTotalCnt(String memberId,Criteria cry) {
 		return orderMapper.getTotalOrderCount(memberId, cry);
+	}
+
+	@Override
+	public int getNextOrderSeq() {
+		return orderMapper.getOrderSequence();
+	}
+
+	@Override
+	public boolean placeOrder(PaymentDTO paymentDTO) {
+		
+		return orderMapper.insertOrder(paymentDTO)==1?true:false;
 	}
 }
