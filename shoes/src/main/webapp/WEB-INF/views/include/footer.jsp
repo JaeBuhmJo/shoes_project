@@ -59,9 +59,6 @@
 			<div class="col-auto">
 				<div class="small m-0 text-light">Copyright &copy; 2023 BLACKPEARL</div>
 			</div>
-			<div class="col-auto">
-				<a class="small" href="#">Privacy</a> <span class="mx-1">&middot;</span> <a class="small" href="#">Terms</a> <span class="mx-1">&middot;</span> <a class="small" href="#">Contact</a>
-			</div>
 		</div>
 	</div>
 </footer>
