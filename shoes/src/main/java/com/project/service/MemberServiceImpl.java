@@ -69,5 +69,10 @@ public class MemberServiceImpl implements MemberService {
 		memberDTO.setNewPassword(bPasswordEncoder.encode(memberDTO.getNewPassword()));
 		return mapper.changePassword(memberDTO) == 1 ? true : false;
 	}
+	
+	// 로그인 유저의 정보 조회
+	public MemberDTO getMemberInfo(String memberId) {
+		return mapper.login(memberId);
+	}
 
 }

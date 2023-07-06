@@ -63,7 +63,6 @@ public class CartServiceImpl implements CartService {
 
 	public CartDTO getCartTotal(String memberId) {
 		CartDTO cartTotal = cartMapper.getCartTotal(memberId);
-		System.out.println(cartTotal);
 		return cartTotal;
 	}
 	

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.project.domain.OrderListDTO;
+import com.project.domain.PaymentDTO;
 import com.project.domain.Criteria;
 
 @Mapper
@@ -16,5 +17,10 @@ public interface OrderMapper {
 
 	// 주문 상품 총 갯수 조회(페이지 나누기)
 	public int getTotalOrderCount(@Param("memberId") String memberId,@Param("cry") Criteria cry);
+	
+	// 오더 시퀀스 반환
+	public int getOrderSequence();
+	
+	public int insertOrder(PaymentDTO paymentDTO);
 
 }

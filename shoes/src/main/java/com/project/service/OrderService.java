@@ -5,6 +5,7 @@ import java.util.List;
 import com.project.domain.Criteria;
 
 import com.project.domain.OrderListDTO;
+import com.project.domain.PaymentDTO;
 
 public interface OrderService {
 	
@@ -13,4 +14,8 @@ public interface OrderService {
 	
 	// 주문 목록 총 갯수(페이지 나누기)
 	public int getTotalCnt(String memberId, Criteria cry);
+	
+	public int getNextOrderSeq();
+	
+	public boolean placeOrder(PaymentDTO paymentDTO);
 }

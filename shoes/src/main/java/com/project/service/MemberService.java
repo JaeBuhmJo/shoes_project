@@ -14,4 +14,6 @@ public interface MemberService {
 	public boolean dupid(String memberId);
 	// 비밀번호 수정 
 	public boolean changePassword(MemberDTO memberDTO);
+	// 회원 정보 조회
+	public MemberDTO getMemberInfo(String memberId);
 }
