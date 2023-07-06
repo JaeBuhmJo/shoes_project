@@ -15,24 +15,31 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<form class="col-md-9 m-auto" method="post" role="form" action="/member/findPassword">
+				<div style="display: flex; flex-direction: column; align-items: center; ">
 					<div class="form-group mb-3 ">
-						<label for="memberId">아이디</label>
+						<label for="memberId" >아이디</label>
 						 <input type="text" class="form-control mt-1" id="memberId" name="memberId"
-							placeholder="아이디" >
+							placeholder="아이디" style="border-radius: 8px; border-color: black; height: 40px; width : 400px;">
+					</div>
+					<div class="form-group mb-3 ">
+						<label for="name">이름</label>
+						 <input type="text" class="form-control mt-1" id="name" name="name"
+							placeholder="이름" style="border-radius: 8px; border-color: black; height: 40px; width : 400px;">
 					</div>
 					<div class="form-group mb-3">
 						<label for="email">이메일</label> <input type="email"
 							class="form-control mt-1" id="email" name="email"
-							placeholder="이메일">
+							placeholder="이메일"  style="border-radius: 8px; border-color: black; height: 40px; width : 400px;">
 							<button class="btn btn-info btn-lg px-3" type="button" id="emailConfirm">이메일 인증</button>
 					</div>
 					<div class="form-group mb-3">                       
 					<label for="checkNumber">인증번호</label> <input type="text"                      
 						class="form-control mt-1" id="checkNumber" name="checkNumber"
-						placeholder="숫자 6자리" >
-					<button class="btn btn-success btn-lg px-3" type="button" id="emailCheckConfirm">인증번호 확인</button>	
+						placeholder="숫자 6자리"  style="border-radius: 8px; border-color: black; height: 40px; width : 400px;">
+					<button class="btn btn-success btn-lg px-3" type="button" id="emailCheckConfirm" >인증번호 확인</button>	
 					<div class="invalid-feedback">인증번호를 확인해 주세요</div>
 				</div>    
+				</div>	
 					<div class="col text-end mt-2">
 						<button type="submit" id="submitButton" class="btn btn-danger btn-lg px-3" >비밀번호 수정</button>
 					</div>                                                

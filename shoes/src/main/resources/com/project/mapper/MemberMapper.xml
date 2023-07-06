@@ -48,6 +48,6 @@
 	<update id="changePassword">
 		update members
 		set password = #{newPassword}
-		where member_id = #{memberId}
+		where member_id = #{memberId} and name = #{name}
 	</update>
 </mapper>
