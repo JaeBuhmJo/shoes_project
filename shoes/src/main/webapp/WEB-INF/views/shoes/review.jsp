@@ -1,12 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="../include/header.jsp"%>
+    <style>
+  .form-custom {
+    border: 5px solid black; /* 테두리 색상 */
+    border-radius: 0.25rem; /* 모서리의 곡률 */
+    padding: 1rem; /* 패딩 사이즈 */
+  }
+  .review-contents {
+    background-color: #efefef; /* 배경색 */
+    padding: 1rem; /* 패딩 사이즈 */
+    border-radius: 0.25rem; /* 모서리 곡률 */
+  }
+</style>
  <!-- Start Contact -->
  			<security:authentication property="principal.memberDTO" 	var="userDetails" />
     <div class="container py-5">
         <div class="row py-5" id="reviewFildes">
-            <form class="col-md-9 m-auto" action="/shoes/review" name="review" id="reviewForm" role="form" method="post">
-
+            <form class="col-md-9 m-auto form-custom" action="" name="review" id="reviewForm" role="form" method="post">
+				<div class="mb-3 review-contents" >
 				<fieldset>
 					<span class="text-bold" id="reviewJumsu">별점을 선택해주세요</span>
 					<input type="radio" name="jumsu" value="5" id="jumsu">
@@ -23,8 +35,7 @@
 				
 
 			<div class="mb-3">
-                    <label for="contents" class="bg-light">후기</label>
-                    <textarea class="form-control mt-1" id="contents" name="contents" placeholder="content" rows="8"></textarea>
+                    <textarea class="form-control mt-1" id="contents" name="contents" placeholder="후기를 입력해주세요" rows="8"></textarea>
                 </div>
                 <div class="row">
                     <div class="col text-end mt-2">
@@ -32,6 +43,7 @@
                         <button type="button" class="btn btn-danger btn-lg px-3">취소</button>
                     </div>
                 </div>
+				</div>
 
 			<input type="hidden" name="memberId" value="${userDetails.memberId}" id="memberId" />
 			<input type="hidden" name="productId" value='<%=request.getParameter("productId") %>' id="productId" />			

@@ -49,7 +49,6 @@ public class ShoesController {
 	
 	@Autowired
 	private CustomerService customerService;
-	
 //	// 리턴 total(상품에 대한 후기 전체 개수),  List<ReviewDTO> 
 //	
 	@PostMapping("/review")
@@ -66,11 +65,8 @@ public class ShoesController {
 			return "redirect:/member/memberPage?page=1&listAmount=10&searchType=&keyword=";
 
 		}
-		
 		return "redirect:/shoes/detail";
 	}
-	
-	
 	
 	
 	@PreAuthorize("principal.username == #dto.memberId")
@@ -97,6 +93,9 @@ public class ShoesController {
 		// 색상
 		model.addAttribute("color", service.color(productId));
 		log.info("신발 색상 선택");
+		
+		// 별점 추가
+		model.addAttribute("stars", service.stars(productId));
 		
 		List<AttachmentDTO> attachmentDTOs = attachmentService.getAttachmentList(productId);
 		List<String> filePathList = new ArrayList<String>();

@@ -17,4 +17,7 @@ public class ReviewDTO {
 	public String productId;
 	public String memberId;
 	public int jumsu;
+	
+	public int reviewCount;
+	public int rating;
 }

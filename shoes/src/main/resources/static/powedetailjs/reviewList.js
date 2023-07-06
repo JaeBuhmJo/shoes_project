@@ -1,3 +1,41 @@
+// 평균 별점 보이기
+
+// let serverData = {};
+
+// function updateRating(rating) {
+//   console.log(rating);
+//   let stars = Math.floor(rating * 10.0) / 10.0;
+//   let coloredStars = Math.floor(stars);
+//   let starIcons = "";
+//   for (let i = 0; i < coloredStars; i++) {
+//     starIcons += '<i class="text-warning fa fa-star"></i>';
+//   }
+//   for (let i = 0; i < 5 - coloredStars; i++) {
+//     starIcons += '<i class="text-muted fa fa-star"></i>';
+//   }
+//   document.getElementById("ratingOutput").innerHTML = starIcons;
+// }
+// //서버 데이터를 사용하여 별점과 리뷰 개수 업데이트
+// updateRating(serverData.stars || 0);
+
+// function showRatingData(rating) {
+//   const ratingContainer = document.getElementById("rating-container");
+//   ratingContainer.innerHTML = `<p>평점:${rating}</p>`;
+// }
+// // 임시 평점 데이터 사용
+// // updateRating(3.5);
+// // showRatingData(3.5);
+
+// fetch("/shoes/size?productId=" + productId)
+//   .then((response) => response.json())
+//   .then((data) => {
+//     updateRating(data.rating);
+//     showRatingData(data.rating);
+//   })
+//   .catch((error) => {
+//     console.log("update 별점", error);
+//   });
+
 function showReviews(productId, page) {
   fetch("/shoes/review/" + productId + "/pages/" + page)
     .then((response) => {
@@ -14,16 +52,28 @@ function showReviews(productId, page) {
       var reviewHTML = "";
 
       data.list.forEach((item) => {
+        let jumsu = Math.floor(item.jumsu * 10.0) / 10.0;
+        let coloredStars = Math.floor(jumsu);
+        let stars = "";
+        for (let i = 0; i < coloredStars; i++) {
+          stars += '<i class="text-warning fa fa-star"></i>';
+        }
+        for (let i = 0; i < 5 - coloredStars; i++) {
+          stars += '<i class="text-muted fa fa-star"></i>';
+        }
         reviewHTML += "<div class='card my-3'>";
         reviewHTML += "<div class='card-header'>";
+        reviewHTML += "<div class='d-flex justify-content-between align-items-center'>"; // 이 부분 추가
+        reviewHTML += "<strong>" + item.memberId + "</strong>";
+
         reviewHTML += "<div class='btn-group btn-group-sm' data-rid='" + item.reviewId + "'>";
         reviewHTML += "<button type='button' class='btn btn-danger'>삭제</button>";
         reviewHTML += "<button type='button' class='btn btn-warning'>수정</button>";
         reviewHTML += "</div>";
-        reviewHTML += "<strong>" + item.memberId + "</strong>";
+        reviewHTML += "</div>"; // 이 부분 추가
         reviewHTML += "</div>";
 
-        reviewHTML += '<div class="rating" data-jumsu=' + item.jumsu + "></div>";
+        reviewHTML += '<div class="rating" data-jumsu=' + item.jumsu + ">" + stars + "</div>";
         reviewHTML += "<div class='card-body'>";
 
         reviewHTML += "<p class='card-text'>" + item.contents + "</p>";
@@ -78,16 +128,33 @@ function reviewPage(total) {
   }
   let str = "";
   if (prev) {
-    str += '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="' + (startPage - 1) + '">prev</a></li>';
+    str +=
+      '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="' +
+      (startPage - 1) +
+      '">prev</a></li>';
   }
   for (let i = startPage; i <= endPage; i++) {
     let disabled = page == i ? "disabled" : "";
     let active = page == i ? "active" : "";
     let textDark = page == i ? "text-dark" : "";
-    str += '<li class="page-item ' + disabled + '"><a class="page-link ' + active + " rounded-0 shadow-sm border-top-0 border-left-0 " + textDark + '" href=' + i + ">" + i + "</a></li>";
+    str +=
+      '<li class="page-item ' +
+      disabled +
+      '"><a class="page-link ' +
+      active +
+      " rounded-0 shadow-sm border-top-0 border-left-0 " +
+      textDark +
+      '" href=' +
+      i +
+      ">" +
+      i +
+      "</a></li>";
   }
   if (next) {
-    str += '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-lift-0 text-dark" href=' + (endPage + 1) + ">next</a></li>";
+    str +=
+      '<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-lift-0 text-dark" href=' +
+      (endPage + 1) +
+      ">next</a></li>";
   }
   document.querySelector("#reviewPagination").innerHTML = str;
 }

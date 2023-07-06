@@ -58,6 +58,12 @@
 	]]>
 	</select>
 	
+	<select id="stars" resultType="com.project.domain.ReviewDTO">
+			select avg(nvl(jumsu,0)) as rating, count(review_id) as reviewCount, product_id
+			from reviews where product_id=#{productId} 
+			group by product_id
+	</select>
+	
 	<select id="reviewTotal" resultType="java.lang.Integer">
 		select count(*) from reviews where review_id > 0 and product_id = #{productId}
 	</select>
