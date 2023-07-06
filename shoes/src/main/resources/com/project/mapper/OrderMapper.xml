@@ -60,8 +60,8 @@
 </select>
 
 <insert id="insertOrder">
-	insert orders(order_id, member_id, name, amount, pay_method)
-		values(#{orderId},#{member.memberId},#{member.name},#{amount},#{pay_method})
+	insert into orders(order_id, member_id, name, amount, pay_method)
+		values(#{orderId},#{member.memberId},#{orderName},#{amount},#{pay_method})
 </insert>
 <!-- 검색단어 조회하는 동적쿼리문 -->
 <sql id="criteria">			

@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.CartDTO;
 import com.project.domain.MemberDTO;
@@ -47,19 +45,32 @@ public class PaymentController {
 	@GetMapping("/info")
 	public ResponseEntity<PaymentDTO> getPaymentInfo(Principal principal){
 		log.info("결제 정보 요청");
-		//추후 하나의 서비스 임플로 정리
 		PaymentDTO paymentDTO = new PaymentDTO();
-		int amount = cartService.getCartTotal(principal.getName()).getTotalPrice();
+		//추후 하나의 서비스 임플로 정리
+		//주문 이름 만들어서 보내자
+		String memberId = principal.getName();
+		List<CartDTO> cartList = cartService.getCartList(memberId);
+		StringBuffer sb = new StringBuffer();
+		sb.append("[BLACKPEARL] ");
+		sb.append(cartList.get(0).getProductName());
+		if(cartList.size()>1) {
+			sb.append(" 외 ");
+			sb.append(cartList.size()-1);
+			sb.append("건");
+		}
+		paymentDTO.setOrderName(sb.toString());
+		int amount = cartService.getCartTotal(memberId).getTotalPrice();
 		paymentDTO.setAmount(amount);
-		MemberDTO memberDTO= memberService.getMemberInfo(principal.getName());
+		MemberDTO memberDTO= memberService.getMemberInfo(memberId);
 		paymentDTO.setMember(memberDTO);
 		String orderId = getOrderId();
 		paymentDTO.setOrderId(orderId);
 		return new ResponseEntity<PaymentDTO>(paymentDTO, HttpStatus.OK);
 	}
 
+	// 이건 무조건 포스트여야지
 	@PostMapping("/process")
-	public void paymentProcessPost(Principal principal, PaymentDTO paymentDTO, RedirectAttributes rttr) {
+	public ResponseEntity<String> paymentProcessPost(Principal principal, PaymentDTO paymentDTO) {
 		//오더 정보 생성하고 정면에 정보 보내주기
 		log.info("결제 성공, 후 프로세스 요청"+paymentDTO);
 		String memberId = principal.getName();
@@ -76,7 +87,9 @@ public class PaymentController {
 		cartService.deleteCart(memberId);
 		// 주문 정보 생성
 		paymentDTO.setMember(memberService.getMemberInfo(memberId));
+		//오더아이디 멤버아이디 오더네임 결제금액 결제수단
 		orderService.placeOrder(paymentDTO);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 	
 	public String getOrderId() {

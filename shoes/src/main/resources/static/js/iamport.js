@@ -30,7 +30,7 @@ function requestPay(info) {
       pg: "html5_inicis",
       pay_method: "card",
       merchant_uid: info.orderId, // 주문번호
-      name: "BLACKPEARL 결제 테스트",
+      name: info.orderName, //주문 이름
       amount: info.amount, // 숫자 타입
       buyer_email: info.member.email, //실제 이메일
       buyer_name: info.member.name, // 실제 고객 이름
@@ -42,19 +42,8 @@ function requestPay(info) {
       // callback
       //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
       if (rsp.success) {
-        // axios로 HTTP 요청
-        axios({
-          url: "결제 프로세스의 엔드포인트",
-          method: "post",
-          headers: { "Content-Type": "application/json" },
-          data: {
-            imp_uid: rsp.imp_uid,
-            merchant_uid: rsp.merchant_uid,
-          },
-        }).then((data) => {
-          afterPaymentSuccess(data);
-          // 서버 결제 API 성공시 로직
-        });
+        // 성공시 처리
+        afterPaymentSuccess(info);
       } else {
         alert(`결제에 실패하였습니다. 사유: ${rsp.error_msg}`);
       }
@@ -62,6 +51,29 @@ function requestPay(info) {
   );
 }
 
-function afterPaymentSuccess() {
-  location.href = "/shop/success";
+function afterPaymentSuccess(data) {
+  const formData = new FormData();
+  formData.append("orderId", data.orderId);
+  formData.append("amount", data.amount);
+  formData.append("orderName", data.orderName);
+  formData.append("pay_method", "card");
+  fetch("/payment/process", {
+    method: "POST",
+    headers: {
+      "X-CSRF-TOKEN": csrfToken,
+    },
+    body: formData,
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("결제 과정 오류");
+      }
+      return response.text();
+    })
+    .then((data) => {
+      if (data === "Success") {
+        location.href = "/shop/success";
+      }
+    })
+    .catch((error) => console.log(error));
 }

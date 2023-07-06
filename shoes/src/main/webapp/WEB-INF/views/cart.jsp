@@ -61,7 +61,7 @@
 					    </td>
 					</tr>
            	 	</c:forEach>
-	      	</tbody>
+	      	</tbody>  
 		</table> 
 		<a href="/cart/dump" id="cartdump"><button type="button" >장바구니 비우기</button></a>
 		

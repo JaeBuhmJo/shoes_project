@@ -10,7 +10,7 @@
 			<div class="list-group chatroom-list-div" id="chatroomlist"></div>
 		</div>
 	</main>
-  
+   
 <script>  
 	const csrfToken = '${_csrf.token}';
 </script>
