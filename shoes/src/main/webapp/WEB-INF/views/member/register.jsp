@@ -11,80 +11,81 @@
 	</div>  
 
 	<!-- Start Contact -->
-	<div class="container py-5">                              
-		<div class="row py-5" >                       
-			<form class="col-md-9 m-auto" method="post" role="form" id="register"
-				novalidate>
+	<div class="container py-5 d-flex justify-content-center align-items-center">                            
+		<div class="row py-6" >   
+			<form class="col-md-9 m-auto" method="post" role="form" id="register"novalidate>
 				<div class="form-group mb-3">                           
 					<label for="memberId">아이디</label> <input type="text"
 						class="form-control mt-1" id="memberId" name="memberId"
-						placeholder="아이디" required pattern="^[a-zA-Z0-9]{3,16}$">
+						placeholder="아이디" style="border-radius: 8px; border-color: black; height: 40px; width : 400px;" required pattern="^[a-zA-Z0-9]{3,16}$" >
 					<!-- 3~16개 영어, 숫자로 입력해주세요 --> 
 					<div class="invalid-feedback">아이디를 확인해 주세요</div>
-					<div class="col-2" style="text-align: right;">
-						<button type="button" class="w-100 btn btn-danger" id="dupcheck">중복아이디</button>
+					<div class="col-4" style="text-align: right;">
+						<button type="button" class="w-100 btn btn-danger" id="dupcheck" >중복아이디</button>
 					</div>
 				</div>
 				<div class="form-group mb-3">
 					<label for="name">이름</label> <input type="text"
-						class="form-control mt-1" id="name" name="name" placeholder="홍길동"
+						class="form-control mt-1" id="name" name="name" placeholder="홍길동" style="border-radius: 8px; border-color: black; height: 40px; width : 400px;"
 						required pattern="^[a-zA-Z가-힣]{3,10}$">
 					<div class="invalid-feedback">이름을 확인해 주세요</div>
 				</div>
 				<div class="form-group mb-3">
 					<label for="password">비밀번호</label> <input type="password"
 						class="form-control mt-1" id="password" name="password"
-						placeholder="비밀번호" required pattern="^\d+$">
+						placeholder="비밀번호"  style="border-radius: 8px; border-color: black; height: 40px; width : 400px;"required pattern="^\d+$">
 					<!-- 숫자만 -->                                                                                                                           
 					<div class="invalid-feedback">비밀번호를 확인해 주세요</div>
 				</div>                  
 				<div class="form-group mb-3">
 					<label for="password">비밀번호 확인</label> <input type="password"
 						class="form-control mt-1" id="confirmPassword" name="confirmPassword"
-						placeholder="비밀번호 확인" required pattern="^\d+$">
+						placeholder="비밀번호 확인" style="border-radius: 8px; border-color: black; height: 40px; width : 400px;" required pattern="^\d+$">
 					<!-- 숫자만 -->
 					<div class="invalid-feedback"> 비밀번호와 같은 지 확인해 주세요</div>
 				</div>
 				<div class="form-group mb-3">                                   
 					<label for="phone">휴대폰</label> <input type="text"
 						class="form-control mt-1" id="phone" name="phone"
-						placeholder="휴대폰" required>
+						placeholder="휴대폰"  style="border-radius: 8px; border-color: black; height: 40px; width : 400px;" required>
 					<div class="invalid-feedback">휴대폰 번호를 확인해 주세요</div>
 				</div>          
 				<!-- 카카오 도로명 주소 API  -->
 				<div class="form-group mb-3">   
 					<label for="phone">주소</label>
-					<input type="text" id="sample6_postcode" placeholder="우편번호">
+					<input type="text" id="sample6_postcode" placeholder="우편번호" >
 					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample6_address" class="form-control mt-1" name="address" placeholder="주소" required>
+					<input type="text" id="sample6_address" class="form-control mt-1" name="address" placeholder="주소" style="border-radius: 8px; border-color: black; height: 40px; width : 400px;" required >
 					<div class="invalid-feedback">주소를 확인해 주세요</div>
-					<input type="text" id="sample6_detailAddress" class="form-control mt-1" placeholder="상세주소" > 
-					<input type="text" id="sample6_extraAddress" class="form-control mt-1" placeholder="참고항목">
+					<input type="text" id="sample6_detailAddress" class="form-control mt-1" placeholder="상세주소" style="border-radius: 8px; border-color: black; height: 40px; width : 400px;"> 
+					<input type="text" id="sample6_extraAddress" class="form-control mt-1" placeholder="참고항목" style="border-radius: 8px; border-color: black; height: 40px; width : 400px;">
 				</div>  
 				<div class="form-group mb-3">                       
 					<label for="email">이메일</label> <input type="email"
 						class="form-control mt-1" id="email" name="email"
-						placeholder=example@example.com required          	
+						placeholder=example@example.com style="border-radius: 8px; border-color: black; height: 40px; width : 400px;" required          	
 						pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
 					<button class="btn btn-info btn-lg px-3" type="button" id="emailConfirm">이메일 인증</button>	
 					<div class="invalid-feedback">이메일을 확인해 주세요</div>
 				</div>                                                                                                                                                                 
 				<div class="form-group mb-3">                       
-					<label for="checkNumber">인증번호</label> <input type="text"                      
-						class="form-control mt-1" id="checkNumber" name="checkNumber"
-						placeholder="숫자 6자리" required                               
+					<label for="checkNumber">인증번호</label> 
+					 <div class="col">
+						<input type="text" class="form-control mt-1" id="checkNumber" name="checkNumber"
+						placeholder="숫자 6자리"  style="border-radius: 8px; border-color: black; height: 40px; width : 400px;" required                               
 						pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
-					<button class="btn btn-success btn-lg px-3" type="button" id="emailCheckConfirm">인증번호 확인</button>	
+						<button class=" btn btn-success btn-lg px-3" type="button" id="emailCheckConfirm" >인증번호 확인</button>	
 					<div class="invalid-feedback">인증번호를 확인해 주세요</div>
+					</div>
 				</div>                                                                                                                                     
 				<div class="form-group mb-3">
 					<label for="footSize">발사이즈</label> <input type="text"
 						class="form-control mt-1" id="footSize" name="footSize"
-						placeholder="250" required>
+						placeholder="250" style="border-radius: 8px; border-color: black; height: 40px; width : 400px;" required>
 					<div class="invalid-feedback">발사이즈를 확인해 주세요</div>
-				</div>                                                                                
+				</div>                                                                    
 				<div class="row">
-					<div class="col text-end mt-2">
+					<div class="col text-end ">
 						<button type="submit" class="btn btn-success btn-lg px-3" id="join">회원가입</button>
 					</div>
 				</div>

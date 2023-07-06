@@ -48,7 +48,7 @@ public class EmailService {
         msg += "</td></tr></tbody></table></div>";
 
         message.setText(msg, "utf-8", "html"); //  메일 본문, 인코딩 방식, 정의 타입을 지정
-        message.setFrom(new InternetAddress(id,"캡틴잭스페로우")); // 보내는 사람의 메일 주소, 보내는 사람 이름 지정
+        message.setFrom(new InternetAddress(id,"shoes_shop")); // 보내는 사람의 메일 주소, 보내는 사람 이름 지정
 
         return message; // 설정이 완료된 MimeMessage 객체를 반환
     }
