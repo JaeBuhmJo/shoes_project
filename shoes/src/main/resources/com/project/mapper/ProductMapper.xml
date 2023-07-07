@@ -63,6 +63,12 @@
 	 
 	<select id="getOnSaleCount">
 		select count(*) from products where on_sale = 1 and discontinued = 0
+	    	<if test="keyword!= ''">
+	    		and (product_name like '%'||#{keyword}||'%' or brand like '%'||#{keyword}||'%' or category like '%'||#{keyword}||'%')
+	    	</if>
+	    	<if test="innerKeyword!= ''">
+	    		and (product_name like '%'||#{innerKeyword}||'%' or brand like '%'||#{innerKeyword}||'%' or category like '%'||#{innerKeyword}||'%')
+	    	</if>
 			<choose>
 		      <when test="gender== 'for-men'">and for_men=1 </when>
 		      <when test="gender== 'for-women'">and for_women=1 </when>

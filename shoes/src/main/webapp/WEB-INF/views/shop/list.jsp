@@ -4,7 +4,7 @@
 
 <!-- Start Content -->
 <div class="container py-5">
-	<div class="row">
+	<div class="row">  
 
 		<div class="col-lg-3">
 			<h1 class="h2 pb-4">Categories</h1>
@@ -54,6 +54,7 @@
 			</div>
 				<hr class="mt-0"/>
 			<div class="row productList">
+			  
 			</div>
   
 			<!-- pagination -->
@@ -64,7 +65,7 @@
 		</div>
     
 	</div>    
-</div>       
+</div>
 <!-- End Content -->
 
 <script>

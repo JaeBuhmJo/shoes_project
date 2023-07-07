@@ -7,24 +7,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.domain.AttachmentDTO;
 import com.project.domain.CartDTO;
-import com.project.mapper.AttachmentMapper;
-import com.project.domain.ProductImageDTO;
 import com.project.mapper.CartMapper;
-import com.project.mapper.ProductImageMapper;
 
 @Service
 public class CartServiceImpl implements CartService {
 	
 	@Autowired
 	private CartMapper cartMapper;
-	
-	@Autowired
-	private AttachmentMapper attachmentMapper;
-	
-	@Autowired
-	private ProductImageMapper imageMapper;
 	
 	@Override
 	public int addCart(CartDTO cart) {
@@ -46,17 +36,6 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public List<CartDTO> getCartList(String memberId) {
 		List<CartDTO> cart = cartMapper.getCart(memberId);
-		
-//		for(CartDTO dto : cart) {
-//			
-//			// 이미지 정보 얻기(Attachments)
-//			String productId = dto.getProductId();
-//			
-//			List<AttachmentDTO> attachmentDTOList = attachmentMapper.getAttachments(productId);
-//			List<ProductImageDTO> imagelist = imageMapper.getProduct_ImageDTOList(productId);
-//			
-//			dto.setAttachmentList(attachmentDTOList);
-//		}
 		
 		return cart;
 	}

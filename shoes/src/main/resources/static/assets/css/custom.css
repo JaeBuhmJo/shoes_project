@@ -125,3 +125,6 @@ td {
   max-height: 350px;
   overflow-y: auto;
 }
+.vh-50 {
+  height: 50vh;
+}

@@ -5,6 +5,7 @@ import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +17,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.domain.Criteria;
 import com.project.domain.ListPageDTO;
+import com.project.domain.ProductDTO;
 import com.project.domain.VisitDTO;
 import com.project.mapper.VisitCounterMapper;
 import com.project.service.ProductService;
@@ -43,18 +44,18 @@ public class ShopController {
 	@GetMapping("/visitCounter")
 	public void visitCounterGet(HttpServletRequest request, HttpServletResponse response) {
 		String clientIpAddress = request.getRemoteAddr();
-		
-	    // IPv6 주소를 IPv4로 변환
-	    try {
-	        InetAddress address = InetAddress.getByName(clientIpAddress);
-	        if (address instanceof Inet6Address) {
-	            InetAddress ipv4Address = Inet4Address.getByAddress(address.getAddress());
-	            clientIpAddress = ipv4Address.getHostAddress();
-	        }
-	    } catch (UnknownHostException e) {
-	        e.printStackTrace();
-	    }
-		
+
+		// IPv6 주소를 IPv4로 변환
+		try {
+			InetAddress address = InetAddress.getByName(clientIpAddress);
+			if (address instanceof Inet6Address) {
+				InetAddress ipv4Address = Inet4Address.getByAddress(address.getAddress());
+				clientIpAddress = ipv4Address.getHostAddress();
+			}
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+
 		Cookie[] cookies = request.getCookies();
 
 		LocalDate currentDate = LocalDate.now();
@@ -82,21 +83,22 @@ public class ShopController {
 		visitCookie.setMaxAge(24 * 60 * 60);
 		visitCookie.setPath("/");
 		response.addCookie(visitCookie);
-	} 
+	}
 
 	@GetMapping("/list")
 	public void listGet() {
 		log.info("list 폼 요청");
 	}
-	
+
 	@GetMapping("/success")
 	public void successGet() {
 		log.info("구매 성공 폼 요청");
 	}
-	 
+
 	@PostMapping("/list")
 	public ResponseEntity<ListPageDTO> listPost(@RequestBody Criteria cri, Model model) {
-		log.info("list body 요청 "+cri);
-		return new ResponseEntity<ListPageDTO>(productService.getProductsList(cri), HttpStatus.OK);
+		log.info("list body 요청 " + cri);
+		ListPageDTO listPageDTO = productService.getProductsList(cri);
+		return new ResponseEntity<ListPageDTO>(listPageDTO, HttpStatus.OK);
 	}
 }

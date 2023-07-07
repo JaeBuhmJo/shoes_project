@@ -138,9 +138,19 @@
 								<h5>${product.detail}</h5>											
 								<!-- 색상, 사이즈 -->								
 								<div class="row pb-3">
+								
+								<security:authorize access="isAuthenticated()">
 										<div class="col d-grid">
-									<button type="submit" class="btn btn-success btn-lg" id="goCart"value="addtocard">Add To Cart</button>
+									<button type="submit" class="btn btn-success btn-lg" id="goCart"value="addtocard">장바구니 담기</button>
 								</div>
+								</security:authorize>
+								<security:authorize access="!isAuthenticated()">
+										<!-- 로그인하지 않은 경우 로그인 페이지로 가는 버튼을 보여줌 -->
+										<div class="col d-grid">
+									<a href="/member/login" class="btn btn-success btn-lg">로그인 후 이용할 수 있습니다.</a>
+									</div>
+								</security:authorize>
+								
 							</div>							
 						<ul class="list-inline pb-3" id="detailColor">
 							<li class="list-inline-item">color :</li>

@@ -61,14 +61,20 @@ function showReviews(productId, page) {
         for (let i = 0; i < 5 - coloredStars; i++) {
           stars += '<i class="text-muted fa fa-star"></i>';
         }
+        const isLoggedIn = true;
+        const currentMemberId = document.querySelector("#memberId").value;
         reviewHTML += "<div class='card my-3'>";
         reviewHTML += "<div class='card-header'>";
         reviewHTML += "<div class='d-flex justify-content-between align-items-center'>"; // 이 부분 추가
         reviewHTML += "<strong>" + item.memberId + "</strong>";
 
-        reviewHTML += "<div class='btn-group btn-group-sm' data-rid='" + item.reviewId + "'>";
-        reviewHTML += "<button type='button' class='btn btn-danger'>삭제</button>";
-        reviewHTML += "<button type='button' class='btn btn-warning'>수정</button>";
+        if (isLoggedIn && item.memberId === currentMemberId) {
+          reviewHTML += "<div class='btn-group btn-group-sm' data-rid='" + item.reviewId + "'>";
+          reviewHTML += "<button type='button' class='btn btn-danger'>삭제</button>";
+          reviewHTML += "<button type='button' class='btn btn-warning'>수정</button>";
+          reviewHTML += "</div>";
+        }
+
         reviewHTML += "</div>";
         reviewHTML += "</div>"; // 이 부분 추가
         reviewHTML += "</div>";
@@ -192,7 +198,7 @@ document.querySelector("#reviews-list").addEventListener("click", (e) => {
         showReviews(productId, page);
       })
       .catch((error) => console.log(error));
-  } else {
+  } else if (e.target.classList.contains("btn-warning")) {
     fetch("/shoes/review/" + reviewId)
       .then((response) => {
         if (!response.ok) {

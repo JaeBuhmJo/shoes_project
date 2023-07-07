@@ -11,5 +11,5 @@ if (logout) {
 document.querySelector("#searchForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const keyword = document.querySelector("#searchKeyword").value;
-  location.href = "http://localhost:8080/shop/list?keyword=" + keyword;
+  location.href = "/shop/list?keyword=" + keyword;
 });

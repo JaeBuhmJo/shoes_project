@@ -127,51 +127,63 @@ function getList(cri) {
     .then((data) => {
       const productList = document.querySelector(".productList");
       let products = "";
-      data.productDTOs.forEach((item) => {
-        let rating = Math.floor(item.rating * 10.0) / 10.0;
-        let coloredStars = Math.floor(rating);
-        let stars = "";
-        for (let i = 0; i < coloredStars; i++) {
-          stars += '<i class="text-warning fa fa-star"></i>';
-        }
-        for (let i = 0; i < 5 - coloredStars; i++) {
-          stars += '<i class="text-muted fa fa-star"></i>';
-        }
-        products += '<div class="col-md-4 mb-4">';
-        products += '<div class="card product-wap productCard rounded-0" data-productId ="' + item.productId + '">';
-        products += '<div class="card rounded-0 image-wrapper">';
-        products +=
-          '<img class="card-img card-img-list rounded-0 img-fluid" src="/attachment/file?fileName=' +
-          item.filePath +
-          '">';
-        products +=
-          '<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">';
+      if (data.productDTOs.length > 0) {
+        data.productDTOs.forEach((item) => {
+          let rating = Math.floor(item.rating * 10.0) / 10.0;
+          let coloredStars = Math.floor(rating);
+          let stars = "";
+          for (let i = 0; i < coloredStars; i++) {
+            stars += '<i class="text-warning fa fa-star"></i>';
+          }
+          for (let i = 0; i < 5 - coloredStars; i++) {
+            stars += '<i class="text-muted fa fa-star"></i>';
+          }
+          products += '<div class="col-md-4 mb-4">';
+          products += '<div class="card product-wap productCard rounded-0" data-productId ="' + item.productId + '">';
+          products += '<div class="card rounded-0 image-wrapper">';
+          products +=
+            '<img class="card-img card-img-list rounded-0 img-fluid" src="/attachment/file?fileName=' +
+            item.filePath +
+            '">';
+          products +=
+            '<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">';
+          products += "</div>";
+          products += "</div>";
+          products += '<div class="card-body card-body-list">';
+          products += '<a href="shop-single.html" class="h3 text-decoration-none">' + item.productName + "</a>";
+          products += '<ul class="w-100 list-unstyled d-flex justify-content-between mb-0">';
+          products += '<li class="text-secondary"><small>' + item.colors + "</small></li>";
+          products +=
+            '<li class="pt-2"><span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span></li>';
+          products += "</ul>";
+          products += '<ul class="list-unstyled d-flex justify-content-center mb-1">';
+          products +=
+            "<li>" +
+            stars +
+            "<span><b> " +
+            rating +
+            "</b></span><span class='fw-lighter'>" +
+            " (" +
+            item.reviewCount +
+            ")" +
+            "</span></li>";
+          products += "</ul>";
+          products += '<p class="text-center mb-0">' + item.price + "원</p>";
+          products += "</div>";
+          products += "</div>";
+          products += "</div> ";
+        });
+      } else {
+        //상품 없을 경우
+        products += '<div class="container py-5">';
+        products += '<div class="row d-flex justify-content-center align-items-center vh-50 empty-list">';
+        products += '<div class="col text-center">';
+        products += "<h1>해당 조건에 맞는 상품이 없습니다</h1>";
+        products += "<h4>빠른 시일 내에 준비하도록 하겠습니다</h4>";
         products += "</div>";
         products += "</div>";
-        products += '<div class="card-body card-body-list">';
-        products += '<a href="shop-single.html" class="h3 text-decoration-none">' + item.productName + "</a>";
-        products += '<ul class="w-100 list-unstyled d-flex justify-content-between mb-0">';
-        products += '<li class="text-secondary"><small>' + item.colors + "</small></li>";
-        products +=
-          '<li class="pt-2"><span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span> <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span></li>';
-        products += "</ul>";
-        products += '<ul class="list-unstyled d-flex justify-content-center mb-1">';
-        products +=
-          "<li>" +
-          stars +
-          "<span><b> " +
-          rating +
-          "</b></span><span class='fw-lighter'>" +
-          " (" +
-          item.reviewCount +
-          ")" +
-          "</span></li>";
-        products += "</ul>";
-        products += '<p class="text-center mb-0">' + item.price + "원</p>";
         products += "</div>";
-        products += "</div>";
-        products += "</div> ";
-      });
+      }
       productList.innerHTML = products;
       setFilter(criteria);
       showProductPage(data.totalCount);

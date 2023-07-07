@@ -11,9 +11,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.project.domain.CustomUser;
 import com.project.domain.MemberDTO;
 
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
 	// 로그인 성공 후 시작 페이지로 돌아가는 데

@@ -12,10 +12,8 @@ import com.project.domain.InventoryDTO;
 import com.project.domain.ProductDTO;
 import com.project.domain.ReviewDTO;
 import com.project.mapper.DetailMapper;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
 public class DetailServiceImpl implements DetailService {
 
 	@Autowired

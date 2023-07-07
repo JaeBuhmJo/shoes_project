@@ -15,11 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.CartDTO;
 import com.project.domain.Criteria;
-import com.project.domain.InventoryDTO;
-import com.project.domain.MemberDTO;
 import com.project.domain.QnaDTO;
 import com.project.domain.QnaPageDTO;
-import com.project.service.CustomerService;
 import com.project.service.DetailService;
 import com.project.service.QnaService;
 
@@ -34,7 +31,7 @@ public class CustomerController {
 	private DetailService service;
 	@Autowired
 	private QnaService qnaService;
-	
+	 
 
 	// 카트로 데이터 상품의 데이터 보내기 redirect로 주소줄에 띄워주고 @RequestBody
 	@PreAuthorize("isAuthenticated()")

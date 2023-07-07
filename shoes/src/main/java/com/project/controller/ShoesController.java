@@ -25,15 +25,11 @@ import com.project.domain.AttachmentDTO;
 import com.project.domain.ColorSize;
 import com.project.domain.Criteria;
 import com.project.domain.InventoryDTO;
-import com.project.domain.ProductDTO;
-import com.project.domain.QnaPageDTO;
 import com.project.domain.ReviewDTO;
 import com.project.domain.ReviewPageDTO;
 import com.project.service.AttachmentService;
 import com.project.service.CustomerService;
 import com.project.service.DetailService;
-import com.project.service.ProductService;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Controller

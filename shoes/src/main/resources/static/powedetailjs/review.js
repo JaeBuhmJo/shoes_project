@@ -4,23 +4,23 @@
 
 //폼 제출 이벤트 리스너 추가
 
-// const reviewForm = document.querySelector("#reviewForm");
-// reviewForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
+const reviewForm = document.querySelector("#reviewForm");
+reviewForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-//   //리뷰점수 가져오기
-//   let jumsu = document.querySelector("input[name='jumsu']:checked").value;
-//   console.log("jumsu", jumsu);
-//   const contents = document.querySelector("#contents").value;
-//   console.log("contents", contents);
-//   //현재 URL 가져오기
-//   const urlParams = new URLSearchParams(window.location.search);
-//   //const productId = productId;
-//   const productId = urlParams.get("productId");
-//   console.log("productId", productId);
+  //리뷰점수 가져오기
+  let jumsu = document.querySelector("input[name='jumsu']:checked").value;
+  console.log("jumsu", jumsu);
+  const contents = document.querySelector("#contents").value;
+  console.log("contents", contents);
+  //현재 URL 가져오기
+  const urlParams = new URLSearchParams(window.location.search);
+  //const productId = productId;
+  const productId = urlParams.get("productId");
+  console.log("productId", productId);
 
-//   reviewForm.submit();
-// });
+  reviewForm.submit();
+});
 
 // 후기 내용 가져오기
 

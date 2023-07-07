@@ -44,20 +44,22 @@
 		values(carts_seq.nextval, #{memberId},#{productId},#{cartAmount},#{inventoryId})
 	</insert>
 
-	<select id="reviewList" resultType="com.project.domain.ReviewDTO">
+<select id="reviewList" resultType="com.project.domain.ReviewDTO">
 	<![CDATA[
 		select review_id,regdate,contents,product_id,member_id,jumsu
 		from (
-				select /*+INDEX_DESC(reviews review_id)*/ rownum rn,review_id,
+				select /*+INDEX_DESC(reviews review_id)*/
+				ROW_NUMBER() OVER(ORDER BY regdate DESC) rn,review_id,
 				regdate,contents,product_id,member_id,jumsu
 				from reviews
-				where rownum <= (#{cri.page}*#{cri.listAmount}) and product_id = #{productId}
+				where product_id = #{productId}
 			
 			)
-		where rn > (#{cri.page}-1)*#{cri.listAmount} order by review_id desc
-	]]>
+				WHERE rn BETWEEN (#{cri.page}-1)*#{cri.listAmount}+1
+				AND #{cri.page}*#{cri.listAmount}
+				ORDER BY regdate DESC]]>
 	</select>
-	
+
 	<select id="stars" resultType="com.project.domain.ReviewDTO">
 			select avg(nvl(jumsu,0)) as rating, count(review_id) as reviewCount, product_id
 			from reviews where product_id=#{productId} 

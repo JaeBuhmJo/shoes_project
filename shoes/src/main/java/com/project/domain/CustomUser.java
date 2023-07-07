@@ -7,9 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Getter
 public class CustomUser extends User {
 
