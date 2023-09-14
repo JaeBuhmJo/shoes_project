@@ -63,4 +63,4 @@
 - 상품 목록 페이지 참고 : 네이버 쇼핑
 
 
-<p align="center">(<a href="#top">맨 위로</a>)</p>
+<p align="center">(<a href="#top">위로</a>)</p>
