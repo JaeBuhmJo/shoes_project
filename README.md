@@ -43,16 +43,16 @@
 
 
 # 작업자 GitHub 목록
-[**조재범**](https://github.com/JaeBuhmJo)
+- [**조재범**](https://github.com/JaeBuhmJo)
 
 
-[**박경태**](https://github.com/Park-KyeongTae)
+- [**박경태**](https://github.com/Park-KyeongTae)
 
 
-[**이광열**](https://github.com/poweenv)
+- [**이광열**](https://github.com/poweenv)
 
 
-[**하성훈**](https://github.com/hahasunghoon)
+- [**하성훈**](https://github.com/hahasunghoon)
 
 
 # 참고 자료
